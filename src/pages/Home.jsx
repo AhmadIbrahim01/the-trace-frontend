@@ -6,10 +6,11 @@ import communityIcon from "../assets/icons/community-icon.svg";
 import rewardIcon from "../assets/icons/reward-icon.svg";
 import justiceIcon from "../assets/icons/justice-icon.svg";
 import howToJoinIcon from "../assets/icons/how-to-join-icon.svg";
+import userIcon from "../assets/icons/user-icon.svg";
 import lines from "../assets/images/lines.svg";
 import arrow from "../assets/icons/arrow.svg";
+import magnifier from "../assets/images/magnifier.svg";
 
-// Action Component for Reusability
 const ActionItem = ({ icon, text }) => (
   <div className="action">
     <img src={icon} alt="" />
@@ -17,7 +18,34 @@ const ActionItem = ({ icon, text }) => (
   </div>
 );
 
-// Hero Section Component
+const TestimonialCard = ({ text, name, image }) => (
+  <div className="testimonial-card">
+    <p>{text}</p>
+    <div className="card-info flex column center">
+      <img src={image} alt="user" />
+      <p>{name}</p>
+    </div>
+  </div>
+);
+
+const testimonials = [
+  {
+    text: `“I've been using this web hosting service for a few months and it's been nothing but problems. My website has gone down multiple times and the customer service has been unresponsive. I would not recommend this company."`,
+    name: "Ahmad Ibrahim",
+    image: userIcon,
+  },
+  {
+    text: `“I've been using this web hosting service for a few months now and overall it's been fine. The uptime has been good and I haven't had any major issues. The pricing is also reasonable. Nothing particularly stands out as exceptional, but it gets the job done.”`,
+    name: "Ahmad Ibrahim",
+    image: userIcon,
+  },
+  {
+    text: `“I've been using this web hosting service for a few months and it's been nothing but problems. My website has gone down multiple times and the customer service has been unresponsive. I would not recommend this company."`,
+    name: "Ahmad Ibrahim",
+    image: userIcon,
+  },
+];
+
 const HeroSection = () => (
   <div className="hero flex center column">
     <h1 className="t-center">
@@ -30,7 +58,6 @@ const HeroSection = () => (
   </div>
 );
 
-// Get Involved Section Component
 const GetInvolvedSection = () => (
   <div className="get-involved flex">
     <div className="container flex">
@@ -114,6 +141,17 @@ const TestimonialsSection = () => (
         </button>
       </div>
     </div>
+    <div className="testimonial-cards flex center">
+      {testimonials.map((testimonial, index) => (
+        <TestimonialCard
+          key={index}
+          text={testimonial.text}
+          name={testimonial.name}
+          image={testimonial.image}
+        />
+      ))}
+    </div>
+    <img className="magnifier" src={magnifier} alt="" />
   </div>
 );
 
