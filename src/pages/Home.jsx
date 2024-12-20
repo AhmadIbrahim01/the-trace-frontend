@@ -10,6 +10,10 @@ import userIcon from "../assets/icons/user-icon.svg";
 import lines from "../assets/images/lines.svg";
 import arrow from "../assets/icons/arrow.svg";
 import magnifier from "../assets/images/magnifier.svg";
+import papers from "../assets/images/papers.svg";
+import drawing from "../assets/images/drawing.svg";
+import house from "../assets/images/house.svg";
+import whiteFingerprint from "../assets/images/white-fingerprint.svg";
 
 const ActionItem = ({ icon, text }) => (
   <div className="action">
@@ -155,12 +159,28 @@ const TestimonialsSection = () => (
   </div>
 );
 
+const PoweredByAiSection = () => (
+  <div className="powered flex column center">
+    <h1>
+      Powered by{" "}
+      <span>
+        AI <img src={whiteFingerprint} alt="" />
+      </span>
+    </h1>
+    <p>
+      We highly appreciate technology and AI, by creating AI-driven analysis for
+      solving crimes
+    </p>
+  </div>
+);
+
 const Home = () => (
   <>
     <HeroSection />
     <GetInvolvedSection />
     <HowToJoinSection />
     <TestimonialsSection />
+    <PoweredByAiSection />
   </>
 );
 
