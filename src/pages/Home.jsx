@@ -41,12 +41,12 @@ const Home = () => {
             </div>
           </div>
           <div className="container-two">
-            <img src={fingMagn} alt="" />
             <img src={fingerprint} alt="" />
             <img src={fingerprint} alt="" />
             <img src={fingerprint} alt="" />
           </div>
         </div>
+        <img className="fingMagn" src={fingMagn} alt="" />
       </div>
     </>
   );
