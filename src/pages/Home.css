@@ -1,5 +1,9 @@
 .hero {
   height: 100vh;
+  background-image: url("../assets/images/hero-bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .hero h1 {
