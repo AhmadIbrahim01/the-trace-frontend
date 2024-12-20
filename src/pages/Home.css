@@ -170,6 +170,7 @@
 /* Testimonials section */
 .testimonials {
   height: 100vh;
+  position: relative;
 }
 .testimonials-header {
   width: 1148px;
@@ -211,4 +212,45 @@
 }
 .arrow-btn:nth-child(2) > img {
   transform: scaleX(-1);
+}
+
+.testimonial-cards {
+  width: 90%;
+  margin-top: 100px;
+}
+.testimonial-card {
+  padding: 40px 30px;
+  margin-right: 60px;
+  width: 360px;
+  height: auto;
+  background-color: #ffffff0d;
+  border-radius: 6px;
+}
+.testimonial-card > p {
+  font-size: 16px;
+  color: var(--color2);
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  line-height: 2;
+}
+.card-info > img {
+  width: 50px;
+  height: 50px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+.card-info > p {
+  font-size: 18px;
+  color: var(--color2);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.magnifier {
+  position: absolute;
+  width: 220px;
+  height: 216px;
+  left: 0;
+  top: 200px;
 }
