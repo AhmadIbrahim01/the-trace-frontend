@@ -56,10 +56,28 @@
   background: var(--secondary-gradient);
   -webkit-background-clip: text;
   color: transparent;
+  margin-bottom: 23px;
 }
 .section-header > p {
   font-size: 18px;
   background: var(--text-color);
   -webkit-background-clip: text;
   color: transparent;
+}
+
+.action-list {
+}
+.action {
+  width: 334px;
+  height: 160px;
+  margin-top: 60px;
+}
+.action > img {
+  width: 64px;
+  height: 64px;
+}
+.action > h3 {
+  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
 }

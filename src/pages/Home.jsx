@@ -25,16 +25,16 @@ const Home = () => {
               </h1>
               <p>Your contribution can make a real difference.</p>
             </div>
-            <div className="flex wrap">
-              <div>
+            <div className="action-list flex wrap">
+              <div className="action">
                 <img src="/icons/community-icon.svg" alt="community-icon" />
                 <h3>Join a justice enthusiast community</h3>
               </div>
-              <div>
+              <div className="action">
                 <img src="/icons/reward-icon.svg" alt="reward-icon" />
                 <h3>Submit tips and evidence and join our reward system! </h3>
               </div>
-              <div>
+              <div className="action">
                 <img src="/icons/justice-icon.svg" alt="justice-icon" />
                 <h3>Help to bring justice to your community!</h3>
               </div>
