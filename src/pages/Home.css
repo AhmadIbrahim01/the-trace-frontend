@@ -254,3 +254,41 @@
   left: 0;
   top: 200px;
 }
+
+/* Powered By Ai Section section */
+.powered {
+  height: 100vh;
+  padding: 5% 1%;
+}
+.powered > h1 {
+  font-size: 60px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 23px;
+  position: relative;
+}
+.powered > h1 > span {
+  color: black;
+  text-shadow: 1px 1px var(--color1);
+}
+.powered > h1 > span > img {
+  width: 75px;
+  height: 114px;
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: white;
+  z-index: -1;
+}
+.powered > p {
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  background: var(--text-color);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 60px;
+}
