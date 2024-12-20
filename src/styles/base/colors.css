@@ -2,11 +2,13 @@
   --primary-gradient: linear-gradient(to right, #ffffff, #9ce6d9);
   --secondary-gradient: linear-gradient(to right, #0bc1a0, #9ce6d9);
 
+  --heading: linear-gradient(to right, #00be9c, #9ce6d9);
+
   --text-color: #a4a4a4;
 
   --btn-color1: #0bc1a0;
-  --btn-color2: #141521;
-  --btn-color3: #ffffff;
+  --btn-color2: #ffffff;
+  --btn-color3: #141521;
 
   --bg-color: #141521;
 
