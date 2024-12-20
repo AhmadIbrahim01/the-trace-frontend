@@ -114,3 +114,55 @@
   right: 0px;
   bottom: -100px;
 }
+
+/* How to join section */
+.how-to-join {
+  height: 100vh;
+}
+.how-to-join > .section-header > h1 {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.how-to-join .icon {
+  width: 64px;
+  height: 64px;
+  margin-top: 58px;
+}
+
+.lines {
+  width: 754px;
+  height: 122px;
+}
+
+.cards {
+  width: 1082px;
+  height: 165px;
+  justify-content: space-between;
+}
+
+.card {
+  width: 333px;
+  height: 127px;
+  border-radius: 12px;
+  background-color: #e9f0f6;
+  padding: 3%;
+}
+.card > h3 {
+  font-size: 20px;
+  color: var(--color3);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.card:nth-child(1),
+.card:nth-child(3) {
+  margin-top: -38px;
+}
+
+.how-to-join > button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  width: 218px;
+  height: 50px;
+}
