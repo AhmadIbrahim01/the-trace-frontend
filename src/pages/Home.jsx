@@ -171,6 +171,26 @@ const PoweredByAiSection = () => (
       We highly appreciate technology and AI, by creating AI-driven analysis for
       solving crimes
     </p>
+    <div className="flex powered-cards">
+      <div className="big-card">
+        <h2>Statement analysis</h2>
+        <img src={papers} alt="papers" />
+      </div>
+      <div className="small-cards">
+        <div className="small-card flex">
+          <h2>
+            AI drawing <br></br> suspect
+          </h2>
+          <img src={drawing} alt="drawing" />
+        </div>
+        <div className="small-card flex">
+          <h2>
+            3D crime <br /> scene <br /> recreation
+          </h2>
+          <img src={house} alt="house" />
+        </div>
+      </div>
+    </div>
   </div>
 );
 
