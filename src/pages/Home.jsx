@@ -63,10 +63,23 @@ const GetInvolvedSection = () => (
   </div>
 );
 
+const HowToJoinSection = () => (
+  <div className="how-to-join flex column center">
+    <div className="section-header">
+      <h1 className="t-center">How to join?</h1>
+      <p className="t-center">
+        Joining us is very simple, just a few steps and you’ll be set up to go!
+      </p>
+    </div>
+    <div></div>
+  </div>
+);
+
 const Home = () => (
   <>
     <HeroSection />
     <GetInvolvedSection />
+    <HowToJoinSection />
   </>
 );
 
