@@ -23,6 +23,10 @@
   font-style: normal;
 }
 
+:root {
+  --hero-bg: url("./assets/images/hero-bg.png");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -42,4 +46,8 @@ button {
   font-size: 18px;
   border-radius: 6px;
   transition: all 0.3s;
+}
+
+img {
+  width: 10px;
 }
