@@ -35,10 +35,12 @@
 .get-involved {
   height: 100vh;
   background-color: white;
+  position: relative;
 }
 
 .container {
   margin: 5% 14%;
+  position: relative;
 }
 .container-one {
   width: 80%;
@@ -78,6 +80,37 @@
 }
 .action > h3 {
   font-size: 24px;
+  margin-top: 24px;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
+}
+
+.container-two img:nth-child(1) {
+  width: 75px;
+  height: 114px;
+  position: absolute;
+  right: 0px;
+  top: -50px;
+}
+.container-two img:nth-child(2) {
+  width: 75px;
+  height: 114px;
+  position: absolute;
+  right: -150px;
+  top: 100px;
+  transform: scaleX(-1);
+}
+.container-two img:nth-child(3) {
+  width: 107px;
+  height: 162px;
+  position: absolute;
+  right: 0px;
+  top: 150px;
+}
+.fingMagn {
+  width: 263.648px;
+  height: 399.168px;
+  position: absolute;
+  right: 0px;
+  bottom: -100px;
 }
