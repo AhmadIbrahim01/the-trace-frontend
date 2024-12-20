@@ -7,6 +7,7 @@ import rewardIcon from "../assets/icons/reward-icon.svg";
 import justiceIcon from "../assets/icons/justice-icon.svg";
 import howToJoinIcon from "../assets/icons/how-to-join-icon.svg";
 import lines from "../assets/images/lines.svg";
+import arrow from "../assets/icons/arrow.svg";
 
 // Action Component for Reusability
 const ActionItem = ({ icon, text }) => (
@@ -94,11 +95,34 @@ const HowToJoinSection = () => (
   </div>
 );
 
+const TestimonialsSection = () => (
+  <div className="testimonials flex column center">
+    <div className="testimonials-header flex">
+      <div className="testimonials-info">
+        <h1>Testimonials</h1>
+        <p>
+          Joining us is very simple, just a few steps and you’ll be set up to
+          go!
+        </p>
+      </div>
+      <div className="flex testimonials-btns">
+        <button className="arrow-btn">
+          <img src={arrow} alt="" />
+        </button>
+        <button className="arrow-btn">
+          <img src={arrow} alt="" />
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
 const Home = () => (
   <>
     <HeroSection />
     <GetInvolvedSection />
     <HowToJoinSection />
+    <TestimonialsSection />
   </>
 );
 
