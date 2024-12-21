@@ -87,6 +87,7 @@
   position: absolute;
   left: 170px;
   transform: rotate(-5deg);
+  overflow: hidden;
 }
 .sticky-note > p {
   font-size: 30px;
@@ -99,4 +100,46 @@
   top: 0;
   width: 20px;
   height: 30px;
+}
+
+/* Case Description Section */
+
+.case-description {
+  position: relative;
+  padding: 5% 10%;
+}
+
+.scene-tape {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.back-btn {
+  width: 75px;
+  height: 30px;
+  background-color: #00000000;
+  color: var(--text-color);
+}
+
+.back-btn > img {
+  width: 16px;
+  height: 8px;
+}
+.back-btn > p {
+  padding-left: 10px;
+}
+
+.description-header {
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.case-status {
+  margin: 0px 20px;
+  background-color: var(--color3);
+  border: 1px solid #0f0f0f;
+  border-radius: 100px;
+  color: var(--color2);
 }
