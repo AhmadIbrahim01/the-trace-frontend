@@ -52,3 +52,24 @@
 .search-div > input:focus {
   color: white;
 }
+
+/* Cases List Section */
+.cases-list {
+  padding-top: 10%;
+}
+.cases-list h1 {
+  font-size: 60px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.cases-list p {
+  font-size: 18px;
+  color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  margin-top: 23px;
+  margin-bottom: 69px;
+}
