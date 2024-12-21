@@ -239,3 +239,34 @@
   border-radius: 12px;
   margin-bottom: 60px;
 }
+
+/* Tip Section */
+
+.tip-section {
+  width: 100%;
+  height: 472px;
+  background: #0bc1a01a;
+}
+
+.tip-h1 {
+  font-size: 60px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+.tip-p {
+  font-size: 20px;
+  color: var(--text-color);
+  margin-bottom: 60px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
+.tip-button {
+  width: 276px;
+  height: 50px;
+  background-color: var(--color1);
+  color: var(--color2);
+}
