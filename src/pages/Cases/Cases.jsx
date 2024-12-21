@@ -5,6 +5,7 @@ import caseOne from "../../assets/images/case1.svg";
 import courthouseIcon from "../../assets/icons/courthouse-icon.svg";
 import calendarIcon from "../../assets/icons/calendar-icon.svg";
 import arrow from "../../assets/icons/arrow-2.svg";
+import tickCircleIcon from "../../assets/icons/tick-circle-icon.svg";
 
 const HeroSection = () => (
   <div className="cases-hero flex center column">
@@ -60,7 +61,7 @@ const CasesSection = () => (
           </div>
           <div className="case-status flex center">
             <p>Case closed</p>
-            <img src="" alt="" />
+            <img src={tickCircleIcon} alt="" />
           </div>
           <button className="flex center ">
             View full case
