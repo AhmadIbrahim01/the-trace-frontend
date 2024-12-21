@@ -83,7 +83,7 @@
   position: relative;
 }
 
-.case p {
+.case > p {
   margin: 0px;
   padding: 1%;
   width: 100%;
@@ -108,4 +108,25 @@
 .case-image,
 .case-info {
   width: 50%;
+}
+
+.case-info {
+  padding: 3%;
+}
+.case-info > p {
+  font-size: 18px;
+}
+.tags {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.case-info > .tags h3 {
+  font-size: 14px;
+  background-color: #05584933;
+  color: #ffffff;
+  padding: 1%;
+  border-radius: 3px;
+  margin-right: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
 }
