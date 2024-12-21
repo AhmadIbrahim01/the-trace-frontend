@@ -168,7 +168,8 @@
   margin-bottom: 23px;
 }
 
-.description-p {
+.description-p,
+.gallery p {
   font-size: 20px;
   color: var(--text-color);
 }
@@ -194,8 +195,14 @@
   font-weight: normal;
 }
 
+.gallery {
+  justify-content: space-around;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
 .gallery-container {
-  width: 80%;
+  gap: 150px;
 }
 
 .gallery-main {
@@ -205,6 +212,30 @@
 }
 .main-picture {
   width: 100%;
-
   border-radius: 14px;
+}
+
+.gallery-sub {
+  border-radius: 14px;
+  width: 690px;
+  gap: 16px;
+}
+.sub-picture {
+  width: 160px;
+  height: 135px;
+}
+
+.scene {
+  width: 1108px;
+  height: 635px;
+  background-color: #1b1c28;
+  border-radius: 12px;
+  margin-bottom: 60px;
+}
+.map {
+  width: 1108px;
+  height: 635px;
+  background-color: #1b1c28;
+  border-radius: 12px;
+  margin-bottom: 60px;
 }
