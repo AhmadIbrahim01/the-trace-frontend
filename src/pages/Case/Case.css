@@ -37,6 +37,8 @@
   transform: rotate(-3deg);
   background-size: cover;
   background-position: center;
+  left: 300px;
+  bottom: 120px;
 }
 .image-one img:nth-child(1) {
   width: 237px;
@@ -53,7 +55,26 @@
 .half-paper {
   position: absolute;
   bottom: 0;
-  left: 200px;
+  left: 350px;
   width: 318px;
   height: 203px;
+}
+
+.image-two {
+  position: absolute;
+  width: 214px;
+  height: 153px;
+  transform: rotate(-10deg);
+  bottom: 100px;
+  left: 550px;
+}
+.image-two img:nth-child(1) {
+  width: 237px;
+  height: 46px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.image-two img:nth-child(2) {
+  width: 100%;
 }
