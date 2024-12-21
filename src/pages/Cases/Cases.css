@@ -186,3 +186,8 @@
   background: #ffffff;
   border-radius: 6px;
 }
+.case-info > button > img {
+  margin-left: 10px;
+  width: 16px;
+  height: 8px;
+}

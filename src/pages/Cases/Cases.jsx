@@ -4,6 +4,7 @@ import searchIcon from "../../assets/icons/search-icon.svg";
 import caseOne from "../../assets/images/case1.svg";
 import courthouseIcon from "../../assets/icons/courthouse-icon.svg";
 import calendarIcon from "../../assets/icons/calendar-icon.svg";
+import arrow from "../../assets/icons/arrow-2.svg";
 
 const HeroSection = () => (
   <div className="cases-hero flex center column">
@@ -63,7 +64,7 @@ const CasesSection = () => (
           </div>
           <button className="flex center ">
             View full case
-            <img src="" alt="" />
+            <img src={arrow} alt="" />
           </button>
         </div>
       </div>
