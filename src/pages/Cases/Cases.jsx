@@ -2,6 +2,8 @@ import React from "react";
 import "./Cases.css";
 import searchIcon from "../../assets/icons/search-icon.svg";
 import caseOne from "../../assets/images/case1.svg";
+import caseTwo from "../../assets/images/case2.svg";
+import caseThree from "../../assets/images/case3.svg";
 import courthouseIcon from "../../assets/icons/courthouse-icon.svg";
 import calendarIcon from "../../assets/icons/calendar-icon.svg";
 import arrow from "../../assets/icons/arrow-2.svg";
@@ -19,59 +21,95 @@ const HeroSection = () => (
     <div className="search-div flex center">
       <input type="text" placeholder="Search" />
       <button>
-        <img src={searchIcon} alt="" />
+        <img src={searchIcon} alt="Search Icon" />
       </button>
     </div>
   </div>
 );
 
-const CasesSection = () => (
-  <div className="cases-list flex center column">
-    <h1>Cases List</h1>
-    <p className="t-center">
-      Joining us is very simple, just a few steps and you’ll be set up to go!
-    </p>
-
-    <div className="case">
-      <p className="t-center flex center">
-        The Victim of AI The Victim of AI The Victim of AI The Victim of AI The
-        Victim of AI The Victim of AI The Victim of AI The Victim of AI The
-        Victim of AI The Victim of AI The Victim of AI The Victim of AI The
-      </p>
-      <div className="case-container flex">
-        <div className="case-image">
-          <img src={caseOne} alt="" />
-        </div>
-        <div className="case-info">
-          <p>Case 1</p>
-          <div className="case-name flex">
-            <h2>The victim of AI</h2>
-            <button className="flex center">
-              <img src={courthouseIcon} alt="" />
-            </button>
-          </div>
-          <div className="case-date flex">
-            <img src={calendarIcon} alt="" />
-            <p>Published on January 5, 2023</p>
-          </div>
-          <div className="tags flex">
-            <h3>Tag One</h3>
-            <h3>Tag Two</h3>
-            <h3>Tag Three</h3>
-          </div>
-          <div className="case-status flex center">
-            <p>Case closed</p>
-            <img src={tickCircleIcon} alt="" />
-          </div>
-          <button className="flex center ">
-            View full case
-            <img src={arrow} alt="" />
+const CaseCard = ({ caseData }) => (
+  <div className="case">
+    <p className="t-center flex center">{caseData.description}</p>
+    <div className="case-container flex">
+      <div className="case-image">
+        <img src={caseData.image || caseOne} alt={caseData.title} />
+      </div>
+      <div className="case-info">
+        <p>Case {caseData.id}</p>
+        <div className="case-name flex">
+          <h2>{caseData.title}</h2>
+          <button className="flex center">
+            <img src={courthouseIcon} alt="Courthouse Icon" />
           </button>
         </div>
+        <div className="case-date flex">
+          <img src={calendarIcon} alt="Calendar Icon" />
+          <p>Published on {caseData.date}</p>
+        </div>
+        <div className="tags flex">
+          {caseData.tags.map((tag, index) => (
+            <h3 key={index}>{tag}</h3>
+          ))}
+        </div>
+        <div className="case-status flex center">
+          <p>{caseData.status}</p>
+          <img src={tickCircleIcon} alt="Tick Circle Icon" />
+        </div>
+        <button className="flex center">
+          View full case
+          <img src={arrow} alt="Arrow Icon" />
+        </button>
       </div>
     </div>
   </div>
 );
+
+const CasesSection = () => {
+  const cases = [
+    {
+      id: 1,
+      title: "The Victim of AI",
+      description:
+        "The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI ",
+      date: "January 5, 2023",
+      tags: ["Tag One", "Tag Two", "Tag Three"],
+      status: "Case closed",
+      image: caseOne,
+    },
+    {
+      id: 2,
+      title: "The Victim of AI",
+      description:
+        "The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI ",
+      date: "January 5, 2023",
+      tags: ["Tag One", "Tag Two", "Tag Three"],
+      status: "Case closed",
+      image: caseTwo,
+    },
+    {
+      id: 3,
+      title: "Hitman in the night",
+      description:
+        "The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI ",
+      date: "January 5, 2023",
+      tags: ["Tag One", "Tag Two", "Tag Three"],
+      status: "Case closed",
+      image: caseThree,
+    },
+  ];
+
+  return (
+    <div className="cases-list flex center column">
+      <h1>Cases List</h1>
+      <p className="t-center">
+        Joining us is very simple, just a few steps and you’ll be set up to go!
+      </p>
+      {cases.map((caseData) => (
+        <CaseCard key={caseData.id} caseData={caseData} />
+      ))}
+    </div>
+  );
+};
 
 const Cases = () => (
   <>
