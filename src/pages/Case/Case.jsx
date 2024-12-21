@@ -5,6 +5,10 @@ import tapeTwo from "../../assets/images/tape-2.svg";
 import halfPaper from "../../assets/images/half-paper.svg";
 import caseImage from "../../assets/images/case-image.svg";
 import galleryOne from "../../assets/images/gallery-1.svg";
+import galleryTwo from "../../assets/images/gallery-2.svg";
+import galleryThree from "../../assets/images/gallery-3.svg";
+import galleryFour from "../../assets/images/gallery-4.svg";
+import galleryFive from "../../assets/images/gallery-5.svg";
 import pin from "../../assets/images/pin.svg";
 import sceneTape from "../../assets/images/scene-tape.svg";
 import calendarIcon from "../../assets/icons/calendar-icon.svg";
@@ -85,6 +89,32 @@ const CaseDescription = () => (
           Today, Ireland is a country reckoning with the cost and consequences
           of abandoning its ideals for economic gain. Since freeing 26 of its 32
           counties from British rule more than 100 years ago, Ireland has.
+        </p>
+      </div>
+      <h1 className="description-h1">Gallery</h1>
+      <div className="gallery flex">
+        <div className="gallery-container flex center column">
+          <div className="gallery-main">
+            <img className="main-picture" src={galleryOne} alt="" />
+          </div>
+          <div className="gallery-sub">
+            <img className="sub-picture" src={galleryTwo} alt="" />
+            <img className="sub-picture" src={galleryThree} alt="" />
+            <img className="sub-picture" src={galleryFour} alt="" />
+            <img className="sub-picture" src={galleryFive} alt="" />
+          </div>
+        </div>
+        <p>
+          Today, Ireland is a country reckoning with the cost and consequences
+          of abandoning its ideals for economic gain. Since freeing 26 of its 32
+          counties from British rule more than 100 years ago, Ireland has moved
+          away from its socialist roots and embraced neoliberalism. Today,
+          Ireland is a country reckoning with the cost and consequences of
+          abandoning its ideals for economic gain. Since freeing 26 of its 32
+          counties from British rule more than 100 years ago, Ireland has moved
+          away from its socialist roots and embraced neoliberalism. ..... Today,
+          Ireland is a country reckoning with the cost and consequences of
+          abandoning its ideals.
         </p>
       </div>
     </div>

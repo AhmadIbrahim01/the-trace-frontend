@@ -177,6 +177,7 @@
   background-color: #ff60601a;
   padding: 34px 46px;
   margin-top: 50px;
+  margin-bottom: 60px;
   border-left: 4px solid #ff6060;
 }
 .case-notice h6 {
@@ -191,4 +192,19 @@
   color: #ff606066;
   font-family: "Montserrat", sans-serif;
   font-weight: normal;
+}
+
+.gallery-container {
+  width: 80%;
+}
+
+.gallery-main {
+  border-radius: 14px;
+  width: 690px;
+  height: 370px;
+}
+.main-picture {
+  width: 100%;
+
+  border-radius: 14px;
 }
