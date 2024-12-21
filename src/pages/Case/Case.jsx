@@ -10,6 +10,7 @@ import sceneTape from "../../assets/images/scene-tape.svg";
 import calendarIcon from "../../assets/icons/calendar-icon.svg";
 import tickCircleIcon from "../../assets/icons/tick-circle-icon.svg";
 import backArrow from "../../assets/icons/back-arrow.svg";
+import descriptionLine from "../../assets/images/description-line.svg";
 
 const HeroSection = () => (
   <div className="case-hero flex center column">
@@ -37,6 +38,7 @@ const HeroSection = () => (
 const CaseDescription = () => (
   <div className="case-description flex center column">
     <img className="scene-tape" src={sceneTape} alt="scene-tape" />
+    <img className="description-line" src={descriptionLine} alt="scene-tape" />
     <div className="description-header flex">
       <button className="back-btn flex center">
         <img src={backArrow} alt="" />
@@ -52,6 +54,31 @@ const CaseDescription = () => (
           <p>Published on January 5, 2023</p>
         </div>
       </div>
+    </div>
+
+    <div className="description">
+      <h1 className="description-h1">Description</h1>
+      <h3 className="description-h3">
+        Ireland hears the call of Palestine, but is it free to answer?
+      </h3>
+      <p className="description-p">
+        Today, Ireland is a country reckoning with the cost and consequences of
+        abandoning its ideals for economic gain. Since freeing 26 of its 32
+        counties from British rule more than 100 years ago, Ireland has moved
+        away from its socialist roots and embraced neoliberalism. .....
+        <br />
+        <br />
+        Today, Ireland is a country reckoning with the cost and consequences of
+        abandoning its ideals for economic gain. Since freeing 26 of its 32
+        counties from British rule more than 100 years ago, Ireland has moved
+        away from its socialist roots and embraced neoliberalism. .....
+        <br />
+        <br />
+        Today, Ireland is a country reckoning with the cost and consequences of
+        abandoning its ideals for economic gain. Since freeing 26 of its 32
+        counties from British rule more than 100 years ago, Ireland has moved
+        away from its socialist roots and embraced neoliberalism. .....
+      </p>
     </div>
   </div>
 );
