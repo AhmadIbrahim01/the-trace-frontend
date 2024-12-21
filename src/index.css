@@ -26,6 +26,7 @@
 :root {
   --hero-bg: url("./assets/images/hero-bg.png");
   --cases-bg: url("./assets/images/cases-hero-bg.svg");
+  --case-bg: url("./assets/images/case-bg.svg");
 }
 
 * {

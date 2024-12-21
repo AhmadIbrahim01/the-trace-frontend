@@ -1,0 +1,18 @@
+.case-hero {
+  height: 100vh;
+  background-image: var(--case-bg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.case-hero > h1 {
+  font-size: 100px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.case-hero > h1,
+.case-hero > p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
