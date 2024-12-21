@@ -33,7 +33,7 @@
 
 /* Why get involved section */
 .get-involved {
-  height: 100vh;
+  height: 110vh;
   background-color: white;
   position: relative;
 }
@@ -117,7 +117,7 @@
 
 /* How to join section */
 .how-to-join {
-  height: 100vh;
+  height: 110vh;
 }
 .how-to-join > .section-header > h1 {
   background: var(--primary-gradient);
@@ -169,7 +169,7 @@
 
 /* Testimonials section */
 .testimonials {
-  height: 100vh;
+  height: 110vh;
   position: relative;
 }
 .testimonials-header {
@@ -257,7 +257,7 @@
 
 /* Powered By Ai Section section */
 .powered {
-  height: 100vh;
+  height: 110vh;
   padding: 5% 1%;
 }
 .powered > h1 {
