@@ -79,6 +79,7 @@
   height: 547px;
   background-color: #ffffff0d;
   border-radius: 12px;
+  margin-bottom: 50px;
   position: relative;
 }
 
@@ -97,4 +98,14 @@
   font-family: "Montserrat", sans-serif;
   font-weight: normal;
   overflow: hidden;
+}
+.case-image > img {
+  width: 100%;
+  align-items: center;
+  background-position: center;
+  background-size: contain;
+}
+.case-image,
+.case-info {
+  width: 50%;
 }
