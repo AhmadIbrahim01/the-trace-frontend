@@ -132,6 +132,18 @@
   font-weight: 600;
 }
 
+.case-name > button {
+  width: 52px;
+  height: 40px;
+  border-radius: 32px;
+  border: 1px solid black;
+  background-color: var(--color3);
+}
+.case-name > button > img {
+  width: 20px;
+  height: 20px;
+}
+
 .case-date > img {
 }
 .case-date > p {

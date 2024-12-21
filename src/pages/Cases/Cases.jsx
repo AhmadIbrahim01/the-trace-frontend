@@ -2,6 +2,7 @@ import React from "react";
 import "./Cases.css";
 import searchIcon from "../../assets/icons/search-icon.svg";
 import caseOne from "../../assets/images/case1.svg";
+import courthouseIcon from "../../assets/icons/courthouse-icon.svg";
 
 const HeroSection = () => (
   <div className="cases-hero flex center column">
@@ -42,7 +43,9 @@ const CasesSection = () => (
           <p>Case 1</p>
           <div className="case-name flex">
             <h2>The victim of AI</h2>
-            <button></button>
+            <button className="flex center">
+              <img src={courthouseIcon} alt="" />
+            </button>
           </div>
           <div className="case-date flex">
             <img src="" alt="" />
