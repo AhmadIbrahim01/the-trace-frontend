@@ -145,6 +145,9 @@
 }
 
 .case-date > img {
+  margin-right: 5px;
+  width: 14px;
+  height: 14px;
 }
 .case-date > p {
   font-size: 14px;

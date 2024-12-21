@@ -3,6 +3,7 @@ import "./Cases.css";
 import searchIcon from "../../assets/icons/search-icon.svg";
 import caseOne from "../../assets/images/case1.svg";
 import courthouseIcon from "../../assets/icons/courthouse-icon.svg";
+import calendarIcon from "../../assets/icons/calendar-icon.svg";
 
 const HeroSection = () => (
   <div className="cases-hero flex center column">
@@ -48,7 +49,7 @@ const CasesSection = () => (
             </button>
           </div>
           <div className="case-date flex">
-            <img src="" alt="" />
+            <img src={calendarIcon} alt="" />
             <p>Published on January 5, 2023</p>
           </div>
           <div className="tags flex">
