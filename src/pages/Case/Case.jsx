@@ -14,6 +14,8 @@ import sceneTape from "../../assets/images/scene-tape.svg";
 import calendarIcon from "../../assets/icons/calendar-icon.svg";
 import tickCircleIcon from "../../assets/icons/tick-circle-icon.svg";
 import backArrow from "../../assets/icons/back-arrow.svg";
+import leftHand from "../../assets/images/left-hand.svg";
+import rightHand from "../../assets/images/right-hand.svg";
 
 const HeroSection = () => (
   <div className="case-hero flex center column">
@@ -130,6 +132,8 @@ const TipSubmission = () => (
       Do you have a clue? Submit a tip to help for investigations
     </p>
     <button className="tip-button">Tip Page</button>
+    <img className="left-hand" src={leftHand} alt="" />
+    <img className="right-hand" src={rightHand} alt="" />
   </div>
 );
 const Case = () => (
