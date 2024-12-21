@@ -1,0 +1,54 @@
+.cases-hero {
+  height: 100vh;
+  background-image: var(--cases-bg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.cases-hero h1 {
+  font-size: 100px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.cases-hero p {
+  font-size: 18px;
+  color: var(--text-color);
+  width: 70%;
+  margin-top: 23px;
+  margin-bottom: 40px;
+}
+.cases-hero > h1,
+.cases-hero > p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.search-div {
+  width: 645px;
+  height: 52px;
+  border-radius: 6px;
+  background-color: var(--color3);
+  padding-right: 19px;
+}
+.search-div > input {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  background-color: var(--color3);
+  padding-left: 19px;
+  outline: none;
+}
+.search-div > button {
+  width: 64px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: var(--color1);
+}
+
+.search-div > input::placeholder {
+  color: var(--text-color);
+}
+.search-div > input:focus {
+  color: white;
+}
