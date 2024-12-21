@@ -4,10 +4,12 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
 }
 
 .case-bio {
   width: auto;
+  z-index: 1;
 }
 .case-bio > h1 {
   font-size: 100px;
@@ -26,4 +28,32 @@
   color: transparent;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
+}
+
+.image-one {
+  position: absolute;
+  width: 390px;
+  height: 413px;
+  transform: rotate(-3deg);
+  background-size: cover;
+  background-position: center;
+}
+.image-one img:nth-child(1) {
+  width: 237px;
+  height: 46px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.image-one img:nth-child(2) {
+  width: 100%;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.half-paper {
+  position: absolute;
+  bottom: 0;
+  left: 200px;
+  width: 318px;
+  height: 203px;
 }
