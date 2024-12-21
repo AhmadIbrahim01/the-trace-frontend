@@ -38,7 +38,26 @@ const CasesSection = () => (
         <div className="case-image">
           <img src={caseOne} alt="" />
         </div>
-        <div className="case-info"></div>
+        <div className="case-info">
+          <p>Case 1</p>
+          <div>
+            <h2>The victim of AI</h2>
+          </div>
+          <div>
+            <img src="" alt="" />
+            <p>Published on January 5, 2023</p>
+          </div>
+          <div className="tags flex">
+            <h3>Tag One</h3>
+            <h3>Tag Two</h3>
+            <h3>Tag Three</h3>
+          </div>
+          <div>
+            <p>Case closed</p>
+            <img src="" alt="" />
+          </div>
+          <button>View full case</button>
+        </div>
       </div>
     </div>
   </div>
