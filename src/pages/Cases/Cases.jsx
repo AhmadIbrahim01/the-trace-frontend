@@ -20,9 +20,19 @@ const HeroSection = () => (
   </div>
 );
 
+const CasesSection = () => (
+  <div className="cases-list flex center column">
+    <h1>Cases List</h1>
+    <p className="t-center">
+      Joining us is very simple, just a few steps and you’ll be set up to go!
+    </p>
+  </div>
+);
+
 const Cases = () => (
   <>
     <HeroSection />
+    <CasesSection />
   </>
 );
 
