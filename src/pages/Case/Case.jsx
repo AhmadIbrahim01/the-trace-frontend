@@ -123,10 +123,20 @@ const CaseDescription = () => (
   </div>
 );
 
+const TipSubmission = () => (
+  <div className="tip-section flex center column">
+    <h1 className="tip-h1">The Case Tip Submission</h1>
+    <p className="tip-p">
+      Do you have a clue? Submit a tip to help for investigations
+    </p>
+    <button className="tip-button">Tip Page</button>
+  </div>
+);
 const Case = () => (
   <>
     <HeroSection />
     <CaseDescription />
+    <TipSubmission />
   </>
 );
 
