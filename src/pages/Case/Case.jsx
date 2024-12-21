@@ -79,6 +79,14 @@ const CaseDescription = () => (
         counties from British rule more than 100 years ago, Ireland has moved
         away from its socialist roots and embraced neoliberalism. .....
       </p>
+      <div className="case-notice">
+        <h6>Important</h6>
+        <p>
+          Today, Ireland is a country reckoning with the cost and consequences
+          of abandoning its ideals for economic gain. Since freeing 26 of its 32
+          counties from British rule more than 100 years ago, Ireland has.
+        </p>
+      </div>
     </div>
   </div>
 );

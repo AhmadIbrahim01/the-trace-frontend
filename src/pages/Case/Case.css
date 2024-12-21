@@ -172,3 +172,23 @@
   font-size: 20px;
   color: var(--text-color);
 }
+
+.case-notice {
+  background-color: #ff60601a;
+  padding: 34px 46px;
+  margin-top: 50px;
+  border-left: 4px solid #ff6060;
+}
+.case-notice h6 {
+  font-size: 18px;
+  color: #ff6060;
+  margin-bottom: 9px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.case-notice p {
+  font-size: 20px;
+  color: #ff606066;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
