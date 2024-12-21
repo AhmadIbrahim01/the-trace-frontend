@@ -163,3 +163,15 @@
   border-radius: 100px;
   color: var(--color2);
 }
+
+.case-info > button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 218px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 6px;
+}

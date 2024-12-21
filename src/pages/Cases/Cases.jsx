@@ -57,7 +57,10 @@ const CasesSection = () => (
             <p>Case closed</p>
             <img src="" alt="" />
           </div>
-          <button>View full case</button>
+          <button className="flex center ">
+            View full case
+            <img src="" alt="" />
+          </button>
         </div>
       </div>
     </div>
