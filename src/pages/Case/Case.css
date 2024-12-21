@@ -5,14 +5,25 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-.case-hero > h1 {
+
+.case-bio {
+  width: auto;
+}
+.case-bio > h1 {
   font-size: 100px;
   background: var(--primary-gradient);
+}
+
+.case-bio > h2 {
+  font-size: 46.22px;
+  background: var(--color2);
+  text-align: right;
+}
+
+.case-bio > h1,
+.case-bio > h2 {
   -webkit-background-clip: text;
   color: transparent;
-}
-.case-hero > h1,
-.case-hero > p {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
 }
