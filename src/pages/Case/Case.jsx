@@ -4,6 +4,8 @@ import tapeOne from "../../assets/images/tape-1.svg";
 import tapeTwo from "../../assets/images/tape-2.svg";
 import halfPaper from "../../assets/images/half-paper.svg";
 import caseImage from "../../assets/images/case-image.svg";
+import galleryOne from "../../assets/images/gallery-1.svg";
+import pin from "../../assets/images/pin.svg";
 
 const HeroSection = () => (
   <div className="case-hero flex center column">
@@ -18,9 +20,13 @@ const HeroSection = () => (
     </div>
     <div className="image-two">
       <img src={tapeTwo} alt="" />
-      <img src="" alt="" />
+      <img src={galleryOne} alt="" />
     </div>
     <img className="half-paper" src={halfPaper} alt="" />
+    <div className="sticky-note flex center">
+      <p>Helllo</p>
+      <img src={pin} alt="" />
+    </div>
   </div>
 );
 const Case = () => (

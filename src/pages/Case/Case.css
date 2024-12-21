@@ -78,3 +78,25 @@
 .image-two img:nth-child(2) {
   width: 100%;
 }
+
+.sticky-note {
+  width: 165px;
+  height: 156px;
+  background-color: #0bc1a0;
+  z-index: 100;
+  position: absolute;
+  left: 170px;
+  transform: rotate(-5deg);
+}
+.sticky-note > p {
+  font-size: 30px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
+.sticky-note > img {
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 30px;
+}
