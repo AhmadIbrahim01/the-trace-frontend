@@ -65,7 +65,7 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
 }
-.cases-list p {
+.cases-list > p {
   font-size: 18px;
   color: var(--text-color);
   font-family: "Montserrat", sans-serif;
@@ -84,7 +84,6 @@
 }
 
 .case > p {
-  margin: 0px;
   padding: 1%;
   width: 100%;
   background-color: #00000033;
@@ -115,7 +114,24 @@
 }
 .case-info > p {
   font-size: 18px;
+  color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  margin-top: 50px;
 }
+
+.case-name {
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.case-name > h2 {
+  font-size: 40px;
+  color: var(--color2);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
 .tags {
   margin-top: 30px;
   margin-bottom: 20px;

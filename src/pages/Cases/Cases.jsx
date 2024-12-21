@@ -40,10 +40,11 @@ const CasesSection = () => (
         </div>
         <div className="case-info">
           <p>Case 1</p>
-          <div>
+          <div className="case-name flex">
             <h2>The victim of AI</h2>
+            <button></button>
           </div>
-          <div>
+          <div className="case-date flex">
             <img src="" alt="" />
             <p>Published on January 5, 2023</p>
           </div>
