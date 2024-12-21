@@ -14,7 +14,6 @@ import sceneTape from "../../assets/images/scene-tape.svg";
 import calendarIcon from "../../assets/icons/calendar-icon.svg";
 import tickCircleIcon from "../../assets/icons/tick-circle-icon.svg";
 import backArrow from "../../assets/icons/back-arrow.svg";
-import descriptionLine from "../../assets/images/description-line.svg";
 
 const HeroSection = () => (
   <div className="case-hero flex center column">
@@ -42,7 +41,6 @@ const HeroSection = () => (
 const CaseDescription = () => (
   <div className="case-description flex center column">
     <img className="scene-tape" src={sceneTape} alt="scene-tape" />
-    <img className="description-line" src={descriptionLine} alt="scene-tape" />
     <div className="description-header flex">
       <button className="back-btn flex center">
         <img src={backArrow} alt="" />
@@ -97,7 +95,7 @@ const CaseDescription = () => (
           <div className="gallery-main">
             <img className="main-picture" src={galleryOne} alt="" />
           </div>
-          <div className="gallery-sub">
+          <div className="gallery-sub flex">
             <img className="sub-picture" src={galleryTwo} alt="" />
             <img className="sub-picture" src={galleryThree} alt="" />
             <img className="sub-picture" src={galleryFour} alt="" />
@@ -117,6 +115,10 @@ const CaseDescription = () => (
           abandoning its ideals.
         </p>
       </div>
+      <h1 className="description-h1">Scene</h1>
+      <div className="scene"></div>
+      <h1 className="description-h1">Map</h1>
+      <div className="map"></div>
     </div>
   </div>
 );
