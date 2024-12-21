@@ -26,6 +26,20 @@ const CasesSection = () => (
     <p className="t-center">
       Joining us is very simple, just a few steps and you’ll be set up to go!
     </p>
+
+    <div className="case">
+      <p className="t-center flex center">
+        The Victim of AI The Victim of AI The Victim of AI The Victim of AI The
+        Victim of AI The Victim of AI The Victim of AI The Victim of AI The
+        Victim of AI The Victim of AI The Victim of AI The Victim of AI The
+      </p>
+      <div>
+        <div>
+          <img src="" alt="" />
+        </div>
+        <div></div>
+      </div>
+    </div>
   </div>
 );
 
