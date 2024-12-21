@@ -1,0 +1,346 @@
+.hero {
+  height: 100vh;
+  background-image: var(--hero-bg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero h1 {
+  font-size: 100px;
+  background: var(--heading);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.btn-container {
+  margin: 32px;
+}
+.btn-container > button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  height: 50px;
+}
+.btn-container > button:nth-child(1) {
+  margin-right: 26px;
+  padding: 14px 46px;
+  width: 144px;
+}
+.btn-container > button:nth-child(2) {
+  padding: 14px 28px;
+  width: 218px;
+}
+
+/* Why get involved section */
+.get-involved {
+  height: 110vh;
+  background-color: white;
+  position: relative;
+}
+
+.container {
+  margin: 5% 14%;
+  position: relative;
+}
+.container-one {
+  width: 80%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.section-header > h1,
+.section-header > p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.section-header > h1 {
+  font-size: 60px;
+  background: var(--secondary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 23px;
+}
+.section-header > p {
+  font-size: 18px;
+  background: var(--text-color);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.action-list {
+}
+.action {
+  width: 334px;
+  height: 160px;
+  margin-top: 60px;
+}
+.action > img {
+  width: 64px;
+  height: 64px;
+}
+.action > h3 {
+  font-size: 24px;
+  margin-top: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+.container-two img:nth-child(1) {
+  width: 75px;
+  height: 114px;
+  position: absolute;
+  right: 0px;
+  top: -50px;
+}
+.container-two img:nth-child(2) {
+  width: 75px;
+  height: 114px;
+  position: absolute;
+  right: -150px;
+  top: 100px;
+  transform: scaleX(-1);
+}
+.container-two img:nth-child(3) {
+  width: 107px;
+  height: 162px;
+  position: absolute;
+  right: 0px;
+  top: 150px;
+}
+.fingMagn {
+  width: 263.648px;
+  height: 399.168px;
+  position: absolute;
+  right: 0px;
+  bottom: -100px;
+}
+
+/* How to join section */
+.how-to-join {
+  height: 110vh;
+}
+.how-to-join > .section-header > h1 {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.how-to-join .icon {
+  width: 64px;
+  height: 64px;
+  margin-top: 58px;
+}
+
+.lines {
+  width: 754px;
+  height: 122px;
+}
+
+.cards {
+  width: 1082px;
+  height: 165px;
+  justify-content: space-between;
+}
+
+.card {
+  width: 333px;
+  height: 127px;
+  border-radius: 12px;
+  background-color: #e9f0f6;
+  padding: 3%;
+}
+.card > h3 {
+  font-size: 20px;
+  color: var(--color3);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.card:nth-child(1),
+.card:nth-child(3) {
+  margin-top: -38px;
+}
+
+.how-to-join > button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  width: 218px;
+  height: 50px;
+}
+
+/* Testimonials section */
+.testimonials {
+  height: 110vh;
+  position: relative;
+}
+.testimonials-header {
+  width: 1148px;
+  height: 127px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.testimonials-info {
+  width: 50%;
+}
+.testimonials-info > h1,
+.testimonials-info > p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.testimonials-info > h1 {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.testimonials-info > p {
+  color: var(--text-color);
+}
+
+.testimonials-btns {
+  width: 155px;
+  height: 70px;
+  justify-content: space-between;
+}
+.arrow-btn {
+  width: 70px;
+  height: 70px;
+  background-color: #ffffff0d;
+}
+.arrow-btn > img {
+  width: 14px;
+  height: 14px;
+}
+.arrow-btn:nth-child(2) > img {
+  transform: scaleX(-1);
+}
+
+.testimonial-cards {
+  width: 90%;
+  margin-top: 100px;
+}
+.testimonial-card {
+  padding: 40px 30px;
+  margin-right: 60px;
+  width: 360px;
+  height: auto;
+  background-color: #ffffff0d;
+  border-radius: 6px;
+}
+.testimonial-card > p {
+  font-size: 16px;
+  color: var(--color2);
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  line-height: 2;
+}
+.card-info > img {
+  width: 50px;
+  height: 50px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+.card-info > p {
+  font-size: 18px;
+  color: var(--color2);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.magnifier {
+  position: absolute;
+  width: 220px;
+  height: 216px;
+  left: 0;
+  top: 200px;
+}
+
+/* Powered By Ai Section section */
+.powered {
+  height: 110vh;
+  padding: 5% 1%;
+}
+.powered > h1 {
+  font-size: 60px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 23px;
+  position: relative;
+}
+.powered > h1 > span {
+  color: black;
+  text-shadow: 1px 1px var(--color1);
+}
+.powered > h1 > span > img {
+  width: 75px;
+  height: 114px;
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: white;
+  z-index: -1;
+}
+.powered > p {
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  background: var(--text-color);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 60px;
+}
+
+.big-card {
+  width: 609px;
+  height: 416px;
+  background-color: #ffffff0d;
+  border-radius: 12px;
+  position: relative;
+}
+.powered-cards h2 {
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  background: var(--secondary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  padding-left: 30px;
+  padding-top: 30px;
+}
+.small-card {
+  background-color: #ffffff0d;
+  border-radius: 12px;
+  margin-bottom: 22px;
+  margin-left: 20px;
+  width: 425px;
+  position: relative;
+}
+.small-cards .small-card:nth-child(1) {
+  height: 180px;
+}
+.small-cards .small-card:nth-child(2) {
+  height: 214px;
+}
+.small-cards .small-card:nth-child(1) img {
+  width: 131px;
+  height: 125px;
+  position: absolute;
+  right: 67px;
+  bottom: 26px;
+}
+.small-cards .small-card:nth-child(2) img {
+  width: 280px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.big-card > img {
+  width: 371px;
+  position: absolute;
+  right: 40px;
+  bottom: 0;
+}
