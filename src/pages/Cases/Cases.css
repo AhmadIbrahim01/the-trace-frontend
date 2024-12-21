@@ -132,6 +132,14 @@
   font-weight: 600;
 }
 
+.case-date > img {
+}
+.case-date > p {
+  font-size: 14px;
+  color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
 .tags {
   margin-top: 30px;
   margin-bottom: 20px;

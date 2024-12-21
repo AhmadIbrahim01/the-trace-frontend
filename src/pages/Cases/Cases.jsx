@@ -53,7 +53,7 @@ const CasesSection = () => (
             <h3>Tag Two</h3>
             <h3>Tag Three</h3>
           </div>
-          <div>
+          <div className="case-status">
             <p>Case closed</p>
             <img src="" alt="" />
           </div>
