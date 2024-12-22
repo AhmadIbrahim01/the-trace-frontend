@@ -121,20 +121,24 @@
   width: 270px;
   height: 366px;
   gap: 25px;
+  justify-content: space-between;
 }
 
 .news-card > p {
   font-size: 20px;
   color: var(--text-color);
+  min-height: 48px;
 }
 
-.img-container {
+.img-container,
+.img-container > a {
   width: 270px;
-  height: 270px;
+  min-height: 270px;
   border-radius: 6px;
   overflow: hidden;
 }
-.img-container > img {
+.img-container > img,
+.img-container > a > img {
   width: 270px;
   height: auto;
   flex-grow: 1;
