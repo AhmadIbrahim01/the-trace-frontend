@@ -15,7 +15,6 @@ const HeroSection = () => (
       <h6>Our country news</h6>
       <p>
         Crime Investigator news Crime Investigator news Crime Investigator news
-        Crime Investigator news
       </p>
     </div>
     <div className="news-pictures flex center">
@@ -54,6 +53,10 @@ const NewsContainer = ({ title, data }) => {
     navigate("/allNews", { state: { data } });
   };
 
+  function trimData(data) {
+    return data.slice(0, 4);
+  }
+
   return (
     <div className="news-container flex center column">
       <div className="news-container-header flex">
@@ -64,7 +67,7 @@ const NewsContainer = ({ title, data }) => {
         </button>
       </div>
       <div className="news-cards flex">
-        {data.map((d, index) => (
+        {trimData(data).map((d, index) => (
           <div key={index} className="news-card flex center column">
             <div className="img-container flex">
               {d.link ? (
@@ -105,11 +108,21 @@ const News = () => {
       description: "Israeli forces begin withdrawal from southern Lebanon",
       link: "https://example.com/article1",
     },
+    {
+      img: news,
+      description: "Israeli forces begin withdrawal from southern Lebanon",
+      link: "https://example.com/article1",
+    },
+    {
+      img: news,
+      description: "Israeli forces begin withdrawal from southern Lebanon",
+      link: "https://example.com/article1",
+    },
   ];
 
   const data2 = [
     {
-      img: news,
+      img: newsTwo,
       description: "Israeli forces begin withdrawal from southern Lebanon",
       link: "https://example.com/article1",
     },
