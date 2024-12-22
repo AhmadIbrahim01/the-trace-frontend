@@ -21,7 +21,9 @@
   font-size: 30px;
 }
 
-.news-pictures {
+.news-pictures,
+.news-right,
+.hot-news {
   gap: 20px;
 }
 
@@ -39,6 +41,26 @@
   width: 590px;
   height: 195px;
 }
-.news-right {
-  gap: 20px;
+
+.hot-news {
+  margin-top: 100px;
+}
+
+.news-right > h3 {
+  font-size: 30px;
+  font-weight: var(--font-weight-semi);
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.news-right > p {
+  font-size: 20px;
+  color: var(--text-color);
+  text-align: justify;
+}
+.news-right > h4 {
+  width: 100%;
+  font-size: 20px;
+  color: white;
+  text-align: left;
 }
