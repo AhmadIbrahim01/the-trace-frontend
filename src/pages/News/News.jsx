@@ -124,12 +124,20 @@ const News = () => {
     },
   ];
 
+  function trimData(data) {
+    const news = [];
+    for (let index = 0; index < 4; index++) {
+      news.push(data[index]);
+    }
+    return news;
+  }
+
   return (
     <>
       <HeroSection />
       <HotNews />
-      <NewsContainer title="Latest News" data={data1} />
-      <NewsContainer title="Trending News" data={data2} />
+      <NewsContainer title="Latest News" data={trimData(data1)} />
+      <NewsContainer title="Trending News" data={trimData(data2)} />
     </>
   );
 };
