@@ -1,8 +1,9 @@
 import React from "react";
+import "./InvestigatorStats.css";
 
 const InvestigatorStats = () => {
   return (
-    <div>
+    <div className="investigator-stats flex column center">
       <h1>Investigator Ahmad Stats</h1>
       <p>
         Here you can find all your stats including number of cases, solved cases
