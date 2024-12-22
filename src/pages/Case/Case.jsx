@@ -136,11 +136,20 @@ const TipSubmission = () => (
     <img className="right-hand" src={rightHand} alt="" />
   </div>
 );
+
+const Comments = () => (
+  <div className="comments-section">
+    <h1 className="description-h1">Comments</h1>
+    <input className="comments-input" type="text" />
+    <hr />
+  </div>
+);
 const Case = () => (
   <>
     <HeroSection />
     <CaseDescription />
     <TipSubmission />
+    <Comments />
   </>
 );
 
