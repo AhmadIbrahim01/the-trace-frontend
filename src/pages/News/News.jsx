@@ -7,6 +7,7 @@ import newsFour from "../../assets/images/news-4.svg";
 import crimeTape from "../../assets/images/crime-tape.svg";
 import backArrow from "../../assets/icons/back-arrow.svg";
 import news from "../../assets/images/news.png";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => (
   <div className="news-hero flex center column">
@@ -48,11 +49,16 @@ const HotNews = () => (
 );
 
 const NewsContainer = ({ title, data }) => {
+  const navigate = useNavigate();
+  const handleSeeAll = (data) => {
+    navigate("/allNews", { state: { data } });
+  };
+
   return (
     <div className="news-container flex center column">
       <div className="news-container-header flex">
         <h1>{title}</h1>
-        <button className="flex center">
+        <button className="flex center" onClick={() => handleSeeAll(data)}>
           <p>See all</p>
           <img src={backArrow} alt="Back arrow" />
         </button>
@@ -80,7 +86,7 @@ const NewsContainer = ({ title, data }) => {
 const News = () => {
   const data1 = [
     {
-      img: news,
+      img: newsOne,
       description: "Israeli forces begin withdrawal from southern Lebanon",
       link: "https://example.com/article1",
     },
@@ -124,20 +130,12 @@ const News = () => {
     },
   ];
 
-  function trimData(data) {
-    const news = [];
-    for (let index = 0; index < 4; index++) {
-      news.push(data[index]);
-    }
-    return news;
-  }
-
   return (
     <>
       <HeroSection />
       <HotNews />
-      <NewsContainer title="Latest News" data={trimData(data1)} />
-      <NewsContainer title="Trending News" data={trimData(data2)} />
+      <NewsContainer title="Latest News" data={data1} />
+      <NewsContainer title="Trending News" data={data2} />
     </>
   );
 };
