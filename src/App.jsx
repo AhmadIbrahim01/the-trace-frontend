@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import Cases from "./pages/Cases/Cases";
 import Case from "./pages/Case/Case";
 import News from "./pages/News/News";
+import AllNews from "./pages/AllNews/AllNews";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     { path: "/cases", element: <Cases /> },
     { path: "/case", element: <Case /> },
     { path: "/news", element: <News /> },
+    { path: "/allnews", element: <AllNews /> },
   ]);
   return (
     <>
