@@ -140,8 +140,11 @@ const TipSubmission = () => (
 const Comments = () => (
   <div className="comments-section">
     <h1 className="description-h1">Comments</h1>
-    <input className="comments-input" type="text" />
-    <hr />
+    <input
+      className="comments-input"
+      placeholder="Add comment..."
+      type="text"
+    />
   </div>
 );
 const Case = () => (
