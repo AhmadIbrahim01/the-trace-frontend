@@ -2,6 +2,16 @@ import React from "react";
 import "./InvestigatorStats.css";
 
 const InvestigatorStats = () => {
+  const data = {
+    total: "50",
+    solved: 35,
+    resolution: 75,
+    undergoing: 3,
+    cold: 12,
+  };
+
+  const { total, solved, resolution, undergoing, cold } = data;
+
   return (
     <div className="investigator-stats flex column center">
       <h1>Investigator Ahmad Stats</h1>
@@ -12,23 +22,23 @@ const InvestigatorStats = () => {
       <div class="investigator-grid">
         <div class="div1 flex column center">
           <p>Total Case Handled</p>
-          <h1>50</h1>
+          <h1>{total}</h1>
         </div>
         <div class="div2 flex column center">
           <p>Solved Cases</p>
-          <h1>35</h1>
+          <h1>{solved}</h1>
         </div>
         <div class="div3 flex column center">
           <p>Case Resolution Rate</p>
-          <h1>75%</h1>
+          <h1>{resolution}%</h1>
         </div>
         <div class="div4 flex column center">
           <p>Undergoing Cases</p>
-          <h1>3</h1>
+          <h1>{undergoing}</h1>
         </div>
         <div class="div5 flex column center">
           <p>Cold Cases</p>
-          <h1>12</h1>
+          <h1>{cold}</h1>
         </div>
       </div>
       <h3 className="t-center">
