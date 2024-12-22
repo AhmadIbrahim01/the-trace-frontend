@@ -6,6 +6,7 @@ import newsThree from "../../assets/images/news-3.svg";
 import newsFour from "../../assets/images/news-4.svg";
 import crimeTape from "../../assets/images/crime-tape.svg";
 import backArrow from "../../assets/icons/back-arrow.svg";
+import news from "../../assets/images/news.png";
 
 const HeroSection = () => (
   <div className="news-hero flex center column">
@@ -55,22 +56,30 @@ const NewsContainer = () => (
         <img src={backArrow} alt="" />
       </button>
     </div>
-    <div>
-      <div>
-        <img src="" alt="" />
-        <p></p>
+    <div className="news-cards flex">
+      <div className="news-card flex center column">
+        <div className="img-container flex">
+          <img src={news} alt="" />
+        </div>
+        <p>Israeli forces begin withdrawal from southern Lebanon</p>
       </div>
-      <div>
-        <img src="" alt="" />
-        <p></p>
+      <div className="news-card flex center column">
+        <div className="img-container flex">
+          <img src={newsOne} alt="" />
+        </div>
+        <p>Israeli forces begin withdrawal from southern Lebanon</p>
       </div>
-      <div>
-        <img src="" alt="" />
-        <p></p>
+      <div className="news-card flex center column">
+        <div className="img-container flex">
+          <img src={newsThree} alt="" />
+        </div>
+        <p>Israeli forces begin withdrawal from southern Lebanon</p>
       </div>
-      <div>
-        <img src="" alt="" />
-        <p></p>
+      <div className="news-card flex center column">
+        <div className="img-container flex">
+          <img src={newsFour} alt="" />
+        </div>
+        <p>Israeli forces begin withdrawal from southern Lebanon</p>
       </div>
     </div>
   </div>
