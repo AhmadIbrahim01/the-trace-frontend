@@ -145,6 +145,7 @@ const Comments = () => (
       placeholder="Add comment..."
       type="text"
     />
+    <hr />
   </div>
 );
 const Case = () => (

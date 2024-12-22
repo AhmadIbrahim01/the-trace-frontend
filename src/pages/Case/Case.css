@@ -313,3 +313,15 @@
   outline: 0;
   color: var(--color2);
 }
+
+.comments-section > hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+  margin-bottom: 100px;
+  border-color: #1b1c28;
+}
