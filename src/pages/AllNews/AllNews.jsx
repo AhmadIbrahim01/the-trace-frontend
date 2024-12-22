@@ -1,6 +1,7 @@
 import React from "react";
 import "./AllNews.css";
 import news from "../../assets/images/news.png";
+import { useLocation } from "react-router-dom";
 
 const HeroSection = () => (
   <div className="all-news-hero flex column">
@@ -41,54 +42,14 @@ const NewsContainer = ({ title, data }) => {
 };
 
 const News = () => {
-  const data1 = [
-    {
-      img: news,
-      description: "Israeli forces begin withdrawal from southern Lebanon",
-      link: "https://example.com/article1",
-    },
-    {
-      img: news,
-      description: "Israeli forces begin withdrawal from southern Lebanon",
-      link: "https://example.com/article1",
-    },
-    {
-      img: news,
-      description: "Israeli forces begin withdrawal from southern Lebanon",
-      link: "https://example.com/article1",
-    },
-    {
-      img: news,
-      description: "Israeli forces begin withdrawal from southern Lebanon",
-      link: "https://example.com/article1",
-    },
-    {
-      img: news,
-      description: "Israeli forces begin withdrawal from southern Lebanon",
-      link: "https://example.com/article1",
-    },
-    {
-      img: news,
-      description: "Israeli forces begin withdrawal from southern Lebanon",
-      link: "https://example.com/article1",
-    },
-    {
-      img: news,
-      description: "Israeli forces begin withdrawal from southern Lebanon",
-      link: "https://example.com/article1",
-    },
-    {
-      img: news,
-      description: "Israeli forces begin withdrawal from southern Lebanon",
-      link: "https://example.com/article1",
-    },
-  ];
+  const location = useLocation();
+  const { data } = location.state || {};
 
   return (
     <>
       <HeroSection />
 
-      <NewsContainer title="Latest News" data={data1} />
+      <NewsContainer title="Latest News" data={data} />
     </>
   );
 };
