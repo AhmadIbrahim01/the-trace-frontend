@@ -1,5 +1,5 @@
 .investigator-stats {
-  padding: 5% 11%;
+  padding: 10% 11%;
 }
 
 .investigator-stats > h1 {
@@ -71,6 +71,7 @@
 .div5 {
   background-color: #1b1c28;
   border-radius: 16px;
+  border: 1px solid #015949;
 }
 
 .investigator-grid p {
