@@ -32,21 +32,19 @@
   grid-column-gap: 27px;
   grid-row-gap: 27px;
   position: relative;
+  margin-bottom: 100px;
+  margin-top: 100px;
 }
 
 .div1 {
   grid-area: 1 / 1 / 2 / 2;
   width: 367px;
   height: 181px;
-  background-color: #1b1c28;
-  border-radius: 16px;
 }
 .div2 {
   grid-area: 1 / 2 / 2 / 4;
   width: 805px;
   height: 181px;
-  background-color: #1b1c28;
-  border-radius: 16px;
   position: absolute;
   left: -27px;
 }
@@ -54,20 +52,23 @@
   grid-area: 2 / 1 / 4 / 3;
   width: 805px;
   height: 390px;
-  background-color: #1b1c28;
-  border-radius: 16px;
 }
 .div4 {
   grid-area: 2 / 3 / 3 / 4;
   width: 367px;
   height: 181px;
-  background-color: #1b1c28;
-  border-radius: 16px;
 }
 .div5 {
   grid-area: 3 / 3 / 4 / 4;
   width: 367px;
   height: 181px;
+}
+
+.div1,
+.div2,
+.div3,
+.div4,
+.div5 {
   background-color: #1b1c28;
   border-radius: 16px;
 }
