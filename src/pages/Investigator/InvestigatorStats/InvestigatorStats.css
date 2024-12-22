@@ -72,3 +72,16 @@
   background-color: #1b1c28;
   border-radius: 16px;
 }
+
+.investigator-grid p {
+  font-size: 30px;
+  color: var(--color2);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.investigator-grid h1 {
+  font-size: 110px;
+  color: var(--color1);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
