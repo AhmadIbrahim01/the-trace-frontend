@@ -3,6 +3,7 @@ import "./styles/base/utilities.css";
 import Home from "./pages/Home/Home";
 import Cases from "./pages/Cases/Cases";
 import Case from "./pages/Case/Case";
+import News from "./pages/News/News";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     { path: "/", element: <Home /> },
     { path: "/cases", element: <Cases /> },
     { path: "/case", element: <Case /> },
+    { path: "/news", element: <News /> },
   ]);
   return (
     <>
