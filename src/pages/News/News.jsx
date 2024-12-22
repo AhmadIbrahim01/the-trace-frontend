@@ -4,6 +4,7 @@ import newsOne from "../../assets/images/news-1.svg";
 import newsTwo from "../../assets/images/news-2.svg";
 import newsThree from "../../assets/images/news-3.svg";
 import newsFour from "../../assets/images/news-4.svg";
+import crimeTape from "../../assets/images/crime-tape.svg";
 
 const HeroSection = () => (
   <div className="news-hero flex center column">
@@ -40,6 +41,7 @@ const HotNews = () => (
       </p>
       <h4>3 mins ago</h4>
     </div>
+    <img className="crime-tape" src={crimeTape} alt="" />
   </div>
 );
 
