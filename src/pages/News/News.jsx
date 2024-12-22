@@ -47,51 +47,91 @@ const HotNews = () => (
   </div>
 );
 
-const NewsContainer = () => (
-  <div className="news-container flex center column">
-    <div className="news-container-header flex ">
-      <h1>Latest News</h1>
-      <button className="flex center">
-        <p>See all</p>
-        <img src={backArrow} alt="" />
-      </button>
-    </div>
-    <div className="news-cards flex">
-      <div className="news-card flex center column">
-        <div className="img-container flex">
-          <img src={news} alt="" />
-        </div>
-        <p>Israeli forces begin withdrawal from southern Lebanon</p>
+const NewsContainer = ({ title, data }) => {
+  return (
+    <div className="news-container flex center column">
+      <div className="news-container-header flex">
+        <h1>{title}</h1>
+        <button className="flex center">
+          <p>See all</p>
+          <img src={backArrow} alt="Back arrow" />
+        </button>
       </div>
-      <div className="news-card flex center column">
-        <div className="img-container flex">
-          <img src={newsOne} alt="" />
-        </div>
-        <p>Israeli forces begin withdrawal from southern Lebanon</p>
-      </div>
-      <div className="news-card flex center column">
-        <div className="img-container flex">
-          <img src={newsThree} alt="" />
-        </div>
-        <p>Israeli forces begin withdrawal from southern Lebanon</p>
-      </div>
-      <div className="news-card flex center column">
-        <div className="img-container flex">
-          <img src={newsFour} alt="" />
-        </div>
-        <p>Israeli forces begin withdrawal from southern Lebanon</p>
+      <div className="news-cards flex">
+        {data.map((d, index) => (
+          <div key={index} className="news-card flex center column">
+            <div className="img-container flex">
+              {d.link ? (
+                <a href={d.link} className="flex news-link">
+                  <img src={d.img} alt={d.description} />
+                </a>
+              ) : (
+                <img src={d.img} alt={d.description} />
+              )}
+            </div>
+            <p>{d.description}</p>
+          </div>
+        ))}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
-const News = () => (
-  <>
-    <HeroSection />
-    <HotNews />
-    <NewsContainer />
-    <NewsContainer />
-  </>
-);
+const News = () => {
+  const data1 = [
+    {
+      img: news,
+      description: "Israeli forces begin withdrawal from southern Lebanon",
+      link: "https://example.com/article1",
+    },
+    {
+      img: news,
+      description: "Israeli forces begin withdrawal from southern Lebanon",
+      link: "https://example.com/article1",
+    },
+    {
+      img: news,
+      description: "Israeli forces begin withdrawal from southern Lebanon",
+      link: "https://example.com/article1",
+    },
+    {
+      img: news,
+      description: "Israeli forces begin withdrawal from southern Lebanon",
+      link: "https://example.com/article1",
+    },
+  ];
+
+  const data2 = [
+    {
+      img: news,
+      description: "Israeli forces begin withdrawal from southern Lebanon",
+      link: "https://example.com/article1",
+    },
+    {
+      img: news,
+      description: "Israeli forces begin withdrawal from southern Lebanon",
+      link: "https://example.com/article1",
+    },
+    {
+      img: news,
+      description: "Israeli forces begin withdrawal from southern Lebanon",
+      link: "https://example.com/article1",
+    },
+    {
+      img: news,
+      description: "Israeli forces begin withdrawal from southern Lebanon",
+      link: "https://example.com/article1",
+    },
+  ];
+
+  return (
+    <>
+      <HeroSection />
+      <HotNews />
+      <NewsContainer title="Latest News" data={data1} />
+      <NewsContainer title="Trending News" data={data2} />
+    </>
+  );
+};
 
 export default News;
