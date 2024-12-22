@@ -10,11 +10,26 @@ const InvestigatorStats = () => {
         undergoing cases and much more informations
       </p>
       <div class="investigator-grid">
-        <div class="div1"> </div>
-        <div class="div2"> </div>
-        <div class="div3"> </div>
-        <div class="div4"> </div>
-        <div class="div5"> </div>
+        <div class="div1 flex column center">
+          <p>Total Case Handled</p>
+          <h1>50</h1>
+        </div>
+        <div class="div2 flex column center">
+          <p>Solved Cases</p>
+          <h1>35</h1>
+        </div>
+        <div class="div3 flex column center">
+          <p>Case Resolution Rate</p>
+          <h1>75%</h1>
+        </div>
+        <div class="div4 flex column center">
+          <p>Undergoing Cases</p>
+          <h1>3</h1>
+        </div>
+        <div class="div5 flex column center">
+          <p>Cold Cases</p>
+          <h1>12</h1>
+        </div>
       </div>
       <h3 className="t-center">
         “An investigator's greatest tools are a sharp mind, an observant eye,
