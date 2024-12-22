@@ -1,6 +1,6 @@
 .news-hero {
   height: 100vh;
-  padding: 5% 10%;
+  padding: 5% 11%;
 }
 
 .news-header {
@@ -10,6 +10,7 @@
   color: white;
   border-radius: 6px;
   padding: 5% 20%;
+  margin-bottom: 100px;
 }
 
 .news-header > h6 {
@@ -18,4 +19,26 @@
 }
 .news-header > p {
   font-size: 30px;
+}
+
+.news-pictures {
+  gap: 20px;
+}
+
+.news-left,
+.news-right {
+  width: 590px;
+  height: 410px;
+  border-radius: 6px;
+}
+.news-left > img {
+  width: 100%;
+}
+
+.news-right > img {
+  width: 590px;
+  height: 195px;
+}
+.news-right {
+  gap: 20px;
 }
