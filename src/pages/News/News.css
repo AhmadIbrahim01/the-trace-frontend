@@ -87,6 +87,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 25px;
 }
 
 .news-container-header > h1 {
@@ -110,4 +111,32 @@
   width: 24px;
   height: 12px;
   transform: scaleX(-1);
+}
+
+.news-cards {
+  width: 100%;
+  gap: 47px;
+}
+.news-card {
+  width: 270px;
+  height: 366px;
+  gap: 25px;
+}
+
+.news-card > p {
+  font-size: 20px;
+  color: var(--text-color);
+}
+
+.img-container {
+  width: 270px;
+  height: 270px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.img-container > img {
+  width: 270px;
+  height: auto;
+  flex-grow: 1;
+  object-fit: cover;
 }
