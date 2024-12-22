@@ -5,6 +5,7 @@ import newsTwo from "../../assets/images/news-2.svg";
 import newsThree from "../../assets/images/news-3.svg";
 import newsFour from "../../assets/images/news-4.svg";
 import crimeTape from "../../assets/images/crime-tape.svg";
+import backArrow from "../../assets/icons/back-arrow.svg";
 
 const HeroSection = () => (
   <div className="news-hero flex center column">
@@ -45,10 +46,42 @@ const HotNews = () => (
   </div>
 );
 
+const NewsContainer = () => (
+  <div className="news-container flex center column">
+    <div className="news-container-header flex ">
+      <h1>Latest News</h1>
+      <button className="flex center">
+        <p>See all</p>
+        <img src={backArrow} alt="" />
+      </button>
+    </div>
+    <div>
+      <div>
+        <img src="" alt="" />
+        <p></p>
+      </div>
+      <div>
+        <img src="" alt="" />
+        <p></p>
+      </div>
+      <div>
+        <img src="" alt="" />
+        <p></p>
+      </div>
+      <div>
+        <img src="" alt="" />
+        <p></p>
+      </div>
+    </div>
+  </div>
+);
+
 const News = () => (
   <>
     <HeroSection />
     <HotNews />
+    <NewsContainer />
+    <NewsContainer />
   </>
 );
 
