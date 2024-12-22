@@ -11,3 +11,16 @@
   font-weight: 600;
   margin-bottom: 23px;
 }
+
+.investigator-stats > p {
+  font-size: 25px;
+  color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.investigator-stats > h3 {
+  font-size: 30px;
+  color: var(--color2);
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
