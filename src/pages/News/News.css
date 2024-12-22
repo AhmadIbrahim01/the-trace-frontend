@@ -1,0 +1,21 @@
+.news-hero {
+  height: 100vh;
+  padding: 5% 10%;
+}
+
+.news-header {
+  width: 100%;
+  height: 154px;
+  background-color: #0bc1a0;
+  color: white;
+  border-radius: 6px;
+  padding: 5% 20%;
+}
+
+.news-header > h6 {
+  font-weight: var(--font-weight-normal);
+  font-size: 18px;
+}
+.news-header > p {
+  font-size: 30px;
+}
