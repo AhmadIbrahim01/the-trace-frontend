@@ -420,5 +420,38 @@
   font-size: 12px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-normal);
-  color: var(--color2);
+  color: var(--text-color);
+}
+
+.comment-text > p {
+  width: 100%;
+  color: var(--text-color);
+  text-align: justify;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.comment-body {
+  width: 90%;
+}
+.comment-action {
+  gap: 20px;
+  align-items: center;
+}
+.comment-action > span {
+  width: auto;
+  height: 24px;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: #0bc1a0;
+}
+.comment-action > button {
+  width: 24px;
+  height: 24px;
+  background-color: #00000000;
+}
+.comment-action > button > img {
+  width: 24px;
+  height: 24px;
+  background-color: #00000000;
 }
