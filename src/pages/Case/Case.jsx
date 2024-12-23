@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Case.css";
 import tapeOne from "../../assets/images/tape-1.svg";
 import tapeTwo from "../../assets/images/tape-2.svg";
@@ -16,7 +16,7 @@ import tickCircleIcon from "../../assets/icons/tick-circle-icon.svg";
 import backArrow from "../../assets/icons/back-arrow.svg";
 import leftHand from "../../assets/images/left-hand.svg";
 import rightHand from "../../assets/images/right-hand.svg";
-import filter from "../../assets/icons/comments-filter.svg";
+import filterImage from "../../assets/icons/comments-filter.svg";
 import like from "../../assets/icons/like.svg";
 import dislike from "../../assets/icons/dislike.svg";
 
@@ -156,60 +156,53 @@ const CommentsSection = () => (
 );
 
 const Comments = () => {
-  const comments = [
+  const initialComments = [
     {
       author: "Ahmad Ibrahim",
       time: "50 mins ago",
-      text: "FLorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.igma ipsum component variant main layer. connection share figjam. Fill draft undo variant link rectangle rectangle.",
+      text: "Figma ipsum component variant main layer. connection share figjam.",
       likes: 30,
       profileImage: galleryOne,
     },
     {
-      author: "Doaa Ibrahim",
-      time: "50 mins ago",
-      text: "Figma ipsum component variant main layer. connection share figjam. Fill draft undo variant link rectangle rectangle.",
-      likes: 50,
-      profileImage: galleryFour,
-    },
-    {
       author: "John Doe",
       time: "1 hour ago",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       likes: 15,
       profileImage: galleryTwo,
     },
     {
-      author: "John Doe",
-      time: "1 hour ago",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.",
-      likes: 15,
-      profileImage: galleryThree,
-    },
-    {
-      author: "John Doe",
-      time: "1 hour ago",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.",
-      likes: 15,
-      profileImage: galleryThree,
-    },
-    {
-      author: "John Doe",
-      time: "1 hour ago",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.",
-      likes: 15,
+      author: "Jane Smith",
+      time: "2 hours ago",
+      text: "Another comment with a bit more content.",
+      likes: 50,
       profileImage: galleryThree,
     },
   ];
+
+  const [comments, setComments] = useState(initialComments);
+  const [filter, setFilter] = useState("recent");
+
+  const handleFilterChange = () => {
+    if (filter === "recent") {
+      setComments(initialComments);
+      setFilter("liked");
+    } else {
+      const sortedComments = [...comments].sort((a, b) => b.likes - a.likes);
+      setComments(sortedComments);
+      setFilter("recent");
+    }
+  };
 
   return (
     <div className="comments-section flex column">
       <div className="comments-header flex center">
         <div className="flex center">
           <h3>Comments</h3>
-          <span className="flex center">{comments.length}</span>{" "}
+          <span className="flex center">{comments.length}</span>
         </div>
-        <button>
-          <img src={filter} alt="Filter" />
+        <button onClick={handleFilterChange}>
+          {filter === "recent" ? "Recent" : "Most Liked"}
         </button>
       </div>
 
@@ -248,7 +241,6 @@ const Case = () => (
     <HeroSection />
     <CaseDescription />
     <TipSubmission />
-    <CommentsSection />
     <Comments />
   </>
 );
