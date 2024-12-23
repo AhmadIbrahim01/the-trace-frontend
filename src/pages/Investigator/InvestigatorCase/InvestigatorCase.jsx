@@ -39,8 +39,8 @@ const InvestigatorCase = () => {
             </button>
           </div>
         </div>
-        <div className="case-suspects">
-          <div className="case-suspects-header">
+        <div className="case-suspects flex center column">
+          <div className="case-suspects-header flex">
             <h3>Suspects</h3>
             <button>+</button>
           </div>
