@@ -58,16 +58,16 @@ const InvestigatorCase = () => {
           </div>
         </div>
       </div>
-      <div className="inevstigator-case-body">
+      <div className="inevstigator-case-body flex center">
         <div className="case-map"></div>
-        <div className="case-statements">
+        <div className="case-statements flex center column">
           <div className="case-statements-header flex">
             <h3>Statements</h3>
             <button>+</button>
           </div>
           <div className="case-statements-body flex">
             <button>
-              <img src="" alt="" />
+              <img src={suspect} alt="" />
               <div>
                 <h4>Name</h4>
                 <p>Given on January 5, 2025</p>
