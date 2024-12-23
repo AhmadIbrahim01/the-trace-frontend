@@ -72,3 +72,13 @@
   background-color: #00000000;
   font-size: 40px;
 }
+
+.case-suspects-body {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.case-suspects-body > button {
+  width: 160px;
+  height: 190px;
+}
