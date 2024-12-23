@@ -31,8 +31,9 @@
 
   --font-family: "Montserrat", sans-serif;
   --font-weight-normal: normal;
-  --font-weight-bold: 600;
-  --font-weight-semi: 500;
+  --font-weight-bold: bold;
+  --font-weight-semi: 600;
+  --font-weight-medium: 500;
 }
 
 * {
