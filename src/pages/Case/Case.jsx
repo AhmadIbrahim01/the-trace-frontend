@@ -17,6 +17,8 @@ import backArrow from "../../assets/icons/back-arrow.svg";
 import leftHand from "../../assets/images/left-hand.svg";
 import rightHand from "../../assets/images/right-hand.svg";
 import filter from "../../assets/icons/comments-filter.svg";
+import like from "../../assets/icons/like.svg";
+import dislike from "../../assets/icons/dislike.svg";
 
 const HeroSection = () => (
   <div className="case-hero flex center column">
@@ -164,27 +166,27 @@ const Comments = () => (
         <img src={filter} alt="" />
       </button>
     </div>
-    <div className="comment">
-      <div>
-        <img src="" alt="" />
-      </div>
-      <div>
-        <div>
+    <div className="comment flex">
+      <button className="profile ">
+        <img src={galleryOne} alt="" />
+      </button>
+      <div className="comment-body flex column">
+        <div className="comment-author">
           Ahmad Ibrahim <span>50 mins ago</span>
         </div>
-        <div>
+        <div className="comment-text">
           <p>
             Figma ipsum component variant main layer. connection share figjam.
             Fill draft undo variant link rectangle rectangle.
           </p>
         </div>
-        <div>
+        <div className="comment-action flex">
           <span>30</span>
           <button>
-            <img src="" alt="" />
+            <img src={like} alt="" />
           </button>
           <button>
-            <img src="" alt="" />
+            <img src={dislike} alt="" />
           </button>
         </div>
       </div>
