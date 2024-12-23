@@ -137,7 +137,7 @@ const TipSubmission = () => (
   </div>
 );
 
-const Comments = () => (
+const CommentsSection = () => (
   <div className="comments-section">
     <h1 className="description-h1">Comments</h1>
     <div className="comment-input">
@@ -151,11 +151,26 @@ const Comments = () => (
     <hr />
   </div>
 );
+
+const Comments = () => (
+  <div className="comments-section flex column">
+    <div className="comments-header flex center">
+      <div>
+        <h3>Comments</h3>
+        <span>25</span>
+      </div>
+      <img src="" alt="" />
+    </div>
+    <div></div>
+  </div>
+);
+
 const Case = () => (
   <>
     <HeroSection />
     <CaseDescription />
     <TipSubmission />
+    <CommentsSection />
     <Comments />
   </>
 );
