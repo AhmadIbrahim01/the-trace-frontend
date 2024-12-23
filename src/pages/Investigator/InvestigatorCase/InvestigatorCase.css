@@ -14,6 +14,7 @@
   background-color: #1b1c28;
   border: 1px solid #015949;
   border-radius: 16px;
+  gap: 15px;
 }
 
 .case-evidence-container > h3 {
@@ -21,4 +22,18 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-semi);
   color: var(--color2);
+  margin-bottom: 15px;
+}
+
+.case-evidences {
+  justify-content: space-around;
+  gap: 15px;
+}
+.case-evidence {
+  width: 100px;
+  height: 100px;
+  background-color: var(--color3);
+  border-radius: 3px;
+  border-left: 1px solid var(--color1);
+  border-right: 1px solid var(--color1);
 }
