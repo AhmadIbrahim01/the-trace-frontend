@@ -1,11 +1,11 @@
 .investigator-case {
-  height: 100vh;
   padding: 5% 11%;
+  gap: 30px;
 }
-
 .investigator-case-header {
   width: 100%;
   justify-content: space-between;
+  gap: 30px;
 }
 
 .case-evidence-container {
@@ -85,4 +85,13 @@
 }
 .case-suspects-body > button > img {
   width: 100%;
+}
+
+.case-map {
+  width: 804px;
+  height: 390px;
+  background-color: #1b1c28;
+  border: 1px solid #015949;
+  border-radius: 16px;
+  gap: 15px;
 }
