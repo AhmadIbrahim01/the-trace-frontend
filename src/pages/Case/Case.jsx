@@ -206,6 +206,46 @@ const Comments = () => (
         </div>
       </div>
     </div>
+    <div className="comment flex">
+      <button className="profile ">
+        <img src={galleryOne} alt="" />
+      </button>
+      <div className="comment-body flex column">
+        <div className="comment-author">
+          <p className="flex">
+            Ahmad Ibrahim <span>50 mins ago</span>
+          </p>
+        </div>
+        <div className="comment-text">
+          <p>
+            Figma ipsum component variant main layer. connection share figjam.
+            Fill draft undo variant link rectangle rectangle. Figma ipsum
+            component variant main layer. connection share figjam. Fill draft
+            undo variant link rectangle rectangle. Figma ipsum component variant
+            main layer. connection share figjam. Fill draft undo variant link
+            rectangle rectangle. undo variant link rectangle rectangle. Figma
+            ipsum component variant main layer. connection share figjam. Fill
+            draft undo variant link rectangle rectangle. undo variant link
+            rectangle rectangle. Figma ipsum component variant main layer.
+            connection share figjam. Fill draft undo variant link rectangle
+            rectangle. undo variant link rectangle rectangle. Figma ipsum
+            component variant main layer. connection share figjam. Fill draft
+            undo variant link rectangle rectangle. undo variant link rectangle
+            rectangle. Figma ipsum component variant main layer. connection
+            share figjam. Fill draft undo variant link rectangle rectangle.
+          </p>
+        </div>
+        <div className="comment-action flex">
+          <span>30 Likes</span>
+          <button>
+            <img src={like} alt="like" />
+          </button>
+          <button>
+            <img src={dislike} alt="dislike" />
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 );
 
