@@ -164,7 +164,31 @@ const Comments = () => (
         <img src={filter} alt="" />
       </button>
     </div>
-    <div></div>
+    <div className="comment">
+      <div>
+        <img src="" alt="" />
+      </div>
+      <div>
+        <div>
+          Ahmad Ibrahim <span>50 mins ago</span>
+        </div>
+        <div>
+          <p>
+            Figma ipsum component variant main layer. connection share figjam.
+            Fill draft undo variant link rectangle rectangle.
+          </p>
+        </div>
+        <div>
+          <span>30</span>
+          <button>
+            <img src="" alt="" />
+          </button>
+          <button>
+            <img src="" alt="" />
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 );
 

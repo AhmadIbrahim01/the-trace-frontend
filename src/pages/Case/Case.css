@@ -361,6 +361,7 @@
 /* Comments Component Section */
 .comments-header {
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 .comments-header > div {
   justify-content: space-between;
