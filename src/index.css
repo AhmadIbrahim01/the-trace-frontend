@@ -27,6 +27,7 @@
   --hero-bg: url("./assets/images/hero-bg.png");
   --cases-bg: url("./assets/images/cases-hero-bg.svg");
   --case-bg: url("./assets/images/case-bg.png");
+  --error-bg: url("./assets/images/error-bg.png");
 
   --font-family: "Montserrat", sans-serif;
   --font-weight-normal: normal;
