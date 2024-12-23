@@ -1,0 +1,53 @@
+.error {
+  height: 100vh;
+  background-image: url("../../assets/images/error-bg.svg");
+  background-position: center;
+  background-size: cover;
+}
+
+.error > h1 {
+  font-size: 60px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.error404 {
+  width: 38%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.error404 > h1 {
+  font-size: 300px;
+  color: var(--color1);
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
+
+.error404 > img {
+  width: 25%;
+}
+
+.error > button {
+  width: 25%;
+  height: 80px;
+  background-color: #0bc1a0;
+  color: white;
+
+  border-radius: 6px;
+}
+.error > button:hover {
+  opacity: 0.7;
+}
+.error > button > p {
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: 600;
+}
+.error > button > img {
+  width: 25px;
+  filter: brightness(1000%);
+  margin-right: 20px;
+}
