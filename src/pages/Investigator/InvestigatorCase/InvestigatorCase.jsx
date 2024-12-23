@@ -8,13 +8,19 @@ const InvestigatorCase = () => {
         <div className="case-evidence-container flex center column">
           <h3>Evidence</h3>
           <div className="case-evidences flex">
-            <div className="case-evidence flex center column">
-              <button className="case-evidence-button">
-                <img className="case-evidence-img" src="" alt="" />
-              </button>
-            </div>
+            <button className="case-evidence flex center column">
+              <img className="case-evidence-img" src="" alt="" />
+            </button>
+            <button className="case-evidence flex center column">
+              <img className="case-evidence-img" src="" alt="" />
+            </button>
+            <button className="case-evidence flex center column">
+              <img className="case-evidence-img" src="" alt="" />
+            </button>
+            <button className="case-evidence flex center column">
+              <img className="case-evidence-img" src="" alt="" />
+            </button>
           </div>
-          <div className="case-evidences"></div>
         </div>
         <div className="case-suspects"></div>
       </div>
