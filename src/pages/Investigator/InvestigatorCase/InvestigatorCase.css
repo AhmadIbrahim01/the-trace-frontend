@@ -108,4 +108,24 @@
   background-color: #1b1c28;
   border: 1px solid #015949;
   border-radius: 16px;
+  padding: 50px 60px;
+}
+
+.case-statements-header {
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.case-statements-header > h3 {
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  color: var(--color2);
+}
+.case-statements-header > button {
+  color: var(--color1);
+  width: 36px;
+  height: 36px;
+  background-color: #00000000;
+  font-size: 40px;
 }

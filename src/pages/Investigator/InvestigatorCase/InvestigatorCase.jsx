@@ -43,7 +43,7 @@ const InvestigatorCase = () => {
         <div className="case-suspects flex center column">
           <div className="case-suspects-header flex">
             <h3>Suspects</h3>
-            <button>+</button>
+            <button className="flex center">+</button>
           </div>
           <div className="case-suspects-body flex center">
             <button>
@@ -61,9 +61,9 @@ const InvestigatorCase = () => {
       <div className="inevstigator-case-body flex center">
         <div className="case-map"></div>
         <div className="case-statements flex center column">
-          <div className="case-statements-header flex">
+          <div className="case-statements-header flex center">
             <h3>Statements</h3>
-            <button>+</button>
+            <button className="flex center">+</button>
           </div>
           <div className="case-statements-body flex">
             <button>
