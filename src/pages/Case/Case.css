@@ -392,3 +392,18 @@
   width: 24px;
   height: 24px;
 }
+
+.comment {
+  gap: 20px;
+}
+.profile {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+.profile > img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
