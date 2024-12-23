@@ -51,7 +51,7 @@ const CaseCard = ({ caseData }) => (
             <h3 key={index}>{tag}</h3>
           ))}
         </div>
-        <div className="case-status flex center">
+        <div className="case-state flex center">
           <p>{caseData.status}</p>
           <img src={tickCircleIcon} alt="Tick Circle Icon" />
         </div>

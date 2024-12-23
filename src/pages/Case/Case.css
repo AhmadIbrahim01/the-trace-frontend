@@ -138,12 +138,24 @@
 
 .case-status {
   margin: 0px 20px;
+  width: 121px;
+  height: 33px;
   background-color: var(--color3);
   border: 1px solid #0f0f0f;
   border-radius: 100px;
   color: var(--color2);
 }
 
+.case-status > p {
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+.case-status > img {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
 .description-line {
   position: absolute;
   left: 100px;
