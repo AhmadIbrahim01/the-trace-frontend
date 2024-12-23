@@ -3,8 +3,14 @@ import fingerPrint from "../../assets/images/caribbean-fingerprint.svg";
 import "./Error.css";
 import backArrow from "../../assets/icons/back-arrow.svg";
 import magnifierTwo from "../../assets/images/white-magnifier.svg";
+import { useNavigate } from "react-router-dom";
 
 const Error = () => {
+  const navigate = useNavigate();
+  const backHomeHandler = () => {
+    navigate("/");
+  };
+
   return (
     <div className="error flex column center">
       <h1>Page Not Found</h1>
@@ -13,7 +19,7 @@ const Error = () => {
         <img src={fingerPrint} alt="" />
         <h1>4</h1>
       </div>
-      <button className="flex center">
+      <button className="flex center" onClick={backHomeHandler}>
         <img src={backArrow} alt="Back arrow" />
         <p>Back to home</p>
       </button>
