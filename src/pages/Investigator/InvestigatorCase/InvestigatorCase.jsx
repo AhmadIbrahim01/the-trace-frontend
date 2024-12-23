@@ -8,7 +8,7 @@ import suspect from "../../../assets/images/suspect.svg";
 const InvestigatorCase = () => {
   return (
     <div className="investigator-case flex column center">
-      <div className="inevstigator-case-header flex">
+      <div className="investigator-case-header flex">
         <div className="case-evidence-container flex center column">
           <h3>Evidence</h3>
           <div className="case-evidences flex">
@@ -60,7 +60,21 @@ const InvestigatorCase = () => {
       </div>
       <div className="inevstigator-case-body">
         <div className="case-map"></div>
-        <div className="case-statements"></div>
+        <div className="case-statements">
+          <div className="case-statements-header flex">
+            <h3>Statements</h3>
+            <button>+</button>
+          </div>
+          <div className="case-statements-body flex">
+            <button>
+              <img src="" alt="" />
+              <div>
+                <h4>Name</h4>
+                <p>Given on January 5, 2025</p>
+              </div>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
