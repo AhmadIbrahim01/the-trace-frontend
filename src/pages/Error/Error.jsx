@@ -23,11 +23,11 @@ const Error = () => {
         <img src={backArrow} alt="Back arrow" />
         <p>Back to home</p>
       </button>
-      <img src={magnifierTwo} className="magni1" alt="" />
-      <img src={magnifierTwo} className="magni2" alt="" />
-      <img src={magnifierTwo} className="magni3" alt="" />
-      <img src={magnifierTwo} className="magni4" alt="" />
-      <img src={magnifierTwo} className="magni5" alt="" />
+      <img src={magnifierTwo} className="magni magni1" alt="" />
+      <img src={magnifierTwo} className="magni magni2" alt="" />
+      <img src={magnifierTwo} className="magni magni3" alt="" />
+      <img src={magnifierTwo} className="magni magni4" alt="" />
+      <img src={magnifierTwo} className="magni magni5" alt="" />
     </div>
   );
 };

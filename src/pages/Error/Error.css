@@ -54,14 +54,16 @@
   margin-right: 20px;
 }
 
-.magni1 {
+.magni {
   position: absolute;
+}
+
+.magni1 {
   width: 493px;
   height: 485px;
   left: -100px;
 }
 .magni2 {
-  position: absolute;
   width: 435px;
   height: 428px;
   bottom: -150px;
@@ -70,28 +72,22 @@
 }
 
 .magni3 {
-  position: absolute;
   width: 358px;
   height: 353px;
   bottom: -150px;
   right: 100px;
   transform: rotate(-100deg);
-  overflow: hidden;
 }
 .magni4 {
-  position: absolute;
   width: 255px;
   height: 252px;
   right: 100px;
   transform: rotate(-100deg);
-  overflow: hidden;
 }
 .magni5 {
-  position: absolute;
   width: 155px;
   height: 153px;
   top: 100px;
   right: 100px;
   transform: rotate(-140deg);
-  overflow: hidden;
 }
