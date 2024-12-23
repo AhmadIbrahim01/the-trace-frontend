@@ -72,6 +72,7 @@
   background-color: #1b1c28;
   border-radius: 16px;
   border: 1px solid #015949;
+  padding-top: 20px;
 }
 
 .investigator-grid p {
@@ -85,4 +86,22 @@
   color: var(--color1);
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
+}
+
+.magnifier-two {
+  position: absolute;
+  top: 550px;
+  width: 218px;
+  height: 214px;
+}
+.div3 {
+  position: relative;
+}
+
+.div3 > img {
+  position: absolute;
+  top: 50px;
+  right: 250px;
+  width: 73px;
+  height: 111px;
 }
