@@ -95,3 +95,17 @@
   border-radius: 16px;
   gap: 15px;
 }
+
+.inevstigator-case-body {
+  width: 100%;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.case-statements {
+  width: 367px;
+  height: 390px;
+  background-color: #1b1c28;
+  border: 1px solid #015949;
+  border-radius: 16px;
+}
