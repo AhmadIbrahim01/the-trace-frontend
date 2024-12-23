@@ -3,6 +3,7 @@ import "./investigatorCase.css";
 import evidenceOne from "../../../assets/images/evidence-1.svg";
 import evidenceTwo from "../../../assets/images/evidence-2.svg";
 import addEvidence from "../../../assets/images/add-evidence.svg";
+import suspect from "../../../assets/images/suspect.svg";
 
 const InvestigatorCase = () => {
   return (
@@ -44,9 +45,15 @@ const InvestigatorCase = () => {
             <h3>Suspects</h3>
             <button>+</button>
           </div>
-          <div className="case-suspects-body">
+          <div className="case-suspects-body flex center">
             <button>
-              <img src="" alt="" />
+              <img src={suspect} alt="" />
+            </button>
+            <button>
+              <img src={suspect} alt="" />
+            </button>
+            <button>
+              <img src={suspect} alt="" />
             </button>
           </div>
         </div>

@@ -53,6 +53,7 @@
   border: 1px solid #015949;
   border-radius: 16px;
   padding: 50px 60px;
+  justify-content: space-between;
 }
 
 .case-suspects-header {
@@ -81,4 +82,7 @@
 .case-suspects-body > button {
   width: 160px;
   height: 190px;
+}
+.case-suspects-body > button > img {
+  width: 100%;
 }
