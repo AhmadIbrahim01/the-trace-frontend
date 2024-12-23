@@ -66,20 +66,19 @@ const InvestigatorCase = () => {
             <button className="flex center">+</button>
           </div>
           <div className="case-statements-body flex center column">
-            <button className="flex center">
-              <img src={suspect} alt="" />
-              <div className="statement-info flex column">
-                <h4 className="t-left">Name</h4>
-                <p className="t-left">Given on January 5, 2025</p>
-              </div>
-            </button>
-            <button className="flex center">
-              <img src={suspect} alt="" />
-              <div className="statement-info flex column">
-                <h4 className="t-left">Name</h4>
-                <p className="t-left">Given on January 5, 2025</p>
-              </div>
-            </button>
+            {statements.map((statement) => (
+              <button key={statement.id} className="flex center statement-item">
+                <img
+                  src={suspect}
+                  alt={statement.name}
+                  className="statement-image"
+                />
+                <div className="statement-info flex column">
+                  <h4 className="t-left">{statement.name}</h4>
+                  <p className="t-left">Given on {statement.date}</p>
+                </div>
+              </button>
+            ))}
           </div>
         </div>
       </div>
