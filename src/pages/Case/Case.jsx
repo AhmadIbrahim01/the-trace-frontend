@@ -155,99 +155,48 @@ const CommentsSection = () => (
   </div>
 );
 
-const Comments = () => (
-  <div className="comments-section flex column">
-    <div className="comments-header flex center">
-      <div className="flex center">
-        <h3>Comments</h3>
-        <span className="flex center">25</span>
+const Comments = () => {
+  return (
+    <div className="comments-section flex column">
+      <div className="comments-header flex center">
+        <div className="flex center">
+          <h3>Comments</h3>
+          <span className="flex center">{comments.length}</span>{" "}
+        </div>
+        <button>
+          <img src={filter} alt="Filter" />
+        </button>
       </div>
-      <button>
-        <img src={filter} alt="" />
-      </button>
+
+      {comments.map((comment, index) => (
+        <div key={index} className="comment flex">
+          <button className="profile">
+            <img src={comment.profileImage} alt={comment.author} />
+          </button>
+          <div className="comment-body flex column">
+            <div className="comment-author">
+              <p className="flex">
+                {comment.author} <span>{comment.time}</span>
+              </p>
+            </div>
+            <div className="comment-text">
+              <p>{comment.text}</p>
+            </div>
+            <div className="comment-action flex">
+              <span>{comment.likes} Likes</span>
+              <button>
+                <img src={like} alt="like" />
+              </button>
+              <button>
+                <img src={dislike} alt="dislike" />
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
-    <div className="comment flex">
-      <button className="profile ">
-        <img src={galleryOne} alt="" />
-      </button>
-      <div className="comment-body flex column">
-        <div className="comment-author">
-          <p className="flex">
-            Ahmad Ibrahim <span>50 mins ago</span>
-          </p>
-        </div>
-        <div className="comment-text">
-          <p>
-            Figma ipsum component variant main layer. connection share figjam.
-            Fill draft undo variant link rectangle rectangle. Figma ipsum
-            component variant main layer. connection share figjam. Fill draft
-            undo variant link rectangle rectangle. Figma ipsum component variant
-            main layer. connection share figjam. Fill draft undo variant link
-            rectangle rectangle. undo variant link rectangle rectangle. Figma
-            ipsum component variant main layer. connection share figjam. Fill
-            draft undo variant link rectangle rectangle. undo variant link
-            rectangle rectangle. Figma ipsum component variant main layer.
-            connection share figjam. Fill draft undo variant link rectangle
-            rectangle. undo variant link rectangle rectangle. Figma ipsum
-            component variant main layer. connection share figjam. Fill draft
-            undo variant link rectangle rectangle. undo variant link rectangle
-            rectangle. Figma ipsum component variant main layer. connection
-            share figjam. Fill draft undo variant link rectangle rectangle.
-          </p>
-        </div>
-        <div className="comment-action flex">
-          <span>30 Likes</span>
-          <button>
-            <img src={like} alt="like" />
-          </button>
-          <button>
-            <img src={dislike} alt="dislike" />
-          </button>
-        </div>
-      </div>
-    </div>
-    <div className="comment flex">
-      <button className="profile ">
-        <img src={galleryOne} alt="" />
-      </button>
-      <div className="comment-body flex column">
-        <div className="comment-author">
-          <p className="flex">
-            Ahmad Ibrahim <span>50 mins ago</span>
-          </p>
-        </div>
-        <div className="comment-text">
-          <p>
-            Figma ipsum component variant main layer. connection share figjam.
-            Fill draft undo variant link rectangle rectangle. Figma ipsum
-            component variant main layer. connection share figjam. Fill draft
-            undo variant link rectangle rectangle. Figma ipsum component variant
-            main layer. connection share figjam. Fill draft undo variant link
-            rectangle rectangle. undo variant link rectangle rectangle. Figma
-            ipsum component variant main layer. connection share figjam. Fill
-            draft undo variant link rectangle rectangle. undo variant link
-            rectangle rectangle. Figma ipsum component variant main layer.
-            connection share figjam. Fill draft undo variant link rectangle
-            rectangle. undo variant link rectangle rectangle. Figma ipsum
-            component variant main layer. connection share figjam. Fill draft
-            undo variant link rectangle rectangle. undo variant link rectangle
-            rectangle. Figma ipsum component variant main layer. connection
-            share figjam. Fill draft undo variant link rectangle rectangle.
-          </p>
-        </div>
-        <div className="comment-action flex">
-          <span>30 Likes</span>
-          <button>
-            <img src={like} alt="like" />
-          </button>
-          <button>
-            <img src={dislike} alt="dislike" />
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+  );
+};
 
 const Case = () => (
   <>
