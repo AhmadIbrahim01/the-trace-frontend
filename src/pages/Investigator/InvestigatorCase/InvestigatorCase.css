@@ -135,12 +135,26 @@
   width: 253px;
   height: 50px;
   background-color: #00000000;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 15px;
+  margin-bottom: 30px;
 }
 .case-statements-body > button > img {
   width: 42px;
   height: 42px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.statement-info {
+  gap: 5px;
+}
+.statement-info > h4 {
+  color: var(--color2);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+}
+.statement-info > p {
+  color: var(--text-color);
+  font-size: 14px;
 }
