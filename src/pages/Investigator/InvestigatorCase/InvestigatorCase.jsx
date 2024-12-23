@@ -39,7 +39,17 @@ const InvestigatorCase = () => {
             </button>
           </div>
         </div>
-        <div className="case-suspects"></div>
+        <div className="case-suspects">
+          <div className="case-suspects-header">
+            <h3>Suspects</h3>
+            <button>+</button>
+          </div>
+          <div className="case-suspects-body">
+            <button>
+              <img src="" alt="" />
+            </button>
+          </div>
+        </div>
       </div>
       <div className="inevstigator-case-body">
         <div className="case-map"></div>
