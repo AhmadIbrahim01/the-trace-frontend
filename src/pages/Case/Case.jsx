@@ -156,6 +156,51 @@ const CommentsSection = () => (
 );
 
 const Comments = () => {
+  const comments = [
+    {
+      author: "Ahmad Ibrahim",
+      time: "50 mins ago",
+      text: "FLorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.igma ipsum component variant main layer. connection share figjam. Fill draft undo variant link rectangle rectangle.",
+      likes: 30,
+      profileImage: galleryOne,
+    },
+    {
+      author: "Doaa Ibrahim",
+      time: "50 mins ago",
+      text: "Figma ipsum component variant main layer. connection share figjam. Fill draft undo variant link rectangle rectangle.",
+      likes: 50,
+      profileImage: galleryFour,
+    },
+    {
+      author: "John Doe",
+      time: "1 hour ago",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.",
+      likes: 15,
+      profileImage: galleryTwo,
+    },
+    {
+      author: "John Doe",
+      time: "1 hour ago",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.",
+      likes: 15,
+      profileImage: galleryThree,
+    },
+    {
+      author: "John Doe",
+      time: "1 hour ago",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.",
+      likes: 15,
+      profileImage: galleryThree,
+    },
+    {
+      author: "John Doe",
+      time: "1 hour ago",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vehicula.",
+      likes: 15,
+      profileImage: galleryThree,
+    },
+  ];
+
   return (
     <div className="comments-section flex column">
       <div className="comments-header flex center">
