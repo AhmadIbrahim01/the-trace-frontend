@@ -6,6 +6,7 @@ import Case from "./pages/Case/Case";
 import News from "./pages/News/News";
 import AllNews from "./pages/AllNews/AllNews";
 import InvStats from "./pages/Investigator/InvestigatorStats/InvestigatorStats";
+import InvCase from "./pages/Investigator/InvestigatorCase/InvestigatorCase";
 import Error from "./pages/Error/Error";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
@@ -18,6 +19,7 @@ function App() {
     { path: "/news", element: <News /> },
     { path: "/allnews", element: <AllNews /> },
     { path: "/investigator-stats", element: <InvStats /> },
+    { path: "/investigator-case", element: <InvCase /> },
   ]);
   return (
     <>
