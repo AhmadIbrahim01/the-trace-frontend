@@ -45,3 +45,11 @@
 .add-evidence {
   width: 100%;
 }
+
+.case-suspects {
+  width: 646px;
+  height: 367px;
+  background-color: #1b1c28;
+  border: 1px solid #015949;
+  border-radius: 16px;
+}
