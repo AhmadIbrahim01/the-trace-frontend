@@ -109,6 +109,7 @@
   border: 1px solid #015949;
   border-radius: 16px;
   padding: 50px 60px;
+  justify-content: flex-start;
 }
 
 .case-statements-header {
@@ -128,4 +129,18 @@
   height: 36px;
   background-color: #00000000;
   font-size: 40px;
+}
+
+.case-statements-body > button {
+  width: 253px;
+  height: 50px;
+  background-color: #00000000;
+  justify-content: space-between;
+  gap: 15px;
+}
+.case-statements-body > button > img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
 }

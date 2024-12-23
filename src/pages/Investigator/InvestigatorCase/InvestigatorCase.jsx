@@ -65,8 +65,15 @@ const InvestigatorCase = () => {
             <h3>Statements</h3>
             <button className="flex center">+</button>
           </div>
-          <div className="case-statements-body flex">
-            <button>
+          <div className="case-statements-body flex center column">
+            <button className="flex">
+              <img src={suspect} alt="" />
+              <div>
+                <h4>Name</h4>
+                <p>Given on January 5, 2025</p>
+              </div>
+            </button>
+            <button className="flex">
               <img src={suspect} alt="" />
               <div>
                 <h4>Name</h4>
