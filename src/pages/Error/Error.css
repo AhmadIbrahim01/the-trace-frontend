@@ -3,6 +3,8 @@
   background-image: url("../../assets/images/error-bg.svg");
   background-position: center;
   background-size: cover;
+  position: relative;
+  overflow: hidden;
 }
 
 .error > h1 {
@@ -50,4 +52,46 @@
   width: 25px;
   filter: brightness(1000%);
   margin-right: 20px;
+}
+
+.magni1 {
+  position: absolute;
+  width: 493px;
+  height: 485px;
+  left: -100px;
+}
+.magni2 {
+  position: absolute;
+  width: 435px;
+  height: 428px;
+  bottom: -150px;
+  left: 100px;
+  transform: rotate(-20deg);
+}
+
+.magni3 {
+  position: absolute;
+  width: 358px;
+  height: 353px;
+  bottom: -150px;
+  right: 100px;
+  transform: rotate(-100deg);
+  overflow: hidden;
+}
+.magni4 {
+  position: absolute;
+  width: 255px;
+  height: 252px;
+  right: 100px;
+  transform: rotate(-100deg);
+  overflow: hidden;
+}
+.magni5 {
+  position: absolute;
+  width: 155px;
+  height: 153px;
+  top: 100px;
+  right: 100px;
+  transform: rotate(-140deg);
+  overflow: hidden;
 }
