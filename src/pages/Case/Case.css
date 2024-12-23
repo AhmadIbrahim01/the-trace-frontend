@@ -386,6 +386,7 @@
 }
 .comments-header > button {
   background-color: #00000000;
+  color: #0bc1a0;
 }
 .comments-header > button > img {
   justify-content: space-between;
