@@ -407,3 +407,18 @@
   height: 100%;
   object-fit: cover;
 }
+
+.comment-author > p {
+  font-size: 18px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  color: var(--color2);
+  gap: 20px;
+  align-items: center;
+}
+.comment-author > p > span {
+  font-size: 12px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+  color: var(--color2);
+}
