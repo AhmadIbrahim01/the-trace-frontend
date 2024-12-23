@@ -6,10 +6,12 @@ import Case from "./pages/Case/Case";
 import News from "./pages/News/News";
 import AllNews from "./pages/AllNews/AllNews";
 import InvStats from "./pages/Investigator/InvestigatorStats/InvestigatorStats";
+import Error from "./pages/Error/Error";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 function App() {
   const route = createBrowserRouter([
+    { path: "*", element: <Error /> },
     { path: "/", element: <Home /> },
     { path: "/cases", element: <Cases /> },
     { path: "/case", element: <Case /> },
