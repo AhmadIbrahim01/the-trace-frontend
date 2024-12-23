@@ -16,6 +16,7 @@ import tickCircleIcon from "../../assets/icons/tick-circle-icon.svg";
 import backArrow from "../../assets/icons/back-arrow.svg";
 import leftHand from "../../assets/images/left-hand.svg";
 import rightHand from "../../assets/images/right-hand.svg";
+import filter from "../../assets/icons/comments-filter.svg";
 
 const HeroSection = () => (
   <div className="case-hero flex center column">
@@ -155,11 +156,13 @@ const CommentsSection = () => (
 const Comments = () => (
   <div className="comments-section flex column">
     <div className="comments-header flex center">
-      <div>
+      <div className="flex center">
         <h3>Comments</h3>
-        <span>25</span>
+        <span className="flex center">25</span>
       </div>
-      <img src="" alt="" />
+      <button>
+        <img src={filter} alt="" />
+      </button>
     </div>
     <div></div>
   </div>
