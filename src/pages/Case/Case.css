@@ -357,3 +357,37 @@
   color: white;
   border-radius: 1000px;
 }
+
+/* Comments Component Section */
+.comments-header {
+  justify-content: space-between;
+}
+.comments-header > div {
+  justify-content: space-between;
+  width: 150px;
+}
+.comments-header > div > h3 {
+  font-size: 18px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  color: var(--color2);
+}
+.comments-header > div > span {
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: #0bc1a0;
+  background-color: #0bc1a04d;
+  width: 36px;
+  height: 24px;
+  border: 1px solid black;
+  border-radius: 100px;
+}
+.comments-header > button {
+  background-color: #00000000;
+}
+.comments-header > button > img {
+  justify-content: space-between;
+  width: 24px;
+  height: 24px;
+}
