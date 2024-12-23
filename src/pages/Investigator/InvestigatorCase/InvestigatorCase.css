@@ -1,0 +1,24 @@
+.investigator-case {
+  height: 100vh;
+  padding: 5% 11%;
+}
+
+.investigator-case-header {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.case-evidence-container {
+  width: 527px;
+  height: 367px;
+  background-color: #1b1c28;
+  border: 1px solid #015949;
+  border-radius: 16px;
+}
+
+.case-evidence-container > h3 {
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  color: var(--color2);
+}

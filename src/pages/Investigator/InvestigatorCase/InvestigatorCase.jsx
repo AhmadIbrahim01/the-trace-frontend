@@ -1,9 +1,10 @@
 import React from "react";
+import "./investigatorCase.css";
 
 const InvestigatorCase = () => {
   return (
     <div className="investigator-case flex column center">
-      <div className="inevstigator-case-header">
+      <div className="inevstigator-case-header flex">
         <div className="case-evidence-container flex center column">
           <h3>Evidence</h3>
           <div className="case-evidences flex">
