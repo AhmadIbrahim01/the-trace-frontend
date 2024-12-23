@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Case.css";
 import tapeOne from "../../assets/images/tape-1.svg";
 import tapeTwo from "../../assets/images/tape-2.svg";
@@ -181,18 +181,26 @@ const Comments = () => {
   ];
 
   const [comments, setComments] = useState(initialComments);
-  const [filter, setFilter] = useState("recent");
+  const [filter, setFilter] = useState("liked");
 
   const handleFilterChange = () => {
     if (filter === "recent") {
-      setComments(initialComments);
       setFilter("liked");
     } else {
-      const sortedComments = [...comments].sort((a, b) => b.likes - a.likes);
-      setComments(sortedComments);
       setFilter("recent");
     }
   };
+  useEffect(() => {
+    if (filter === "liked") {
+      setComments(initialComments);
+    }
+  }, [filter]);
+  useEffect(() => {
+    if (filter === "recent") {
+      const sortedComments = [...comments].sort((a, b) => b.likes - a.likes);
+      setComments(sortedComments);
+    }
+  }, [filter]);
 
   return (
     <div className="comments-section flex column">
