@@ -227,12 +227,8 @@ const Comments = () => {
       </div>
 
       {comments.map((comment, index) => (
-        <div
-          key={index}
-          className="comment flex"
-          onClick={() => openModal(comment)}
-        >
-          <button className="profile">
+        <div key={index} className="comment flex">
+          <button className="profile" onClick={() => openModal(comment)}>
             <img src={comment.profileImage} alt={comment.author} />
           </button>
           <div className="comment-body flex column">
