@@ -52,6 +52,7 @@
 .suspect-data {
   gap: 5px;
   padding-left: 30px;
+  padding-right: 100px;
 }
 .suspect-data > img {
   width: 16px;
@@ -62,4 +63,16 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-medium);
   color: white;
+}
+
+.suspect-data-button {
+  width: 100px;
+  height: 100px;
+  background-color: #141521;
+  border-top: 1px solid #0bc1a0;
+  border-bottom: 1px solid #0bc1a0;
+}
+.suspect-data-button > img {
+  width: 50px;
+  height: 85px;
 }

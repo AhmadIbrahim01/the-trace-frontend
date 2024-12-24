@@ -9,6 +9,7 @@ import eye from "../../assets/icons/eye.svg";
 import ruler from "../../assets/icons/ruler.svg";
 import location from "../../assets/icons/location.svg";
 import call from "../../assets/icons/call.svg";
+import caribbeanFingerprint from "../../assets/images/caribbean-fingerprint.svg";
 
 const Modal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
@@ -55,8 +56,8 @@ const Modal = ({ isOpen, onClose, data }) => {
               <p>Height/Weight: 175cm/77kg</p>
             </div>
           </div>
-          <button>
-            <img src="" alt="" />
+          <button className="suspect-data-button flex center">
+            <img src={caribbeanFingerprint} alt="" />
           </button>
         </div>
 
