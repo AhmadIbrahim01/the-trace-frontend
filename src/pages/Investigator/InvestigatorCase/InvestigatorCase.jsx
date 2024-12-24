@@ -7,15 +7,15 @@ import suspect from "../../../assets/images/suspect.svg";
 
 const InvestigatorCase = () => {
   const statements = [
-    { id: 1, name: "John Doe", date: "January 5, 2025" },
-    { id: 2, name: "Jane Smith", date: "February 10, 2025" },
-    { id: 3, name: "Jane Smith", date: "February 10, 2025" },
+    { id: 1, name: "Ahmad Ibrahim", date: "January 5, 2025" },
+    { id: 2, name: "Adnan Ibrahim", date: "February 10, 2025" },
+    { id: 3, name: "Omar Sulieman", date: "February 10, 2025" },
   ];
 
   const suspects = [
-    { id: 1, name: "John Doe", imageUrl: suspect },
-    { id: 2, name: "Jane Smith", imageUrl: suspect },
-    { id: 3, name: "Tom Brown", imageUrl: suspect },
+    { id: 1, name: "Adnan Ibrahim", imageUrl: suspect },
+    { id: 2, name: "Adnan Ibrahim", imageUrl: suspect },
+    { id: 3, name: "Adnan Ibrahim", imageUrl: suspect },
   ];
 
   return (
@@ -23,30 +23,19 @@ const InvestigatorCase = () => {
       <div className="investigator-case-header flex">
         <div className="case-evidence-container flex center column">
           <h3>Evidence</h3>
-          <div className="case-evidences flex">
-            <button className="case-evidence flex center column">
-              <img className="case-evidence-img" src={evidenceOne} alt="" />
-            </button>
-            <button className="case-evidence flex center column">
-              <img className="case-evidence-img" src={evidenceTwo} alt="" />
-            </button>
-            <button className="case-evidence flex center column">
-              <img className="case-evidence-img" src={evidenceOne} alt="" />
-            </button>
-            <button className="case-evidence flex center column">
-              <img className="case-evidence-img" src={evidenceTwo} alt="" />
-            </button>
-          </div>
-          <div className="case-evidences flex">
-            <button className="case-evidence flex center column">
-              <img className="case-evidence-img" src={evidenceOne} alt="" />
-            </button>
-            <button className="case-evidence flex center column">
-              <img className="case-evidence-img" src={evidenceTwo} alt="" />
-            </button>
-            <button className="case-evidence flex center column">
-              <img className="case-evidence-img" src={evidenceOne} alt="" />
-            </button>
+          <div className="case-evidences flex wrap center">
+            {evidences.map((evidence, index) => (
+              <button
+                key={evidence.id}
+                className="case-evidence flex center column"
+              >
+                <img
+                  className="case-evidence-img"
+                  src={evidence.src}
+                  alt={`Evidence ${evidence.id}`}
+                />
+              </button>
+            ))}
             <button className="case-evidence flex center column">
               <img className="add-evidence" src={addEvidence} alt="" />
             </button>
