@@ -5,6 +5,8 @@ import edit from "../../assets/icons/edit.svg";
 import document from "../../assets/icons/document.svg";
 import video from "../../assets/icons/video.svg";
 import gallery from "../../assets/icons/gallery.svg";
+import starOne from "../../assets/icons/star-1.svg";
+import starTwo from "../../assets/icons/star-2.svg";
 
 const Modal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
@@ -22,7 +24,7 @@ const Modal = ({ isOpen, onClose, data }) => {
         </div>
         <div className="user-profile-image flex column center">
           <button className="user-profile-button">
-            <img src={suspect} alt="" />
+            <img src={profileImage} alt="" />
           </button>
           <button className="user-profile-edit">
             <img src={edit} alt="" />
@@ -56,6 +58,19 @@ const Modal = ({ isOpen, onClose, data }) => {
             </div>
           </div>
           <p className="accepted-tips t-left">4 accepted tips</p>
+        </div>
+        <div className="user-modal-header flex column">
+          <h2>Badges</h2>
+          <div className="badges flex center wrap">
+            <div className="badge flex center">
+              <img src={starOne} alt="" />
+              <h3>Top contributor</h3>
+            </div>
+            <div className="badge flex center">
+              <img src={starTwo} alt="" />
+              <h3>Top commenter</h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
