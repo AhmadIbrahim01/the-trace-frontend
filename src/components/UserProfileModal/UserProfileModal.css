@@ -12,9 +12,28 @@
 }
 
 .user-modal-content {
-  background-color: white;
-  padding: 20px;
+  background-color: #1b1c28;
+  padding: 50px 55px;
   border-radius: 5px;
-  min-width: 300px;
-  text-align: center;
+  width: 600px;
+  height: 700px;
+  border-radius: 16px;
+}
+
+.user-profile-header {
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.user-profile-header > h2 {
+  font-size: 30px;
+  color: white;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+}
+.user-profile-header > button {
+  color: var(--color1);
+  background-color: #00000000;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
 }
