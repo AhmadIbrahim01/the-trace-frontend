@@ -1,0 +1,44 @@
+.statement-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.statement-modal-content {
+  min-width: 746px;
+  min-height: 670px;
+  background-color: var(--color3);
+  padding: 50px 55px;
+  border-radius: 16px;
+}
+
+.statement-modal-profile {
+  width: 100%;
+  background-color: #00000000;
+}
+.statement-modal-profile > img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.statement-modal-date > img {
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+}
+.statement-modal-date > p {
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-color);
+}
