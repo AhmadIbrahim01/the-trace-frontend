@@ -19,7 +19,7 @@ const StatementModal = ({ isOpen, onClose, data }) => {
         </div>
         <button className="statement-modal-profile flex">
           <img src={suspect} className="statement-modal-image" />
-          <div className="statement-info flex column">
+          <div className="statement-modal-info flex column">
             <h4 className="t-left">Ahmad Ibrahim</h4>
             <div className="statement-modal-date t-left flex center">
               <img src={calendar} alt="" />
@@ -27,8 +27,7 @@ const StatementModal = ({ isOpen, onClose, data }) => {
             </div>
           </div>
         </button>
-        <p>{data}</p>
-        <button onClick={onClose}>Close</button>
+        <p className="statement-data">{data}</p>
       </div>
     </div>
   );
