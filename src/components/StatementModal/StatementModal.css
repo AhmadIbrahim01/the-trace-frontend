@@ -12,11 +12,12 @@
 }
 
 .statement-modal-content {
-  min-width: 746px;
-  min-height: 670px;
+  width: 746px;
+  height: 670px;
   background-color: var(--color3);
   padding: 50px 55px;
   border-radius: 16px;
+  overflow: auto;
 }
 
 .statement-modal-profile {
@@ -41,4 +42,29 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-medium);
   color: var(--text-color);
+}
+
+.statement-modal-info {
+  margin-bottom: 20px;
+}
+
+.statement-data {
+  text-align: justify;
+  font-size: 18px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-color);
+}
+
+.statement-modal-info {
+  gap: 5px;
+}
+.statement-modal-info > h4 {
+  color: var(--color2);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+}
+.statement-modal-info > p {
+  color: var(--text-color);
+  font-size: 14px;
 }
