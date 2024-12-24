@@ -10,7 +10,7 @@ const StatementModal = ({ isOpen, onClose, data }) => {
   return (
     <div className="statement-modal-overlay" onClick={onClose}>
       <div
-        className="statement-modal-content"
+        className="statement-modal-content scrollable-div"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="suspect-profile-header flex center">
