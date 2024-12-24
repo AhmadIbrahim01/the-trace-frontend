@@ -22,6 +22,7 @@
 
 .suspect-profile-header {
   justify-content: space-between;
+  margin-bottom: 30px;
 }
 .suspect-profile-header > h2 {
   font-size: 30px;
@@ -37,4 +38,28 @@
   font-size: 14px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
+}
+
+.suspect-profile-body > img {
+  width: 163px;
+  height: 190px;
+  border-radius: 6px;
+}
+
+.suspect-data-container {
+  gap: 10px;
+}
+.suspect-data {
+  gap: 5px;
+  padding-left: 30px;
+}
+.suspect-data > img {
+  width: 16px;
+  height: 16px;
+}
+.suspect-data > p {
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: white;
 }
