@@ -27,30 +27,30 @@ const Modal = ({ isOpen, onClose, data }) => {
           <h2>Profile</h2>
           <button>Edit Information</button>
         </div>
-        <div className="suspect-profile-body">
+        <div className="suspect-profile-body flex">
           <img src={suspect} alt="" />
-          <div>
-            <div>
+          <div className="suspect-data-container flex column">
+            <div className="suspect-data flex">
               <img src={user} alt="" />
               <p>Name: John Doe</p>
             </div>
-            <div>
+            <div className="suspect-data flex">
               <img src={calendar} alt="" />
               <p>Age: 23</p>
             </div>
-            <div>
+            <div className="suspect-data flex">
               <img src={briefcase} alt="" />
               <p>Occupation: Sales manager</p>
             </div>
-            <div>
+            <div className="suspect-data flex">
               <img src={drop} alt="" />
               <p>Blood: O+</p>
             </div>
-            <div>
+            <div className="suspect-data flex">
               <img src={eye} alt="" />
               <p>Eye color/Hair: Light brown/Brown </p>
             </div>
-            <div>
+            <div className="suspect-data flex">
               <img src={ruler} alt="" />
               <p>Height/Weight: 175cm/77kg</p>
             </div>
