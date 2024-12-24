@@ -21,6 +21,13 @@ const AddEvidence = () => {
           <label htmlFor="description">Description</label>
           <textarea id="description" name="description"></textarea>
         </div>
+
+        <Input
+          id={"location"}
+          label={"Location of collection"}
+          name={"location"}
+          placeholder={"Location"}
+        ></Input>
       </form>
     </div>
   );
