@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./investigatorCase.css";
 import evidenceOne from "../../../assets/images/evidence-1.svg";
 import evidenceTwo from "../../../assets/images/evidence-2.svg";
 import addEvidence from "../../../assets/images/add-evidence.svg";
 import suspect from "../../../assets/images/suspect.svg";
+import Modal from "../../../components/SuspectModal/SuspectModal";
 
 const InvestigatorCase = () => {
   const statements = [
@@ -26,6 +27,20 @@ const InvestigatorCase = () => {
     { id: 5, src: evidenceTwo },
     { id: 6, src: evidenceOne },
   ];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState("");
+
+  const openModal = (data) => {
+    setModalData(data);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  console.log(suspects[1].id);
 
   return (
     <div className="investigator-case flex column center">
@@ -57,7 +72,7 @@ const InvestigatorCase = () => {
           </div>
           <div className="case-suspects-body flex center">
             {suspects.map((suspect) => (
-              <button key={suspect.id}>
+              <button key={suspect.id} onClick={() => openModal(suspect.id)}>
                 <img
                   src={suspect.imageUrl}
                   alt={suspect.name}
@@ -92,6 +107,7 @@ const InvestigatorCase = () => {
           </div>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal} data={modalData} />
     </div>
   );
 };
