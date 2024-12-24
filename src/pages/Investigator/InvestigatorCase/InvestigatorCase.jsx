@@ -6,6 +6,12 @@ import addEvidence from "../../../assets/images/add-evidence.svg";
 import suspect from "../../../assets/images/suspect.svg";
 
 const InvestigatorCase = () => {
+  const statements = [
+    { id: 1, name: "John Doe", date: "January 5, 2025" },
+    { id: 2, name: "Jane Smith", date: "February 10, 2025" },
+    { id: 3, name: "Jane Smith", date: "February 10, 2025" },
+  ];
+
   return (
     <div className="investigator-case flex column center">
       <div className="investigator-case-header flex">
