@@ -5,7 +5,7 @@ import calendar from "../../assets/icons/calendar.svg";
 
 const StatementModal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
-  console.log(data);
+  const { id, name, date, statement } = data;
 
   return (
     <div className="statement-modal-overlay" onClick={onClose}>
@@ -14,20 +14,20 @@ const StatementModal = ({ isOpen, onClose, data }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="suspect-profile-header flex center">
-          <h2>Statement {1}</h2>
+          <h2>Statement {id}</h2>
           <button>Edit Information</button>
         </div>
         <button className="statement-modal-profile flex">
           <img src={suspect} className="statement-modal-image" />
           <div className="statement-modal-info flex column">
-            <h4 className="t-left">Ahmad Ibrahim</h4>
+            <h4 className="t-left">{name}</h4>
             <div className="statement-modal-date t-left flex center">
               <img src={calendar} alt="" />
-              <p> Given on January 5, 2023</p>
+              <p>{date}</p>
             </div>
           </div>
         </button>
-        <p className="statement-data">{data}</p>
+        <p className="statement-data">{statement}</p>
       </div>
     </div>
   );
