@@ -26,7 +26,6 @@
 }
 
 .case-evidences {
-  justify-content: space-around;
   gap: 15px;
 }
 .case-evidence {
@@ -76,12 +75,14 @@
 
 .case-suspects-body {
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 22px;
 }
 
 .case-suspects-body > button {
   width: 160px;
   height: 190px;
+  background-color: #00000000;
 }
 .case-suspects-body > button > img {
   width: 100%;
