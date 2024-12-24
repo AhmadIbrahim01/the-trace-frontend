@@ -230,7 +230,7 @@ const Comments = () => {
         <div
           key={index}
           className="comment flex"
-          onClick={() => openModal(comment.text)}
+          onClick={() => openModal(comment)}
         >
           <button className="profile">
             <img src={comment.profileImage} alt={comment.author} />
