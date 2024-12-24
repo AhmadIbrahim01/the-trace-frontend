@@ -35,6 +35,12 @@ const AddEvidence = () => {
           name={"date"}
           type={"date"}
         ></Input>
+        <Input
+          id={"file"}
+          label={"Evidence Image"}
+          name={"file"}
+          type={"file"}
+        ></Input>
       </form>
     </div>
   );
