@@ -9,9 +9,27 @@ import StatementModal from "../../../components/StatementModal/StatementModal";
 
 const InvestigatorCase = () => {
   const statements = [
-    { id: 1, name: "Ahmad Ibrahim", date: "January 5, 2025" },
-    { id: 2, name: "Adnan Ibrahim", date: "February 10, 2025" },
-    { id: 3, name: "Omar Sulieman", date: "February 10, 2025" },
+    {
+      id: 1,
+      name: "Ahmad Ibrahim",
+      date: "January 5, 2025",
+      statement:
+        "Ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diam iaculis nunc molestie lacinia id eu nunc. Nam velit odio, aliquet nec mi at, bibendum imperdiet elit. Suspendisse accumsan nisl et libero ornare molestie. In viverra, est non egestas pretium, metus diam mollis est, egestas sollicitudin turpis libero sodales velit. Praesent ullamcorper ornare lacus ac auctor. Aenean ut varius felis, a consequat risus. Maecenas eleifend fringilla metus sed porta. In interdum tellus dui, at faucibus dui sagittis sit amet. Nam efficitur leo vel hendrerit rutrum.Praesent sem ante, egestas eu mi eu, ultricies imperdiet arcu. Proin nisl risus, finibus eget imperdiet nec, sollicitudin eget dui. Pellentesque ipsum turpis, facilisis sit amet cursus id, laoreet non augue. Mauris commodo lectus orci. Curabitur nec purus erat. Donec eros massa, congue ut interdum eu, sodales ut magna. Donec tincidunt magna id augue volutpat tincidunt. Donec eget lorem sit amet eros mattis euismod. Duis sed felis accumsan, blandit orci et, varius arcu. Aliquam erat volutpat. Donec eget neque aliquam, congue eros in, maximus erat. Nulla nunc orci, placerat a libero in, euismod imperdiet sapien. Morbi lobortis convallis luctus. Nulla convallis, magna id luctus sollicitudin, augue ligula cursus nunc, vitae cursus dui nibh eu nisi.",
+    },
+    {
+      id: 2,
+      name: "Adnan Ibrahim",
+      date: "February 10, 2025",
+      statement:
+        "Dolor sit amet, consectetur adipiscing elit. Curabitur vitae diam iaculis nunc molestie lacinia id eu nunc. Nam velit odio, aliquet nec mi at, bibendum imperdiet elit. Suspendisse accumsan nisl et libero ornare molestie. In viverra, est non egestas pretium, metus diam mollis est, egestas sollicitudin turpis libero sodales velit. Praesent ullamcorper ornare lacus ac auctor. Aenean ut varius felis, a consequat risus. Maecenas eleifend fringilla metus sed porta. In interdum tellus dui, at faucibus dui sagittis sit amet. Nam efficitur leo vel hendrerit rutrum.Praesent sem ante, egestas eu mi eu, ultricies imperdiet arcu. Proin nisl risus, finibus eget imperdiet nec, sollicitudin eget dui. Pellentesque ipsum turpis, facilisis sit amet cursus id, laoreet non augue. Mauris commodo lectus orci. Curabitur nec purus erat. Donec eros massa, congue ut interdum eu, sodales ut magna. Donec tincidunt magna id augue volutpat tincidunt. Donec eget lorem sit amet eros mattis euismod. Duis sed felis accumsan, blandit orci et, varius arcu. Aliquam erat volutpat. Donec eget neque aliquam, congue eros in, maximus erat. Nulla nunc orci, placerat a libero in, euismod imperdiet sapien. Morbi lobortis convallis luctus. Nulla convallis, magna id luctus sollicitudin, augue ligula cursus nunc, vitae cursus dui nibh eu nisi.",
+    },
+    {
+      id: 3,
+      name: "Omar Sulieman",
+      date: "February 10, 2025",
+      statement:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diam iaculis nunc molestie lacinia id eu nunc. Nam velit odio, aliquet nec mi at, bibendum imperdiet elit. Suspendisse accumsan nisl et libero ornare molestie. In viverra, est non egestas pretium, metus diam mollis est, egestas sollicitudin turpis libero sodales velit. Praesent ullamcorper ornare lacus ac auctor. Aenean ut varius felis, a consequat risus. Maecenas eleifend fringilla metus sed porta. In interdum tellus dui, at faucibus dui sagittis sit amet. Nam efficitur leo vel hendrerit rutrum.Praesent sem ante, egestas eu mi eu, ultricies imperdiet arcu. Proin nisl risus, finibus eget imperdiet nec, sollicitudin eget dui. Pellentesque ipsum turpis, facilisis sit amet cursus id, laoreet non augue. Mauris commodo lectus orci. Curabitur nec purus erat. Donec eros massa, congue ut interdum eu, sodales ut magna. Donec tincidunt magna id augue volutpat tincidunt. Donec eget lorem sit amet eros mattis euismod. Duis sed felis accumsan, blandit orci et, varius arcu. Aliquam erat volutpat. Donec eget neque aliquam, congue eros in, maximus erat. Nulla nunc orci, placerat a libero in, euismod imperdiet sapien. Morbi lobortis convallis luctus. Nulla convallis, magna id luctus sollicitudin, augue ligula cursus nunc, vitae cursus dui nibh eu nisi.",
+    },
   ];
 
   const suspects = [
@@ -106,7 +124,7 @@ const InvestigatorCase = () => {
               <button
                 key={statement.id}
                 className="flex center"
-                onClick={() => openStatementModal(suspect.id)}
+                onClick={() => openStatementModal(statement.statement)}
               >
                 <img
                   src={suspect}
