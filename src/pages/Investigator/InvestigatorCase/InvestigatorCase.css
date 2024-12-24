@@ -4,12 +4,11 @@
 }
 .investigator-case-header {
   width: 100%;
-  justify-content: space-between;
   gap: 30px;
 }
 
 .case-evidence-container {
-  width: 527px;
+  width: 500px;
   height: 367px;
   background-color: #1b1c28;
   border: 1px solid #015949;
@@ -89,7 +88,7 @@
 }
 
 .case-map {
-  width: 804px;
+  width: 777px;
   height: 390px;
   background-color: #1b1c28;
   border: 1px solid #015949;
@@ -99,7 +98,6 @@
 
 .inevstigator-case-body {
   width: 100%;
-  justify-content: space-between;
   gap: 30px;
 }
 

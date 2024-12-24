@@ -29,7 +29,7 @@ const InvestigatorCase = () => {
 
   return (
     <div className="investigator-case flex column center">
-      <div className="investigator-case-header flex">
+      <div className="investigator-case-header flex center wrap">
         <div className="case-evidence-container flex center column">
           <h3>Evidence</h3>
           <div className="case-evidences flex wrap center">
@@ -57,7 +57,7 @@ const InvestigatorCase = () => {
           </div>
           <div className="case-suspects-body flex center">
             {suspects.map((suspect) => (
-              <button key={suspect.id} className="suspect-button">
+              <button key={suspect.id}>
                 <img
                   src={suspect.imageUrl}
                   alt={suspect.name}
@@ -68,7 +68,7 @@ const InvestigatorCase = () => {
           </div>
         </div>
       </div>
-      <div className="inevstigator-case-body flex center">
+      <div className="inevstigator-case-body flex center wrap">
         <div className="case-map"></div>
         <div className="case-statements flex center column">
           <div className="case-statements-header flex center">
@@ -77,7 +77,7 @@ const InvestigatorCase = () => {
           </div>
           <div className="case-statements-body flex center column">
             {statements.map((statement) => (
-              <button key={statement.id} className="flex center statement-item">
+              <button key={statement.id} className="flex center">
                 <img
                   src={suspect}
                   alt={statement.name}
