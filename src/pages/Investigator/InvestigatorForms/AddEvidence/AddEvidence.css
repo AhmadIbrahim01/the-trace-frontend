@@ -11,6 +11,7 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-semi);
   background: var(--primary-gradient);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   margin-bottom: 30px;
