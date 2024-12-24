@@ -76,3 +76,24 @@
   width: 50px;
   height: 85px;
 }
+
+.suspect-map {
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.suspect-map > .suspect-data,
+.suspect-profile-body > .suspect-data {
+  padding: 0px;
+  gap: 5px;
+}
+.suspect-profile-body > .suspect-data {
+  padding-top: 20px;
+}
+
+.suspect-map > button {
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: #0bc1a0;
+  background-color: #00000000;
+}
