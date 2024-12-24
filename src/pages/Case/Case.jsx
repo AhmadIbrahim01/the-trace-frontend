@@ -19,6 +19,7 @@ import rightHand from "../../assets/images/right-hand.svg";
 import filterImage from "../../assets/icons/comments-filter.svg";
 import like from "../../assets/icons/like.svg";
 import dislike from "../../assets/icons/dislike.svg";
+import UserProfileModal from "../../components/UserProfileModal/UserProfileModal";
 
 const HeroSection = () => (
   <div className="case-hero flex center column">
@@ -156,6 +157,17 @@ const CommentsSection = () => (
 );
 
 const Comments = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState("");
+  const openModal = (data) => {
+    setModalData(data);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const initialComments = [
     {
       author: "Ahmad Ibrahim",
@@ -215,7 +227,11 @@ const Comments = () => {
       </div>
 
       {comments.map((comment, index) => (
-        <div key={index} className="comment flex">
+        <div
+          key={index}
+          className="comment flex"
+          onClick={() => openModal(comment.text)}
+        >
           <button className="profile">
             <img src={comment.profileImage} alt={comment.author} />
           </button>
@@ -240,6 +256,11 @@ const Comments = () => {
           </div>
         </div>
       ))}
+      <UserProfileModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        data={modalData}
+      />
     </div>
   );
 };
@@ -249,6 +270,7 @@ const Case = () => (
     <HeroSection />
     <CaseDescription />
     <TipSubmission />
+    <CommentsSection />
     <Comments />
   </>
 );
