@@ -2,7 +2,7 @@ import React from "react";
 
 const Input = ({ id, name, label, type, value, onChange, placeholder }) => {
   return (
-    <div className="input-container">
+    <div className="input flex column">
       <label htmlFor={id}>{label}</label>
       <input
         id={id}
