@@ -9,7 +9,7 @@ const AddEvidence = () => {
       <h1>Add Evidence</h1>
       <form>
         <div className="input flex column">
-          <label htmlFor="evidences">Type of evidence</label>
+          <label htmlFor="evidences">Type of Evidence</label>
           <select name="evidences" id="evidences">
             <option value="fingerprint">Fingerprint</option>
             <option value="file">File</option>
@@ -24,9 +24,16 @@ const AddEvidence = () => {
 
         <Input
           id={"location"}
-          label={"Location of collection"}
+          label={"Location of Collection"}
           name={"location"}
+          type={"text"}
           placeholder={"Location"}
+        ></Input>
+        <Input
+          id={"date"}
+          label={"Date Collected"}
+          name={"date"}
+          type={"date"}
         ></Input>
       </form>
     </div>
