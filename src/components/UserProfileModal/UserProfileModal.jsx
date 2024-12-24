@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./UserProfileModal.css";
 import suspect from "../../assets/images/suspect.svg";
 import edit from "../../assets/icons/edit.svg";
+import document from "../../assets/icons/document.svg";
+import video from "../../assets/icons/video.svg";
+import gallery from "../../assets/icons/gallery.svg";
 
 const Modal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
@@ -35,6 +38,24 @@ const Modal = ({ isOpen, onClose, data }) => {
             <div className="progress" style={{ width: `${progress}%` }}></div>
           </div>
           <p>30 more comments till level 4</p>
+        </div>
+        <div className="user-modal-header flex column">
+          <h2>Submitted tips</h2>
+          <div className="submitted-tips flex center">
+            <div className="submitted-tip flex center">
+              <img src={video} alt="" />
+              <h3>3 Videos</h3>
+            </div>
+            <div className="submitted-tip flex center">
+              <img src={gallery} alt="" />
+              <h3>3 Photos</h3>
+            </div>
+            <div className="submitted-tip flex center">
+              <img src={document} alt="" />
+              <h3>3 Docs</h3>
+            </div>
+          </div>
+          <p className="accepted-tips t-left">4 accepted tips</p>
         </div>
       </div>
     </div>
