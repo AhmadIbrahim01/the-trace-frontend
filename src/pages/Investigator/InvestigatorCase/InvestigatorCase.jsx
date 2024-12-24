@@ -52,15 +52,15 @@ const InvestigatorCase = () => {
             <button className="flex center">+</button>
           </div>
           <div className="case-suspects-body flex center">
-            <button>
-              <img src={suspect} alt="" />
-            </button>
-            <button>
-              <img src={suspect} alt="" />
-            </button>
-            <button>
-              <img src={suspect} alt="" />
-            </button>
+            {suspects.map((suspect) => (
+              <button key={suspect.id} className="suspect-button">
+                <img
+                  src={suspect.imageUrl}
+                  alt={suspect.name}
+                  className="suspect-image"
+                />
+              </button>
+            ))}
           </div>
         </div>
       </div>
