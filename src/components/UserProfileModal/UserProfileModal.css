@@ -20,17 +20,17 @@
   border-radius: 16px;
 }
 
-.user-profile-header {
+.user-modal-header {
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
-.user-profile-header > h2 {
+.user-modal-header > h2 {
   font-size: 30px;
   color: white;
   font-family: var(--font-family);
   font-weight: var(--font-weight-semi);
 }
-.user-profile-header > button {
+.user-modal-header > button {
   color: var(--color1);
   background-color: #00000000;
   font-size: 14px;
@@ -75,6 +75,8 @@
   background-color: black;
   border-radius: 15px;
   overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .progress {
@@ -82,4 +84,15 @@
   height: 100%;
   background-color: var(--color1);
   transition: width 0.5s ease-in-out;
+}
+
+.user-progress {
+  height: 120px;
+  background-color: #141521;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+.user-progress > p {
+  font-size: 12px;
+  color: white;
 }

@@ -13,7 +13,7 @@ const Modal = ({ isOpen, onClose, data }) => {
   return (
     <div className="user-modal-overlay" onClick={onClose}>
       <div className="user-modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="user-profile-header flex center">
+        <div className="user-modal-header flex center">
           <h2>Profile</h2>
           <button>Edit</button>
         </div>
@@ -26,7 +26,7 @@ const Modal = ({ isOpen, onClose, data }) => {
           </button>
           <h2>{author}</h2>
         </div>
-        <div className="user-profile-header flex center">
+        <div className="user-modal-header flex center">
           <h2>Level 3</h2>
         </div>
         <div className="user-progress">
