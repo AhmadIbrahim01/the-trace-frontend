@@ -9,6 +9,8 @@ import InvStats from "./pages/Investigator/InvestigatorStats/InvestigatorStats";
 import InvCase from "./pages/Investigator/InvestigatorCase/InvestigatorCase";
 import Error from "./pages/Error/Error";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Form from "./components/Form/Form";
+import AddEvidence from "./pages/Investigator/InvestigatorForms/AddEvidence/AddEvidence";
 
 function App() {
   const route = createBrowserRouter([
@@ -20,6 +22,8 @@ function App() {
     { path: "/allnews", element: <AllNews /> },
     { path: "/investigator-stats", element: <InvStats /> },
     { path: "/investigator-case", element: <InvCase /> },
+    { path: "/form", element: <Form /> },
+    { path: "/add-evidence", element: <AddEvidence /> },
   ]);
   return (
     <>
