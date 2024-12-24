@@ -27,7 +27,6 @@ const AddEvidence = () => {
           label={"Location of Collection"}
           name={"location"}
           type={"text"}
-          placeholder={"Location"}
         ></Input>
         <Input
           id={"date"}
@@ -41,6 +40,13 @@ const AddEvidence = () => {
           name={"file"}
           type={"file"}
         ></Input>
+
+        <Button
+          type={"submit"}
+          name={"add-evidence"}
+          text={"Add Evidence"}
+          className={"ivestigator-form-button"}
+        ></Button>
       </form>
     </div>
   );
