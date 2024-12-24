@@ -18,6 +18,15 @@ const InvestigatorCase = () => {
     { id: 3, name: "Adnan Ibrahim", imageUrl: suspect },
   ];
 
+  const evidences = [
+    { id: 1, src: evidenceOne },
+    { id: 2, src: evidenceTwo },
+    { id: 3, src: evidenceOne },
+    { id: 4, src: evidenceOne },
+    { id: 5, src: evidenceTwo },
+    { id: 6, src: evidenceOne },
+  ];
+
   return (
     <div className="investigator-case flex column center">
       <div className="investigator-case-header flex">
