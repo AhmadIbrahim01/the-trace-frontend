@@ -10,6 +10,9 @@ import ruler from "../../assets/icons/ruler.svg";
 import location from "../../assets/icons/location.svg";
 import call from "../../assets/icons/call.svg";
 import caribbeanFingerprint from "../../assets/images/caribbean-fingerprint.svg";
+import suspectLeft from "../../assets/images/suspect-left.svg";
+import suspectFront from "../../assets/images/suspect-front.svg";
+import suspectRight from "../../assets/images/suspect-right.svg";
 
 const Modal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
@@ -33,7 +36,8 @@ const Modal = ({ isOpen, onClose, data }) => {
           <div className="suspect-data-container flex column">
             <div className="suspect-data flex">
               <img src={user} alt="" />
-              <p>Name: John Doe</p>
+
+              <p>Name: {suspects[data - 1].name}</p>
             </div>
             <div className="suspect-data flex">
               <img src={calendar} alt="" />
@@ -62,29 +66,28 @@ const Modal = ({ isOpen, onClose, data }) => {
         </div>
 
         <div className="suspect-profile-body">
-          <div>
-            <div>
-              <img src="" alt="" />
-              <p>Height/Weight: 175cm/77kg</p>
+          <div className="suspect-map flex center">
+            <div className="suspect-data flex ">
+              <img src={location} alt="" />
+              <p>
+                Full address: ST New York, 1254k street, close to Baked Goodees
+              </p>
             </div>
             <button>View on map</button>
           </div>
-          <div>
-            <img src="" alt="" />
+          <div className="suspect-data flex">
+            <img src={call} alt="" />
             <p>Phone: +96176468212</p>
           </div>
-          <div>
+          <div className="suspect-images">
             <h3>images:</h3>
-            <div>
-              <img src="" alt="" />
-              <img src="" alt="" />
-              <img src="" alt="" />
+            <div className="suspect-images-container flex center wrap">
+              <img src={suspectLeft} alt="" />
+              <img src={suspectFront} alt="" />
+              <img src={suspectRight} alt="" />
             </div>
           </div>
         </div>
-
-        <p>{suspects[data - 1].name}</p>
-        <button onClick={onClose}>Close</button>
       </div>
     </div>
   );
