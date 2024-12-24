@@ -1,6 +1,7 @@
 import React from "react";
 import "./UserProfileModal.css";
 import suspect from "../../assets/images/suspect.svg";
+import edit from "../../assets/icons/edit.svg";
 
 const Modal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
@@ -15,13 +16,13 @@ const Modal = ({ isOpen, onClose, data }) => {
           <button>Edit</button>
         </div>
         <div className="user-profile-image flex column center">
-          <button>
+          <button className="user-profile-button">
             <img src={suspect} alt="" />
           </button>
-          <h2>{author}</h2>
-          <button>
-            <img src="" alt="" />
+          <button className="user-profile-edit">
+            <img src={edit} alt="" />
           </button>
+          <h2>{author}</h2>
         </div>
       </div>
     </div>
