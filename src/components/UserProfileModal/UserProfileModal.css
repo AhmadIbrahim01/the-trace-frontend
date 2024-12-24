@@ -13,7 +13,7 @@
 
 .user-modal-content {
   background-color: #1b1c28;
-  padding: 50px 55px;
+  padding: 40px 45px;
   border-radius: 5px;
   width: 600px;
   height: 700px;
@@ -25,7 +25,7 @@
   margin-bottom: 20px;
 }
 .user-modal-header > h2 {
-  font-size: 30px;
+  font-size: 24px;
   color: white;
   font-family: var(--font-family);
   font-weight: var(--font-weight-semi);
@@ -87,12 +87,39 @@
 }
 
 .user-progress {
-  height: 120px;
+  height: 100px;
   background-color: #141521;
-  padding: 30px;
+  padding: 20px;
   margin-bottom: 20px;
 }
 .user-progress > p {
   font-size: 12px;
+  color: white;
+}
+
+.submitted-tips {
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.submitted-tip {
+  width: 160px;
+  height: 50px;
+  background-color: #141521;
+  gap: 10px;
+}
+.submitted-tip > img {
+  width: 18px;
+  height: 18px;
+}
+.submitted-tip > h3 {
+  font-size: 14px;
+  color: white;
+  font-weight: var(--font-weight-medium);
+}
+
+.accepted-tips {
   color: white;
 }
