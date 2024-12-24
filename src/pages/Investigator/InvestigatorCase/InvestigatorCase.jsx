@@ -12,6 +12,12 @@ const InvestigatorCase = () => {
     { id: 3, name: "Jane Smith", date: "February 10, 2025" },
   ];
 
+  const suspects = [
+    { id: 1, name: "John Doe", imageUrl: suspect },
+    { id: 2, name: "Jane Smith", imageUrl: suspect },
+    { id: 3, name: "Tom Brown", imageUrl: suspect },
+  ];
+
   return (
     <div className="investigator-case flex column center">
       <div className="investigator-case-header flex">
