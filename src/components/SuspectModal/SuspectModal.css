@@ -12,10 +12,29 @@
 }
 
 .modal-content {
-  background-color: white;
-  padding: 20px;
+  background-color: #1b1c28;
+  padding: 50px 55px;
   border-radius: 5px;
   min-width: 746px;
   min-height: 670px;
-  text-align: center;
+  border-radius: 16px;
+}
+
+.suspect-profile-header {
+  justify-content: space-between;
+}
+.suspect-profile-header > h2 {
+  font-size: 30px;
+  color: white;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+}
+.suspect-profile-header > button {
+  width: 160px;
+  height: 40px;
+  color: white;
+  background-color: #0bc1a0;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
 }
