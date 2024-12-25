@@ -74,6 +74,12 @@ const AddSuspect = () => {
           name={"file"}
           type={"file"}
         ></Input>
+        <Button
+          type={"submit"}
+          name={"add-suspect"}
+          text={"Add Suspect"}
+          className={"ivestigator-form-button"}
+        ></Button>
       </form>
     </div>
   );
