@@ -13,7 +13,17 @@ const AddCase = () => {
           label={"Case Title"}
           name={"case"}
           type={"text"}
+          placeholder={"Enter case title"}
         ></Input>
+        <div className="input flex column">
+          <label htmlFor="case-description">Case Description</label>
+          <textarea
+            id="case-description"
+            name="case-description"
+            rows={10}
+            placeholder="Describe the information you want to share..."
+          ></textarea>
+        </div>
       </form>
     </div>
   );
