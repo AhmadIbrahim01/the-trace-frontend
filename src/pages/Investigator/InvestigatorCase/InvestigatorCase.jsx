@@ -6,6 +6,7 @@ import addEvidence from "../../../assets/images/add-evidence.svg";
 import suspect from "../../../assets/images/suspect.svg";
 import Modal from "../../../components/SuspectModal/SuspectModal";
 import StatementModal from "../../../components/StatementModal/StatementModal";
+import { useNavigate } from "react-router-dom";
 
 const InvestigatorCase = () => {
   const statements = [
@@ -52,6 +53,18 @@ const InvestigatorCase = () => {
   const [isStatementModalOpen, setIsStatementModalOpen] = useState(false);
   const [statementModalData, setStatementModalData] = useState("");
 
+  const navigate = useNavigate();
+  const addEvidenceHandler = () => {
+    navigate("/add-evidence");
+  };
+  const addSuspectHandler = () => {
+    navigate("/add-suspect");
+  };
+
+  const AddStatementHandler = () => {
+    navigate("/add-statement");
+  };
+
   const openModal = (data) => {
     setModalData(data);
     setIsModalOpen(true);
@@ -68,8 +81,6 @@ const InvestigatorCase = () => {
   const closeStatementModal = () => {
     setIsStatementModalOpen(false);
   };
-
-  console.log(suspects[1].id);
 
   return (
     <div className="investigator-case flex column center">
@@ -89,7 +100,10 @@ const InvestigatorCase = () => {
                 />
               </button>
             ))}
-            <button className="case-evidence flex center column">
+            <button
+              className="case-evidence flex center column"
+              onClick={addEvidenceHandler}
+            >
               <img className="add-evidence" src={addEvidence} alt="" />
             </button>
           </div>
@@ -97,7 +111,9 @@ const InvestigatorCase = () => {
         <div className="case-suspects flex center column">
           <div className="case-suspects-header flex">
             <h3>Suspects</h3>
-            <button className="flex center">+</button>
+            <button className="flex center" onClick={addSuspectHandler}>
+              +
+            </button>
           </div>
           <div className="case-suspects-body flex center">
             {suspects.map((suspect) => (
@@ -117,7 +133,9 @@ const InvestigatorCase = () => {
         <div className="case-statements flex center column">
           <div className="case-statements-header flex center">
             <h3>Statements</h3>
-            <button className="flex center">+</button>
+            <button className="flex center" onClick={AddStatementHandler}>
+              +
+            </button>
           </div>
           <div className="case-statements-body flex center column">
             {statements.map((statement) => (

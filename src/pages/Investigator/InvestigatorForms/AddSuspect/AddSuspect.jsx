@@ -6,7 +6,7 @@ import "./AddSuspect.css";
 const AddSuspect = () => {
   return (
     <div className="investigator-form-container t-center flex column center">
-      <h1>Add Evidence</h1>
+      <h1>Add Suspect</h1>
       <form>
         <Input
           id={"suspect"}
