@@ -16,6 +16,12 @@ const AddUser = () => {
           type={"text"}
           placeholder={"Enter Full Name"}
         ></Input>
+        <Input
+          id={"email"}
+          label={"Email Address"}
+          name={"email"}
+          type={"email"}
+        ></Input>
       </form>
     </div>
   );
