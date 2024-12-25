@@ -28,6 +28,13 @@ const AddUser = () => {
           name={"password"}
           type={"password"}
         ></Input>
+        <div className="input flex column">
+          <label htmlFor="role">Role</label>
+          <select name="role" id="role">
+            <option value="user">User</option>
+            <option value="investigator">Investigator</option>
+          </select>
+        </div>
       </form>
     </div>
   );
