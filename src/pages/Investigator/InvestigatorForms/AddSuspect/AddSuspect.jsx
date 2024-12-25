@@ -68,6 +68,12 @@ const AddSuspect = () => {
           name={"hair"}
           type={"text"}
         ></Input>
+        <Input
+          id={"file"}
+          label={"Suspect Image"}
+          name={"file"}
+          type={"file"}
+        ></Input>
       </form>
     </div>
   );
