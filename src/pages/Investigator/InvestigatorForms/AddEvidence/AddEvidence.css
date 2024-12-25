@@ -79,3 +79,7 @@
   font-weight: var(--font-weight-semi);
   color: white;
 }
+input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #0bc1a0;
+}

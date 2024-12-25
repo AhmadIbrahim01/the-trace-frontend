@@ -34,6 +34,12 @@ const SubmitTip = () => {
           name={"date"}
           type={"date"}
         ></Input>
+        <div className="input flex column">
+          <label>
+            <input type="checkbox" />I confirm that the information provided is
+            accurate to the best of my knowledge.
+          </label>
+        </div>
       </form>
     </div>
   );
