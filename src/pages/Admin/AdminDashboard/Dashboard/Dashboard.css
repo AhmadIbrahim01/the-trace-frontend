@@ -52,6 +52,10 @@
   background-color: #a9dfd8;
   color: #141521;
 }
+.dashboard-li-clicked > button {
+  background-color: #a9dfd8;
+  color: #141521;
+}
 
 .dashboard-li > button > img {
   width: 20px;
