@@ -97,3 +97,46 @@
   background-color: #21222d;
   border: 1px solid #015949;
 }
+
+.manage-investigator-header {
+  padding: 0% 10%;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.table_component {
+  overflow: auto;
+  width: 90%;
+  border-radius: 12px;
+}
+
+.table_component table {
+  height: 100%;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 1px;
+  text-align: left;
+}
+
+.table_component caption {
+  caption-side: top;
+  text-align: left;
+}
+
+.table_component th {
+  border-bottom: 1px solid #4a4a4a;
+  background-color: #21222d;
+  color: #ffffff;
+  padding: 5px;
+  padding-left: 30px;
+}
+
+.table_component td {
+  border-top: 1px solid #4a4a4a;
+  background-color: #21222d;
+  color: #ddd;
+  padding: 5px;
+  padding-left: 30px;
+  height: auto;
+}
