@@ -44,6 +44,10 @@
   text-align: right;
 }
 
+li {
+  list-style: none;
+}
+
 /* Buttons */
 .primary-btn {
   background-color: var(--caribbean);
