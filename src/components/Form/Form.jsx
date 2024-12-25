@@ -16,13 +16,13 @@ const FormExample = () => {
     }));
   };
 
-  const submitHandler = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={onSubmit}>
       <div>
         <Input
           id="username"
