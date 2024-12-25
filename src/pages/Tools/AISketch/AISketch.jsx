@@ -57,8 +57,13 @@ const AISketch = () => {
 
       <div className="sketch-container flex column center">
         <h1>AI Sketch</h1>
-        <div></div>
-        <button>Save Sketch</button>
+        <div className="ai-sketch"></div>
+        <Button
+          type={"submit"}
+          name={"save-sketch"}
+          text={"Save Sketch"}
+          className={"ai-form-button"}
+        ></Button>
       </div>
     </div>
   );
