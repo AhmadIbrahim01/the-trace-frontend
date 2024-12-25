@@ -17,8 +17,8 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
   background-color: #00000000;
-  color: white;
   width: 300px;
+  color: white;
   display: block;
   margin: auto;
 }
@@ -38,4 +38,5 @@
   font-weight: var(--font-weight-semi);
   color: white;
   margin: 50px 0px;
+  width: 100%;
 }
