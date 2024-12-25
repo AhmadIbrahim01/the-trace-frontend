@@ -7,6 +7,14 @@ const AddSuspect = () => {
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Evidence</h1>
+      <form>
+        <Input
+          id={"suspect"}
+          label={"Suspect Name"}
+          name={"suspect"}
+          type={"text"}
+        ></Input>
+      </form>
     </div>
   );
 };
