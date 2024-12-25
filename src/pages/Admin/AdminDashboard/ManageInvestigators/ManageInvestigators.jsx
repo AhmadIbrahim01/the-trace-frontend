@@ -63,7 +63,7 @@ const ManageInvestigators = () => {
         </ul>
       </div>
       <div className="admin-dashboard-stats flex column center">
-        <div className="manage-investigator-header flex center">
+        <div className="suspect-profile-header manage-investigator-header flex center">
           <h2>Investigator List</h2>
           <button>Add New Investigator</button>
         </div>
