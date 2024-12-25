@@ -22,6 +22,12 @@ const SubmitTip = () => {
           name={"file"}
           type={"file"}
         ></Input>
+        <Input
+          id={"location"}
+          label={"Location of Incident"}
+          name={"location"}
+          type={"text"}
+        ></Input>
       </form>
     </div>
   );
