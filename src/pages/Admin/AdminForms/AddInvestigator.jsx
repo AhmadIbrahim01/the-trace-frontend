@@ -44,6 +44,11 @@ const AddInvestigator = () => {
             text={"Add Investigator"}
             className={"ivestigator-form-button"}
           ></Button>
+          <Button
+            name={"back"}
+            text={"Back to manage investigators"}
+            className={"form-back-button"}
+          ></Button>
         </div>
       </form>
     </div>

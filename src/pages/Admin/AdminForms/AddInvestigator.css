@@ -1,0 +1,9 @@
+.form-back-button {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  background-color: #00000000;
+  color: white;
+  width: 300px;
+  display: block;
+  margin: auto;
+}
