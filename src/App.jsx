@@ -16,6 +16,7 @@ import AddWitness from "./pages/Investigator/InvestigatorForms/AddWitness/AddWit
 import AddSuspect from "./pages/Investigator/InvestigatorForms/AddSuspect/AddSuspect";
 import SubmitTip from "./pages/User/UserForms/SubmitTip/SubmitTip";
 import AddInvestigator from "./pages/Admin/AdminForms/AddInvestigator/AddInvestigator";
+import AddCase from "./pages/Admin/AdminForms/AddCase/AddCase";
 
 function App() {
   const route = createBrowserRouter([
@@ -34,6 +35,7 @@ function App() {
     { path: "/add-suspect", element: <AddSuspect /> },
     { path: "/submit-tip", element: <SubmitTip /> },
     { path: "/add-investigator", element: <AddInvestigator /> },
+    { path: "/add-case", element: <AddCase /> },
   ]);
   return (
     <>
