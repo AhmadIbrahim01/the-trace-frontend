@@ -5,6 +5,22 @@ import dashboardIconOne from "../../../../assets/icons/dashboard-icon.svg";
 import dashboardIconTwo from "../../../../assets/icons/dashboard-icon-2.svg";
 
 const ManageInvestigators = () => {
+  const tableData = [
+    {
+      id: 1,
+      name: "Ahmad",
+      email: "ahmad@gmail.com",
+      phone: "76468212",
+      caseHandled: "50",
+    },
+    {
+      id: 2,
+      name: "Ahmad",
+      email: "ahmad@gmail.com",
+      phone: "76468212",
+      caseHandled: "50",
+    },
+  ];
   return (
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
@@ -38,6 +54,42 @@ const ManageInvestigators = () => {
             </button>
           </li>
         </ul>
+      </div>
+      <div className="admin-dashboard-stats flex column center">
+        <div className="manage-investigator-header flex center">
+          <h2>Investigator List</h2>
+          <button>Add New Investigator</button>
+        </div>
+        <div className="table_component">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Case Handled</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.map((row, index) => (
+                <tr key={index}>
+                  <td>{row.id}</td>
+                  <td>{row.name}</td>
+                  <td>{row.email}</td>
+                  <td>{row.phone}</td>
+                  <td>{row.caseHandled}</td>
+                  <td>
+                    {/* You can replace this with real actions like buttons */}
+                    <button>Edit</button>
+                    <button>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
