@@ -64,6 +64,12 @@ const AddCase = () => {
               Private
             </label>
           </div>
+          <Button
+            type={"submit"}
+            name={"add-case"}
+            text={"Add Case"}
+            className={"admin-form-button"}
+          ></Button>
         </div>
       </form>
     </div>
