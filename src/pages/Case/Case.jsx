@@ -20,6 +20,7 @@ import filterImage from "../../assets/icons/comments-filter.svg";
 import like from "../../assets/icons/like.svg";
 import dislike from "../../assets/icons/dislike.svg";
 import UserProfileModal from "../../components/UserProfileModal/UserProfileModal";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => (
   <div className="case-hero flex center column">
@@ -129,17 +130,25 @@ const CaseDescription = () => (
   </div>
 );
 
-const TipSubmission = () => (
-  <div className="tip-section flex center column">
-    <h1 className="tip-h1">The Case Tip Submission</h1>
-    <p className="tip-p">
-      Do you have a clue? Submit a tip to help for investigations
-    </p>
-    <button className="tip-button">Tip Page</button>
-    <img className="left-hand" src={leftHand} alt="" />
-    <img className="right-hand" src={rightHand} alt="" />
-  </div>
-);
+const TipSubmission = () => {
+  const navigate = useNavigate();
+  const submitTipHandler = () => {
+    navigate("/submit-tip");
+  };
+  return (
+    <div className="tip-section flex center column">
+      <h1 className="tip-h1">The Case Tip Submission</h1>
+      <p className="tip-p">
+        Do you have a clue? Submit a tip to help for investigations
+      </p>
+      <button className="tip-button" onClick={submitTipHandler}>
+        Tip Page
+      </button>
+      <img className="left-hand" src={leftHand} alt="" />
+      <img className="right-hand" src={rightHand} alt="" />
+    </div>
+  );
+};
 
 const CommentsSection = () => (
   <div className="comments-section">
