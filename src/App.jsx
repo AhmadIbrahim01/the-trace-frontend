@@ -23,6 +23,7 @@ import ManageInvestigators from "./pages/Admin/AdminDashboard/ManageInvestigator
 import ManageCases from "./pages/Admin/AdminDashboard/ManageCases/ManageCases";
 import ManageUsers from "./pages/Admin/AdminDashboard/ManageUsers/ManageUsers";
 import AISketch from "./pages/Tools/AISketch/AISketch";
+import AIStatement from "./pages/Tools/AIStatement/AIStatement";
 
 function App() {
   const route = createBrowserRouter([
@@ -48,6 +49,7 @@ function App() {
     { path: "/manage-cases", element: <ManageCases /> },
     { path: "/manage-users", element: <ManageUsers /> },
     { path: "/ai-sketch", element: <AISketch /> },
+    { path: "/ai-statement", element: <AIStatement /> },
   ]);
   return (
     <>
