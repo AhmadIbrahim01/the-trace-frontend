@@ -12,6 +12,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Form from "./components/Form/Form";
 import AddEvidence from "./pages/Investigator/InvestigatorForms/AddEvidence/AddEvidence";
 import AddStatement from "./pages/Investigator/InvestigatorForms/AddStatement/AddStatement";
+import AddWitness from "./pages/Investigator/InvestigatorForms/AddWitness/AddWitness";
 
 function App() {
   const route = createBrowserRouter([
@@ -26,6 +27,7 @@ function App() {
     { path: "/form", element: <Form /> },
     { path: "/add-evidence", element: <AddEvidence /> },
     { path: "/add-statement", element: <AddStatement /> },
+    { path: "/add-witness", element: <AddWitness /> },
   ]);
   return (
     <>
