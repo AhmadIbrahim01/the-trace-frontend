@@ -7,6 +7,16 @@ const AddUser = () => {
   return (
     <div className="admin-form-container t-center flex column center">
       <h1>Add User</h1>
+
+      <form>
+        <Input
+          id={"name"}
+          label={"Full Name"}
+          name={"name"}
+          type={"text"}
+          placeholder={"Enter Full Name"}
+        ></Input>
+      </form>
     </div>
   );
 };
