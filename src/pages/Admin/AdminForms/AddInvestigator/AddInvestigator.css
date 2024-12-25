@@ -1,3 +1,18 @@
+.admin-form-container {
+  padding: 5% 10%;
+}
+
+.admin-form-container > h1 {
+  font-size: 60px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 30px;
+}
+
 .form-back-button {
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);

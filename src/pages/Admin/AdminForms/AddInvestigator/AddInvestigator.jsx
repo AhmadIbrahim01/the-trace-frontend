@@ -4,7 +4,7 @@ import Button from "../../../../components/Button/Button";
 import "./AddInvestigator.css";
 const AddInvestigator = () => {
   return (
-    <div className="investigator-form-container t-center flex column center">
+    <div className="admin-form-container t-center flex column center">
       <h1>Add Investigator</h1>
       <form>
         <Input
