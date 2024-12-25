@@ -43,6 +43,9 @@ const ManageUsers = () => {
   const navigateToCases = () => {
     navigate("/manage-cases");
   };
+  const addUser = () => {
+    navigate("/add-user");
+  };
   return (
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
@@ -70,7 +73,7 @@ const ManageUsers = () => {
       <div className="admin-dashboard-stats flex column center">
         <div className="suspect-profile-header manage-investigator-header flex center">
           <h2>Users List</h2>
-          <button>Add New User</button>
+          <button onClick={addUser}>Add New User</button>
         </div>
         <div className="table_component">
           <table>
