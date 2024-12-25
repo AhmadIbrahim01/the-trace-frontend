@@ -31,6 +31,21 @@ const AISketch = () => {
             rows={10}
           ></textarea>
         </div>
+
+        <div className="sketch-input flex column">
+          <label htmlFor="additional">Additional Features</label>
+          <textarea
+            id="additional"
+            name="additional"
+            placeholder="e.g., scars, tattoos, hair type"
+            rows={10}
+          ></textarea>
+        </div>
+
+        <div className="sketch-input sketch-input-file flex column">
+          <label htmlFor="photo">Upload Photo</label>
+          <input id="photo" name="photo" type="file" />
+        </div>
       </form>
 
       <div className="sketch-container flex column center">

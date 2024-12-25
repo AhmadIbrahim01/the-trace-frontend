@@ -54,6 +54,11 @@
   outline: none;
   color: #0bc1a0;
 }
+
+.sketch-input-file > input {
+  padding-top: 30px;
+}
+
 .sketch-input > textarea {
   margin-top: 15px;
   margin-bottom: 25px;
