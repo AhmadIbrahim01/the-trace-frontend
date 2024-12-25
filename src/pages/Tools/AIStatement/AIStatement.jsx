@@ -43,6 +43,16 @@ const AIStatement = () => {
           className={"admin-form-button"}
         ></Button>
       </form>
+
+      <div className="statement-analysis-container flex center column">
+        <div className="statement-container"></div>
+        <h2>Insights Provided</h2>
+        <p>
+          Sentiment Analysis: Understand the emotional tone of the statement.
+        </p>
+        <p>Key Entities: Identify people, places, and objects mentioned</p>
+        <p>Inconsistencies: Detect possible contradictions or mismatches.</p>
+      </div>
     </div>
   );
 };
