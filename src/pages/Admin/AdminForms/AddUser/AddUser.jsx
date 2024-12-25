@@ -49,6 +49,11 @@ const AddUser = () => {
           text={"Add User"}
           className={"admin-form-button"}
         ></Button>
+        <Button
+          name={"back"}
+          text={"Back to manage users"}
+          className={"form-back-button"}
+        ></Button>
       </form>
     </div>
   );
