@@ -44,6 +44,12 @@ const AddCase = () => {
               <option value="closed">Close</option>
             </select>
           </div>
+          <Input
+            id={"file"}
+            label={"Upload Case Image"}
+            name={"file"}
+            type={"file"}
+          ></Input>
         </div>
       </form>
     </div>
