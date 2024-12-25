@@ -21,6 +21,13 @@ const AddSuspect = () => {
           type={"text"}
         ></Input>
         <Input id={"age"} label={"Age"} name={"age"} type={"number"}></Input>
+        <div className="input flex column">
+          <label htmlFor="gender">Gender</label>
+          <select name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
       </form>
     </div>
   );
