@@ -62,6 +62,7 @@
   flex: 1;
   justify-content: flex-start;
   padding-top: 5%;
+  gap: 27px;
 }
 .dashboard-cards {
   width: 100%;
@@ -71,6 +72,27 @@
 .dashboard-card {
   width: 250px;
   height: 250px;
+  border-radius: 12px;
+  background-color: #21222d;
+  border: 1px solid #015949;
+}
+.dashboard-card > p,
+.dashboard-card > h1 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+}
+.dashboard-card > p {
+  font-size: 18px;
+  color: white;
+}
+.dashboard-card > h1 {
+  font-size: 100px;
+  color: #0bc1a0;
+}
+
+.dashboard-chart {
+  width: 1082px;
+  height: 300px;
   border-radius: 12px;
   background-color: #21222d;
   border: 1px solid #015949;

@@ -46,19 +46,19 @@ const Dashboard = () => {
             <h1>8</h1>
           </div>
           <div className="dashboard-card flex center column">
-            <p>Active Cases</p>
-            <h1>8</h1>
+            <p>Total Investigators</p>
+            <h1>10</h1>
           </div>
           <div className="dashboard-card flex center column">
-            <p>Active Cases</p>
-            <h1>8</h1>
+            <p>Tools in Use</p>
+            <h1>3</h1>
           </div>
           <div className="dashboard-card flex center column">
-            <p>Active Cases</p>
-            <h1>8</h1>
+            <p>Resolved Cases</p>
+            <h1>50</h1>
           </div>
         </div>
-        <div></div>
+        <div className="dashboard-chart"></div>
       </div>
     </div>
   );
