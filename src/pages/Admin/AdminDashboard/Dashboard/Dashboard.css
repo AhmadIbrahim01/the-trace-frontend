@@ -9,6 +9,10 @@
   border-right: 1px solid #4d4d4d;
 }
 
+.admin-profile {
+  background-color: #00000000;
+}
+
 .admin-profile > img {
   height: 100px;
   width: 100px;
@@ -24,4 +28,32 @@
   -webkit-background-clip: text;
   color: transparent;
   margin-bottom: 40px;
+}
+
+.dashboard-li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboard-li > button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 248px;
+  height: 76px;
+  background-color: #141521;
+  color: #a9dfd8;
+  margin-bottom: 20px;
+  text-align: left;
+  padding-left: 25px;
+  gap: 20px;
+}
+.dashboard-li > button:focus {
+  background-color: #a9dfd8;
+  color: #141521;
+}
+
+.dashboard-li > button > img {
+  width: 20px;
+  height: 20px;
 }
