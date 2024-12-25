@@ -70,6 +70,11 @@ const AddCase = () => {
             text={"Add Case"}
             className={"admin-form-button"}
           ></Button>
+          <Button
+            name={"back"}
+            text={"Back to manage cases"}
+            className={"form-back-button"}
+          ></Button>
         </div>
       </form>
     </div>
