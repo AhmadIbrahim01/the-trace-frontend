@@ -18,7 +18,21 @@ const AISketch = () => {
             placeholder="Enter suspect name"
           />
         </div>
+        <div className="sketch-input flex column">
+          <label htmlFor="age">Age</label>
+          <input id="age" name="age" type="number" placeholder="Enter age" />
+        </div>
+        <div className="sketch-input flex column">
+          <label htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Provide a detailed description"
+            rows={10}
+          ></textarea>
+        </div>
       </form>
+
       <div className="sketch-container flex column center">
         <h1>AI Sketch</h1>
         <div></div>
