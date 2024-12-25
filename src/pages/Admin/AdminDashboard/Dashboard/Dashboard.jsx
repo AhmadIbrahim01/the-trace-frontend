@@ -5,6 +5,15 @@ import dashboardIconOne from "../../../../assets/icons/dashboard-icon.svg";
 import dashboardIconTwo from "../../../../assets/icons/dashboard-icon-2.svg";
 
 const Dashboard = () => {
+  const adminDashboardStats = {
+    active: 8,
+    investigators: 10,
+    tools: 3,
+    resolvedCases: 50,
+  };
+
+  const { active, investigators, tools, resolvedCases } = adminDashboardStats;
+
   return (
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
@@ -43,19 +52,19 @@ const Dashboard = () => {
         <div className="dashboard-cards flex center">
           <div className="dashboard-card flex center column">
             <p>Active Cases</p>
-            <h1>8</h1>
+            <h1>{active}</h1>
           </div>
           <div className="dashboard-card flex center column">
             <p>Total Investigators</p>
-            <h1>10</h1>
+            <h1>{investigators}</h1>
           </div>
           <div className="dashboard-card flex center column">
             <p>Tools in Use</p>
-            <h1>3</h1>
+            <h1>{tools}</h1>
           </div>
           <div className="dashboard-card flex center column">
             <p>Resolved Cases</p>
-            <h1>50</h1>
+            <h1>{resolvedCases}</h1>
           </div>
         </div>
         <div className="dashboard-chart"></div>
