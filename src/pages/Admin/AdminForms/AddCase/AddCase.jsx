@@ -31,6 +31,12 @@ const AddCase = () => {
               <option value="low">Low</option>
             </select>
           </div>
+          <div className="input flex column">
+            <label htmlFor="assigned-investigaror">Assigned Investigator</label>
+            <select name="assigned-investigaror" id="assigned-investigaror">
+              <option value="ahmad">Ahmad</option>
+            </select>
+          </div>
         </div>
       </form>
     </div>
