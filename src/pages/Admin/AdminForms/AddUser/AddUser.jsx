@@ -22,6 +22,12 @@ const AddUser = () => {
           name={"email"}
           type={"email"}
         ></Input>
+        <Input
+          id={"password"}
+          label={"Password"}
+          name={"password"}
+          type={"password"}
+        ></Input>
       </form>
     </div>
   );
