@@ -31,6 +31,14 @@ const AddInvestigator = () => {
           name={"profile"}
           type={"file"}
         ></Input>
+        <div className="input flex column">
+          <label htmlFor="note">Additional Notes</label>
+          <textarea
+            id="note"
+            placeholder="Describe the information you want to share..."
+            name="note"
+          ></textarea>
+        </div>
       </form>
     </div>
   );
