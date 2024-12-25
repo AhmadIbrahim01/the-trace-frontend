@@ -50,6 +50,12 @@ const AddSuspect = () => {
           name={"height"}
           type={"number"}
         ></Input>
+        <Input
+          id={"weight"}
+          label={"Weight (kg)"}
+          name={"weight"}
+          type={"number"}
+        ></Input>
       </form>
     </div>
   );
