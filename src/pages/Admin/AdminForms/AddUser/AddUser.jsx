@@ -2,6 +2,7 @@ import React from "react";
 import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
 import "./AddUser.css";
+import "../AddInvestigator/AddInvestigator";
 
 const AddUser = () => {
   return (
@@ -42,6 +43,12 @@ const AddUser = () => {
             <option value="inactive">inactive</option>
           </select>
         </div>
+        <Button
+          type={"submit"}
+          name={"add-user"}
+          text={"Add User"}
+          className={"admin-form-button"}
+        ></Button>
       </form>
     </div>
   );
