@@ -14,6 +14,12 @@ const AddEvidence = () => {
           name={"witness"}
           type={"text"}
         ></Input>
+        <Input
+          id={"date"}
+          label={"Date of Statement"}
+          name={"date"}
+          type={"date"}
+        ></Input>
       </form>
     </div>
   );
