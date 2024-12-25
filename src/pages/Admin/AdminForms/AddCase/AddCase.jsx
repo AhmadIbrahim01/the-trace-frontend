@@ -2,8 +2,13 @@ import React from "react";
 import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
 import "./AddCase.css";
+import { useNavigate } from "react-router-dom";
 
 const AddCase = () => {
+  const navigate = useNavigate();
+  const backTo = () => {
+    navigate("/manage-cases");
+  };
   return (
     <div className="admin-form-container t-center flex column center">
       <h1>Add Case</h1>
@@ -74,6 +79,8 @@ const AddCase = () => {
             name={"back"}
             text={"Back to manage cases"}
             className={"form-back-button"}
+            type={"button"}
+            onClick={backTo}
           ></Button>
         </div>
       </form>
