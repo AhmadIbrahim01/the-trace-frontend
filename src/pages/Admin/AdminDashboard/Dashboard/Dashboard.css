@@ -102,6 +102,22 @@
   padding: 0% 5%;
   width: 100%;
   justify-content: space-between;
+  margin-bottom: 0px;
+}
+
+.manage-investigator-header > button {
+  width: 250px;
+  height: 60px;
+  font-size: 18px;
+}
+.manage-investigator-header > h2 {
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .table_component {
