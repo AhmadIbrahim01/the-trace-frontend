@@ -35,6 +35,13 @@ const AddUser = () => {
             <option value="investigator">Investigator</option>
           </select>
         </div>
+        <div className="input flex column">
+          <label htmlFor="status">Status</label>
+          <select name="status" id="status">
+            <option value="active">Active</option>
+            <option value="inactive">inactive</option>
+          </select>
+        </div>
       </form>
     </div>
   );
