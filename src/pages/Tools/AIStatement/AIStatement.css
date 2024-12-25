@@ -1,0 +1,21 @@
+.investigator-form-container > form > h1 {
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 25px;
+}
+
+.investigator-form-container > p {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: 18px;
+  color: var(--text-color);
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
