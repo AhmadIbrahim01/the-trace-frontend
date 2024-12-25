@@ -28,6 +28,12 @@ const SubmitTip = () => {
           name={"location"}
           type={"text"}
         ></Input>
+        <Input
+          id={"date"}
+          label={"Date of Incident"}
+          name={"date"}
+          type={"date"}
+        ></Input>
       </form>
     </div>
   );
