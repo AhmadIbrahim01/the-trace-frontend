@@ -19,6 +19,12 @@ const AddInvestigator = () => {
           name={"email"}
           type={"email"}
         ></Input>
+        <Input
+          id={"phone"}
+          label={"Phone Number"}
+          name={"phone"}
+          type={"number"}
+        ></Input>
       </form>
     </div>
   );
