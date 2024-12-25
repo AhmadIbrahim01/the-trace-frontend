@@ -3,7 +3,7 @@ import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
 import "./AddStatement.css";
 
-const AddEvidence = () => {
+const AddStatement = () => {
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Statement</h1>
@@ -43,4 +43,4 @@ const AddEvidence = () => {
   );
 };
 
-export default AddEvidence;
+export default AddStatement;
