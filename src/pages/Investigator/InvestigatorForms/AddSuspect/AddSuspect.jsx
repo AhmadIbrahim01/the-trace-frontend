@@ -56,6 +56,12 @@ const AddSuspect = () => {
           name={"weight"}
           type={"number"}
         ></Input>
+        <Input
+          id={"eye"}
+          label={"Eye Color"}
+          name={"eye"}
+          type={"text"}
+        ></Input>
       </form>
     </div>
   );
