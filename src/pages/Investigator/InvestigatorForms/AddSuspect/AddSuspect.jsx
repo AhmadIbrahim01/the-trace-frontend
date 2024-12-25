@@ -34,6 +34,10 @@ const AddSuspect = () => {
           name={"address"}
           type={"text"}
         ></Input>
+        <div className="input flex column">
+          <label htmlFor="crime">Crime Involved</label>
+          <textarea id="crime" name="crime" rows={5}></textarea>
+        </div>
       </form>
     </div>
   );
