@@ -34,6 +34,10 @@ const AddWitness = () => {
           name={"address"}
           type={"text"}
         ></Input>
+        <div className="input flex column">
+          <label htmlFor="statement">Witness Statement</label>
+          <textarea id="statement" name="statement" rows={10}></textarea>
+        </div>
       </form>
     </div>
   );
