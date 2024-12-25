@@ -71,3 +71,21 @@
   outline: none;
   color: #0bc1a0;
 }
+
+.ai-form-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  height: 80px;
+  background: #0bc1a0;
+  border-radius: 6px;
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  color: white;
+  margin: 50px 0px;
+  width: 413px;
+}

@@ -46,6 +46,13 @@ const AISketch = () => {
           <label htmlFor="photo">Upload Photo</label>
           <input id="photo" name="photo" type="file" />
         </div>
+
+        <Button
+          type={"submit"}
+          name={"generate-sketch"}
+          text={"Generate Sketch"}
+          className={"ai-form-button"}
+        ></Button>
       </form>
 
       <div className="sketch-container flex column center">
