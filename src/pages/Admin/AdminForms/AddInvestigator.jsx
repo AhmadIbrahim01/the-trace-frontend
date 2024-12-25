@@ -42,7 +42,7 @@ const AddInvestigator = () => {
             type={"submit"}
             name={"add-investigator"}
             text={"Add Investigator"}
-            className={"ivestigator-form-button"}
+            className={"admin-form-button"}
           ></Button>
           <Button
             name={"back"}
