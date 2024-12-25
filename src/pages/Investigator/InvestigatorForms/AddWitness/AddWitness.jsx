@@ -7,6 +7,14 @@ const AddWitness = () => {
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Witness</h1>
+      <form>
+        <Input
+          id={"witness"}
+          label={"Witness Name"}
+          name={"witness"}
+          type={"text"}
+        ></Input>
+      </form>
     </div>
   );
 };
