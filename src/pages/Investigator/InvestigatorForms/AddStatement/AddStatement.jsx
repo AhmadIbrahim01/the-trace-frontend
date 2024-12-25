@@ -31,6 +31,13 @@ const AddEvidence = () => {
           name={"file"}
           type={"file"}
         ></Input>
+
+        <Button
+          type={"submit"}
+          name={"add-statement"}
+          text={"Add Statement"}
+          className={"ivestigator-form-button"}
+        ></Button>
       </form>
     </div>
   );
