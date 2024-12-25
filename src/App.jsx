@@ -19,6 +19,7 @@ import AddInvestigator from "./pages/Admin/AdminForms/AddInvestigator/AddInvesti
 import AddCase from "./pages/Admin/AdminForms/AddCase/AddCase";
 import AddUser from "./pages/Admin/AdminForms/AddUser/AddUser";
 import AdminDashboard from "./pages/Admin/AdminDashboard/Dashboard/Dashboard";
+import ManageInvestigators from "./pages/Admin/AdminDashboard/ManageInvestigators/ManageInvestigators";
 
 function App() {
   const route = createBrowserRouter([
@@ -40,6 +41,7 @@ function App() {
     { path: "/add-case", element: <AddCase /> },
     { path: "/add-user", element: <AddUser /> },
     { path: "/admin-dashboard", element: <AdminDashboard /> },
+    { path: "/manage-investigators", element: <ManageInvestigators /> },
   ]);
   return (
     <>
