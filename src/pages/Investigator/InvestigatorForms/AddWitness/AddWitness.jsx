@@ -45,6 +45,12 @@ const AddWitness = () => {
           name={"location"}
           type={"text"}
         ></Input>
+        <Button
+          type={"submit"}
+          name={"add-witness"}
+          text={"Add Witness"}
+          className={"ivestigator-form-button"}
+        ></Button>
       </form>
     </div>
   );
