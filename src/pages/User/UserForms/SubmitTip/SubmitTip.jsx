@@ -1,5 +1,7 @@
 import React from "react";
-
+import Input from "../../../../components/Input/Input";
+import Button from "../../../../components/Button/Button";
+import "./SubmitTip.css";
 const SubmitTip = () => {
   return (
     <div className="investigator-form-container t-center flex column center">
@@ -14,6 +16,12 @@ const SubmitTip = () => {
             rows={10}
           ></textarea>
         </div>
+        <Input
+          id={"file"}
+          label={"Upload Supporting Evidence"}
+          name={"file"}
+          type={"file"}
+        ></Input>
       </form>
     </div>
   );
