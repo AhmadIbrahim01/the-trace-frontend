@@ -25,6 +25,12 @@ const AddInvestigator = () => {
           name={"phone"}
           type={"number"}
         ></Input>
+        <Input
+          id={"profile"}
+          label={"Profile Picture"}
+          name={"profile"}
+          type={"file"}
+        ></Input>
       </form>
     </div>
   );
