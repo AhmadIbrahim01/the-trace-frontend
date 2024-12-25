@@ -62,6 +62,12 @@ const AddSuspect = () => {
           name={"eye"}
           type={"text"}
         ></Input>
+        <Input
+          id={"hair"}
+          label={"Hair Color"}
+          name={"hair"}
+          type={"text"}
+        ></Input>
       </form>
     </div>
   );
