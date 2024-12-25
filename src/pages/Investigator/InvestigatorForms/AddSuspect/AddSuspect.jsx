@@ -44,6 +44,12 @@ const AddSuspect = () => {
           name={"occupation"}
           type={"text"}
         ></Input>
+        <Input
+          id={"height"}
+          label={"Height (cm)"}
+          name={"height"}
+          type={"number"}
+        ></Input>
       </form>
     </div>
   );
