@@ -57,3 +57,21 @@
   width: 20px;
   height: 20px;
 }
+
+.admin-dashboard-stats {
+  flex: 1;
+  justify-content: flex-start;
+  padding-top: 5%;
+}
+.dashboard-cards {
+  width: 100%;
+  padding: 0px 40px;
+  gap: 27px;
+}
+.dashboard-card {
+  width: 250px;
+  height: 250px;
+  border-radius: 12px;
+  background-color: #21222d;
+  border: 1px solid #015949;
+}

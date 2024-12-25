@@ -39,7 +39,27 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-      <div></div>
+      <div className="admin-dashboard-stats flex column center">
+        <div className="dashboard-cards flex center">
+          <div className="dashboard-card flex center column">
+            <p>Active Cases</p>
+            <h1>8</h1>
+          </div>
+          <div className="dashboard-card flex center column">
+            <p>Active Cases</p>
+            <h1>8</h1>
+          </div>
+          <div className="dashboard-card flex center column">
+            <p>Active Cases</p>
+            <h1>8</h1>
+          </div>
+          <div className="dashboard-card flex center column">
+            <p>Active Cases</p>
+            <h1>8</h1>
+          </div>
+        </div>
+        <div></div>
+      </div>
     </div>
   );
 };
