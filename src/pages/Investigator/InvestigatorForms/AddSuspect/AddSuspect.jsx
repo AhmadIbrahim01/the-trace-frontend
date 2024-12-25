@@ -38,6 +38,12 @@ const AddSuspect = () => {
           <label htmlFor="crime">Crime Involved</label>
           <textarea id="crime" name="crime" rows={5}></textarea>
         </div>
+        <Input
+          id={"occupation"}
+          label={"Occupation"}
+          name={"occupation"}
+          type={"text"}
+        ></Input>
       </form>
     </div>
   );
