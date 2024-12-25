@@ -20,6 +20,7 @@ const AddSuspect = () => {
           name={"contact"}
           type={"text"}
         ></Input>
+        <Input id={"age"} label={"Age"} name={"age"} type={"number"}></Input>
       </form>
     </div>
   );
