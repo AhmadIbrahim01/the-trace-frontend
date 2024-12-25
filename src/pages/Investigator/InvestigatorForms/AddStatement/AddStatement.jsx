@@ -20,6 +20,10 @@ const AddEvidence = () => {
           name={"date"}
           type={"date"}
         ></Input>
+        <div className="input flex column">
+          <label htmlFor="statement">Statement</label>
+          <textarea id="statement" name="statement" rows={10}></textarea>
+        </div>
       </form>
     </div>
   );
