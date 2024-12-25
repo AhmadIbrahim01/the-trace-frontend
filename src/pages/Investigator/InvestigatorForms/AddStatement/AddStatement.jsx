@@ -24,6 +24,13 @@ const AddEvidence = () => {
           <label htmlFor="statement">Statement</label>
           <textarea id="statement" name="statement" rows={10}></textarea>
         </div>
+
+        <Input
+          id={"file"}
+          label={"Upload Photo"}
+          name={"file"}
+          type={"file"}
+        ></Input>
       </form>
     </div>
   );
