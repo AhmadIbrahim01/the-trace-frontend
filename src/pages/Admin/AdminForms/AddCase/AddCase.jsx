@@ -37,6 +37,13 @@ const AddCase = () => {
               <option value="ahmad">Ahmad</option>
             </select>
           </div>
+          <div className="input flex column">
+            <label htmlFor="case-status">Case Status</label>
+            <select name="case-status" id="case-status">
+              <option value="opened">Open</option>
+              <option value="closed">Close</option>
+            </select>
+          </div>
         </div>
       </form>
     </div>
