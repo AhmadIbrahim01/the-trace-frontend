@@ -3,8 +3,13 @@ import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
 import "./AddUser.css";
 import "../AddInvestigator/AddInvestigator";
+import { useNavigate } from "react-router-dom";
 
 const AddUser = () => {
+  const navigate = useNavigate();
+  const backTo = () => {
+    navigate("/manage-users");
+  };
   return (
     <div className="admin-form-container t-center flex column center">
       <h1>Add User</h1>
@@ -53,6 +58,8 @@ const AddUser = () => {
           name={"back"}
           text={"Back to manage users"}
           className={"form-back-button"}
+          type={"button"}
+          onClick={backTo}
         ></Button>
       </form>
     </div>
