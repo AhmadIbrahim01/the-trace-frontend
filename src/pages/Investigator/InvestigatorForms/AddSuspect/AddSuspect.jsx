@@ -28,6 +28,12 @@ const AddSuspect = () => {
             <option value="female">Female</option>
           </select>
         </div>
+        <Input
+          id={"address"}
+          label={"Address"}
+          name={"address"}
+          type={"text"}
+        ></Input>
       </form>
     </div>
   );
