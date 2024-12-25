@@ -23,6 +23,14 @@ const AddCase = () => {
             rows={10}
             placeholder="Describe the information you want to share..."
           ></textarea>
+          <div className="input flex column">
+            <label htmlFor="priority">Case Priority</label>
+            <select name="priority" id="priority">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
         </div>
       </form>
     </div>
