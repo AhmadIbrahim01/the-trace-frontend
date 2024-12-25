@@ -3,6 +3,7 @@ import "./ManageCases.css";
 import adminImage from "../../../../assets/images/suspect.svg";
 import dashboardIconOne from "../../../../assets/icons/dashboard-icon.svg";
 import dashboardIconTwo from "../../../../assets/icons/dashboard-icon-2.svg";
+import { useNavigate } from "react-router-dom";
 
 const ManageCases = () => {
   const tableData = [
@@ -28,6 +29,20 @@ const ManageCases = () => {
       updated: "01/03/2024",
     },
   ];
+
+  const navigate = useNavigate();
+  const navigateToDashboard = () => {
+    navigate("/admin-dashboard");
+  };
+  const navigateToInvestigators = () => {
+    navigate("/manage-investigators");
+  };
+  const navigateToUsers = () => {
+    navigate("/manage-users");
+  };
+  const navigateToCases = () => {
+    navigate("/manage-cases");
+  };
   return (
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
@@ -37,28 +52,18 @@ const ManageCases = () => {
         </button>
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li">
-            <button>
-              <img src={dashboardIconOne} alt="" />
-              Dashboard
-            </button>
+            <button onClick={navigateToDashboard}>Dashboard</button>
           </li>
           <li className="dashboard-li">
-            <button>
-              <img src={dashboardIconTwo} alt="" />
+            <button onClick={navigateToInvestigators}>
               Manage Investigators
             </button>
           </li>
-          <li className="dashboard-li">
-            <button>
-              <img src={dashboardIconTwo} alt="" />
-              Manage Cases
-            </button>
+          <li className="dashboard-li dashboard-li-clicked">
+            <button onClick={navigateToCases}>Manage Cases</button>
           </li>
           <li className="dashboard-li">
-            <button>
-              <img src={dashboardIconTwo} alt="" />
-              Manage Tools
-            </button>
+            <button onClick={navigateToUsers}>Manage Users</button>
           </li>
         </ul>
       </div>
