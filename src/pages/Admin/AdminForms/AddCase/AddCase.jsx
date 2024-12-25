@@ -44,12 +44,26 @@ const AddCase = () => {
               <option value="closed">Close</option>
             </select>
           </div>
-          <Input
-            id={"file"}
-            label={"Upload Case Image"}
-            name={"file"}
-            type={"file"}
-          ></Input>
+          <div className="radio-group">
+            <label>
+              <input
+                type="radio"
+                name="visibility"
+                value="public"
+                checked={"public"}
+              />
+              Public
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="visibility"
+                value="private"
+                checked={"private"}
+              />
+              Private
+            </label>
+          </div>
         </div>
       </form>
     </div>
