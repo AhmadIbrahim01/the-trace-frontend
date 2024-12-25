@@ -38,6 +38,12 @@ const AddInvestigator = () => {
             placeholder="Describe the information you want to share..."
             name="note"
           ></textarea>
+          <Button
+            type={"submit"}
+            name={"add-investigator"}
+            text={"Add Investigator"}
+            className={"ivestigator-form-button"}
+          ></Button>
         </div>
       </form>
     </div>
