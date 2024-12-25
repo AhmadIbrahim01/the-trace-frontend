@@ -20,6 +20,13 @@ const ManageInvestigators = () => {
       phone: "76468212",
       caseHandled: "50",
     },
+    {
+      id: 3,
+      name: "Ahmad",
+      email: "ahmad@gmail.com",
+      phone: "76468212",
+      caseHandled: "50",
+    },
   ];
   return (
     <div className="admin-dashboard flex">
@@ -80,8 +87,7 @@ const ManageInvestigators = () => {
                   <td>{row.email}</td>
                   <td>{row.phone}</td>
                   <td>{row.caseHandled}</td>
-                  <td>
-                    {/* You can replace this with real actions like buttons */}
+                  <td className="table-actions">
                     <button>Edit</button>
                     <button>Delete</button>
                   </td>

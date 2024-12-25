@@ -140,3 +140,19 @@
   padding-left: 30px;
   height: auto;
 }
+
+.table-actions {
+}
+
+.table-actions > button {
+  width: 50px;
+  color: white;
+  font-size: 14px;
+  margin-right: 10px;
+}
+.table-actions > button:nth-child(1) {
+  background-color: green;
+}
+.table-actions > button:nth-child(2) {
+  background-color: red;
+}
