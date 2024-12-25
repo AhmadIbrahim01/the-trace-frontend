@@ -21,6 +21,7 @@ import AddUser from "./pages/Admin/AdminForms/AddUser/AddUser";
 import AdminDashboard from "./pages/Admin/AdminDashboard/Dashboard/Dashboard";
 import ManageInvestigators from "./pages/Admin/AdminDashboard/ManageInvestigators/ManageInvestigators";
 import ManageCases from "./pages/Admin/AdminDashboard/ManageCases/ManageCases";
+import ManageUsers from "./pages/Admin/AdminDashboard/ManageUsers/ManageUsers";
 
 function App() {
   const route = createBrowserRouter([
@@ -44,6 +45,7 @@ function App() {
     { path: "/admin-dashboard", element: <AdminDashboard /> },
     { path: "/manage-investigators", element: <ManageInvestigators /> },
     { path: "/manage-cases", element: <ManageCases /> },
+    { path: "/manage-users", element: <ManageUsers /> },
   ]);
   return (
     <>
