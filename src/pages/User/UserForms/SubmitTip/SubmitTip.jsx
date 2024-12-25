@@ -46,6 +46,12 @@ const SubmitTip = () => {
             accurate to the best of my knowledge.
           </label>
         </div>
+        <Button
+          type={"submit"}
+          name={"submit-tip"}
+          text={"Submit Tip"}
+          className={"ivestigator-form-button"}
+        ></Button>
       </form>
     </div>
   );
