@@ -15,6 +15,7 @@ import drawing from "../../assets/images/drawing.svg";
 import house from "../../assets/images/house.svg";
 import whiteFingerprint from "../../assets/images/white-fingerprint.svg";
 import triangle from "../../assets/images/triangle.svg";
+import AboutUsPicture from "../../assets/images/about-us.svg";
 
 const ActionItem = ({ icon, text }) => (
   <div className="action">
@@ -195,9 +196,19 @@ const PoweredByAiSection = () => (
   </div>
 );
 const AboutUs = () => (
-  <div className="about flex column center">
-    <div></div>
-    <div></div>
+  <div className="about flex center">
+    <div className="about-1 flex column">
+      <h1>Be part of the solution</h1>
+      <p>
+        Our innovative platform helps investigators solve cases faster and keeps
+        your community safe.
+      </p>
+      <button className="flex center">Join us now</button>
+    </div>
+    <div className="about-2 flex column">
+      <img src={AboutUsPicture} alt="" />
+    </div>
+
     <img src={triangle} alt="" />
   </div>
 );
