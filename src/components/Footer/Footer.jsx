@@ -1,18 +1,22 @@
 import React from "react";
 import "./Footer.css";
+import LogoLight from "../../assets/images/logo-light.svg";
+import EmailArrow from "../../assets/icons/email-arrow.svg";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer flex">
       <div className="footer-logo">
-        <img src="" alt="" />
+        <img src={LogoLight} alt="" />
         <p>For a better future and crime-free cities</p>
       </div>
-      <div className="footer-email">
+      <div className="footer-email flex column">
         <h1>Subscribe for our newslatters</h1>
         <div className="email-container">
-          <input type="text" />
-          <img src="" alt="" />
+          <input type="text" placeholder="E-mail" />
+          <button type="button">
+            <img src={EmailArrow} alt="" />
+          </button>
         </div>
         <div className="social">
           <img src="" alt="" />
