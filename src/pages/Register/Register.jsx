@@ -38,6 +38,15 @@ const Register = () => {
             placeholder="ex. 76468212"
           />
         </div>
+        <div className="register-input flex column">
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="ex. ahmad@gmail.com"
+          />
+        </div>
       </form>
     </div>
   );
