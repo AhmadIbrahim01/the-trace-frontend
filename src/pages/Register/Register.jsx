@@ -4,9 +4,14 @@ import Button from "../../components/Button/Button";
 import "./Register.css";
 import GoogleIcon from "../../assets/icons/google-icon.svg";
 import logo from "../../assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const goToLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="register flex center column">
       <Link to="/" className="register-logo">
@@ -66,7 +71,9 @@ const Register = () => {
 
         <div className="already flex center">
           <p>Already have an account?</p>
-          <button type="button">Register</button>
+          <button type="button" onClick={goToLogin}>
+            Login
+          </button>
         </div>
 
         <hr className="register-hr" />
@@ -74,7 +81,7 @@ const Register = () => {
 
         <button className="google-button flex center">
           <img src={GoogleIcon} alt="" />
-          <p>Register with Google</p>
+          <p>Sign in with Google</p>
         </button>
       </form>
     </div>
