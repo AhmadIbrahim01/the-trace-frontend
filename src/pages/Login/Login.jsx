@@ -33,6 +33,13 @@ const Login = () => {
           <label htmlFor="password">Password</label>
           <input id="password" name="password" type="password" />
         </div>
+
+        <Button
+          type={"submit"}
+          name={"login"}
+          text={"Login"}
+          className={"register-form-button"}
+        ></Button>
       </form>
     </div>
   );
