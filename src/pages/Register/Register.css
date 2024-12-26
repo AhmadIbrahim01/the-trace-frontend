@@ -78,3 +78,23 @@
   margin-top: 25px;
   margin-bottom: 20px;
 }
+
+.already {
+  gap: 6px;
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+.already > p,
+.already > button {
+  font-size: 16px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+}
+.already > p {
+  color: var(--text-color);
+}
+
+.already > button {
+  color: var(--color1);
+  background-color: #00000000;
+}
