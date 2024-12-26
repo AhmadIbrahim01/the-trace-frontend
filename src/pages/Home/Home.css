@@ -344,3 +344,15 @@
   right: 40px;
   bottom: 0;
 }
+
+/* About Us Section */
+.about {
+  height: 150vh;
+  position: relative;
+}
+.about > img {
+  width: 100%;
+  position: absolute;
+  bottom: -1px;
+  overflow: hidden;
+}
