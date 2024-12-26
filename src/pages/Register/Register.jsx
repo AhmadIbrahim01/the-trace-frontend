@@ -57,6 +57,11 @@ const Register = () => {
           text={"Register"}
           className={"register-form-button"}
         ></Button>
+
+        <div className="already flex center">
+          <p>Already have an account?</p>
+          <button>Register</button>
+        </div>
       </form>
     </div>
   );
