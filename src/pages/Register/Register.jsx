@@ -20,6 +20,15 @@ const Register = () => {
             placeholder="ex. Ahmad"
           />
         </div>
+        <div className="register-input flex column">
+          <label htmlFor="l-name">Last Name</label>
+          <input
+            id="l-name"
+            name="l-name"
+            type="text"
+            placeholder="ex. Ibrahim"
+          />
+        </div>
       </form>
     </div>
   );
