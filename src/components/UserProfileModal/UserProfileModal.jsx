@@ -8,19 +8,31 @@ import gallery from "../../assets/icons/gallery.svg";
 import starOne from "../../assets/icons/star-1.svg";
 import starTwo from "../../assets/icons/star-2.svg";
 
+import UserEditProfileModal from "../UserEditProfileModal/UserEditProfileModal";
+
 const Modal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
 
   const { author, time, text, likes, profileImage } = data;
-
   const [progress, setProgress] = useState(30);
+
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [editModalData, setEditModalData] = useState("");
+  const openEditModal = (data) => {
+    setEditModalData(data);
+    setEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setEditModalOpen(false);
+  };
 
   return (
     <div className="user-modal-overlay" onClick={onClose}>
       <div className="user-modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="user-modal-header flex center">
           <h2>Profile</h2>
-          <button>Edit</button>
+          <button onClick={() => openEditModal()}>Edit</button>
         </div>
         <div className="user-profile-image flex column center">
           <button className="user-profile-button">
@@ -73,6 +85,11 @@ const Modal = ({ isOpen, onClose, data }) => {
           </div>
         </div>
       </div>
+      <UserEditProfileModal
+        isOpen={isEditModalOpen}
+        onClose={closeEditModal}
+        data={editModalData}
+      />
     </div>
   );
 };
