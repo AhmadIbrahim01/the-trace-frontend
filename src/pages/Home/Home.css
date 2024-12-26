@@ -434,12 +434,16 @@
   margin-top: 50px;
   width: 780px;
   background: var(--color3);
+  gap: 10px;
 }
 .faq-card {
   width: 780px;
-  height: 60px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: #1b1c28;
   border-radius: 8px;
+  position: relative;
+  justify-content: space-between;
 }
 .faq-card > h3 {
   font-size: 18px;
@@ -447,5 +451,19 @@
   font-weight: var(--font-weight-bold);
   color: #0bc1a0;
   padding-left: 25px;
-  padding-top: 18px;
+}
+.faq-card > img {
+  position: absolute;
+  right: 25px;
+  width: 20px;
+  height: 12px;
+}
+
+.faq-card > p {
+  font-size: 18px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+  padding-left: 25px;
+  padding-right: 25px;
+  color: var(--text-color);
 }
