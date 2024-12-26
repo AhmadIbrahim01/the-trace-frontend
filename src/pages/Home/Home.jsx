@@ -19,6 +19,7 @@ import AboutUsPicture from "../../assets/images/about-us.svg";
 import downArrow from "../../assets/icons/down-arrow.svg";
 import rightArrow from "../../assets/icons/right-arrow.svg";
 import { Navigate, useNavigate } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 
 const ActionItem = ({ icon, text }) => (
   <div className="action">
@@ -326,6 +327,7 @@ const FAQ = () => {
 
 const Home = () => (
   <>
+    <Navbar />
     <HeroSection />
     <AboutUs />
     <GetInvolvedSection />
