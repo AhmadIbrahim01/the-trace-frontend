@@ -41,30 +41,26 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="footer-info">
-        <div>
-          <div>
-            <ul>
-              <li>The Trace</li>
-              <li>About Us</li>
-            </ul>
-          </div>
-          <div>
-            <ul>
-              <li>Contact Us</li>
-              <li>thetrace@gmail.com</li>
-            </ul>
-          </div>
+      <div className="footer-info flex">
+        <div className="footer-info-1 flex column">
+          <ul className="footer-ul flex column">
+            <li>The Trace</li>
+            <li>About Us</li>
+          </ul>
+          <ul className="footer-ul flex column">
+            <li>Contact Us</li>
+            <li>thetrace@gmail.com</li>
+          </ul>
         </div>
-        <div>
-          <ul>
+        <div className="footer-info-1 flex column">
+          <ul className="footer-ul flex column">
             <li>Policies</li>
             <li>Legal</li>
             <li>Privacy Policy</li>
           </ul>
         </div>
-        <div>
-          <ul>
+        <div className="footer-info-1 flex column">
+          <ul className="footer-ul flex column">
             <li>Help center</li>
             <li>FAQs</li>
           </ul>
