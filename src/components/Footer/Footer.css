@@ -1,0 +1,48 @@
+.footer {
+  padding-top: 60px;
+  padding-left: 60px;
+  height: 318px;
+  background-color: white;
+}
+
+.footer-logo > img {
+  width: 80px;
+  height: 58px;
+}
+.footer-logo > p {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.footer-email {
+  width: 300px;
+  gap: 32px;
+}
+.footer-email > h1 {
+  font-size: 35px;
+  color: var(--color3);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+}
+
+.email-container {
+  width: 300px;
+  height: 50px;
+  border: 1px solid #a4a4a4;
+  border-radius: 12px;
+}
+.email-container > input {
+  border-radius: 12px;
+  width: 90%;
+  height: 100%;
+  padding-left: 10px;
+  outline: none;
+}
+.email-container > button {
+  background-color: #00000000;
+}
+.email-container > button > img {
+  width: 15px;
+  height: 9px;
+  background-color: #00000000;
+}
