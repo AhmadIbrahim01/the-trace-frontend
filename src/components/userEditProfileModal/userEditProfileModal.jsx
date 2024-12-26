@@ -18,6 +18,10 @@ const userEditProfileModal = ({ isOpen, onClose, data }) => {
             <label htmlFor="name">Name</label>
             <input id="name" name="name" type="text" />
           </div>
+          <div className="edit-input flex column">
+            <label htmlFor="email">Email</label>
+            <input id="email" name="email" type="email" />
+          </div>
         </form>
         <button onClick={onClose}>Close</button>
       </div>
