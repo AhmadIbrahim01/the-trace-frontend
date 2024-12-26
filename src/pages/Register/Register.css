@@ -1,0 +1,30 @@
+.register {
+  padding: 5%;
+}
+
+.register-form {
+  width: 673px;
+  height: 973px;
+
+  background: #1b1c28;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+
+  justify-content: flex-start;
+  padding-top: 65px;
+}
+.register-form > h1 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  font-size: 36px;
+  color: #ffffff;
+}
+.register-form > h3 {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 24px;
+
+  color: var(--text-color);
+}
