@@ -1,6 +1,7 @@
 import "./App.css";
 import "./styles/base/utilities.css";
 import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import Cases from "./pages/Cases/Cases";
 import Case from "./pages/Case/Case";
@@ -59,6 +60,7 @@ function App() {
     },
     { path: "*", element: <Error /> },
     { path: "/register", element: <Register /> },
+    { path: "/login", element: <Login /> },
   ]);
   return (
     <>
