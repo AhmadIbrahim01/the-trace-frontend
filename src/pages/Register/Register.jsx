@@ -51,6 +51,12 @@ const Register = () => {
           <label htmlFor="password">Password</label>
           <input id="password" name="password" type="password" />
         </div>
+        <Button
+          type={"submit"}
+          name={"add-case"}
+          text={"Register"}
+          className={"register-form-button"}
+        ></Button>
       </form>
     </div>
   );
