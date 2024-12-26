@@ -10,7 +10,7 @@ const Navbar = () => {
         <Link to="/" className="navbar-logo">
           <img src={logo} alt="" />
         </Link>
-        <ul className="nav-links flex">
+        <ul className="nav-links flex center">
           <li>
             <Link to="/" className="nav-link">
               Home
@@ -27,7 +27,7 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <button>Signup</button>
+        <button className="nav-button flex center column">Signup</button>
       </div>
     </nav>
   );
