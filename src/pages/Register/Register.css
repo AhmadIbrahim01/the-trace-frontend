@@ -1,10 +1,13 @@
 .register {
-  padding: 5%;
+  padding: 10%;
+  background-image: url("../../assets/images/register-bg.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .register-form {
   width: 673px;
-  height: 973px;
 
   background: #1b1c28;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
@@ -97,4 +100,38 @@
 .already > button {
   color: var(--color1);
   background-color: #00000000;
+}
+
+.register-hr {
+  width: 463px;
+  border: 2px solid #141521;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+.register-form > p {
+  font-size: 16px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.google-button {
+  width: 465px;
+  background: #141521;
+  border-radius: 6px;
+  justify-content: flex-start;
+  margin-bottom: 52px;
+}
+.google-button > img {
+  width: 18px;
+  height: 22px;
+  margin: 16px 10px 16px 22px;
+}
+.google-button > p {
+  color: white;
+  font-size: 16px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
 }
