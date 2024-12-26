@@ -29,6 +29,15 @@ const Register = () => {
             placeholder="ex. Ibrahim"
           />
         </div>
+        <div className="register-input flex column">
+          <label htmlFor="phone">Phone</label>
+          <input
+            id="phone"
+            name="phone"
+            type="number"
+            placeholder="ex. 76468212"
+          />
+        </div>
       </form>
     </div>
   );
