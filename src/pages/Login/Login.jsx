@@ -46,6 +46,14 @@ const Login = () => {
             Sign Up
           </button>
         </div>
+
+        <hr className="register-hr" />
+        <p>Or</p>
+
+        <button className="google-button flex center">
+          <img src={GoogleIcon} alt="" />
+          <p>Sign in with Google</p>
+        </button>
       </form>
     </div>
   );
