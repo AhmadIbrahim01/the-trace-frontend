@@ -18,6 +18,7 @@ import triangle from "../../assets/images/triangle.svg";
 import AboutUsPicture from "../../assets/images/about-us.svg";
 import downArrow from "../../assets/icons/down-arrow.svg";
 import rightArrow from "../../assets/icons/right-arrow.svg";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ActionItem = ({ icon, text }) => (
   <div className="action">
@@ -54,17 +55,25 @@ const testimonials = [
   },
 ];
 
-const HeroSection = () => (
-  <div className="hero flex center column">
-    <h1 className="t-center">
-      Let’s keep our city safe <br /> and crime-free
-    </h1>
-    <div className="btn-container flex center">
-      <button className="primary-btn">Login</button>
-      <button className="secondary-btn">View public cases</button>
+const HeroSection = () => {
+  const navigate = useNavigate();
+  const navigateToCases = () => {
+    navigate("/cases");
+  };
+  return (
+    <div className="hero flex center column">
+      <h1 className="t-center">
+        Let’s keep our city safe <br /> and crime-free
+      </h1>
+      <div className="btn-container flex center">
+        <button className="primary-btn">Login</button>
+        <button className="secondary-btn" onClick={navigateToCases}>
+          View public cases
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const GetInvolvedSection = () => (
   <div className="get-involved flex">
