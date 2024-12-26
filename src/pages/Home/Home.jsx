@@ -14,6 +14,7 @@ import papers from "../../assets/images/papers.svg";
 import drawing from "../../assets/images/drawing.svg";
 import house from "../../assets/images/house.svg";
 import whiteFingerprint from "../../assets/images/white-fingerprint.svg";
+import triangle from "../../assets/images/triangle.svg";
 
 const ActionItem = ({ icon, text }) => (
   <div className="action">
@@ -193,10 +194,18 @@ const PoweredByAiSection = () => (
     </div>
   </div>
 );
+const AboutUs = () => (
+  <div className="about flex column center">
+    <div></div>
+    <div></div>
+    <img src={triangle} alt="" />
+  </div>
+);
 
 const Home = () => (
   <>
     <HeroSection />
+    <AboutUs />
     <GetInvolvedSection />
     <HowToJoinSection />
     <TestimonialsSection />
