@@ -16,3 +16,15 @@
   width: 80px;
   height: 58px;
 }
+
+.nav-links {
+  gap: 100px;
+}
+
+.nav-link {
+  font-size: 18px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: white;
+  text-decoration: none;
+}
