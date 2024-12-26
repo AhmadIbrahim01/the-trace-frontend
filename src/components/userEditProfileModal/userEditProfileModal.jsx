@@ -26,6 +26,10 @@ const userEditProfileModal = ({ isOpen, onClose, data }) => {
             <label htmlFor="phone">Phone</label>
             <input id="phone" name="phone" type="number" />
           </div>
+          <div className="edit-input flex column">
+            <label htmlFor="password">Password</label>
+            <input id="password" name="password" type="password" />
+          </div>
         </form>
         <button onClick={onClose}>Close</button>
       </div>
