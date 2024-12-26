@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import fingMagn from "../../assets/images/fingerprint-magnifier.png";
 import fingerprint from "../../assets/images/fingerprint.png";
@@ -214,17 +214,106 @@ const AboutUs = () => (
     <img src={triangle} alt="" />
   </div>
 );
-const FAQ = () => (
-  <div className="faq flex column center">
-    <h1>FAQs</h1>
-    <div className="faq-cards flex column">
-      <div className="faq-card">
-        <h3>How to?</h3>
-        <img src={rightArrow} alt="" />
+
+const FAQ = () => {
+  const [visibility, setVisibility] = useState({
+    faq1: false,
+    faq2: false,
+    faq3: false,
+  });
+
+  const toggleVisibility = (key) => {
+    setVisibility((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
+  return (
+    <div className="faq flex column center">
+      <h1>FAQs</h1>
+      <div className="faq-cards flex column">
+        <button
+          className="faq-card flex column"
+          onClick={() => toggleVisibility("faq1")}
+        >
+          <div className="faq-card flex center">
+            <h3>What is The Trace?</h3>
+            <img
+              style={{
+                transform: visibility.faq1 ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "transform 0.3s ease",
+              }}
+              src={rightArrow}
+              alt=""
+            />
+          </div>
+          {visibility.faq1 && (
+            <p className="t-left">
+              The Trace is an innovative platform that helps investigators solve
+              criminal cases using cutting-edge technologies. It provides tools
+              like AI-assisted face and fingerprint recognition, 3D crime scene
+              recreations, AI analysis of witness statements, and more to make
+              investigations faster and more effective.
+            </p>
+          )}
+        </button>
+
+        <button
+          className="faq-card flex column"
+          onClick={() => toggleVisibility("faq2")}
+        >
+          <div className="faq-card flex center">
+            <h3>How can I help with investigations?</h3>
+            <img
+              style={{
+                transform: visibility.faq2 ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "transform 0.3s ease",
+              }}
+              src={rightArrow}
+              alt=""
+            />
+          </div>
+          {visibility.faq2 && (
+            <p className="t-left">
+              As a public user, you can assist with public cases by providing
+              information, witness details, or even help with identifying
+              suspects. You can submit descriptions or sketches, which AI will
+              use to generate suspect images. Additionally, you can interact
+              with the community and contribute to discussions in the chat.
+            </p>
+          )}
+        </button>
+
+        <button
+          className="faq-card flex column"
+          onClick={() => toggleVisibility("faq3")}
+        >
+          <div className="faq-card flex center">
+            <h3>Can investigators rely on AI to identify suspects?</h3>
+            <img
+              style={{
+                transform: visibility.faq3 ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "transform 0.3s ease",
+              }}
+              src={rightArrow}
+              alt=""
+            />
+          </div>
+          {visibility.faq3 && (
+            <p className="t-left">
+              Yes, our advanced AI can analyze witness sketches and
+              descriptions, and compare them against a database of potential
+              suspects (if provided by government agencies). It also helps
+              investigators by detecting inconsistencies in statements or
+              identifying stress patterns.
+            </p>
+          )}
+        </button>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Home = () => (
   <>
