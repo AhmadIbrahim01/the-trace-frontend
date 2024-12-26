@@ -32,7 +32,7 @@ const Modal = ({ isOpen, onClose, data }) => {
       <div className="user-modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="user-modal-header flex center">
           <h2>Profile</h2>
-          <button onClick={() => openEditModal()}>Edit</button>
+          <button onClick={() => openEditModal(data)}>Edit</button>
         </div>
         <div className="user-profile-image flex column center">
           <button className="user-profile-button">
