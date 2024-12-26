@@ -47,6 +47,10 @@ const Register = () => {
             placeholder="ex. ahmad@gmail.com"
           />
         </div>
+        <div className="register-input flex column">
+          <label htmlFor="password">Password</label>
+          <input id="password" name="password" type="password" />
+        </div>
       </form>
     </div>
   );
