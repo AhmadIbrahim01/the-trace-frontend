@@ -2,6 +2,11 @@ import React from "react";
 import "./Footer.css";
 import LogoLight from "../../assets/images/logo-light.svg";
 import EmailArrow from "../../assets/icons/email-arrow.svg";
+import telegram from "../../assets/icons/social/telegram.svg";
+import discord from "../../assets/icons/social/discord.svg";
+import instagram from "../../assets/icons/social/instagram.svg";
+import twitter from "../../assets/icons/social/twitter.svg";
+import youtube from "../../assets/icons/social/youtube.svg";
 
 const Footer = () => {
   return (
@@ -18,12 +23,22 @@ const Footer = () => {
             <img src={EmailArrow} alt="" />
           </button>
         </div>
-        <div className="social">
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
+        <div className="social flex center">
+          <a href="https://web.telegram.org/" target="_blank">
+            <img src={telegram} alt="" />
+          </a>
+          <a href="http://discord.com" target="_blank">
+            <img src={discord} alt="" />
+          </a>
+          <a href="http://instagram.com" target="_blank">
+            <img src={instagram} alt="" />
+          </a>
+          <a href="http://x.com" target="_blank">
+            <img src={twitter} alt="" />
+          </a>
+          <a href="http://youtube.com" target="_blank">
+            <img src={youtube} alt="" />
+          </a>
         </div>
       </div>
       <div className="footer-info">

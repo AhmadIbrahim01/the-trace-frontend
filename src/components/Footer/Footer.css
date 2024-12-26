@@ -46,3 +46,12 @@
   height: 9px;
   background-color: #00000000;
 }
+
+.social {
+  width: 300px;
+  justify-content: space-between;
+}
+.social > a > img {
+  width: 20px;
+  height: 20px;
+}
