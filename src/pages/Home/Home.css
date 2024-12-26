@@ -411,3 +411,41 @@
 
   border-radius: 10px;
 }
+
+/* FAQ Section */
+.faq {
+  height: 100vh;
+  position: relative;
+  padding: 10% 14%;
+  justify-content: flex-start;
+}
+
+.faq > h1 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 60px;
+}
+
+.faq-cards {
+  margin-top: 50px;
+  width: 780px;
+  background: var(--color3);
+}
+.faq-card {
+  width: 780px;
+  height: 60px;
+  background-color: #1b1c28;
+  border-radius: 8px;
+}
+.faq-card > h3 {
+  font-size: 18px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  color: #0bc1a0;
+  padding-left: 25px;
+  padding-top: 18px;
+}
