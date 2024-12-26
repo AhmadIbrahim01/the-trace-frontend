@@ -40,6 +40,12 @@ const Login = () => {
           text={"Login"}
           className={"register-form-button"}
         ></Button>
+        <div className="already flex center">
+          <p>Don't have an account?</p>
+          <button type="button" onClick={goToRegister}>
+            Sign Up
+          </button>
+        </div>
       </form>
     </div>
   );
