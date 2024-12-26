@@ -2,11 +2,16 @@ import React from "react";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import "./Register.css";
+import GoogleIcon from "../../assets/icons/google-icon.svg";
+import logo from "../../assets/images/logo.svg";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
     <div className="register flex center column">
-      <img src="" alt="" />
+      <Link to="/" className="register-logo">
+        <img src={logo} alt="" />
+      </Link>
       <form className="register-form flex center column">
         <h1>Register</h1>
         <h3>Join us now!</h3>
@@ -51,6 +56,7 @@ const Register = () => {
           <label htmlFor="password">Password</label>
           <input id="password" name="password" type="password" />
         </div>
+
         <Button
           type={"submit"}
           name={"add-case"}
@@ -60,8 +66,16 @@ const Register = () => {
 
         <div className="already flex center">
           <p>Already have an account?</p>
-          <button>Register</button>
+          <button type="button">Register</button>
         </div>
+
+        <hr className="register-hr" />
+        <p>Or</p>
+
+        <button className="google-button flex center">
+          <img src={GoogleIcon} alt="" />
+          <p>Register with Google</p>
+        </button>
       </form>
     </div>
   );
