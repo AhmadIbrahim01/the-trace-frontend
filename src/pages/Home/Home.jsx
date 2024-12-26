@@ -16,6 +16,8 @@ import house from "../../assets/images/house.svg";
 import whiteFingerprint from "../../assets/images/white-fingerprint.svg";
 import triangle from "../../assets/images/triangle.svg";
 import AboutUsPicture from "../../assets/images/about-us.svg";
+import downArrow from "../../assets/icons/down-arrow.svg";
+import rightArrow from "../../assets/icons/right-arrow.svg";
 
 const ActionItem = ({ icon, text }) => (
   <div className="action">
@@ -212,6 +214,17 @@ const AboutUs = () => (
     <img src={triangle} alt="" />
   </div>
 );
+const FAQ = () => (
+  <div className="faq flex column center">
+    <h1>FAQs</h1>
+    <div className="faq-cards flex column">
+      <div className="faq-card">
+        <h3>How to?</h3>
+        <img src={rightArrow} alt="" />
+      </div>
+    </div>
+  </div>
+);
 
 const Home = () => (
   <>
@@ -221,6 +234,7 @@ const Home = () => (
     <HowToJoinSection />
     <TestimonialsSection />
     <PoweredByAiSection />
+    <FAQ />
   </>
 );
 
