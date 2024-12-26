@@ -8,6 +8,7 @@ import courthouseIcon from "../../assets/icons/courthouse-icon.svg";
 import calendarIcon from "../../assets/icons/calendar-icon.svg";
 import arrow from "../../assets/icons/arrow-2.svg";
 import tickCircleIcon from "../../assets/icons/tick-circle-icon.svg";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => (
   <div className="cases-hero flex center column">
@@ -27,42 +28,49 @@ const HeroSection = () => (
   </div>
 );
 
-const CaseCard = ({ caseData }) => (
-  <div className="case">
-    <p className="t-center flex center">{caseData.description}</p>
-    <div className="case-container flex">
-      <div className="case-image">
-        <img src={caseData.image || caseOne} alt={caseData.title} />
-      </div>
-      <div className="case-info">
-        <p>Case {caseData.id}</p>
-        <div className="case-name flex">
-          <h2>{caseData.title}</h2>
-          <button className="flex center">
-            <img src={courthouseIcon} alt="Courthouse Icon" />
+const CaseCard = ({ caseData }) => {
+  const navigate = useNavigate();
+  const goToCase = () => {
+    navigate("/case");
+  };
+
+  return (
+    <div className="case">
+      <p className="t-center flex center">{caseData.description}</p>
+      <div className="case-container flex">
+        <div className="case-image">
+          <img src={caseData.image || caseOne} alt={caseData.title} />
+        </div>
+        <div className="case-info">
+          <p>Case {caseData.id}</p>
+          <div className="case-name flex">
+            <h2>{caseData.title}</h2>
+            <button className="flex center">
+              <img src={courthouseIcon} alt="Courthouse Icon" />
+            </button>
+          </div>
+          <div className="case-date flex">
+            <img src={calendarIcon} alt="Calendar Icon" />
+            <p>Published on {caseData.date}</p>
+          </div>
+          <div className="tags flex">
+            {caseData.tags.map((tag, index) => (
+              <h3 key={index}>{tag}</h3>
+            ))}
+          </div>
+          <div className="case-state flex center">
+            <p>{caseData.status}</p>
+            <img src={tickCircleIcon} alt="Tick Circle Icon" />
+          </div>
+          <button className="flex center" onClick={goToCase}>
+            View full case
+            <img src={arrow} alt="Arrow Icon" />
           </button>
         </div>
-        <div className="case-date flex">
-          <img src={calendarIcon} alt="Calendar Icon" />
-          <p>Published on {caseData.date}</p>
-        </div>
-        <div className="tags flex">
-          {caseData.tags.map((tag, index) => (
-            <h3 key={index}>{tag}</h3>
-          ))}
-        </div>
-        <div className="case-state flex center">
-          <p>{caseData.status}</p>
-          <img src={tickCircleIcon} alt="Tick Circle Icon" />
-        </div>
-        <button className="flex center">
-          View full case
-          <img src={arrow} alt="Arrow Icon" />
-        </button>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const CasesSection = () => {
   const cases = [
