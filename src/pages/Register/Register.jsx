@@ -10,6 +10,16 @@ const Register = () => {
       <form className="register-form flex center column">
         <h1>Register</h1>
         <h3>Join us now!</h3>
+
+        <div className="register-input flex column">
+          <label htmlFor="f-name">First Name</label>
+          <input
+            id="f-name"
+            name="f-name"
+            type="text"
+            placeholder="ex. Ahmad"
+          />
+        </div>
       </form>
     </div>
   );
