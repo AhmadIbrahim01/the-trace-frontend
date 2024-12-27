@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import fingMagn from "../../assets/images/fingerprint-magnifier.png";
 import fingerprint from "../../assets/images/fingerprint.png";
@@ -20,6 +20,7 @@ import downArrow from "../../assets/icons/down-arrow.svg";
 import rightArrow from "../../assets/icons/right-arrow.svg";
 import { Navigate, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
+import { gsap } from "gsap";
 
 const ActionItem = ({ icon, text }) => (
   <div className="action">
@@ -61,6 +62,26 @@ const HeroSection = () => {
   const navigateToCases = () => {
     navigate("/cases");
   };
+
+  useEffect(() => {
+    gsap.from(".btn-container button", {
+      x: -200,
+    });
+    gsap.to(".btn-container button", {
+      duration: 2,
+      ease: "bounce.inout",
+      x: 0,
+    });
+    gsap.from(".hero h1", {
+      y: -1000,
+    });
+    gsap.to(".hero h1", {
+      duration: 1,
+      ease: "bounce.inout",
+      y: 0,
+    });
+  }, []);
+
   return (
     <div className="hero flex center column">
       <h1 className="t-center">

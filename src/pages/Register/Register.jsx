@@ -64,7 +64,7 @@ const Register = () => {
 
         <Button
           type={"submit"}
-          name={"add-case"}
+          name={"register"}
           text={"Register"}
           className={"register-form-button"}
         ></Button>
