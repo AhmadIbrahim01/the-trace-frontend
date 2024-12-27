@@ -1,9 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/images/logo.svg";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const goToRegister = () => {
+    navigate("/register");
+  };
   return (
     <nav className="navbar flex center">
       <div className="navbar-container flex center">
@@ -27,7 +31,12 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <button className="nav-button flex center column">Signup</button>
+        <button
+          className="nav-button flex center column"
+          onClick={goToRegister}
+        >
+          Signup
+        </button>
       </div>
     </nav>
   );
