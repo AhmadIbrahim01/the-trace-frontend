@@ -62,6 +62,9 @@ const HeroSection = () => {
   const navigateToCases = () => {
     navigate("/cases");
   };
+  const navigateToLogin = () => {
+    navigate("/login");
+  };
 
   useEffect(() => {
     gsap.from(".btn-container button", {
@@ -88,7 +91,9 @@ const HeroSection = () => {
         Let’s keep our city safe <br /> and crime-free
       </h1>
       <div className="btn-container flex center">
-        <button className="primary-btn">Login</button>
+        <button className="primary-btn" onClick={navigateToLogin}>
+          Login
+        </button>
         <button className="secondary-btn" onClick={navigateToCases}>
           View public cases
         </button>
@@ -132,34 +137,45 @@ const GetInvolvedSection = () => (
   </div>
 );
 
-const HowToJoinSection = () => (
-  <div className="how-to-join flex column center">
-    <div className="section-header">
-      <h1 className="t-center">How to join?</h1>
-      <p className="t-center">
-        Joining us is very simple, just a few steps and you’ll be set up to go!
-      </p>
-    </div>
-    <div className="flex column center">
-      <img className="icon" src={howToJoinIcon} alt="" />
-      <img className="lines" src={lines} alt="" />
-      <div className="cards flex">
-        <div className="card flex column center">
-          <h3 className="t-center">Sign Up and Join the Community</h3>
-        </div>
-        <div className="card flex column center">
-          <h3 className="t-center">
-            Learn about ongoing efforts to solve crimes
-          </h3>
-        </div>
-        <div className="card flex column center">
-          <h3 className="t-center">Share your insights or tips anonymously</h3>
+const HowToJoinSection = () => {
+  const navigate = useNavigate();
+  const navigateToRegister = () => {
+    navigate("/register");
+  };
+  return (
+    <div className="how-to-join flex column center">
+      <div className="section-header">
+        <h1 className="t-center">How to join?</h1>
+        <p className="t-center">
+          Joining us is very simple, just a few steps and you’ll be set up to
+          go!
+        </p>
+      </div>
+      <div className="flex column center">
+        <img className="icon" src={howToJoinIcon} alt="" />
+        <img className="lines" src={lines} alt="" />
+        <div className="cards flex">
+          <div className="card flex column center">
+            <h3 className="t-center">Sign Up and Join the Community</h3>
+          </div>
+          <div className="card flex column center">
+            <h3 className="t-center">
+              Learn about ongoing efforts to solve crimes
+            </h3>
+          </div>
+          <div className="card flex column center">
+            <h3 className="t-center">
+              Share your insights or tips anonymously
+            </h3>
+          </div>
         </div>
       </div>
+      <button className="primary-btn" onClick={navigateToRegister}>
+        Sign up now
+      </button>
     </div>
-    <button className="primary-btn">Sign up now</button>
-  </div>
-);
+  );
+};
 
 const TestimonialsSection = () => (
   <div className="testimonials flex column center">
@@ -228,23 +244,31 @@ const PoweredByAiSection = () => (
     </div>
   </div>
 );
-const AboutUs = () => (
-  <div className="about flex center">
-    <div className="about-1 flex column">
-      <h1>Be part of the solution</h1>
-      <p>
-        Our innovative platform helps investigators solve cases faster and keeps
-        your community safe.
-      </p>
-      <button className="flex center">Join us now</button>
-    </div>
-    <div className="about-2 flex column">
-      <img src={AboutUsPicture} alt="" />
-    </div>
+const AboutUs = () => {
+  const navigate = useNavigate();
+  const navigateToRegister = () => {
+    navigate("/register");
+  };
+  return (
+    <div className="about flex center">
+      <div className="about-1 flex column">
+        <h1>Be part of the solution</h1>
+        <p>
+          Our innovative platform helps investigators solve cases faster and
+          keeps your community safe.
+        </p>
+        <button className="flex center" onClick={navigateToRegister}>
+          Join us now
+        </button>
+      </div>
+      <div className="about-2 flex column">
+        <img src={AboutUsPicture} alt="" />
+      </div>
 
-    <img src={triangle} alt="" />
-  </div>
-);
+      <img src={triangle} alt="" />
+    </div>
+  );
+};
 
 const FAQ = () => {
   const [visibility, setVisibility] = useState({
