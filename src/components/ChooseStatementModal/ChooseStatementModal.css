@@ -1,0 +1,17 @@
+.choose-btns {
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.choose-btn {
+  width: 300px;
+  height: 50px;
+  background-color: #0bc1a0;
+  color: white;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+}
+
+.close-btn {
+  width: 300px;
+  height: 50px;
+}
