@@ -8,6 +8,8 @@ import Modal from "../../../components/SuspectModal/SuspectModal";
 import StatementModal from "../../../components/StatementModal/StatementModal";
 import { useNavigate } from "react-router-dom";
 
+import ChooseStatementModal from "../../../components/ChooseStatementModal/ChooseStatementModal";
+
 const InvestigatorCase = () => {
   const statements = [
     {
@@ -53,6 +55,9 @@ const InvestigatorCase = () => {
   const [isStatementModalOpen, setIsStatementModalOpen] = useState(false);
   const [statementModalData, setStatementModalData] = useState("");
 
+  const [isChooseOpen, setChooseOpen] = useState(false);
+  const [chooseModalData, setChooseModalData] = useState("");
+
   const navigate = useNavigate();
   const addEvidenceHandler = () => {
     navigate("/add-evidence");
@@ -80,6 +85,14 @@ const InvestigatorCase = () => {
 
   const closeStatementModal = () => {
     setIsStatementModalOpen(false);
+  };
+  const openChoose = (data) => {
+    setChooseModalData(data);
+    setChooseOpen(true);
+  };
+
+  const closeChoose = () => {
+    setChooseOpen(false);
   };
 
   return (
@@ -133,7 +146,7 @@ const InvestigatorCase = () => {
         <div className="case-statements flex center column">
           <div className="case-statements-header flex center">
             <h3>Statements</h3>
-            <button className="flex center" onClick={AddStatementHandler}>
+            <button className="flex center" onClick={openChoose}>
               +
             </button>
           </div>
@@ -163,6 +176,11 @@ const InvestigatorCase = () => {
         isOpen={isStatementModalOpen}
         onClose={closeStatementModal}
         data={statementModalData}
+      />
+      <ChooseStatementModal
+        isOpen={isChooseOpen}
+        onClose={closeChoose}
+        data={chooseModalData}
       />
     </div>
   );
