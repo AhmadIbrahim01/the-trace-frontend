@@ -1,19 +1,20 @@
 import React from "react";
 import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
-import "./AddStatement.css";
+import "./AddSuspectStatement.css";
 
-const AddStatement = () => {
+const AddSuspectStatement = () => {
   return (
     <div className="investigator-form-container t-center flex column center">
-      <h1>Add Statement</h1>
+      <h1>Add Suspect Statement</h1>
       <form>
-        <Input
-          id={"witness"}
-          label={"Witness Name"}
-          name={"witness"}
-          type={"text"}
-        ></Input>
+        <div className="input flex column">
+          <label htmlFor="name">Name</label>
+          <select name="name" id="name">
+            <option value="">Suspect1</option>
+            <option value="">Suspect2</option>
+          </select>
+        </div>
         <Input
           id={"date"}
           label={"Date of Statement"}
@@ -24,6 +25,13 @@ const AddStatement = () => {
           <label htmlFor="statement">Statement</label>
           <textarea id="statement" name="statement" rows={10}></textarea>
         </div>
+
+        <Input
+          id={"location"}
+          label={"Location of incident"}
+          name={"location"}
+          type={"text"}
+        ></Input>
 
         <Input
           id={"file"}
@@ -43,4 +51,4 @@ const AddStatement = () => {
   );
 };
 
-export default AddStatement;
+export default AddSuspectStatement;
