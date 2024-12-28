@@ -13,7 +13,7 @@ import Error from "./pages/Error/Error";
 import { Route, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Form from "./components/Form/Form";
 import AddEvidence from "./pages/Investigator/InvestigatorForms/AddEvidence/AddEvidence";
-import AddStatement from "./pages/Investigator/InvestigatorForms/AddStatement/AddStatement";
+import AddSuspectStatement from "./pages/Investigator/InvestigatorForms/AddSuspectStatement/AddSuspectStatement";
 import AddWitness from "./pages/Investigator/InvestigatorForms/AddWitness/AddWitness";
 import AddSuspect from "./pages/Investigator/InvestigatorForms/AddSuspect/AddSuspect";
 import SubmitTip from "./pages/User/UserForms/SubmitTip/SubmitTip";
@@ -43,7 +43,7 @@ function App() {
         { path: "/investigator-case", element: <InvCase /> },
         { path: "/form", element: <Form /> },
         { path: "/add-evidence", element: <AddEvidence /> },
-        { path: "/add-statement", element: <AddStatement /> },
+        { path: "/add-suspect-statement", element: <AddSuspectStatement /> },
         { path: "/add-witness", element: <AddWitness /> },
         { path: "/add-suspect", element: <AddSuspect /> },
         { path: "/submit-tip", element: <SubmitTip /> },
