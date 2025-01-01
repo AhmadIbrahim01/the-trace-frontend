@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import "./Register.css";
@@ -12,6 +12,26 @@ const Register = () => {
     navigate("/login");
   };
 
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
   return (
     <div className="register flex center column">
       <Link to="/" className="register-logo">
@@ -22,21 +42,25 @@ const Register = () => {
         <h3>Join us now!</h3>
 
         <div className="register-input flex column">
-          <label htmlFor="f-name">First Name</label>
+          <label htmlFor="firstName">First Name</label>
           <input
-            id="f-name"
-            name="f-name"
+            id="firstName"
+            name="firstName"
             type="text"
             placeholder="ex. Ahmad"
+            value={formData.firstName}
+            onChange={handleChange}
           />
         </div>
         <div className="register-input flex column">
-          <label htmlFor="l-name">Last Name</label>
+          <label htmlFor="lastName">Last Name</label>
           <input
-            id="l-name"
-            name="l-name"
+            id="lastName"
+            name="lastName"
             type="text"
             placeholder="ex. Ibrahim"
+            value={formData.lastName}
+            onChange={handleChange}
           />
         </div>
         <div className="register-input flex column">
@@ -46,6 +70,8 @@ const Register = () => {
             name="phone"
             type="number"
             placeholder="ex. 76468212"
+            value={formData.phone}
+            onChange={handleChange}
           />
         </div>
         <div className="register-input flex column">
@@ -55,11 +81,19 @@ const Register = () => {
             name="email"
             type="email"
             placeholder="ex. ahmad@gmail.com"
+            value={formData.email}
+            onChange={handleChange}
           />
         </div>
         <div className="register-input flex column">
           <label htmlFor="password">Password</label>
-          <input id="password" name="password" type="password" />
+          <input
+            id="password"
+            name="password"
+            type="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
         </div>
 
         <Button
