@@ -1,0 +1,21 @@
+.logout-btn {
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  width: 100px;
+  height: 50px;
+  background-color: rgba(187, 72, 72, 0.908);
+  color: white;
+  font-weight: bold;
+}
+
+.back {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 100px;
+  height: 50px;
+  background-color: rgba(86, 194, 72, 0.804);
+  color: white;
+  font-weight: bold;
+}
