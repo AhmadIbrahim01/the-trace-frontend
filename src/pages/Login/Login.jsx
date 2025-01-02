@@ -45,16 +45,13 @@ const Login = () => {
       console.log(token);
       console.log(user.firstName);
       localStorage.setItem("authToken", token);
-      localStorage.setItem("user", user.firstName);
       navigate("/");
     } catch (error) {
       console.log(error.message);
       console.log(response.data.message);
     }
   };
-  window.addEventListener("beforeunload", function () {
-    localStorage.clear();
-  });
+
   return (
     <div className="register flex center column">
       <Link to="/" className="register-logo">
