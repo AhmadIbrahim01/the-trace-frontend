@@ -15,11 +15,6 @@ const Login = () => {
     navigate("/register");
   };
 
-  // const [formData, setFormData] = useState({
-  //   email: "",
-  //   password: "",
-  // });
-
   const {
     register,
     handleSubmit,
@@ -28,14 +23,6 @@ const Login = () => {
   } = useForm();
 
   const [status, serStatus] = useState("");
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({
-  //     ...formData,
-  //     [name]: value,
-  //   });
-  // };
 
   const onSubmit = async (data) => {
     try {
@@ -88,8 +75,6 @@ const Login = () => {
             name="email"
             type="email"
             placeholder="ex. ahmad@gmail.com"
-            // value={formData.email}
-            // onChange={handleChange}
             {...register("email", {
               required: "Email is required",
               pattern: {
@@ -108,9 +93,6 @@ const Login = () => {
             id="password"
             name="password"
             type="password"
-            // value={formData.password}
-            // onChange={handleChange}
-
             {...register("password", {
               required: "Password is required",
               minLength: {
