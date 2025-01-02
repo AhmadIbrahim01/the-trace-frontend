@@ -22,6 +22,8 @@ const Register = () => {
     password: "",
   });
 
+  const [status, setStatus] = useState({ success: true });
+
   useEffect(() => {
     // console.log(formData);
   }, [formData]);
@@ -47,8 +49,18 @@ const Register = () => {
           },
         }
       );
+
+      setStatus({
+        success: true,
+        message: "Registiration Successful",
+      });
+      navigate("/login");
     } catch (error) {
       console.log(error.message);
+      setStatus({
+        success: false,
+        message: "An Error Occured",
+      });
     }
 
     setFormData({
@@ -131,6 +143,8 @@ const Register = () => {
           className={"register-form-button"}
           onClick={handleSubmit}
         ></Button>
+
+        {!status.success && <p style={{ color: "red" }}>{status.message}</p>}
 
         <div className="already flex center">
           <p>Already have an account?</p>
