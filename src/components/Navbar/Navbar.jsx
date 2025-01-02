@@ -8,6 +8,10 @@ const Navbar = () => {
   const goToRegister = () => {
     navigate("/register");
   };
+
+  const goToUserProfile = () => {
+    navigate("/user-profile");
+  };
   return (
     <nav className="navbar flex center">
       <div className="navbar-container flex center">
@@ -31,12 +35,21 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <button
-          className="nav-button flex center column"
-          onClick={goToRegister}
-        >
-          Signup
-        </button>
+        {localStorage.getItem("user") ? (
+          <button
+            className="nav-button flex center column"
+            onClick={goToUserProfile}
+          >
+            {localStorage.getItem("user")}
+          </button>
+        ) : (
+          <button
+            className="nav-button flex center column"
+            onClick={goToRegister}
+          >
+            Signup
+          </button>
+        )}
       </div>
     </nav>
   );
