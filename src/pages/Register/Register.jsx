@@ -32,6 +32,18 @@ const Register = () => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Submitted:", formData);
+    setFormData({
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      password: "",
+    });
+  };
+
   return (
     <div className="register flex center column">
       <Link to="/" className="register-logo">
@@ -101,6 +113,7 @@ const Register = () => {
           name={"register"}
           text={"Register"}
           className={"register-form-button"}
+          onClick={handleSubmit}
         ></Button>
 
         <div className="already flex center">
