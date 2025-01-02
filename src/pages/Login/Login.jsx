@@ -9,6 +9,21 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers";
+
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Invalid email format")
+    .required("Email is required"),
+
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters long")
+    .required("Password is required"),
+});
+
 const Login = () => {
   const navigate = useNavigate();
   const goToRegister = () => {
@@ -20,7 +35,9 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const [status, serStatus] = useState("");
 
@@ -75,13 +92,7 @@ const Login = () => {
             name="email"
             type="email"
             placeholder="ex. ahmad@gmail.com"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: "Email is not valid",
-              },
-            })}
+            {...register("email")}
           />
           {errors.email && (
             <p style={{ color: "red" }}>{errors.email.message}</p>
@@ -93,13 +104,7 @@ const Login = () => {
             id="password"
             name="password"
             type="password"
-            {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters long",
-              },
-            })}
+            {...register("password")}
           />
           {errors.password && (
             <p style={{ color: "red" }}>{errors.password.message}</p>
