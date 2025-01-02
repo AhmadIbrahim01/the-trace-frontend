@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/images/logo.svg";
+import { jwtDecode } from "jwt-decode";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -12,6 +13,25 @@ const Navbar = () => {
   const goToUserProfile = () => {
     navigate("/user-profile");
   };
+
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+
+    if (token) {
+      try {
+        console.log(token);
+
+        const decoded = jwtDecode(token);
+        setName(decoded.name);
+      } catch (error) {
+        console.log("Error decoding token", error);
+      }
+    } else {
+      console.log("No token");
+    }
+  }, []);
   return (
     <nav className="navbar flex center">
       <div className="navbar-container flex center">
@@ -35,12 +55,12 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        {localStorage.getItem("user") ? (
+        {name ? (
           <button
             className="nav-button flex center column"
             onClick={goToUserProfile}
           >
-            {localStorage.getItem("user")}
+            {name}
           </button>
         ) : (
           <button
