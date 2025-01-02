@@ -6,6 +6,8 @@ import GoogleIcon from "../../assets/icons/google-icon.svg";
 import logo from "../../assets/images/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 
+import axios from "axios";
+
 const Register = () => {
   const navigate = useNavigate();
   const goToLogin = () => {
@@ -21,7 +23,7 @@ const Register = () => {
   });
 
   useEffect(() => {
-    console.log(formData);
+    // console.log(formData);
   }, [formData]);
 
   const handleChange = (e) => {
@@ -32,9 +34,23 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
+
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8080/api/auth/register",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+
     setFormData({
       firstName: "",
       lastName: "",
