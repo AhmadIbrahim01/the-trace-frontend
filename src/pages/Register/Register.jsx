@@ -7,6 +7,7 @@ import logo from "../../assets/images/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -14,35 +15,40 @@ const Register = () => {
     navigate("/login");
   };
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    password: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  // const [formData, setFormData] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   phone: "",
+  //   email: "",
+  //   password: "",
+  // });
 
   const [status, setStatus] = useState({ success: true });
 
-  useEffect(() => {
-    // console.log(formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   // console.log(formData);
+  // }, [formData]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value,
+  //   });
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const onSubmit = async (data) => {
     try {
       const response = await axios.post(
         "http://127.0.0.1:8080/api/auth/register",
-        formData,
+        data,
         {
           headers: {
             "Content-Type": "application/json",
@@ -63,13 +69,14 @@ const Register = () => {
       });
     }
 
-    setFormData({
-      firstName: "",
-      lastName: "",
-      phone: "",
-      email: "",
-      password: "",
-    });
+    // setFormData({
+    //   firstName: "",
+    //   lastName: "",
+    //   phone: "",
+    //   email: "",
+    //   password: "",
+    // });
+    reset();
   };
 
   return (
@@ -77,7 +84,10 @@ const Register = () => {
       <Link to="/" className="register-logo">
         <img src={logo} alt="" />
       </Link>
-      <form className="register-form flex center column">
+      <form
+        className="register-form flex center column"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <h1>Register</h1>
         <h3>Join us now!</h3>
 
@@ -88,9 +98,13 @@ const Register = () => {
             name="firstName"
             type="text"
             placeholder="ex. Ahmad"
-            value={formData.firstName}
-            onChange={handleChange}
+            // value={formData.firstName}
+            // onChange={handleChange}
+            {...register("firstName", { required: "First name is required" })}
           />
+          {errors.firstName && (
+            <p style={{ color: "red" }}>{errors.firstName.message}</p>
+          )}
         </div>
         <div className="register-input flex column">
           <label htmlFor="lastName">Last Name</label>
@@ -99,9 +113,13 @@ const Register = () => {
             name="lastName"
             type="text"
             placeholder="ex. Ibrahim"
-            value={formData.lastName}
-            onChange={handleChange}
+            // value={formData.lastName}
+            // onChange={handleChange}
+            {...register("lastName", { required: "Last name is required" })}
           />
+          {errors.lastName && (
+            <p style={{ color: "red" }}>{errors.lastName.message}</p>
+          )}
         </div>
         <div className="register-input flex column">
           <label htmlFor="phone">Phone</label>
@@ -110,9 +128,19 @@ const Register = () => {
             name="phone"
             type="number"
             placeholder="ex. 76468212"
-            value={formData.phone}
-            onChange={handleChange}
+            // value={formData.phone}
+            // onChange={handleChange}
+            {...register("phone", {
+              required: "Phone is required",
+              pattern: {
+                value: /^[0-9]{8}$/,
+                message: "Phone number is not valid",
+              },
+            })}
           />
+          {errors.phone && (
+            <p style={{ color: "red" }}>{errors.phone.message}</p>
+          )}
         </div>
         <div className="register-input flex column">
           <label htmlFor="email">Email</label>
@@ -121,9 +149,19 @@ const Register = () => {
             name="email"
             type="email"
             placeholder="ex. ahmad@gmail.com"
-            value={formData.email}
-            onChange={handleChange}
+            // value={formData.email}
+            // onChange={handleChange}
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: "Email is not valid",
+              },
+            })}
           />
+          {errors.email && (
+            <p style={{ color: "red" }}>{errors.email.message}</p>
+          )}
         </div>
         <div className="register-input flex column">
           <label htmlFor="password">Password</label>
@@ -131,9 +169,19 @@ const Register = () => {
             id="password"
             name="password"
             type="password"
-            value={formData.password}
-            onChange={handleChange}
+            // value={formData.password}
+            // onChange={handleChange}
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters long",
+              },
+            })}
           />
+          {errors.password && (
+            <p style={{ color: "red" }}>{errors.password.message}</p>
+          )}
         </div>
 
         <Button
@@ -141,7 +189,7 @@ const Register = () => {
           name={"register"}
           text={"Register"}
           className={"register-form-button"}
-          onClick={handleSubmit}
+          // onClick={handleSubmit}
         ></Button>
 
         {!status.success && <p style={{ color: "red" }}>{status.message}</p>}
