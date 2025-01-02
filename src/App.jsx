@@ -28,6 +28,7 @@ import ManageUsers from "./pages/Admin/AdminDashboard/ManageUsers/ManageUsers";
 import AISketch from "./pages/Tools/AISketch/AISketch";
 import AIStatement from "./pages/Tools/AIStatement/AIStatement";
 import Layout from "./components/Layout/Layout";
+import UserProfile from "./pages/User/UserProfile/UserProfile";
 
 function App() {
   const route = createBrowserRouter([
@@ -63,6 +64,7 @@ function App() {
     { path: "*", element: <Error /> },
     { path: "/register", element: <Register /> },
     { path: "/login", element: <Login /> },
+    { path: "/user-profile", element: <UserProfile /> },
   ]);
   return (
     <>
