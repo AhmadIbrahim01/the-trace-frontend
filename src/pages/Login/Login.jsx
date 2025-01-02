@@ -10,7 +10,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 
 import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const schema = yup.object().shape({
   email: yup
@@ -39,7 +39,7 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const [status, serStatus] = useState("");
+  const [status, setStatus] = useState({ success: true, message: "" });
 
   const onSubmit = async (data) => {
     try {
@@ -56,7 +56,7 @@ const Login = () => {
       const { token, user } = response.data;
       localStorage.setItem("authToken", token);
 
-      serStatus({
+      setStatus({
         success: true,
         message: "Login successfull",
       });
@@ -65,10 +65,9 @@ const Login = () => {
     } catch (error) {
       console.log(error.message);
 
-      serStatus({
-        success: false,
-        message: "Invalid email or password",
-      });
+      const errorMessage =
+        error.response?.data?.message || "Something went wrong";
+      setStatus({ success: false, message: errorMessage });
     }
     reset();
   };
