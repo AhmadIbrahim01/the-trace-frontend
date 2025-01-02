@@ -8,6 +8,28 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup.object().shape({
+  firstName: yup.string().required("First name is required"),
+  lastName: yup.string().required("Last name is required"),
+  phone: yup
+    .string()
+    .matches(/^[0-9]{8}$/, "Phone number must be 8 digits")
+    .required("Phone number is required"),
+
+  email: yup
+    .string()
+    .email("Invalid email format")
+    .required("Email is required"),
+
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters long")
+    .required("Password is required"),
+});
+
 const Register = () => {
   const navigate = useNavigate();
   const goToLogin = () => {
@@ -19,7 +41,9 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const [status, setStatus] = useState({ success: true });
 
@@ -70,7 +94,7 @@ const Register = () => {
             name="firstName"
             type="text"
             placeholder="ex. Ahmad"
-            {...register("firstName", { required: "First name is required" })}
+            {...register("firstName")}
           />
           {errors.firstName && (
             <p style={{ color: "red" }}>{errors.firstName.message}</p>
@@ -83,7 +107,7 @@ const Register = () => {
             name="lastName"
             type="text"
             placeholder="ex. Ibrahim"
-            {...register("lastName", { required: "Last name is required" })}
+            {...register("lastName")}
           />
           {errors.lastName && (
             <p style={{ color: "red" }}>{errors.lastName.message}</p>
@@ -96,13 +120,7 @@ const Register = () => {
             name="phone"
             type="number"
             placeholder="ex. 76468212"
-            {...register("phone", {
-              required: "Phone is required",
-              pattern: {
-                value: /^[0-9]{8}$/,
-                message: "Phone number is not valid",
-              },
-            })}
+            {...register("phone")}
           />
           {errors.phone && (
             <p style={{ color: "red" }}>{errors.phone.message}</p>
@@ -115,13 +133,7 @@ const Register = () => {
             name="email"
             type="email"
             placeholder="ex. ahmad@gmail.com"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: "Email is not valid",
-              },
-            })}
+            {...register("email")}
           />
           {errors.email && (
             <p style={{ color: "red" }}>{errors.email.message}</p>
@@ -133,13 +145,7 @@ const Register = () => {
             id="password"
             name="password"
             type="password"
-            {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters long",
-              },
-            })}
+            {...register("password")}
           />
           {errors.password && (
             <p style={{ color: "red" }}>{errors.password.message}</p>
