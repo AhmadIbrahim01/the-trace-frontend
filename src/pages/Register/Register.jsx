@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Input from "../../components/Input/Input";
+import React, { useState } from "react";
 import Button from "../../components/Button/Button";
 import "./Register.css";
 import GoogleIcon from "../../assets/icons/google-icon.svg";
@@ -22,27 +21,7 @@ const Register = () => {
     reset,
   } = useForm();
 
-  // const [formData, setFormData] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   phone: "",
-  //   email: "",
-  //   password: "",
-  // });
-
   const [status, setStatus] = useState({ success: true });
-
-  // useEffect(() => {
-  //   // console.log(formData);
-  // }, [formData]);
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({
-  //     ...formData,
-  //     [name]: value,
-  //   });
-  // };
 
   const onSubmit = async (data) => {
     try {
@@ -69,13 +48,6 @@ const Register = () => {
       });
     }
 
-    // setFormData({
-    //   firstName: "",
-    //   lastName: "",
-    //   phone: "",
-    //   email: "",
-    //   password: "",
-    // });
     reset();
   };
 
@@ -98,8 +70,6 @@ const Register = () => {
             name="firstName"
             type="text"
             placeholder="ex. Ahmad"
-            // value={formData.firstName}
-            // onChange={handleChange}
             {...register("firstName", { required: "First name is required" })}
           />
           {errors.firstName && (
@@ -113,8 +83,6 @@ const Register = () => {
             name="lastName"
             type="text"
             placeholder="ex. Ibrahim"
-            // value={formData.lastName}
-            // onChange={handleChange}
             {...register("lastName", { required: "Last name is required" })}
           />
           {errors.lastName && (
@@ -128,8 +96,6 @@ const Register = () => {
             name="phone"
             type="number"
             placeholder="ex. 76468212"
-            // value={formData.phone}
-            // onChange={handleChange}
             {...register("phone", {
               required: "Phone is required",
               pattern: {
@@ -149,8 +115,6 @@ const Register = () => {
             name="email"
             type="email"
             placeholder="ex. ahmad@gmail.com"
-            // value={formData.email}
-            // onChange={handleChange}
             {...register("email", {
               required: "Email is required",
               pattern: {
@@ -169,8 +133,6 @@ const Register = () => {
             id="password"
             name="password"
             type="password"
-            // value={formData.password}
-            // onChange={handleChange}
             {...register("password", {
               required: "Password is required",
               minLength: {
@@ -189,7 +151,6 @@ const Register = () => {
           name={"register"}
           text={"Register"}
           className={"register-form-button"}
-          // onClick={handleSubmit}
         ></Button>
 
         {!status.success && <p style={{ color: "red" }}>{status.message}</p>}
