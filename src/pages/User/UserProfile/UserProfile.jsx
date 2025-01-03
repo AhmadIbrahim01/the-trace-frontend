@@ -91,7 +91,6 @@ const UserProfile = () => {
       fetchUser();
     }
   }, [userId, token]);
-  console.log(user);
 
   const {
     firstName,
@@ -111,7 +110,6 @@ const UserProfile = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  console.log(badges);
 
   return (
     <div className="flex center column">

@@ -21,6 +21,7 @@ import rightArrow from "../../assets/icons/right-arrow.svg";
 import { Navigate, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import { gsap } from "gsap";
+import axios from "axios";
 
 const ActionItem = ({ icon, text }) => (
   <div className="action">
@@ -31,7 +32,7 @@ const ActionItem = ({ icon, text }) => (
 
 const TestimonialCard = ({ text, name, image }) => (
   <div className="testimonial-card">
-    <p>{text}</p>
+    <p>"{text}"</p>
     <div className="card-info flex column center">
       <img src={image} alt="user" />
       <p>{name}</p>
@@ -39,23 +40,23 @@ const TestimonialCard = ({ text, name, image }) => (
   </div>
 );
 
-const testimonials = [
-  {
-    text: `“I've been using this web hosting service for a few months and it's been nothing but problems. My website has gone down multiple times and the customer service has been unresponsive. I would not recommend this company."`,
-    name: "Ahmad Ibrahim",
-    image: userIcon,
-  },
-  {
-    text: `“I've been using this web hosting service for a few months now and overall it's been fine. The uptime has been good and I haven't had any major issues. The pricing is also reasonable. Nothing particularly stands out as exceptional, but it gets the job done.”`,
-    name: "Ahmad Ibrahim",
-    image: userIcon,
-  },
-  {
-    text: `“I've been using this web hosting service for a few months and it's been nothing but problems. My website has gone down multiple times and the customer service has been unresponsive. I would not recommend this company."`,
-    name: "Ahmad Ibrahim",
-    image: userIcon,
-  },
-];
+// const testimonials = [
+//   {
+//     text: `“I've been using this web hosting service for a few months and it's been nothing but problems. My website has gone down multiple times and the customer service has been unresponsive. I would not recommend this company."`,
+//     name: "Ahmad Ibrahim",
+//     image: userIcon,
+//   },
+//   {
+//     text: `“I've been using this web hosting service for a few months now and overall it's been fine. The uptime has been good and I haven't had any major issues. The pricing is also reasonable. Nothing particularly stands out as exceptional, but it gets the job done.”`,
+//     name: "Ahmad Ibrahim",
+//     image: userIcon,
+//   },
+//   {
+//     text: `“I've been using this web hosting service for a few months and it's been nothing but problems. My website has gone down multiple times and the customer service has been unresponsive. I would not recommend this company."`,
+//     name: "Ahmad Ibrahim",
+//     image: userIcon,
+//   },
+// ];
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -177,38 +178,63 @@ const HowToJoinSection = () => {
   );
 };
 
-const TestimonialsSection = () => (
-  <div className="testimonials flex column center">
-    <div className="testimonials-header flex">
-      <div className="testimonials-info">
-        <h1>Testimonials</h1>
-        <p>
-          Joining us is very simple, just a few steps and you’ll be set up to
-          go!
-        </p>
+const TestimonialsSection = () => {
+  const [test, setTest] = useState([]);
+
+  useEffect(() => {
+    const getTestimonials = async () => {
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8080/api/testimonial/",
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        setTest(response.data.testimonials);
+
+        console.log(response.data.testimonials);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getTestimonials();
+  }, []);
+  return (
+    <div className="testimonials flex column center">
+      <div className="testimonials-header flex">
+        <div className="testimonials-info">
+          <h1>Testimonials</h1>
+          <p>
+            Joining us is very simple, just a few steps and you’ll be set up to
+            go!
+          </p>
+        </div>
+        <div className="flex testimonials-btns">
+          <button className="arrow-btn">
+            <img src={arrow} alt="" />
+          </button>
+          <button className="arrow-btn">
+            <img src={arrow} alt="" />
+          </button>
+        </div>
       </div>
-      <div className="flex testimonials-btns">
-        <button className="arrow-btn">
-          <img src={arrow} alt="" />
-        </button>
-        <button className="arrow-btn">
-          <img src={arrow} alt="" />
-        </button>
+      <div className="testimonial-cards flex center">
+        {test.map((testimonial, index) => (
+          <TestimonialCard
+            key={index}
+            text={testimonial.testimonial}
+            name={testimonial.firstName}
+            image={testimonial.profilePhoto || userIcon}
+          />
+        ))}
       </div>
+      <img className="magnifier" src={magnifier} alt="" />
     </div>
-    <div className="testimonial-cards flex center">
-      {testimonials.map((testimonial, index) => (
-        <TestimonialCard
-          key={index}
-          text={testimonial.text}
-          name={testimonial.name}
-          image={testimonial.image}
-        />
-      ))}
-    </div>
-    <img className="magnifier" src={magnifier} alt="" />
-  </div>
-);
+  );
+};
 
 const PoweredByAiSection = () => (
   <div className="powered flex column center">
@@ -370,17 +396,19 @@ const FAQ = () => {
   );
 };
 
-const Home = () => (
-  <>
-    <Navbar />
-    <HeroSection />
-    <AboutUs />
-    <GetInvolvedSection />
-    <HowToJoinSection />
-    <TestimonialsSection />
-    <PoweredByAiSection />
-    <FAQ />
-  </>
-);
+const Home = () => {
+  return (
+    <>
+      <Navbar />
+      <HeroSection />
+      <AboutUs />
+      <GetInvolvedSection />
+      <HowToJoinSection />
+      <TestimonialsSection />
+      <PoweredByAiSection />
+      <FAQ />
+    </>
+  );
+};
 
 export default Home;
