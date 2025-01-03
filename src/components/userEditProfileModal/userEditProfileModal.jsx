@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./UserEditProfileModal.css";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
 const userEditProfileModal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
-  const { author, time, text, likes, profileImage } = data;
+  // const { author, time, text, likes, profileImage } = data;
+  const { firstName, lastName, email, phone, profilePicture } = data;
+  const [formData, setFormData] = useState({
+    firstName,
+    lastName,
+    email,
+    phone,
+    profilePicture,
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  useEffect(() => {}, []);
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -16,21 +29,49 @@ const userEditProfileModal = ({ isOpen, onClose, data }) => {
         <h1>Profile</h1>
         <form>
           <div className="edit-input flex column">
-            <label htmlFor="name">Name</label>
-            <input id="name" name="name" type="text" />
+            <label htmlFor="firstName">Name</label>
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              value={formData.firstName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="edit-input flex column">
+            <label htmlFor="lastName">Name</label>
+            <input
+              id="lastName"
+              name="lastName"
+              type="text"
+              value={formData.lastName}
+              onChange={handleChange}
+            />
           </div>
           <div className="edit-input flex column">
             <label htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
           </div>
           <div className="edit-input flex column">
             <label htmlFor="phone">Phone</label>
-            <input id="phone" name="phone" type="number" />
+            <input
+              id="phone"
+              name="phone"
+              type="number"
+              value={formData.phone}
+              onChange={handleChange}
+            />
           </div>
-          <div className="edit-input flex column">
+          {/* <div className="edit-input flex column">
             <label htmlFor="password">Password</label>
             <input id="password" name="password" type="password" />
-          </div>
+          </div> */}
           <div className="edit-input flex column">
             <label htmlFor="file">Profile Photo</label>
             <input id="file" name="file" type="file" />
