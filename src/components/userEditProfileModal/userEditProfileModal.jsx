@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./UserEditProfileModal.css";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
+import axios from "axios";
 
 const userEditProfileModal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
-  // const { author, time, text, likes, profileImage } = data;
+  const [status, setStatus] = useState({ success: true });
   const { firstName, lastName, email, phone, profilePicture } = data;
   const [formData, setFormData] = useState({
     firstName,
@@ -14,11 +15,52 @@ const userEditProfileModal = ({ isOpen, onClose, data }) => {
     phone,
     profilePicture,
   });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
-  useEffect(() => {}, []);
+
+  const userId = data._id;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.put(
+        `http://127.0.0.1:8080/api/auth/${userId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      onClose();
+      setFormData((prevState) => ({
+        ...prevState,
+        firstName: response.data.firstName,
+        lastName: response.data.lastName,
+        email: response.data.email,
+        phone: response.data.phone,
+      }));
+      setStatus({
+        success: true,
+        message: "Registiration Successful",
+      });
+      localStorage.setItem("name", formData.firstName);
+    } catch (error) {
+      console.log(error.message);
+      setStatus({
+        success: false,
+        message: "An Error Occured",
+      });
+    }
+  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -29,7 +71,7 @@ const userEditProfileModal = ({ isOpen, onClose, data }) => {
         <h1>Profile</h1>
         <form>
           <div className="edit-input flex column">
-            <label htmlFor="firstName">Name</label>
+            <label htmlFor="firstName">First name</label>
             <input
               id="firstName"
               name="firstName"
@@ -39,7 +81,7 @@ const userEditProfileModal = ({ isOpen, onClose, data }) => {
             />
           </div>
           <div className="edit-input flex column">
-            <label htmlFor="lastName">Name</label>
+            <label htmlFor="lastName">Last name</label>
             <input
               id="lastName"
               name="lastName"
@@ -81,8 +123,11 @@ const userEditProfileModal = ({ isOpen, onClose, data }) => {
           <Button
             className={"edit-user-button flex center"}
             text={"Save Changes"}
+            type={"submit"}
+            onClick={handleSubmit}
           ></Button>
           <button onClick={onClose}>Close</button>
+          {!status.success && <p style={{ color: "red" }}>{status.message}</p>}
         </div>
       </div>
     </div>
