@@ -19,3 +19,7 @@
   color: white;
   font-weight: bold;
 }
+
+.profile-input {
+  display: none;
+}

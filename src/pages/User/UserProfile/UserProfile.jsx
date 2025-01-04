@@ -19,6 +19,17 @@ const UserProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [userId, setUserId] = useState(null);
+  const [postImage, setPostImage] = useState({ myFile: "" });
+  const {
+    firstName,
+    lastName,
+    email,
+    level,
+    phone,
+    profilePicture,
+    tipsStats,
+    badges,
+  } = user;
 
   const navigate = useNavigate();
 
@@ -92,16 +103,43 @@ const UserProfile = () => {
     }
   }, [userId, token]);
 
-  const {
-    firstName,
-    lastName,
-    email,
-    level,
-    phone,
-    profilePicture,
-    tipsStats,
-    badges,
-  } = user;
+  // useEffect(() => {
+  //   if (postImage) {
+  //     const changeImage = async (profilePicture) => {
+  //       console.log("sd", profilePicture);
+
+  //       try {
+  //         await axios.put(
+  //           "http://127.0.0.1:8080/api/auth/profilepicture/67775144492be380c8c96adc",
+  //           profilePicture,
+  //           {
+  //             headers: {
+  //               "Content-Type": "application/json",
+  //             },
+  //           }
+  //         );
+  //         // console.log(respone.data);
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  //     };
+  //     changeImage();
+  //   }
+  // }, [postImage]);
+  const createPost = async (profilePicture) => {
+    const url =
+      "http://127.0.0.1:8080/api/auth/profilepicture/67775144492be380c8c96adc";
+    try {
+      const response = await axios.put(url, profilePicture, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -110,6 +148,19 @@ const UserProfile = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createPost(postImage);
+    console.log("Uploaded");
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    console.log(base64);
+    setPostImage({ ...postImage, myFile: base64 });
+  };
 
   return (
     <div className="flex center column">
@@ -125,15 +176,28 @@ const UserProfile = () => {
           <h2>Profile</h2>
           <button onClick={() => openEditModal(user)}>Edit</button>
         </div>
-        <div className="user-profile-image flex column center">
-          <button className="user-profile-button">
+        <form onSubmit={handleSubmit}>
+          <div className="user-profile-image flex column center">
+            {/* <button className="user-profile-button">
             <img src={profilePicture || profile} alt="" />
-          </button>
-          <button className="user-profile-edit">
-            <img src={edit} alt="" />
-          </button>
-          <h2>{firstName}</h2>
-        </div>
+          </button> */}
+
+            <label htmlFor="profile">
+              <img src={profilePicture || profile} alt="" />
+            </label>
+
+            <input
+              className="profile-input"
+              type="file"
+              name="profile"
+              id="profile"
+              accept=".jpeg, .png, .jpg"
+              onChange={(e) => handleFileUpload(e)}
+            />
+
+            <h2>{firstName}</h2>
+          </div>
+        </form>
         <div className="user-modal-header flex center">
           <h2>Level {level}</h2>
         </div>
@@ -186,3 +250,16 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
+
+function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+}
