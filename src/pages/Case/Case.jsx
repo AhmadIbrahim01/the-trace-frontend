@@ -23,6 +23,8 @@ import UserProfileModal from "../../components/UserProfileModal/UserProfileModal
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import MapComponent from "../../components/MapComponent/MapComponent";
+
 const HeroSection = ({ theCase }) => {
   console.log(theCase);
 
@@ -176,7 +178,12 @@ const CaseDescription = ({ theCase }) => {
         <h1 className="description-h1">Scene</h1>
         <div className="scene"></div>
         <h1 className="description-h1">Map</h1>
-        <div className="map"></div>
+        <div className="map">
+          <MapComponent
+            latitude={48.86066753872029}
+            longitude={2.337638632675235}
+          ></MapComponent>
+        </div>
       </div>
     </div>
   );
