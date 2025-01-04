@@ -32,6 +32,7 @@ const HeroSection = () => (
 const CaseCard = ({ caseData, index }) => {
   const navigate = useNavigate();
   const goToCase = () => {
+    localStorage.setItem("caseId", caseData._id);
     navigate("/case");
   };
 
@@ -119,7 +120,7 @@ const CasesSection = () => {
   //   },
   // ];
 
-  const [cases, setC] = useState([]);
+  const [cases, setCases] = useState([]);
 
   useEffect(() => {
     const getCases = async () => {
@@ -130,7 +131,7 @@ const CasesSection = () => {
           },
         });
 
-        setC(response.data.cases);
+        setCases(response.data.cases);
       } catch (error) {
         console.log(error.message);
       }
