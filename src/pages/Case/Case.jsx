@@ -62,7 +62,7 @@ const HeroSection = ({ theCase }) => {
 
 const CaseDescription = ({ theCase }) => {
   const caseImages = theCase.caseImages;
-  const limitedImages = caseImages.slice(0, 5);
+  const limitedImages = caseImages.slice(0, 4);
   const [mainImage, setMainImage] = useState(limitedImages[0]);
 
   const handleThumbnailClick = (image) => {
@@ -86,6 +86,9 @@ const CaseDescription = ({ theCase }) => {
   theCase.status === "in_progress"
     ? (caseStatus = "In progress")
     : (caseStatus = theCase.status);
+
+  const latitude = theCase.map.latitude || 33.89031080600027;
+  const longitude = theCase.map.longitude || 35.47024942065306;
 
   return (
     <div className="case-description flex center column">
@@ -181,8 +184,8 @@ const CaseDescription = ({ theCase }) => {
         <h1 className="description-h1">Map</h1>
         <div className="map">
           <MapComponent
-            latitude={theCase.map.latitude}
-            longitude={theCase.map.longitude}
+            latitude={latitude}
+            longitude={longitude}
           ></MapComponent>
         </div>
       </div>

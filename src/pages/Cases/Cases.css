@@ -140,7 +140,7 @@
 }
 
 .case-name > button {
-  width: 52px;
+  min-width: 52px;
   height: 40px;
   border-radius: 32px;
   border: 1px solid black;

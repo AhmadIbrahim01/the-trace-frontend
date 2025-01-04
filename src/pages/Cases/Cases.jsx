@@ -45,7 +45,10 @@ const CaseCard = ({ caseData, index }) => {
   });
 
   console.log(caseData.caseImages);
-
+  let caseStatus = "Not available";
+  caseData.status === "in_progress"
+    ? (caseStatus = "In progress")
+    : (caseStatus = caseData.status);
   return (
     <div className="case">
       <p className="t-center flex center">
@@ -73,7 +76,7 @@ const CaseCard = ({ caseData, index }) => {
             ))}
           </div>
           <div className="case-state flex center">
-            <p>{caseData.status}</p>
+            <p>{caseStatus}</p>
             <img src={tickCircleIcon} alt="Tick Circle Icon" />
           </div>
           <button className="flex center" onClick={goToCase}>
