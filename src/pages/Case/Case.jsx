@@ -86,6 +86,7 @@ const CaseDescription = ({ theCase }) => {
   theCase.status === "in_progress"
     ? (caseStatus = "In progress")
     : (caseStatus = theCase.status);
+
   return (
     <div className="case-description flex center column">
       <img className="scene-tape" src={sceneTape} alt="scene-tape" />
@@ -180,8 +181,8 @@ const CaseDescription = ({ theCase }) => {
         <h1 className="description-h1">Map</h1>
         <div className="map">
           <MapComponent
-            latitude={48.86066753872029}
-            longitude={2.337638632675235}
+            latitude={theCase.map.latitude}
+            longitude={theCase.map.longitude}
           ></MapComponent>
         </div>
       </div>

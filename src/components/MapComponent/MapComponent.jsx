@@ -5,7 +5,10 @@ import { MapContainer, TileLayer } from "react-leaflet";
 
 const MapComponent = ({ latitude, longitude }) => {
   return (
-    <MapContainer center={[latitude || 48.8566, longitude || 2.3522]} zoom={20}>
+    <MapContainer
+      center={[latitude || 33.89031080600027, longitude || 35.47024942065306]}
+      zoom={20}
+    >
       <TileLayer
         attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
