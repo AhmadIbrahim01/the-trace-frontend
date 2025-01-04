@@ -21,114 +21,134 @@ import like from "../../assets/icons/like.svg";
 import dislike from "../../assets/icons/dislike.svg";
 import UserProfileModal from "../../components/UserProfileModal/UserProfileModal";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const HeroSection = () => (
-  <div className="case-hero flex center column">
-    <div className="case-bio">
-      <h1>The Victim Of AI</h1>
-      <h2>Case #1</h2>
-    </div>
+const HeroSection = ({ theCase }) => {
+  console.log(theCase);
 
-    <div className="image-one">
-      <img src={tapeOne} alt="" />
-      <img src={caseImage} alt="" />
-    </div>
-    <div className="image-two">
-      <img src={tapeTwo} alt="" />
-      <img src={galleryOne} alt="" />
-    </div>
-    <img className="half-paper" src={halfPaper} alt="" />
-    <div className="sticky-note flex center">
-      <p>Case</p>
-      <img src={pin} alt="" />
-    </div>
-  </div>
-);
+  const img1 = theCase.caseImages[0];
+  const img2 = theCase.caseImages[1];
 
-const CaseDescription = () => (
-  <div className="case-description flex center column">
-    <img className="scene-tape" src={sceneTape} alt="scene-tape" />
-    <div className="description-header flex">
-      <button className="back-btn flex center">
-        <img src={backArrow} alt="" />
-        <p>Back</p>
-      </button>
-      <div className="flex center">
-        <div className="case-status flex center">
-          <p>Case closed</p>
-          <img src={tickCircleIcon} alt="Tick Circle Icon" />
-        </div>
-        <div className="case-date flex">
-          <img src={calendarIcon} alt="Calendar Icon" />
-          <p>Published on January 5, 2023</p>
-        </div>
+  return (
+    <div className="case-hero flex center column">
+      <div className="case-bio">
+        <h1>{theCase.title}</h1>
+        <h2>{theCase.status}</h2>
+      </div>
+
+      <div className="image-one">
+        <img src={tapeOne} alt="" />
+        <img src={img1 || caseImage} alt="" />
+      </div>
+      <div className="image-two">
+        <img src={tapeTwo} alt="" />
+        <img src={img2 || galleryOne} alt="" />
+      </div>
+      <img className="half-paper" src={halfPaper} alt="" />
+      <div className="sticky-note flex center">
+        <p>Case</p>
+        <img src={pin} alt="" />
       </div>
     </div>
+  );
+};
 
-    <div className="description">
-      <h1 className="description-h1">Description</h1>
-      <h3 className="description-h3">
-        Ireland hears the call of Palestine, but is it free to answer?
-      </h3>
-      <p className="description-p">
-        Today, Ireland is a country reckoning with the cost and consequences of
-        abandoning its ideals for economic gain. Since freeing 26 of its 32
-        counties from British rule more than 100 years ago, Ireland has moved
-        away from its socialist roots and embraced neoliberalism. .....
-        <br />
-        <br />
-        Today, Ireland is a country reckoning with the cost and consequences of
-        abandoning its ideals for economic gain. Since freeing 26 of its 32
-        counties from British rule more than 100 years ago, Ireland has moved
-        away from its socialist roots and embraced neoliberalism. .....
-        <br />
-        <br />
-        Today, Ireland is a country reckoning with the cost and consequences of
-        abandoning its ideals for economic gain. Since freeing 26 of its 32
-        counties from British rule more than 100 years ago, Ireland has moved
-        away from its socialist roots and embraced neoliberalism. .....
-      </p>
-      <div className="case-notice">
-        <h6>Important</h6>
-        <p>
-          Today, Ireland is a country reckoning with the cost and consequences
+const CaseDescription = ({ theCase }) => {
+  console.log(theCase);
+
+  const date = new Date(theCase.createdAt);
+
+  const formattedDate = date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+  return (
+    <div className="case-description flex center column">
+      <img className="scene-tape" src={sceneTape} alt="scene-tape" />
+      <div className="description-header flex">
+        <button className="back-btn flex center">
+          <img src={backArrow} alt="" />
+          <p>Back</p>
+        </button>
+        <div className="flex center">
+          <div className="case-status flex center">
+            <p>Case {theCase.status}</p>
+            <img src={tickCircleIcon} alt="Tick Circle Icon" />
+          </div>
+          <div className="case-date flex">
+            <img src={calendarIcon} alt="Calendar Icon" />
+            <p>Published on {formattedDate}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="description">
+        <h1 className="description-h1">Description</h1>
+        <h3 className="description-h3">
+          Ireland hears the call of Palestine, but is it free to answer?
+        </h3>
+        <p className="description-p">
+          {/* Today, Ireland is a country reckoning with the cost and consequences
           of abandoning its ideals for economic gain. Since freeing 26 of its 32
-          counties from British rule more than 100 years ago, Ireland has.
-        </p>
-      </div>
-      <h1 className="description-h1">Gallery</h1>
-      <div className="gallery flex">
-        <div className="gallery-container flex center column">
-          <div className="gallery-main">
-            <img className="main-picture" src={galleryOne} alt="" />
-          </div>
-          <div className="gallery-sub flex">
-            <img className="sub-picture" src={galleryTwo} alt="" />
-            <img className="sub-picture" src={galleryThree} alt="" />
-            <img className="sub-picture" src={galleryFour} alt="" />
-            <img className="sub-picture" src={galleryFive} alt="" />
-          </div>
-        </div>
-        <p>
+          counties from British rule more than 100 years ago, Ireland has moved
+          away from its socialist roots and embraced neoliberalism. .....
+          <br />
+          <br />
           Today, Ireland is a country reckoning with the cost and consequences
           of abandoning its ideals for economic gain. Since freeing 26 of its 32
           counties from British rule more than 100 years ago, Ireland has moved
-          away from its socialist roots and embraced neoliberalism. Today,
-          Ireland is a country reckoning with the cost and consequences of
-          abandoning its ideals for economic gain. Since freeing 26 of its 32
+          away from its socialist roots and embraced neoliberalism. .....
+          <br />
+          <br />
+          Today, Ireland is a country reckoning with the cost and consequences
+          of abandoning its ideals for economic gain. Since freeing 26 of its 32
           counties from British rule more than 100 years ago, Ireland has moved
-          away from its socialist roots and embraced neoliberalism. ..... Today,
-          Ireland is a country reckoning with the cost and consequences of
-          abandoning its ideals.
+          away from its socialist roots and embraced neoliberalism. ..... */}
+          {theCase.description}
         </p>
+        <div className="case-notice">
+          <h6>Important</h6>
+          <p>
+            Today, Ireland is a country reckoning with the cost and consequences
+            of abandoning its ideals for economic gain. Since freeing 26 of its
+            32 counties from British rule more than 100 years ago, Ireland has.
+          </p>
+        </div>
+        <h1 className="description-h1">Gallery</h1>
+        <div className="gallery flex">
+          <div className="gallery-container flex center column">
+            <div className="gallery-main">
+              <img className="main-picture" src={galleryOne} alt="" />
+            </div>
+            <div className="gallery-sub flex">
+              <img className="sub-picture" src={galleryTwo} alt="" />
+              <img className="sub-picture" src={galleryThree} alt="" />
+              <img className="sub-picture" src={galleryFour} alt="" />
+              <img className="sub-picture" src={galleryFive} alt="" />
+            </div>
+          </div>
+          <p>
+            Today, Ireland is a country reckoning with the cost and consequences
+            of abandoning its ideals for economic gain. Since freeing 26 of its
+            32 counties from British rule more than 100 years ago, Ireland has
+            moved away from its socialist roots and embraced neoliberalism.
+            Today, Ireland is a country reckoning with the cost and consequences
+            of abandoning its ideals for economic gain. Since freeing 26 of its
+            32 counties from British rule more than 100 years ago, Ireland has
+            moved away from its socialist roots and embraced neoliberalism.
+            ..... Today, Ireland is a country reckoning with the cost and
+            consequences of abandoning its ideals.
+          </p>
+        </div>
+        <h1 className="description-h1">Scene</h1>
+        <div className="scene"></div>
+        <h1 className="description-h1">Map</h1>
+        <div className="map"></div>
       </div>
-      <h1 className="description-h1">Scene</h1>
-      <div className="scene"></div>
-      <h1 className="description-h1">Map</h1>
-      <div className="map"></div>
     </div>
-  </div>
-);
+  );
+};
 
 const TipSubmission = () => {
   const navigate = useNavigate();
@@ -270,14 +290,47 @@ const Comments = () => {
   );
 };
 
-const Case = () => (
-  <>
-    <HeroSection />
-    <CaseDescription />
-    <TipSubmission />
-    <CommentsSection />
-    <Comments />
-  </>
-);
+const Case = () => {
+  const [theCase, setCase] = useState({});
+  const [loading, setLoading] = useState(true);
+  const caseId = localStorage.getItem("caseId");
+
+  useEffect(() => {
+    const getCase = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `http://127.0.0.1:8080/api/case/${caseId}`,
+          {
+            headers: {
+              "Content-Type": "applicatio/json",
+            },
+          }
+        );
+
+        setCase(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error.message);
+        setLoading(false);
+      }
+    };
+    getCase();
+  }, []);
+
+  // console.log(theCase);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  return (
+    <>
+      <HeroSection theCase={theCase} />
+      <CaseDescription theCase={theCase} />
+      <TipSubmission theCase={theCase} />
+      <CommentsSection theCase={theCase} />
+      <Comments theCase={theCase} />
+    </>
+  );
+};
 
 export default Case;
