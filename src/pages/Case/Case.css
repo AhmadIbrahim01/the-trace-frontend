@@ -12,12 +12,15 @@
   z-index: 1;
 }
 .case-bio > h1 {
-  font-size: 100px;
+  width: 90%;
+  text-align: center;
+  font-size: 80px;
   background: var(--primary-gradient);
 }
 
 .case-bio > h2 {
-  font-size: 46px;
+  width: 70%;
+  font-size: 30px;
   background: var(--color2);
   text-align: right;
 }
@@ -138,7 +141,6 @@
 
 .case-status {
   margin: 0px 20px;
-  width: 121px;
   height: 33px;
   background-color: var(--color3);
   border: 1px solid #0f0f0f;
@@ -214,16 +216,19 @@
 }
 
 .gallery-container {
-  gap: 150px;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 .gallery-main {
   border-radius: 14px;
   width: 690px;
-  height: 370px;
+  height: 400px;
 }
 .main-picture {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 14px;
 }
 
@@ -233,6 +238,7 @@
   gap: 16px;
 }
 .sub-picture {
+  border-radius: 14px;
   width: 160px;
   height: 135px;
 }

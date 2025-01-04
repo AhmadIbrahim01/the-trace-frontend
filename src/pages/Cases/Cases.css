@@ -88,7 +88,7 @@
 }
 
 .case > p {
-  padding-top: 1%;
+  align-items: flex-start;
   width: 100%;
   background-color: #00000033;
   backdrop-filter: blur(11px);
