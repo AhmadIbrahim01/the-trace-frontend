@@ -5,10 +5,6 @@ import tapeTwo from "../../assets/images/tape-2.svg";
 import halfPaper from "../../assets/images/half-paper.svg";
 import caseImage from "../../assets/images/case-image.svg";
 import galleryOne from "../../assets/images/gallery-1.svg";
-import galleryTwo from "../../assets/images/gallery-2.svg";
-import galleryThree from "../../assets/images/gallery-3.svg";
-import galleryFour from "../../assets/images/gallery-4.svg";
-import galleryFive from "../../assets/images/gallery-5.svg";
 import pin from "../../assets/images/pin.svg";
 import sceneTape from "../../assets/images/scene-tape.svg";
 import calendarIcon from "../../assets/icons/calendar-icon.svg";
@@ -22,12 +18,11 @@ import dislike from "../../assets/icons/dislike.svg";
 import UserProfileModal from "../../components/UserProfileModal/UserProfileModal";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import profileImage from "../../assets/images/suspect.svg";
 
 import MapComponent from "../../components/MapComponent/MapComponent";
 
 const HeroSection = ({ theCase }) => {
-  console.log(theCase);
-
   const img1 = theCase.caseImages[0];
   const img2 = theCase.caseImages[1];
 
@@ -231,6 +226,35 @@ const CommentsSection = () => (
 const Comments = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState("");
+
+  const [theComments, setTheComments] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const caseId = localStorage.getItem("caseId");
+
+  useEffect(() => {
+    const getComments = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `http://127.0.0.1:8080/api/comment/${caseId}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        setTheComments(response.data.comments);
+        setLoading(false);
+      } catch (error) {
+        console.log(error.message);
+        setLoading(false);
+      }
+    };
+    getComments();
+  }, []);
+
   const openModal = (data) => {
     setModalData(data);
     setIsModalOpen(true);
@@ -240,90 +264,53 @@ const Comments = () => {
     setIsModalOpen(false);
   };
 
-  const initialComments = [
-    {
-      author: "Ahmad Ibrahim",
-      time: "50 mins ago",
-      text: "Figma ipsum component variant main layer. connection share figjam.",
-      likes: 30,
-      profileImage: galleryOne,
-    },
-    {
-      author: "John Doe",
-      time: "1 hour ago",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      likes: 15,
-      profileImage: galleryTwo,
-    },
-    {
-      author: "Jane Smith",
-      time: "2 hours ago",
-      text: "Another comment with a bit more content.",
-      likes: 50,
-      profileImage: galleryThree,
-    },
-  ];
-
-  const [comments, setComments] = useState(initialComments);
-  const [filter, setFilter] = useState("liked");
-
-  const handleFilterChange = () => {
-    if (filter === "recent") {
-      setFilter("liked");
-    } else {
-      setFilter("recent");
-    }
-  };
-  useEffect(() => {
-    if (filter === "liked") {
-      setComments(initialComments);
-    }
-  }, [filter]);
-  useEffect(() => {
-    if (filter === "recent") {
-      const sortedComments = [...comments].sort((a, b) => b.likes - a.likes);
-      setComments(sortedComments);
-    }
-  }, [filter]);
-
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="comments-section flex column">
       <div className="comments-header flex center">
         <div className="flex center">
           <h3>Comments</h3>
-          <span className="flex center">{comments.length}</span>
+          <span className="flex center">{theComments.length}</span>
         </div>
-        <button onClick={handleFilterChange}>
+        {/* <button onClick={handleFilterChange}>
           {filter === "recent" ? "Recent" : "Most Liked"}
-        </button>
+        </button> */}
       </div>
 
-      {comments.map((comment, index) => (
-        <div key={index} className="comment flex">
-          <button className="profile" onClick={() => openModal(comment)}>
-            <img src={comment.profileImage} alt={comment.author} />
-          </button>
-          <div className="comment-body flex column">
-            <div className="comment-author">
-              <p className="flex">
-                {comment.author} <span>{comment.time}</span>
-              </p>
-            </div>
-            <div className="comment-text">
-              <p>{comment.text}</p>
-            </div>
-            <div className="comment-action flex">
-              <span>{comment.likes} Likes</span>
-              <button>
-                <img src={like} alt="like" />
-              </button>
-              <button>
-                <img src={dislike} alt="dislike" />
-              </button>
+      {theComments.length !== 0 &&
+        theComments.map((theComment, index) => (
+          <div key={index} className="comment flex">
+            <button className="profile" onClick={() => openModal(theComment)}>
+              <img
+                src={theComment.userId.profilePicture || profileImage}
+                alt={theComment.userId.firstName}
+              />
+            </button>
+            <div className="comment-body flex column">
+              <div className="comment-author">
+                <p className="flex">
+                  {theComment.userId.firstName}{" "}
+                  {/* <span>{theComment.createdAt}</span> */}
+                </p>
+              </div>
+              <div className="comment-text">
+                <p>{theComment.content}</p>
+              </div>
+              <div className="comment-action flex">
+                <span>{theComment.likes} Likes</span>
+                <button>
+                  <img src={like} alt="like" />
+                </button>
+                <button>
+                  <img src={dislike} alt="dislike" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+
       <UserProfileModal
         isOpen={isModalOpen}
         onClose={closeModal}
@@ -361,7 +348,6 @@ const Case = () => {
     getCase();
   }, []);
 
-  // console.log(theCase);
   if (loading) {
     return <div>Loading...</div>;
   }
