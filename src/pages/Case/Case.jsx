@@ -29,11 +29,16 @@ const HeroSection = ({ theCase }) => {
   const img1 = theCase.caseImages[0];
   const img2 = theCase.caseImages[1];
 
+  let caseStatus = "Not available";
+  theCase.status === "in_progress"
+    ? (caseStatus = "In progress")
+    : (caseStatus = theCase.status);
+
   return (
     <div className="case-hero flex center column">
-      <div className="case-bio">
+      <div className="case-bio flex center column">
         <h1>{theCase.title}</h1>
-        <h2>{theCase.status}</h2>
+        <h2>{caseStatus}</h2>
       </div>
 
       <div className="image-one">
@@ -54,7 +59,18 @@ const HeroSection = ({ theCase }) => {
 };
 
 const CaseDescription = ({ theCase }) => {
-  console.log(theCase);
+  const caseImages = theCase.caseImages;
+  const limitedImages = caseImages.slice(0, 5);
+  const [mainImage, setMainImage] = useState(limitedImages[0]);
+
+  const handleThumbnailClick = (image) => {
+    setMainImage(image);
+  };
+
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate("/cases");
+  };
 
   const date = new Date(theCase.createdAt);
 
@@ -63,17 +79,22 @@ const CaseDescription = ({ theCase }) => {
     day: "numeric",
     year: "numeric",
   });
+
+  let caseStatus = "Not available";
+  theCase.status === "in_progress"
+    ? (caseStatus = "In progress")
+    : (caseStatus = theCase.status);
   return (
     <div className="case-description flex center column">
       <img className="scene-tape" src={sceneTape} alt="scene-tape" />
       <div className="description-header flex">
-        <button className="back-btn flex center">
+        <button className="back-btn flex center" onClick={goBack}>
           <img src={backArrow} alt="" />
           <p>Back</p>
         </button>
         <div className="flex center">
           <div className="case-status flex center">
-            <p>Case {theCase.status}</p>
+            <p>Case {caseStatus || "Status not available"}</p>
             <img src={tickCircleIcon} alt="Tick Circle Icon" />
           </div>
           <div className="case-date flex">
@@ -85,9 +106,7 @@ const CaseDescription = ({ theCase }) => {
 
       <div className="description">
         <h1 className="description-h1">Description</h1>
-        <h3 className="description-h3">
-          Ireland hears the call of Palestine, but is it free to answer?
-        </h3>
+        <h3 className="description-h3">{theCase.title}</h3>
         <p className="description-p">
           {/* Today, Ireland is a country reckoning with the cost and consequences
           of abandoning its ideals for economic gain. Since freeing 26 of its 32
@@ -110,13 +129,13 @@ const CaseDescription = ({ theCase }) => {
         <div className="case-notice">
           <h6>Important</h6>
           <p>
-            Today, Ireland is a country reckoning with the cost and consequences
-            of abandoning its ideals for economic gain. Since freeing 26 of its
-            32 counties from British rule more than 100 years ago, Ireland has.
+            Please remember that any information shared regarding this case
+            should be treated with utmost confidentiality to ensure the
+            integrity of the investigation
           </p>
         </div>
         <h1 className="description-h1">Gallery</h1>
-        <div className="gallery flex">
+        {/* <div className="gallery flex">
           <div className="gallery-container flex center column">
             <div className="gallery-main">
               <img className="main-picture" src={galleryOne} alt="" />
@@ -128,19 +147,32 @@ const CaseDescription = ({ theCase }) => {
               <img className="sub-picture" src={galleryFive} alt="" />
             </div>
           </div>
-          <p>
-            Today, Ireland is a country reckoning with the cost and consequences
-            of abandoning its ideals for economic gain. Since freeing 26 of its
-            32 counties from British rule more than 100 years ago, Ireland has
-            moved away from its socialist roots and embraced neoliberalism.
-            Today, Ireland is a country reckoning with the cost and consequences
-            of abandoning its ideals for economic gain. Since freeing 26 of its
-            32 counties from British rule more than 100 years ago, Ireland has
-            moved away from its socialist roots and embraced neoliberalism.
-            ..... Today, Ireland is a country reckoning with the cost and
-            consequences of abandoning its ideals.
-          </p>
+          <p>picture description</p>
+        </div> */}
+        <div className="gallery flex">
+          <div className="gallery-container flex center column">
+            <div className="gallery-main">
+              <img
+                className="main-picture"
+                src={mainImage}
+                alt="Main Gallery"
+              />
+            </div>
+            <div className="gallery-sub flex">
+              {limitedImages.map((image, index) => (
+                <img
+                  key={index}
+                  className="sub-picture"
+                  src={image}
+                  alt={`Gallery thumbnail ${index + 1}`}
+                  onClick={() => handleThumbnailClick(image)}
+                />
+              ))}
+            </div>
+          </div>
+          <p>{theCase.description}</p>
         </div>
+
         <h1 className="description-h1">Scene</h1>
         <div className="scene"></div>
         <h1 className="description-h1">Map</h1>
