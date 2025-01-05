@@ -46,7 +46,7 @@ const Modal = ({ isOpen, onClose, data }) => {
         </div>
 
         <div className="suspect-profile-body flex">
-          <img src={photos[0]} alt="Suspect" />
+          <img src={photos[0] || suspect} alt="Suspect" />
           <div className="suspect-data-container flex column">
             <div className="suspect-data flex">
               <img src={user} alt="Name Icon" />
@@ -97,13 +97,17 @@ const Modal = ({ isOpen, onClose, data }) => {
           <div className="suspect-images">
             <h3>Images:</h3>
             <div className="suspect-images-container flex center wrap">
-              {photos.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`Suspect Image ${index + 1}`}
-                />
-              ))}
+              {photos.length !== 0 ? (
+                photos.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`Suspect Image ${index + 1}`}
+                  />
+                ))
+              ) : (
+                <h1 style={{ color: "red" }}>No Images Available</h1>
+              )}
             </div>
           </div>
         </div>
