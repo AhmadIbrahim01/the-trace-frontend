@@ -155,6 +155,9 @@
   margin-top: 20px;
   text-align: left;
 }
+.case-statements-body > button:nth-child(1) {
+  margin-top: 0px;
+}
 .case-statements-body > button > img {
   width: 42px;
   height: 42px;

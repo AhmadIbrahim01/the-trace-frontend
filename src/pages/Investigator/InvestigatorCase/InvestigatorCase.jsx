@@ -57,7 +57,7 @@ const InvestigatorCase = () => {
   }, [caseId]);
 
   // console.log(theCase);
-  console.log(suspects);
+  // console.log(suspects);
 
   if (loading) return <div>Loading...</div>;
 
@@ -85,29 +85,16 @@ const InvestigatorCase = () => {
   };
   const closeEvidenceModal = () => setEvidenceModalOpen(false);
 
-  const statements = [
-    {
-      id: 1,
-      name: "Ahmad Ibrahim",
-      date: "January 5, 2025",
-      statement:
-        "Ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur viIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diamet, consectetur adipiscing elit. Curabitur vitae diamIpsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae diam iaculis nunc molestie lacinia id eu nunc. Nam velit odio, aliquet nec mi at, bibendum imperdiet elit. Suspendisse accumsan nisl et libero ornare molestie. In viverra, est non egestas pretium, metus diam mollis est, egestas sollicitudin turpis libero sodales velit. Praesent ullamcorper ornare lacus ac auctor. Aenean ut varius felis, a consequat risus. Maecenas eleifend fringilla metus sed porta. In interdum tellus dui, at faucibus dui sagittis sit amet. Nam efficitur leo vel hendrerit rutrum.Praesent sem ante, egestas eu mi eu, ultricies imperdiet arcu. Proin nisl risus, finibus eget imperdiet nec, sollicitudin eget dui. Pellentesque ipsum turpis, facilisis sit amet cursus id, laoreet non augue. Mauris commodo lectus orci. Curabitur nec purus erat. Donec eros massa, congue ut interdum eu, sodales ut magna. Donec tincidunt magna id augue volutpat tincidunt. Donec eget lorem sit amet eros mattis euismod. Duis sed felis accumsan, blandit orci et, varius arcu. Aliquam erat volutpat. Donec eget neque aliquam, congue eros in, maximus erat. Nulla nunc orci, placerat a libero in, euismod imperdiet sapien. Morbi lobortis convallis luctus. Nulla convallis, magna id luctus sollicitudin, augue ligula cursus nunc, vitae cursus dui nibh eu nisi.",
-    },
-    {
-      id: 2,
-      name: "Adnan Ibrahim",
-      date: "February 10, 2025",
-      statement:
-        " id eu nunc. Nam velit odio, aliquet nec mi at, bibendum imperdiet elit. Suspendisse accumsan nisl et libero ornare molestie. In viverra, est non egestas pretium, metus diam mollis est, egestas sollicitudin turpis libero sodales velit. Praesent ullamcorper ornare lacus ac auctor. Aenean ut varius felis, a consequat risus. Maecenas eleifend fringilla metus sed porta. In interdum tellus dui, at faucibus dui sagittis sit amet. Nam efficitur leo vel hendrerit rutrum.Praesent sem ante, egestas eu mi eu, ultricies imperdiet arcu. Proin nisl risus, finibus eget imperdiet nec, sollicitudin eget dui. Pellentesque ipsum turpis, facilisis sit amet cursus id, laoreet non augue. Mauris commodo lectus orci. Curabitur nec purus erat. Donec eros massa, congue ut interdum eu, sodales ut magna. Donec tincidunt magna id augue volutpat tincidunt. Donec eget lorem sit amet eros mattis euismod. Duis sed felis accumsan, blandit orci et, varius arcu. Aliquam erat volutpat. Donec eget neque aliquam, congue eros in, maximus erat. Nulla nunc orci, placerat a libero in, euismod imperdinvallis luctus. Nulla convallis, magna id luctus sollicitudin, augue ligula cursus nunc, vitae cursus dui nibh eu nisi.",
-    },
-    {
-      id: 3,
-      name: "Omar Sulieman",
-      date: "February 10, 2025",
-      statement:
-        "Lorem  Curabitur vitae diam iaculis nunc molestie lacinia id eu nunc. Nam velit odio, aliquet nec mi at, bibendum imperdiet elit. Suspendisse accumsan nisl et libero ornare molestie. In viverra, est non egestas pretium, metus diam mollis est, egestas sollicitudin turpis libero sodales velit. Praesent ullamcorper ornare lacus ac auctor. Aenean ut varius felis, a consequat risus. Maecenas eleifend fringilla metus sed porta. In interdum tellus dui, at faucibus dui sagittis sit amet. Nam efficitur leo vel hendrerit rutrum.Praesent sem ante, egestas eu mi eu, ultricies imperdiet arcu. Proin nisl risus, finibus eget imperdiet nec, sollicitudin eget dui. Pellentesque ipsum turpis, facilisis sit amet cursus id, laoreet non augue. Mauris commodo lectus orci. Curabitur nec purus erat. Donec eros massa, congue ut interdum eu, sodales ut magna. Donec tincidunt magna id augue volutpat tincidunt. Donec eget lorem sit amet eros mattis euismod. Duis sed felis accumsan, blandit orci et, varius arcu. Aliquam erat volutpat. Donec eget neque aliquam, congue eros in, maximus erat. Nulla nunc orci, placerat a libero in, euismod imperdiet sapien. Morbi lobortis convallis luctus. Nulla convallis, magna id luctus sollicitudin, augue ligula cursus nunc, vitae cursus dui nibh eu nisi.",
-    },
-  ];
+  const allStatements = suspects.flatMap((suspect) =>
+    suspect.statements.map((statement) => ({
+      name: suspect.name,
+      suspectPhoto: suspect.photos[0],
+      statement: statement.statement,
+      id: statement._id,
+      date: new Date(statement.date).toString(),
+      location: statement.locationOfIncident,
+    }))
+  );
 
   return (
     <div className="investigator-case flex column center">
@@ -149,9 +136,13 @@ const InvestigatorCase = () => {
           </div>
           <div className="case-suspects-body flex center wrap scrollable-div">
             {suspects.map((suspect) => (
-              <button key={suspect._id} onClick={() => openModal(suspect)}>
+              <button
+                className="flex center"
+                key={suspect._id}
+                onClick={() => openModal(suspect)}
+              >
                 <img
-                  src={suspect.photos[0] || suspectImage}
+                  src={suspect.photo || suspectImage}
                   alt={suspect.name}
                   className="suspect-image"
                 />
@@ -174,28 +165,27 @@ const InvestigatorCase = () => {
               +
             </button>
           </div>
-          <div className="case-statements-body flex center column scrollable-div">
-            {statements.map((statement) => (
+          <div className="case-statements-body scrollable-div">
+            {allStatements.map((statement) => (
               <button
                 key={statement.id}
                 className="flex center"
                 onClick={() => openStatementModal(statement)}
               >
                 <img
-                  src={suspect}
+                  src={statement.suspectPhoto || suspect}
                   alt={statement.name}
                   className="statement-image"
                 />
                 <div className="statement-info flex column">
                   <h4>{statement.name}</h4>
-                  <p>Given on {statement.date}</p>
+                  <p>Given on {statement.date.slice(0, 16)}</p>
                 </div>
               </button>
             ))}
           </div>
         </div>
       </div>
-      {/* Modals */}
       <Modal isOpen={isModalOpen} onClose={closeModal} data={modalData} />
       <EvidenceModal
         isOpen={isEvidenceModalOpen}
