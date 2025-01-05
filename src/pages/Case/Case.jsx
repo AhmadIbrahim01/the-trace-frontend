@@ -19,7 +19,7 @@ import UserProfileModal from "../../components/UserProfileModal/UserProfileModal
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import profileImage from "../../assets/images/suspect.svg";
-
+import { jwtDecode } from "jwt-decode";
 import MapComponent from "../../components/MapComponent/MapComponent";
 
 const HeroSection = ({ theCase }) => {
@@ -189,6 +189,12 @@ const CaseDescription = ({ theCase }) => {
 };
 
 const TipSubmission = () => {
+  const token = localStorage.getItem("authToken");
+
+  if (!token) {
+    return <></>;
+  }
+
   const navigate = useNavigate();
   const submitTipHandler = () => {
     navigate("/submit-tip");
@@ -208,20 +214,71 @@ const TipSubmission = () => {
   );
 };
 
-const CommentsSection = () => (
-  <div className="comments-section">
-    <h1 className="description-h1">Comments</h1>
-    <div className="comment-input">
-      <input
-        className="comments-input"
-        placeholder="Add comment..."
-        type="text"
-      />
-      <button>Submit</button>
+const CommentsSection = () => {
+  const token = localStorage.getItem("authToken");
+
+  if (!token) {
+    return <></>;
+  }
+
+  const caseId = localStorage.getItem("caseId");
+
+  const decoded = jwtDecode(token);
+  const uId = decoded.userId;
+  const [formData, setFormData] = useState({
+    userId: uId,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+  const addComment = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `http://127.0.0.1:8080/api/comment/${caseId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log(response.data);
+      setFormData({
+        userId: uId,
+        content: "",
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  return (
+    <div className="comments-section">
+      <h1 className="description-h1">Comments</h1>
+      <form className="comment-input">
+        <input
+          className="comments-input"
+          placeholder="Add comment..."
+          name="content"
+          type="text"
+          value={formData.content}
+          onChange={handleChange}
+        />
+        <button type="submit" onClick={addComment}>
+          Submit
+        </button>
+      </form>
+      <hr />
     </div>
-    <hr />
-  </div>
-);
+  );
+};
 
 const Comments = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
