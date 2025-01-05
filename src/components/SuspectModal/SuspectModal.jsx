@@ -57,6 +57,10 @@ const Modal = ({ isOpen, onClose, data }) => {
               <p>Age: {age}</p>
             </div>
             <div className="suspect-data flex">
+              <img src={user} alt="Age Icon" />
+              <p>Gender: {gender}</p>
+            </div>
+            <div className="suspect-data flex">
               <img src={briefcase} alt="Occupation Icon" />
               <p>Occupation: {occupation}</p>
             </div>
@@ -93,6 +97,10 @@ const Modal = ({ isOpen, onClose, data }) => {
           <div className="suspect-data flex">
             <img src={call} alt="Phone Icon" />
             <p>Phone: {phone}</p>
+          </div>
+          <div className="suspect-data flex">
+            <img src={user} alt="Phone Icon" />
+            <p>Crime Involved: {crimeInvolved}</p>
           </div>
           <div className="suspect-images">
             <h3>Images:</h3>

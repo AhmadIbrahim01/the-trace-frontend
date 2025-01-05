@@ -27,6 +27,7 @@
 }
 
 .case-evidences {
+  overflow: auto;
   gap: 15px;
 }
 .case-evidence {
@@ -53,7 +54,7 @@
   border: 1px solid #015949;
   border-radius: 16px;
   padding: 50px 60px;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .case-suspects-header {
@@ -75,19 +76,27 @@
 }
 
 .case-suspects-body {
+  margin-top: 30px;
   width: 100%;
+  height: 100%;
   justify-content: flex-start;
+  align-items: flex-start;
   gap: 22px;
+  overflow: auto;
 }
 
 .case-suspects-body > button {
-  width: 160px;
-  height: 190px;
+  max-width: 100px;
+  max-height: 100px;
   background-color: #00000000;
+  position: relative;
+  overflow: hidden;
 }
 .case-suspects-body > button > img {
   border-radius: 6px;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .case-map {
@@ -133,13 +142,18 @@
   font-size: 40px;
 }
 
+.case-statements-body {
+  overflow: auto;
+}
+
 .case-statements-body > button {
   width: 253px;
   height: 50px;
   background-color: #00000000;
   justify-content: flex-start;
   gap: 15px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  text-align: left;
 }
 .case-statements-body > button > img {
   width: 42px;

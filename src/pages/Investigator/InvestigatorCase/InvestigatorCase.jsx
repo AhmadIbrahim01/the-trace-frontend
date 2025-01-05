@@ -113,9 +113,9 @@ const InvestigatorCase = () => {
     <div className="investigator-case flex column center">
       <div className="investigator-case-header flex center wrap">
         {/* Evidence Section */}
-        <div className="case-evidence-container flex column">
+        <div className="case-evidence-container flex column scrollable-div">
           <h3>Evidences</h3>
-          <div className="case-evidences flex wrap center">
+          <div className="case-evidences flex wrap">
             {evidences.map((evidence) => (
               <button
                 key={evidence._id}
@@ -147,7 +147,7 @@ const InvestigatorCase = () => {
             <h3>Suspects</h3>
             <button onClick={() => navigate("/add-suspect")}>+</button>
           </div>
-          <div className="case-suspects-body flex center">
+          <div className="case-suspects-body flex center wrap scrollable-div">
             {suspects.map((suspect) => (
               <button key={suspect._id} onClick={() => openModal(suspect)}>
                 <img
@@ -174,7 +174,7 @@ const InvestigatorCase = () => {
               +
             </button>
           </div>
-          <div className="case-statements-body flex center column">
+          <div className="case-statements-body flex center column scrollable-div">
             {statements.map((statement) => (
               <button
                 key={statement.id}
