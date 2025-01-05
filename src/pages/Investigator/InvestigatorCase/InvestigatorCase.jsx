@@ -13,6 +13,7 @@ import MapComponent from "../../../components/MapComponent/MapComponent";
 import axios from "axios";
 const InvestigatorCase = () => {
   const [theCase, setCase] = useState({});
+  const [evidences, setEvidences] = useState({});
   const [loading, setLoading] = useState(true);
   const caseId = localStorage.getItem("caseId");
 
@@ -39,6 +40,7 @@ const InvestigatorCase = () => {
         );
 
         setCase(response.data);
+        setEvidences(response.data.evidence);
         setLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -46,7 +48,10 @@ const InvestigatorCase = () => {
       }
     };
     getCase();
-  }, [caseId]); // Add caseId to dependency array for potential updates
+  }, [caseId]);
+
+  console.log("the case", theCase);
+  console.log("the case evidences", evidences);
 
   if (loading) return <div>Loading...</div>;
 
@@ -98,7 +103,8 @@ const InvestigatorCase = () => {
     { id: 3, name: "Adnan Ibrahim", imageUrl: suspect },
   ];
 
-  const evidences = [
+  // changed the neame
+  const evidencess = [
     { id: 1, src: evidenceOne },
     { id: 2, src: evidenceTwo },
     { id: 3, src: evidenceOne },
@@ -111,17 +117,17 @@ const InvestigatorCase = () => {
     <div className="investigator-case flex column center">
       <div className="investigator-case-header flex center wrap">
         {/* Evidence Section */}
-        <div className="case-evidence-container flex center column">
+        <div className="case-evidence-container flex column">
           <h3>Evidence</h3>
           <div className="case-evidences flex wrap center">
             {evidences.map((evidence) => (
               <button
-                key={evidence.id}
+                key={evidence._id}
                 className="case-evidence flex center column"
               >
                 <img
                   className="case-evidence-img"
-                  src={evidence.src}
+                  src={evidence.photo || evidenceOne}
                   alt={`Evidence ${evidence.id}`}
                 />
               </button>

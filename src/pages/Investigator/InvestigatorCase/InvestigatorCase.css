@@ -15,6 +15,7 @@
   border: 1px solid #015949;
   border-radius: 16px;
   gap: 15px;
+  padding: 50px 60px;
 }
 
 .case-evidence-container > h3 {
