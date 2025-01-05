@@ -4,6 +4,7 @@ import evidenceOne from "../../../assets/images/evidence-1.svg";
 import evidenceTwo from "../../../assets/images/evidence-2.svg";
 import addEvidence from "../../../assets/images/add-evidence.svg";
 import suspect from "../../../assets/images/suspect.svg";
+import suspectImage from "../../../assets/images/suspect.svg";
 import Modal from "../../../components/SuspectModal/SuspectModal";
 import StatementModal from "../../../components/StatementModal/StatementModal";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +16,7 @@ import EvidenceModal from "../../../components/EvidenceModal/EvidenceModal";
 const InvestigatorCase = () => {
   const [theCase, setCase] = useState({});
   const [evidences, setEvidences] = useState({});
+  const [suspects, setSuspects] = useState({});
   const [loading, setLoading] = useState(true);
   const caseId = localStorage.getItem("caseId");
 
@@ -44,6 +46,7 @@ const InvestigatorCase = () => {
 
         setCase(response.data);
         setEvidences(response.data.evidence);
+        setSuspects(response.data.suspects);
         setLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -53,8 +56,8 @@ const InvestigatorCase = () => {
     getCase();
   }, [caseId]);
 
-  console.log("the case", theCase);
-  console.log("the case evidences", evidences);
+  // console.log(theCase);
+  console.log(suspects);
 
   if (loading) return <div>Loading...</div>;
 
@@ -106,22 +109,6 @@ const InvestigatorCase = () => {
     },
   ];
 
-  const suspects = [
-    { id: 1, name: "Adnan Ibrahim", imageUrl: suspect },
-    { id: 2, name: "Adnan Ibrahim", imageUrl: suspect },
-    { id: 3, name: "Adnan Ibrahim", imageUrl: suspect },
-  ];
-
-  // changed the neame
-  const evidencess = [
-    { id: 1, src: evidenceOne },
-    { id: 2, src: evidenceTwo },
-    { id: 3, src: evidenceOne },
-    { id: 4, src: evidenceOne },
-    { id: 5, src: evidenceTwo },
-    { id: 6, src: evidenceOne },
-  ];
-
   return (
     <div className="investigator-case flex column center">
       <div className="investigator-case-header flex center wrap">
@@ -162,9 +149,9 @@ const InvestigatorCase = () => {
           </div>
           <div className="case-suspects-body flex center">
             {suspects.map((suspect) => (
-              <button key={suspect.id} onClick={() => openModal(suspect)}>
+              <button key={suspect._id} onClick={() => openModal(suspect)}>
                 <img
-                  src={suspect.imageUrl}
+                  src={suspect.photos[0] || suspectImage}
                   alt={suspect.name}
                   className="suspect-image"
                 />

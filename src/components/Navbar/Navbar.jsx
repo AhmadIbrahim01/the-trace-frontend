@@ -21,8 +21,6 @@ const Navbar = () => {
 
     if (token) {
       try {
-        console.log(token);
-
         const decoded = jwtDecode(token);
         setName(localStorage.getItem("name") ?? decoded.name);
       } catch (error) {
