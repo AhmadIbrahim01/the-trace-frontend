@@ -22,6 +22,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import { gsap } from "gsap";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const ActionItem = ({ icon, text }) => (
   <div className="action">
@@ -40,32 +41,8 @@ const TestimonialCard = ({ text, name, image }) => (
   </div>
 );
 
-// const testimonials = [
-//   {
-//     text: `“I've been using this web hosting service for a few months and it's been nothing but problems. My website has gone down multiple times and the customer service has been unresponsive. I would not recommend this company."`,
-//     name: "Ahmad Ibrahim",
-//     image: userIcon,
-//   },
-//   {
-//     text: `“I've been using this web hosting service for a few months now and overall it's been fine. The uptime has been good and I haven't had any major issues. The pricing is also reasonable. Nothing particularly stands out as exceptional, but it gets the job done.”`,
-//     name: "Ahmad Ibrahim",
-//     image: userIcon,
-//   },
-//   {
-//     text: `“I've been using this web hosting service for a few months and it's been nothing but problems. My website has gone down multiple times and the customer service has been unresponsive. I would not recommend this company."`,
-//     name: "Ahmad Ibrahim",
-//     image: userIcon,
-//   },
-// ];
-
-const HeroSection = () => {
+const HeroSection = ({ userRole, userName }) => {
   const navigate = useNavigate();
-  const navigateToCases = () => {
-    navigate("/cases");
-  };
-  const navigateToLogin = () => {
-    navigate("/login");
-  };
 
   useEffect(() => {
     gsap.from(".btn-container button", {
@@ -86,6 +63,45 @@ const HeroSection = () => {
     });
   }, []);
 
+  const navigateToCases = () => {
+    navigate("/cases");
+  };
+
+  const navigateToLogin = () => {
+    navigate("/login");
+  };
+
+  const navigateToInvestigatorCases = () => {
+    navigate("/investigator-cases");
+  };
+  if (userRole === "public_user") {
+    return (
+      <div className="hero flex center column">
+        <h1 className="t-center">Welcome Back {userName}</h1>
+        <div className="btn-container flex center">
+          <button className="secondary-btn" onClick={navigateToCases}>
+            View public cases
+          </button>
+        </div>
+      </div>
+    );
+  }
+  if (userRole === "investigator") {
+    return (
+      <div className="hero flex center column">
+        <h1 className="t-center">Welcome Back Investigator {userName}</h1>
+        <div className="btn-container flex center">
+          <button className="primary-btn" onClick={navigateToInvestigatorCases}>
+            View your cases
+          </button>
+          <button className="secondary-btn" onClick={navigateToCases}>
+            View public cases
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="hero flex center column">
       <h1 className="t-center">
@@ -103,46 +119,53 @@ const HeroSection = () => {
   );
 };
 
-const GetInvolvedSection = () => (
-  <div className="get-involved flex">
-    <div className="container flex">
-      <div className="container-one flex column">
-        <div className="section-header">
-          <h1>
-            Why get <br /> involved?
-          </h1>
-          <p>Your contribution can make a real difference.</p>
+const GetInvolvedSection = ({ userRole }) => {
+  if (userRole) {
+    return;
+  }
+  return (
+    <div className="get-involved flex">
+      <div className="container flex">
+        <div className="container-one flex column">
+          <div className="section-header">
+            <h1>
+              Why get <br /> involved?
+            </h1>
+            <p>Your contribution can make a real difference.</p>
+          </div>
+          <div className="action-list flex wrap">
+            <ActionItem
+              icon={communityIcon}
+              text="Join a justice enthusiast community"
+            />
+            <ActionItem
+              icon={rewardIcon}
+              text="Submit tips and evidence and join our reward system!"
+            />
+            <ActionItem
+              icon={justiceIcon}
+              text="Help to bring justice to your community!"
+            />
+          </div>
         </div>
-        <div className="action-list flex wrap">
-          <ActionItem
-            icon={communityIcon}
-            text="Join a justice enthusiast community"
-          />
-          <ActionItem
-            icon={rewardIcon}
-            text="Submit tips and evidence and join our reward system!"
-          />
-          <ActionItem
-            icon={justiceIcon}
-            text="Help to bring justice to your community!"
-          />
+        <div className="container-two">
+          <img src={fingerprint} alt="" />
+          <img src={fingerprint} alt="" />
+          <img src={fingerprint} alt="" />
         </div>
       </div>
-      <div className="container-two">
-        <img src={fingerprint} alt="" />
-        <img src={fingerprint} alt="" />
-        <img src={fingerprint} alt="" />
-      </div>
+      <img className="fingMagn" src={fingMagn} alt="" />
     </div>
-    <img className="fingMagn" src={fingMagn} alt="" />
-  </div>
-);
-
-const HowToJoinSection = () => {
+  );
+};
+const HowToJoinSection = ({ userRole }) => {
   const navigate = useNavigate();
   const navigateToRegister = () => {
     navigate("/register");
   };
+  if (userRole) {
+    return;
+  }
   return (
     <div className="how-to-join flex column center">
       <div className="section-header">
@@ -270,11 +293,15 @@ const PoweredByAiSection = () => (
     </div>
   </div>
 );
-const AboutUs = () => {
+const AboutUs = ({ userRole }) => {
   const navigate = useNavigate();
   const navigateToRegister = () => {
     navigate("/register");
   };
+
+  if (userRole) {
+    return;
+  }
   return (
     <div className="about flex center">
       <div className="about-1 flex column">
@@ -397,13 +424,24 @@ const FAQ = () => {
 };
 
 const Home = () => {
+  const [userRole, setUserRole] = useState("");
+  const [userName, setUserName] = useState("");
+  const token = localStorage.getItem("authToken");
+  useEffect(() => {
+    if (token) {
+      const decoded = jwtDecode(token);
+      setUserRole(decoded.role);
+      setUserName(decoded.name);
+    }
+  }, []);
+
   return (
     <>
       <Navbar />
-      <HeroSection />
-      <AboutUs />
-      <GetInvolvedSection />
-      <HowToJoinSection />
+      <HeroSection userRole={userRole} userName={userName} />
+      <AboutUs userRole={userRole} userName={userName} />
+      <GetInvolvedSection userRole={userRole} userName={userName} />
+      <HowToJoinSection userRole={userRole} userName={userName} />
       <TestimonialsSection />
       <PoweredByAiSection />
       <FAQ />

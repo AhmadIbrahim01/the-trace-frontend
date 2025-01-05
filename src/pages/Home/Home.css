@@ -24,11 +24,9 @@
 .btn-container > button:nth-child(1) {
   margin-right: 26px;
   padding: 14px 46px;
-  width: 144px;
 }
 .btn-container > button:nth-child(2) {
   padding: 14px 28px;
-  width: 218px;
 }
 
 /* Why get involved section */
