@@ -2,7 +2,8 @@
   padding: 5% 11%;
   gap: 30px;
 }
-.investigator-case-header {
+.investigator-case-header,
+.investigator-case-body {
   width: 100%;
   gap: 30px;
 }

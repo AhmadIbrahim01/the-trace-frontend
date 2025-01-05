@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./investigatorCase.css";
 import evidenceOne from "../../../assets/images/evidence-1.svg";
 import evidenceTwo from "../../../assets/images/evidence-2.svg";
@@ -9,8 +9,65 @@ import StatementModal from "../../../components/StatementModal/StatementModal";
 import { useNavigate } from "react-router-dom";
 
 import ChooseStatementModal from "../../../components/ChooseStatementModal/ChooseStatementModal";
-
+import MapComponent from "../../../components/MapComponent/MapComponent";
+import axios from "axios";
 const InvestigatorCase = () => {
+  const [theCase, setCase] = useState({});
+  const [loading, setLoading] = useState(true);
+  const caseId = localStorage.getItem("caseId");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState("");
+  const [isStatementModalOpen, setIsStatementModalOpen] = useState(false);
+  const [statementModalData, setStatementModalData] = useState("");
+  const [isChooseOpen, setChooseOpen] = useState(false);
+  const [chooseModalData, setChooseModalData] = useState("");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getCase = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `http://127.0.0.1:8080/api/case/${caseId}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        setCase(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error.message);
+        setLoading(false);
+      }
+    };
+    getCase();
+  }, [caseId]); // Add caseId to dependency array for potential updates
+
+  if (loading) return <div>Loading...</div>;
+
+  const openModal = (data) => {
+    setModalData(data);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => setIsModalOpen(false);
+
+  const openStatementModal = (data) => {
+    setStatementModalData(data);
+    setIsStatementModalOpen(true);
+  };
+  const closeStatementModal = () => setIsStatementModalOpen(false);
+
+  const openChoose = (data) => {
+    setChooseModalData(data);
+    setChooseOpen(true);
+  };
+  const closeChoose = () => setChooseOpen(false);
+
   const statements = [
     {
       id: 1,
@@ -50,58 +107,14 @@ const InvestigatorCase = () => {
     { id: 6, src: evidenceOne },
   ];
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState("");
-  const [isStatementModalOpen, setIsStatementModalOpen] = useState(false);
-  const [statementModalData, setStatementModalData] = useState("");
-
-  const [isChooseOpen, setChooseOpen] = useState(false);
-  const [chooseModalData, setChooseModalData] = useState("");
-
-  const navigate = useNavigate();
-  const addEvidenceHandler = () => {
-    navigate("/add-evidence");
-  };
-  const addSuspectHandler = () => {
-    navigate("/add-suspect");
-  };
-
-  const AddStatementHandler = () => {
-    navigate("/add-statement");
-  };
-
-  const openModal = (data) => {
-    setModalData(data);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  const openStatementModal = (data) => {
-    setStatementModalData(data);
-    setIsStatementModalOpen(true);
-  };
-
-  const closeStatementModal = () => {
-    setIsStatementModalOpen(false);
-  };
-  const openChoose = (data) => {
-    setChooseModalData(data);
-    setChooseOpen(true);
-  };
-
-  const closeChoose = () => {
-    setChooseOpen(false);
-  };
-
   return (
     <div className="investigator-case flex column center">
       <div className="investigator-case-header flex center wrap">
+        {/* Evidence Section */}
         <div className="case-evidence-container flex center column">
           <h3>Evidence</h3>
           <div className="case-evidences flex wrap center">
-            {evidences.map((evidence, index) => (
+            {evidences.map((evidence) => (
               <button
                 key={evidence.id}
                 className="case-evidence flex center column"
@@ -115,22 +128,25 @@ const InvestigatorCase = () => {
             ))}
             <button
               className="case-evidence flex center column"
-              onClick={addEvidenceHandler}
+              onClick={() => navigate("/add-evidence")}
             >
-              <img className="add-evidence" src={addEvidence} alt="" />
+              <img
+                className="add-evidence"
+                src={addEvidence}
+                alt="Add Evidence"
+              />
             </button>
           </div>
         </div>
+        {/* Suspects Section */}
         <div className="case-suspects flex center column">
           <div className="case-suspects-header flex">
             <h3>Suspects</h3>
-            <button className="flex center" onClick={addSuspectHandler}>
-              +
-            </button>
+            <button onClick={() => navigate("/add-suspect")}>+</button>
           </div>
           <div className="case-suspects-body flex center">
             {suspects.map((suspect) => (
-              <button key={suspect.id} onClick={() => openModal(suspect.id)}>
+              <button key={suspect.id} onClick={() => openModal(suspect)}>
                 <img
                   src={suspect.imageUrl}
                   alt={suspect.name}
@@ -141,8 +157,13 @@ const InvestigatorCase = () => {
           </div>
         </div>
       </div>
-      <div className="inevstigator-case-body flex center wrap">
-        <div className="case-map"></div>
+      <div className="investigator-case-body flex center wrap">
+        <div className="case-map">
+          <MapComponent
+            latitude={theCase.map.latitude}
+            longitude={theCase.map.longitude}
+          />
+        </div>
         <div className="case-statements flex center column">
           <div className="case-statements-header flex center">
             <h3>Statements</h3>
@@ -163,14 +184,15 @@ const InvestigatorCase = () => {
                   className="statement-image"
                 />
                 <div className="statement-info flex column">
-                  <h4 className="t-left">{statement.name}</h4>
-                  <p className="t-left">Given on {statement.date}</p>
+                  <h4>{statement.name}</h4>
+                  <p>Given on {statement.date}</p>
                 </div>
               </button>
             ))}
           </div>
         </div>
       </div>
+      {/* Modals */}
       <Modal isOpen={isModalOpen} onClose={closeModal} data={modalData} />
       <StatementModal
         isOpen={isStatementModalOpen}
