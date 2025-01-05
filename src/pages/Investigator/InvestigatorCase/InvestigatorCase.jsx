@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import ChooseStatementModal from "../../../components/ChooseStatementModal/ChooseStatementModal";
 import MapComponent from "../../../components/MapComponent/MapComponent";
 import axios from "axios";
+import EvidenceModal from "../../../components/EvidenceModal/EvidenceModal";
 const InvestigatorCase = () => {
   const [theCase, setCase] = useState({});
   const [evidences, setEvidences] = useState({});
@@ -23,6 +24,8 @@ const InvestigatorCase = () => {
   const [statementModalData, setStatementModalData] = useState("");
   const [isChooseOpen, setChooseOpen] = useState(false);
   const [chooseModalData, setChooseModalData] = useState("");
+  const [isEvidenceModalOpen, setEvidenceModalOpen] = useState(false);
+  const [evidenceModalData, setEvidenceModalData] = useState("");
 
   const navigate = useNavigate();
 
@@ -72,6 +75,12 @@ const InvestigatorCase = () => {
     setChooseOpen(true);
   };
   const closeChoose = () => setChooseOpen(false);
+
+  const openEvidence = (data) => {
+    setEvidenceModalData(data);
+    setEvidenceModalOpen(true);
+  };
+  const closeEvidenceModal = () => setEvidenceModalOpen(false);
 
   const statements = [
     {
@@ -124,6 +133,7 @@ const InvestigatorCase = () => {
               <button
                 key={evidence._id}
                 className="case-evidence flex center column"
+                onClick={() => openEvidence([evidence])}
               >
                 <img
                   className="case-evidence-img"
@@ -200,6 +210,11 @@ const InvestigatorCase = () => {
       </div>
       {/* Modals */}
       <Modal isOpen={isModalOpen} onClose={closeModal} data={modalData} />
+      <EvidenceModal
+        isOpen={isEvidenceModalOpen}
+        onClose={closeEvidenceModal}
+        data={evidenceModalData}
+      />
       <StatementModal
         isOpen={isStatementModalOpen}
         onClose={closeStatementModal}
