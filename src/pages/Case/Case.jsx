@@ -23,6 +23,7 @@ import { jwtDecode } from "jwt-decode";
 import MapComponent from "../../components/MapComponent/MapComponent";
 
 const HeroSection = ({ theCase }) => {
+  const [role, setRole] = useState("");
   const img1 = theCase.caseImages[0];
   const img2 = theCase.caseImages[1];
 
@@ -31,11 +32,31 @@ const HeroSection = ({ theCase }) => {
     ? (caseStatus = "In progress")
     : (caseStatus = theCase.status);
 
+  const navigate = useNavigate();
+  const goToManageCase = () => {
+    navigate("/investigator-case");
+  };
+  const token = localStorage.getItem("authToken");
+
+  useEffect(() => {
+    if (token) {
+      const decoded = jwtDecode(token);
+      setRole(decoded.role);
+    }
+  }, []);
+
   return (
     <div className="case-hero flex center column">
       <div className="case-bio flex center column">
         <h1>{theCase.title}</h1>
         <h2>{caseStatus}</h2>
+        {role && role === "investigator" ? (
+          <button className="tip-button" onClick={goToManageCase}>
+            Manage case
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
 
       <div className="image-one">

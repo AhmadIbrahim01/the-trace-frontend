@@ -11,6 +11,9 @@
   width: auto;
   z-index: 1;
 }
+.case-bio > button {
+  justify-content: flex-end;
+}
 .case-bio > h1 {
   width: 90%;
   text-align: center;
