@@ -127,7 +127,7 @@ const InvestigatorCase = () => {
       <div className="investigator-case-header flex center wrap">
         {/* Evidence Section */}
         <div className="case-evidence-container flex column">
-          <h3>Evidence</h3>
+          <h3>Evidences</h3>
           <div className="case-evidences flex wrap center">
             {evidences.map((evidence) => (
               <button

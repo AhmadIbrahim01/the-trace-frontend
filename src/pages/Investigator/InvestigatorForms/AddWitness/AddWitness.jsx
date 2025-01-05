@@ -2,12 +2,24 @@ import React, { useState } from "react";
 import Input from "../../../../components/Input/Input";
 import Button from "../../../../components/Button/Button";
 import "./AddWitness.css";
+import { useNavigate } from "react-router-dom";
 
 const AddWitness = () => {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Witness</h1>
       <form>
+        <Button
+          name={"back"}
+          text={"Back to manage case"}
+          className={"form-back-button"}
+          type={"button"}
+          onClick={goBack}
+        ></Button>
         <Input
           id={"witness"}
           label={"Witness Name"}
