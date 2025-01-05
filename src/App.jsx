@@ -29,6 +29,8 @@ import AISketch from "./pages/Tools/AISketch/AISketch";
 import AIStatement from "./pages/Tools/AIStatement/AIStatement";
 import Layout from "./components/Layout/Layout";
 import UserProfile from "./pages/User/UserProfile/UserProfile";
+import InvestigatorCases from "./pages/Investigator/InvestigatorCases/InvestigatorCases";
+import InvestigatorSelectedCase from "./pages/Investigator/InvestigatorSelectedCase/InvestigatorSelectedCase";
 
 function App() {
   const route = createBrowserRouter([
@@ -59,6 +61,12 @@ function App() {
         { path: "/manage-users", element: <ManageUsers /> },
         { path: "/ai-sketch", element: <AISketch /> },
         { path: "/ai-statement", element: <AIStatement /> },
+        { path: "/investigator-cases", element: <InvestigatorCases /> },
+        { path: "/investigator-cases", element: <InvestigatorCases /> },
+        {
+          path: "/investigator-selected-case",
+          element: <InvestigatorSelectedCase />,
+        },
       ],
     },
     { path: "*", element: <Error /> },
