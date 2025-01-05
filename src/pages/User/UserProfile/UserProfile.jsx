@@ -142,7 +142,17 @@ const UserProfile = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        className="flex center column"
+        style={{ height: "100vh", gap: "40px" }}
+      >
+        <h1 style={{ color: "white" }}>You are logged out</h1>
+        <button className="tip-button" onClick={goBack}>
+          Go back
+        </button>
+      </div>
+    );
   }
 
   if (error) {
