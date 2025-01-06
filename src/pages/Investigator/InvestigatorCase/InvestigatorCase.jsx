@@ -142,7 +142,7 @@ const InvestigatorCase = () => {
                 onClick={() => openModal(suspect)}
               >
                 <img
-                  src={suspect.photo || suspectImage}
+                  src={suspect.photos[0] || suspectImage}
                   alt={suspect.name}
                   className="suspect-image"
                 />
