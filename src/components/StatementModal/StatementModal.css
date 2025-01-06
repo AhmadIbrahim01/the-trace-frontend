@@ -13,7 +13,7 @@
 
 .statement-modal-content {
   width: 746px;
-  height: 670px;
+  max-height: 600px;
   background-color: var(--color3);
   padding: 50px 55px;
   border-radius: 16px;
@@ -75,5 +75,6 @@
 
 .scrollable-div {
   scrollbar-width: thin;
-  scrollbar-color: var(--color3) var(--color1);
+  /* scrollbar-color: var(--color3) var(--color1); */
+  scrollbar-color: #015949 var(--color3);
 }

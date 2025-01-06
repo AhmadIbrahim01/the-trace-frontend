@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 2000;
 }
 
 .modal-content {
@@ -16,7 +16,7 @@
   padding: 50px 55px;
   border-radius: 5px;
   min-width: 746px;
-  min-height: 670px;
+  height: 600px;
   border-radius: 16px;
 }
 
@@ -31,10 +31,8 @@
   font-weight: var(--font-weight-semi);
 }
 .suspect-profile-header > button {
-  width: 160px;
-  height: 40px;
-  color: #0bc1a0;
-  background-color: #0bc1a000;
+  color: white;
+  background-color: #0bc1a0;
   font-size: 14px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
@@ -108,8 +106,12 @@
   margin-bottom: 15px;
 }
 .suspect-images-container {
+  justify-content: flex-start;
   width: 100%;
   gap: 15px;
+}
+.suspect-images {
+  margin-top: 30px;
 }
 /* .suspect-images-container > img {
   width: 198px;
@@ -119,7 +121,6 @@
 .add-statement-btn {
   width: 160px;
   height: 40px;
-  margin-top: 30px;
   color: white;
   background-color: #0bc1a0;
   font-size: 14px;

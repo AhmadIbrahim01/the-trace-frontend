@@ -78,6 +78,7 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-semi);
   color: white;
+  float: right;
 }
 input[type="checkbox"] {
   margin-right: 10px;

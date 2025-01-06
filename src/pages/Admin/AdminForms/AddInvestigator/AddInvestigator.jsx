@@ -12,6 +12,13 @@ const AddInvestigator = () => {
     <div className="admin-form-container t-center flex column center">
       <h1>Add Investigator</h1>
       <form>
+        <Button
+          name={"back"}
+          text={"Back to manage investigators"}
+          className={"form-back-button"}
+          type={"button"}
+          onClick={backTo}
+        ></Button>
         <Input
           id={"name"}
           label={"Full Name"}
@@ -43,20 +50,13 @@ const AddInvestigator = () => {
             placeholder="Describe the information you want to share..."
             name="note"
           ></textarea>
-          <Button
-            type={"submit"}
-            name={"add-investigator"}
-            text={"Add Investigator"}
-            className={"admin-form-button"}
-          ></Button>
-          <Button
-            name={"back"}
-            text={"Back to manage investigators"}
-            className={"form-back-button"}
-            type={"button"}
-            onClick={backTo}
-          ></Button>
         </div>
+        <Button
+          type={"submit"}
+          name={"add-investigator"}
+          text={"Add Investigator"}
+          className={"ivestigator-form-button"}
+        ></Button>
       </form>
     </div>
   );

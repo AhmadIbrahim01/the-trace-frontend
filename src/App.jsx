@@ -55,10 +55,6 @@ function App() {
         { path: "/add-investigator", element: <AddInvestigator /> },
         { path: "/add-case", element: <AddCase /> },
         { path: "/add-user", element: <AddUser /> },
-        { path: "/admin-dashboard", element: <AdminDashboard /> },
-        { path: "/manage-investigators", element: <ManageInvestigators /> },
-        { path: "/manage-cases", element: <ManageCases /> },
-        { path: "/manage-users", element: <ManageUsers /> },
         { path: "/ai-sketch", element: <AISketch /> },
         { path: "/ai-statement", element: <AIStatement /> },
         { path: "/investigator-cases", element: <InvestigatorCases /> },
@@ -73,6 +69,10 @@ function App() {
     { path: "/register", element: <Register /> },
     { path: "/login", element: <Login /> },
     { path: "/user-profile", element: <UserProfile /> },
+    { path: "/admin-dashboard", element: <AdminDashboard /> },
+    { path: "/manage-users", element: <ManageUsers /> },
+    { path: "/manage-investigators", element: <ManageInvestigators /> },
+    { path: "/manage-cases", element: <ManageCases /> },
   ]);
   return (
     <>

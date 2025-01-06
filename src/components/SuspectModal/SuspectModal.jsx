@@ -108,8 +108,7 @@ const Modal = ({ isOpen, onClose, data }) => {
             <img src={user} alt="Phone Icon" />
             <p>Crime Involved: {crimeInvolved}</p>
           </div>
-          <div className="suspect-images">
-            <h3>Images:</h3>
+          <div className="suspect-images flex">
             <div className="suspect-images-container flex center wrap">
               {photos.length !== 0 ? (
                 photos.map((image, index) => (
@@ -123,13 +122,13 @@ const Modal = ({ isOpen, onClose, data }) => {
                 <h1 style={{ color: "red" }}>No Images Available</h1>
               )}
             </div>
+            <button
+              onClick={() => handleNavigate(_id)}
+              className="add-statement-btn flex center column"
+            >
+              Add Statement
+            </button>
           </div>
-          <button
-            onClick={() => handleNavigate(_id)}
-            className="add-statement-btn flex center column"
-          >
-            Add Statement
-          </button>
         </div>
       </div>
     </div>

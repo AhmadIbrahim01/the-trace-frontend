@@ -15,18 +15,15 @@ const WitnessModal = ({ isOpen, onClose, data }) => {
   const handleNavigate = (witnessId) => {
     navigate("/add-witness-statement", { state: { witnessId } });
   };
-  console.log(data);
 
   const { name, phone, age, gender, address, photo, _id } = data;
 
-  const goToAddress = () => {
-    const googleSearchUrl = `https://www.google.com/search?q=${address}`;
-    window.open(googleSearchUrl, "_blank");
-  };
-
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="witness-modal-content"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="suspect-profile-header flex center">
           <h2>Profile</h2>
           <button>Edit Information</button>
@@ -63,7 +60,7 @@ const WitnessModal = ({ isOpen, onClose, data }) => {
 
         <button
           onClick={() => handleNavigate(_id)}
-          className="add-statement-btn flex center column"
+          className="add-witness-statement flex center column"
         >
           Add Statement
         </button>

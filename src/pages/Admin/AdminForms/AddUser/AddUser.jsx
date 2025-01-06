@@ -15,6 +15,13 @@ const AddUser = () => {
       <h1>Add User</h1>
 
       <form>
+        <Button
+          name={"back"}
+          text={"Back to manage users"}
+          className={"form-back-button"}
+          type={"button"}
+          onClick={backTo}
+        ></Button>
         <Input
           id={"name"}
           label={"Full Name"}
@@ -52,14 +59,7 @@ const AddUser = () => {
           type={"submit"}
           name={"add-user"}
           text={"Add User"}
-          className={"admin-form-button"}
-        ></Button>
-        <Button
-          name={"back"}
-          text={"Back to manage users"}
-          className={"form-back-button"}
-          type={"button"}
-          onClick={backTo}
+          className={"ivestigator-form-button"}
         ></Button>
       </form>
     </div>
