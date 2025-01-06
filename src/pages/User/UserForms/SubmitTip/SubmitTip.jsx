@@ -7,6 +7,7 @@ import { jwtDecode } from "jwt-decode";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = yup
   .object({
@@ -27,6 +28,11 @@ const validationSchema = yup
   .required();
 
 const SubmitTip = () => {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
+
   const token = localStorage.getItem("authToken");
   const caseId = localStorage.getItem("caseId");
 
@@ -88,6 +94,13 @@ const SubmitTip = () => {
     <div className="investigator-form-container t-center flex column center">
       <h1>Submit a Tip</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <Button
+          name={"back"}
+          text={"Back to case"}
+          className={"form-back-button"}
+          type={"button"}
+          onClick={goBack}
+        ></Button>
         <div className="input flex column">
           <label htmlFor="statement">Tip Details</label>
           <textarea
