@@ -13,11 +13,14 @@ import ChooseStatementModal from "../../../components/ChooseStatementModal/Choos
 import MapComponent from "../../../components/MapComponent/MapComponent";
 import axios from "axios";
 import EvidenceModal from "../../../components/EvidenceModal/EvidenceModal";
+import WitnessModal from "../../../components/WitnessModal/WitnessModal";
 const InvestigatorCase = () => {
   const [theCase, setCase] = useState({});
   const [evidences, setEvidences] = useState({});
   const [suspects, setSuspects] = useState({});
+  const [witnesses, setWitnesses] = useState({});
   const [loading, setLoading] = useState(true);
+  const [view, setView] = useState("suspects");
   const caseId = localStorage.getItem("caseId");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +31,8 @@ const InvestigatorCase = () => {
   const [chooseModalData, setChooseModalData] = useState("");
   const [isEvidenceModalOpen, setEvidenceModalOpen] = useState(false);
   const [evidenceModalData, setEvidenceModalData] = useState("");
+  const [isWitnessModalOpen, setWitnessModalOpen] = useState(false);
+  const [witnessModalData, setWitnessModalData] = useState("");
 
   const navigate = useNavigate();
 
@@ -47,6 +52,9 @@ const InvestigatorCase = () => {
         setCase(response.data);
         setEvidences(response.data.evidence);
         setSuspects(response.data.suspects);
+        setWitnesses(response.data.witnesses);
+        console.log("wet", witnesses);
+
         setLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -84,6 +92,16 @@ const InvestigatorCase = () => {
     setEvidenceModalOpen(true);
   };
   const closeEvidenceModal = () => setEvidenceModalOpen(false);
+
+  const openWitnessModal = (data) => {
+    setWitnessModalData(data);
+    setWitnessModalOpen(true);
+  };
+  const closeWitnessModal = () => setWitnessModalOpen(false);
+
+  const toggleView = () => {
+    setView((prevView) => (prevView === "suspects" ? "witnesses" : "suspects"));
+  };
 
   const allStatements = suspects.flatMap((suspect) =>
     suspect.statements.map((statement) => ({
@@ -129,26 +147,58 @@ const InvestigatorCase = () => {
           </div>
         </div>
         {/* Suspects Section */}
+
         <div className="case-suspects flex center column">
-          <div className="case-suspects-header flex">
-            <h3>Suspects</h3>
-            <button onClick={() => navigate("/add-suspect")}>+</button>
+          <div className="switch-button flex center">
+            <button onClick={toggleView}>
+              {view === "suspects" ? "Show Witnesses" : "Show Suspects"}
+            </button>
           </div>
-          <div className="case-suspects-body flex center wrap scrollable-div">
-            {suspects.map((suspect) => (
-              <button
-                className="flex center"
-                key={suspect._id}
-                onClick={() => openModal(suspect)}
-              >
-                <img
-                  src={suspect.photos[0] || suspectImage}
-                  alt={suspect.name}
-                  className="suspect-image"
-                />
-              </button>
-            ))}
-          </div>
+          {view === "suspects" ? (
+            <>
+              <div className="case-suspects-header flex">
+                <h3>Suspects</h3>
+                <button onClick={() => navigate("/add-suspect")}>+</button>
+              </div>
+              <div className="case-suspects-body flex center wrap scrollable-div">
+                {suspects.map((suspect) => (
+                  <button
+                    className="flex center"
+                    key={suspect._id}
+                    onClick={() => openModal(suspect)}
+                  >
+                    <img
+                      src={suspect.photos[0] || suspectImage}
+                      alt={suspect.name}
+                      className="suspect-image"
+                    />
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="case-suspects-header flex">
+                <h3>Witnesses</h3>
+                <button onClick={() => navigate("/add-witness")}>+</button>
+              </div>
+              <div className="case-suspects-body flex center wrap scrollable-div">
+                {witnesses.map((witness) => (
+                  <button
+                    className="flex center"
+                    key={witness._id}
+                    onClick={() => openWitnessModal(witness)}
+                  >
+                    <img
+                      src={witness.photo || suspectImage}
+                      alt={witness.name}
+                      className="suspect-image"
+                    />
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
       <div className="investigator-case-body flex center wrap">
@@ -187,6 +237,11 @@ const InvestigatorCase = () => {
         </div>
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal} data={modalData} />
+      <WitnessModal
+        isOpen={isWitnessModalOpen}
+        onClose={closeWitnessModal}
+        data={witnessModalData}
+      />
       <EvidenceModal
         isOpen={isEvidenceModalOpen}
         onClose={closeEvidenceModal}
