@@ -16,8 +16,8 @@ const Modal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
   const navigate = useNavigate();
 
-  const handleNavigate = (userId) => {
-    navigate("/add-suspect-statement", { state: { userId } });
+  const handleNavigate = (suspectId) => {
+    navigate("/add-suspect-statement", { state: { suspectId } });
   };
   console.log(data);
 

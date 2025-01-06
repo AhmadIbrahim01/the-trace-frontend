@@ -12,8 +12,8 @@ const WitnessModal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
   const navigate = useNavigate();
 
-  const handleNavigate = (userId) => {
-    navigate("/add-witness-statement", { state: { userId } });
+  const handleNavigate = (witnessId) => {
+    navigate("/add-witness-statement", { state: { witnessId } });
   };
   console.log(data);
 
