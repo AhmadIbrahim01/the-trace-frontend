@@ -6,7 +6,7 @@ import axios from "axios";
 
 const AddSuspectStatement = () => {
   const location = useLocation();
-  const { userId } = location.state || {};
+  const { suspectId } = location.state || {};
   const caseId = localStorage.getItem("caseId");
 
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const AddSuspectStatement = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8080/api/suspect/statements/${caseId}/${userId}`,
+        `http://127.0.0.1:8080/api/suspect/statements/${caseId}/${suspectId}`,
         formData,
         {
           headers: {
