@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./SuspectModal.css";
 import suspect from "../../assets/images/suspect.svg";
 import user from "../../assets/icons/user.svg";
@@ -10,10 +10,15 @@ import ruler from "../../assets/icons/ruler.svg";
 import location from "../../assets/icons/location.svg";
 import call from "../../assets/icons/call.svg";
 import caribbeanFingerprint from "../../assets/images/caribbean-fingerprint.svg";
+import { useNavigate } from "react-router-dom";
 
 const Modal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
+  const navigate = useNavigate();
 
+  const handleNavigate = (userId) => {
+    navigate("/add-suspect-statement", { state: { userId } });
+  };
   console.log(data);
 
   const {
@@ -30,6 +35,7 @@ const Modal = ({ isOpen, onClose, data }) => {
     eyeColor,
     hairColor,
     photos,
+    _id,
   } = data;
 
   const goToAddress = () => {
@@ -118,6 +124,12 @@ const Modal = ({ isOpen, onClose, data }) => {
               )}
             </div>
           </div>
+          <button
+            onClick={() => handleNavigate(_id)}
+            className="add-statement-btn flex center column"
+          >
+            Add Statement
+          </button>
         </div>
       </div>
     </div>
