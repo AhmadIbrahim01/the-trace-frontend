@@ -1,14 +1,52 @@
-import React from "react";
-import Input from "../../../../components/Input/Input";
+import React, { useState } from "react";
 import Button from "../../../../components/Button/Button";
 import "./AddSuspectStatement.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
 const AddSuspectStatement = () => {
+  const location = useLocation();
+  const { userId } = location.state || {};
+  const caseId = localStorage.getItem("caseId");
+
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   };
+
+  const [formData, setFormData] = useState({
+    date: "",
+    statement: "",
+    locationOfIncident: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `http://127.0.0.1:8080/api/suspect/statements/${caseId}/${userId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Suspect Statement</h1>
@@ -20,43 +58,56 @@ const AddSuspectStatement = () => {
           type={"button"}
           onClick={goBack}
         ></Button>
+
         <div className="input flex column">
-          <label htmlFor="name">Name</label>
-          <select name="name" id="name">
-            <option value="">Suspect1</option>
-            <option value="">Suspect2</option>
-          </select>
+          <label htmlFor="date">Date of Statement</label>
+          <input
+            id="date"
+            name="date"
+            type="date"
+            value={formData.date}
+            onChange={handleChange}
+          />
         </div>
-        <Input
-          id={"date"}
-          label={"Date of Statement"}
-          name={"date"}
-          type={"date"}
-        ></Input>
         <div className="input flex column">
           <label htmlFor="statement">Statement</label>
-          <textarea id="statement" name="statement" rows={10}></textarea>
+          <textarea
+            id="statement"
+            name="statement"
+            value={formData.statement}
+            onChange={handleChange}
+            rows={10}
+          ></textarea>
         </div>
 
-        <Input
-          id={"location"}
-          label={"Location of incident"}
-          name={"location"}
-          type={"text"}
-        ></Input>
+        <div className="input flex column">
+          <label htmlFor="locationOfIncident">Location of incident</label>
+          <input
+            id="locationOfIncident"
+            name="locationOfIncident"
+            type="text"
+            value={formData.locationOfIncident}
+            onChange={handleChange}
+          />
+        </div>
 
-        <Input
-          id={"file"}
-          label={"Upload Photo"}
-          name={"file"}
-          type={"file"}
-        ></Input>
+        <div className="input flex column">
+          <label htmlFor="photo">Upload Photo</label>
+          <input
+            id="photo"
+            name="photo"
+            type="file"
+            value={formData.photo}
+            onChange={handleChange}
+          />
+        </div>
 
         <Button
           type={"submit"}
           name={"add-statement"}
           text={"Add Statement"}
           className={"ivestigator-form-button"}
+          onClick={handleSubmit}
         ></Button>
       </form>
     </div>
