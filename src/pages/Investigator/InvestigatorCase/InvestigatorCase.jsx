@@ -21,6 +21,7 @@ const InvestigatorCase = () => {
   const [witnesses, setWitnesses] = useState({});
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState("suspects");
+  const [statementsView, setStatementsView] = useState("suspects");
   const caseId = localStorage.getItem("caseId");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,7 +54,6 @@ const InvestigatorCase = () => {
         setEvidences(response.data.evidence);
         setSuspects(response.data.suspects);
         setWitnesses(response.data.witnesses);
-        console.log("wet", witnesses);
 
         setLoading(false);
       } catch (error) {
@@ -102,11 +102,26 @@ const InvestigatorCase = () => {
   const toggleView = () => {
     setView((prevView) => (prevView === "suspects" ? "witnesses" : "suspects"));
   };
+  const toggleStatementsView = () => {
+    setStatementsView((prevView) =>
+      prevView === "suspects" ? "witnesses" : "suspects"
+    );
+  };
 
-  const allStatements = suspects.flatMap((suspect) =>
+  const allSuspectsStatements = suspects.flatMap((suspect) =>
     suspect.statements.map((statement) => ({
       name: suspect.name,
       suspectPhoto: suspect.photos[0],
+      statement: statement.statement,
+      id: statement._id,
+      date: new Date(statement.date).toString(),
+      location: statement.locationOfIncident,
+    }))
+  );
+  const allWitnessesStatements = witnesses.flatMap((witness) =>
+    witness.statements.map((statement) => ({
+      name: witness.name,
+      witnessPhoto: witness.photo,
       statement: statement.statement,
       id: statement._id,
       date: new Date(statement.date).toString(),
@@ -209,30 +224,56 @@ const InvestigatorCase = () => {
           />
         </div>
         <div className="case-statements flex center column">
-          <div className="case-statements-header flex center">
-            <h3>Statements</h3>
-            <button className="flex center" onClick={openChoose}>
-              +
+          <div className="switch-button flex center">
+            <button onClick={toggleStatementsView}>
+              {statementsView === "suspects"
+                ? "Show Witnesses"
+                : "Show Suspects"}
             </button>
           </div>
+          <div className="case-statements-header flex center">
+            <h3>Statements</h3>
+            {/* <button className="flex center" onClick={openChoose}>
+              +
+            </button> */}
+          </div>
+
           <div className="case-statements-body scrollable-div">
-            {allStatements.map((statement) => (
-              <button
-                key={statement.id}
-                className="flex center"
-                onClick={() => openStatementModal(statement)}
-              >
-                <img
-                  src={statement.suspectPhoto || suspect}
-                  alt={statement.name}
-                  className="statement-image"
-                />
-                <div className="statement-info flex column">
-                  <h4>{statement.name}</h4>
-                  <p>Given on {statement.date.slice(0, 16)}</p>
-                </div>
-              </button>
-            ))}
+            {statementsView === "suspects"
+              ? allWitnessesStatements.map((statement) => (
+                  <button
+                    key={statement.id}
+                    className="flex center"
+                    onClick={() => openStatementModal(statement)}
+                  >
+                    <img
+                      src={statement.suspectPhoto || suspect}
+                      alt={statement.name}
+                      className="statement-image"
+                    />
+                    <div className="statement-info flex column">
+                      <h4>{statement.name}</h4>
+                      <p>Given on {statement.date.slice(0, 16)}</p>
+                    </div>
+                  </button>
+                ))
+              : allSuspectsStatements.map((statement) => (
+                  <button
+                    key={statement.id}
+                    className="flex center"
+                    onClick={() => openStatementModal(statement)}
+                  >
+                    <img
+                      src={statement.suspectPhoto || suspect}
+                      alt={statement.name}
+                      className="statement-image"
+                    />
+                    <div className="statement-info flex column">
+                      <h4>{statement.name}</h4>
+                      <p>Given on {statement.date.slice(0, 16)}</p>
+                    </div>
+                  </button>
+                ))}
           </div>
         </div>
       </div>
