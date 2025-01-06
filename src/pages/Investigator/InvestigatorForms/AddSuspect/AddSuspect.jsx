@@ -10,7 +10,7 @@ const AddSuspect = () => {
 
   const navigate = useNavigate();
   const goBack = () => {
-    navigate(-1);
+    navigate("/investigator-case");
   };
 
   const {

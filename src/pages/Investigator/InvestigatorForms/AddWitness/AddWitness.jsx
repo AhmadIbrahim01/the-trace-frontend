@@ -3,53 +3,43 @@ import Button from "../../../../components/Button/Button";
 import "./AddWitness.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const AddWitness = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
   const [status, setStatus] = useState({
     success: true,
     message: "",
     color: "green",
   });
 
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    age: "",
-    gender: "male",
-    address: "",
-    photo: null,
-  });
-
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate(-1);
+    navigate("/investigator-case");
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFormData((prevData) => ({
-      ...prevData,
-      photo: file,
-    }));
-  };
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     photo: file,
+  //   }));
+  // };
 
   const caseId = localStorage.getItem("caseId");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     try {
       const respone = await axios.post(
         `http://127.0.0.1:8080/api/witness/${caseId}`,
-        formData,
+        data,
         {
           headers: {
             "Content-Type": "application/json",
@@ -57,21 +47,12 @@ const AddWitness = () => {
         }
       );
 
-      console.log(respone.data);
-
-      setFormData({
-        name: "",
-        phone: "",
-        age: "",
-        gender: "male",
-        address: "",
-        photo: null,
-      });
       setStatus({
         success: true,
-        message: "Suspect added successfully",
+        message: "Witness added successfully",
         color: "green",
       });
+      console.log(respone.data);
     } catch (error) {
       console.log(error.message);
       setStatus({
@@ -80,12 +61,13 @@ const AddWitness = () => {
         color: "red",
       });
     }
+    reset();
   };
 
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Witness</h1>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Button
           name={"back"}
           text={"Back to manage case"}
@@ -100,10 +82,10 @@ const AddWitness = () => {
             id="name"
             name="name"
             type="text"
-            value={formData.name}
-            onChange={handleChange}
             placeholder="Enter witness name"
+            {...register("name", { required: "Witness name is required" })}
           />
+          {errors.name && <p style={{ color: "red" }}>{errors.name.message}</p>}
         </div>
 
         <div className="input flex column">
@@ -112,10 +94,12 @@ const AddWitness = () => {
             id="phone"
             name="phone"
             type="number"
-            value={formData.phone}
-            onChange={handleChange}
             placeholder="Enter phone number"
+            {...register("phone", { required: "Witness phone is required" })}
           />
+          {errors.phone && (
+            <p style={{ color: "red" }}>{errors.phone.message}</p>
+          )}
         </div>
 
         <div className="input flex column">
@@ -124,10 +108,10 @@ const AddWitness = () => {
             id="age"
             name="age"
             type="number"
-            value={formData.age}
-            onChange={handleChange}
             placeholder="Enter age"
+            {...register("age", { required: "Age is required" })}
           />
+          {errors.age && <p style={{ color: "red" }}>{errors.age.message}</p>}
         </div>
 
         <div className="input flex column">
@@ -135,12 +119,14 @@ const AddWitness = () => {
           <select
             name="gender"
             id="gender"
-            value={formData.gender}
-            onChange={handleChange}
+            {...register("gender", { required: "Gender is required" })}
           >
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
+          {errors.gender && (
+            <p style={{ color: "red" }}>{errors.gender.message}</p>
+          )}
         </div>
 
         <div className="input flex column">
@@ -149,29 +135,35 @@ const AddWitness = () => {
             id="address"
             name="address"
             type="text"
-            value={formData.address}
-            onChange={handleChange}
             placeholder="Enter address"
+            {...register("address", {
+              required: "Witness address is required",
+            })}
           />
+          {errors.address && (
+            <p style={{ color: "red" }}>{errors.address.message}</p>
+          )}
         </div>
 
-        <div className="input flex column">
+        {/* <div className="input flex column">
           <label htmlFor="photo">Upload Photo</label>
           <input
             id="photo"
             name="photo"
             type="file"
             accept="image/*"
-            onChange={handleFileChange}
+            {...register("photo")}
           />
-        </div>
+          {errors.photo && (
+            <p style={{ color: "red" }}>{errors.photo.message}</p>
+          )}
+        </div> */}
 
         <Button
           type={"submit"}
           name={"add-witness"}
           text={"Add Witness"}
           className={"ivestigator-form-button"}
-          onClick={handleSubmit}
         />
         {status.message && (
           <h2 style={{ color: status.color }}>{status.message}</h2>
