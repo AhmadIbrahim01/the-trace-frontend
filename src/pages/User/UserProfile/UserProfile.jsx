@@ -241,12 +241,16 @@ const UserProfile = () => {
         <div className="user-modal-header flex column">
           <h2>Badges</h2>
           <div className="badges flex center wrap">
-            {badges.map((badge, index) => (
-              <div key={index} className="badge flex center">
-                <img src={starOne} />
-                <h3>{badge}</h3>
-              </div>
-            ))}
+            {badges.length !== 0 ? (
+              badges.map((badge, index) => (
+                <div key={index} className="badge flex center">
+                  <img src={starOne} />
+                  <h3>{badge}</h3>
+                </div>
+              ))
+            ) : (
+              <h5 style={{ color: "red", marginTop: "10px" }}>No badges</h5>
+            )}
           </div>
         </div>
       </div>
