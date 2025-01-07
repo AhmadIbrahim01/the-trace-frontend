@@ -51,9 +51,9 @@ const CaseCard = ({ caseData, index }) => {
     : (caseStatus = caseData.status);
   return (
     <div className="case">
-      <p className="t-center flex center">
+      {/* <p className="t-center flex center">
         {Array(20).fill(caseData.title).join(" ")}
-      </p>
+      </p> */}
       <div className="case-container flex">
         <div className="case-image">
           <img src={caseData.caseImages[0] || caseOne} alt={caseData.title} />
