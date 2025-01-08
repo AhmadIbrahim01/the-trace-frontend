@@ -3,8 +3,15 @@ import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
 import "./AISketch.css";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const AISketch = () => {
+  const [status, setStatus] = useState({
+    success: true,
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -12,10 +19,41 @@ const AISketch = () => {
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const caseId = localStorage.getItem("caseId");
+
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        `http://127.0.0.1:8080/api/sketches/${caseId}`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log(response);
+      setStatus({
+        success: true,
+        message: "Sketch added successfully",
+      });
+      setLoading(false);
+    } catch (error) {
+      console.log(error.message);
+      setStatus({
+        success: false,
+        message: "Sketch adding failed",
+      });
+      setLoading(false);
+    }
     reset();
   };
+
+  if (loading) {
+    return <h1>Loading</h1>;
+  }
 
   return (
     <div className="sketch flex center">
@@ -85,6 +123,15 @@ const AISketch = () => {
           text={"Generate Sketch"}
           className={"ai-form-button"}
         ></Button>
+        {status.message && status.success === true ? (
+          <h3 style={{ color: "green", marginBottom: "30px" }}>
+            {status.message}
+          </h3>
+        ) : (
+          <h3 style={{ color: "red", marginBottom: "30px" }}>
+            {status.message}
+          </h3>
+        )}
       </form>
 
       <div className="sketch-container flex column center">
