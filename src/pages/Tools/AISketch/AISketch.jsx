@@ -1,50 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
 import "./AISketch.css";
+import { useForm } from "react-hook-form";
 
 const AISketch = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
+
   return (
     <div className="sketch flex center">
-      <form className="sketch-form flex center column">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="sketch-form flex center column"
+      >
         <h1>Suspect Details</h1>
 
         <div className="sketch-input flex column">
           <label htmlFor="name">Name</label>
           <input
             id="name"
-            name="name"
             type="text"
             placeholder="Enter suspect name"
+            {...register("name", { required: "Name is required" })}
           />
+          {errors.name && <p style={{ color: "red" }}>{errors.name.message}</p>}
         </div>
+
         <div className="sketch-input flex column">
-          <label htmlFor="age">Age</label>
-          <input id="age" name="age" type="number" placeholder="Enter age" />
+          <label htmlFor="age">Suspect Approximated Age</label>
+          <select id="age" {...register("age")}>
+            <option value="less than 18">Younger than 18</option>
+            <option value="18-25">18-25</option>
+            <option value="26-35">26-35</option>
+            <option value="36-45">36-45</option>
+            <option value="46-55">46-55</option>
+            <option value="56-65">56-65</option>
+            <option value="66-75">66-75</option>
+            <option value="older than 75">Older than 75</option>
+          </select>
         </div>
         <div className="sketch-input flex column">
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            name="description"
             placeholder="Provide a detailed description"
             rows={10}
+            {...register("description", {
+              required: "Description is required",
+            })}
           ></textarea>
+          {errors.description && (
+            <p style={{ color: "red" }}>{errors.description.message}</p>
+          )}
         </div>
 
         <div className="sketch-input flex column">
           <label htmlFor="additional">Additional Features</label>
           <textarea
             id="additional"
-            name="additional"
             placeholder="e.g., scars, tattoos, hair type"
             rows={10}
+            {...register("additional")}
           ></textarea>
         </div>
 
         <div className="sketch-input sketch-input-file flex column">
           <label htmlFor="photo">Upload Photo</label>
-          <input id="photo" name="photo" type="file" />
+          <input id="photo" type="file" {...register("photo")} />
         </div>
 
         <Button

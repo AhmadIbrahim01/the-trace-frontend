@@ -43,7 +43,8 @@
   font-weight: var(--font-weight-bold);
   color: white;
 }
-.sketch-input > input {
+.sketch-input > input,
+.sketch-input > select {
   margin-top: 15px;
   margin-bottom: 25px;
   background-color: #1b1c28;
