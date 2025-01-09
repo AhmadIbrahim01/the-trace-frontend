@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 const AISketch = () => {
+  const [imageUrl, setImageUrl] = useState("");
   const [status, setStatus] = useState({
     success: true,
     message: "",
@@ -20,7 +21,6 @@ const AISketch = () => {
   } = useForm();
 
   const caseId = localStorage.getItem("caseId");
-
   const onSubmit = async (data) => {
     setLoading(true);
     try {
@@ -34,11 +34,12 @@ const AISketch = () => {
         }
       );
 
-      console.log(response);
+      console.log(response.data);
       setStatus({
         success: true,
         message: "Sketch added successfully",
       });
+      setImageUrl(response.data.image);
       setLoading(false);
     } catch (error) {
       console.log(error.message);
@@ -112,10 +113,10 @@ const AISketch = () => {
           ></textarea>
         </div>
 
-        <div className="sketch-input sketch-input-file flex column">
+        {/* <div className="sketch-input sketch-input-file flex column">
           <label htmlFor="photo">Upload Photo</label>
           <input id="photo" type="file" {...register("photo")} />
-        </div>
+        </div> */}
 
         <Button
           type={"submit"}
@@ -136,7 +137,12 @@ const AISketch = () => {
 
       <div className="sketch-container flex column center">
         <h1>AI Sketch</h1>
-        <div className="ai-sketch"></div>
+        {imageUrl && (
+          <div className="ai-sketch">
+            <img src={imageUrl} alt="" />
+          </div>
+        )}
+        {!imageUrl && <div className="ai-sketch"></div>}
         <Button
           type={"submit"}
           name={"save-sketch"}
