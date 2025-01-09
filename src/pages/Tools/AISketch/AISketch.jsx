@@ -138,17 +138,23 @@ const AISketch = () => {
       <div className="sketch-container flex column center">
         <h1>AI Sketch</h1>
         {imageUrl && (
-          <div className="ai-sketch">
-            <img src={imageUrl} alt="" />
+          <>
+            <div className="ai-sketch">
+              <img src={imageUrl} alt="" />
+            </div>
+            <Button
+              type={"submit"}
+              name={"save-sketch"}
+              text={"Save Sketch"}
+              className={"ai-form-button"}
+            ></Button>
+          </>
+        )}
+        {!imageUrl && (
+          <div className="ai-sketch flex center column">
+            <p> There is no picture</p>
           </div>
         )}
-        {!imageUrl && <div className="ai-sketch"></div>}
-        <Button
-          type={"submit"}
-          name={"save-sketch"}
-          text={"Save Sketch"}
-          className={"ai-form-button"}
-        ></Button>
       </div>
     </div>
   );

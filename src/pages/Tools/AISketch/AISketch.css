@@ -105,3 +105,6 @@
   display: block;
   margin: auto;
 }
+.ai-sketch > p {
+  color: var(--text-color);
+}
