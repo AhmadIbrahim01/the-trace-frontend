@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
 import "./AISketch.css";
@@ -7,9 +7,11 @@ import axios from "axios";
 
 const AISketch = () => {
   const [sketch, setSketch] = useState(true);
+  const [url, setUrl] = useState("");
   const change = () => {
     setSketch(!sketch);
   };
+  const [responseData, setResponseData] = useState({});
   const [imageUrl, setImageUrl] = useState("");
   const [status, setStatus] = useState({
     success: true,
@@ -25,20 +27,22 @@ const AISketch = () => {
   } = useForm();
 
   const caseId = localStorage.getItem("caseId");
+
   const onSubmit = async (data) => {
     setLoading(true);
+    {
+      sketch
+        ? setUrl(`http://127.0.0.1:8080/api/sketches/${caseId}`)
+        : setUrl(`http://127.0.0.1:8080/api/sketches/image/${caseId}`);
+    }
     try {
-      const response = await axios.post(
-        `http://127.0.0.1:8080/api/sketches/${caseId}`,
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-      console.log(response.data);
+      setResponseData(response.data);
       setStatus({
         success: true,
         message: "Sketch added successfully",
