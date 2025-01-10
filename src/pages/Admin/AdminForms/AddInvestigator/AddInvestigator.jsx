@@ -88,7 +88,7 @@ const AddInvestigator = () => {
           <input
             id="email"
             name="email"
-            type="text"
+            type="email"
             {...register("email", { required: "Email is required" })}
           />
           {errors.email && (
