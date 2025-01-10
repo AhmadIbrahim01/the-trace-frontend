@@ -196,7 +196,6 @@ const AddCase = () => {
           </div>
         </div>
 
-        {/* Visibility */}
         <div className="radio-group">
           <label>
             <input

@@ -16,11 +16,12 @@ const InvestigatorStats = () => {
 
   const token = localStorage.getItem("authToken");
   const [investigatorId, setInvestigatorId] = useState("");
-
+  const [name, setName] = useState("");
   useEffect(() => {
     if (token) {
       const decoded = jwtDecode(token);
       setInvestigatorId(decoded.userId);
+      setName(decoded.name);
     }
   }, [token]);
 
@@ -58,7 +59,12 @@ const InvestigatorStats = () => {
   return (
     <>
       <div className="investigator-stats flex column center">
-        <h1>Investigator Ahmad Stats</h1>
+        {name ? (
+          <h1>Investigator {name} Stats</h1>
+        ) : (
+          <h1>Investigator Stats</h1>
+        )}
+
         <p className="t-center">
           Here you can find all your stats including number of cases, solved
           cases undergoing cases and much more informations
