@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../../../components/Button/Button";
 import "./AddInvestigator.css";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 const AddInvestigator = () => {
   const navigate = useNavigate();
   const backTo = () => {
     navigate("/manage-investigators");
   };
+  const [status, setStatus] = useState({ success: true, message: "" });
 
   const {
     register,
@@ -17,11 +19,31 @@ const AddInvestigator = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    const dataWithRole = { ...data, role: "investigator" };
+
     try {
-      console.log(data);
+      const response = await axios.post(
+        `http://127.0.0.1:8080/api/auth/register`,
+        dataWithRole,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setStatus({
+        success: true,
+        message: "Login successfull",
+      });
+      console.log(response.data);
     } catch (error) {
       console.log(error.message);
+
+      const errorMessage =
+        error.response?.data?.message || "Something went wrong";
+      setStatus({ success: false, message: errorMessage });
     }
+    reset();
   };
 
   return (
@@ -108,6 +130,10 @@ const AddInvestigator = () => {
             type="password"
             {...register("password", {
               required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters",
+              },
             })}
           />
           {errors.password && (
