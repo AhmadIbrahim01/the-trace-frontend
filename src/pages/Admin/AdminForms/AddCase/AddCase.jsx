@@ -133,21 +133,6 @@ const AddCase = () => {
         </div>
 
         <div className="input flex column">
-          <label htmlFor="casePriority">Case Priority</label>
-          <select
-            id="casePriority"
-            name="casePriority"
-            value={formData.casePriority}
-            onChange={handleChange}
-          >
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select>
-        </div>
-
-        {/* Assigned Investigator */}
-        <div className="input flex column">
           <label htmlFor="investigatorId">Assigned Investigator</label>
           <select
             id="investigatorId"
