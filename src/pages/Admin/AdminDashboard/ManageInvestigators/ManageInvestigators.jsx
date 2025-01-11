@@ -8,31 +8,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ManageInvestigators = () => {
-  const tableData = [
-    {
-      id: 1,
-      name: "Ahmad",
-      email: "ahmad@gmail.com",
-      phone: "76468212",
-      caseHandled: "50",
-    },
-    {
-      id: 2,
-      name: "Ahmad",
-      email: "ahmad@gmail.com",
-      phone: "76468212",
-      caseHandled: "50",
-    },
-    {
-      id: 3,
-      name: "Ahmad",
-      email: "ahmad@gmail.com",
-      phone: "76468212",
-      caseHandled: "50",
-    },
-  ];
-
   const [investigators, setInvestigators] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const fetchInvestigators = async () => {
@@ -46,22 +23,25 @@ const ManageInvestigators = () => {
           }
         );
         setInvestigators(response.data.investigators);
+        setRefresh(false);
       } catch (error) {
         console.log(error.message);
+        setRefresh(false);
       }
     };
     fetchInvestigators();
-  }, [investigators]);
+  }, [refresh]);
 
   const deleteInvestigator = async (investigatorId) => {
-    const response = await axios.delete(
-      `http://127.0.0.1:8080/api/admin/${investigatorId}`
-    );
-    console.log(response.message);
+    await axios.delete(`http://127.0.0.1:8080/api/admin/${investigatorId}`);
     setInvestigators([]);
+    setRefresh(true);
   };
 
   const navigate = useNavigate();
+  const editInvestigator = (row) => {
+    navigate("/edit-investigator", { state: row });
+  };
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");
   };
@@ -123,13 +103,15 @@ const ManageInvestigators = () => {
                 <tr key={index}>
                   <td>{row._id}</td>
                   <td>
-                    {row.firstName} {row.firstName}
+                    {row.firstName} {row.lastName}
                   </td>
                   <td>{row.email}</td>
                   <td>{row.phone}</td>
                   <td>{row.caseHandled}</td>
                   <td className="table-actions">
-                    <button>Edit</button>
+                    <button onClick={() => editInvestigator(row._id)}>
+                      Edit
+                    </button>
                     <button onClick={() => deleteInvestigator(row._id)}>
                       Delete
                     </button>
