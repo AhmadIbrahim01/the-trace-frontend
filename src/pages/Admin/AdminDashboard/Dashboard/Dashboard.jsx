@@ -43,7 +43,7 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
   const navigateToAdmins = () => {
-    navigate("/admins");
+    navigate("/manage-admins");
   };
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");

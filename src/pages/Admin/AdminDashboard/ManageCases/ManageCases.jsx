@@ -39,7 +39,7 @@ const ManageCases = () => {
     navigate("/edit-case", { state: row });
   };
   const navigateToAdmins = () => {
-    navigate("/admins");
+    navigate("/manage-admins");
   };
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");

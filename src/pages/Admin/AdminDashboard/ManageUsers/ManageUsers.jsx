@@ -70,7 +70,7 @@ const ManageUsers = () => {
     navigate("/edit-user", { state: userId });
   };
   const navigateToAdmins = () => {
-    navigate("/admins");
+    navigate("/manage-admins");
   };
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");

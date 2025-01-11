@@ -43,7 +43,7 @@ const ManageInvestigators = () => {
     navigate("/edit-investigator", { state: row });
   };
   const navigateToAdmins = () => {
-    navigate("/admins");
+    navigate("/manage-admins");
   };
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");
