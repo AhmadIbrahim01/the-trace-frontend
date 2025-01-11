@@ -36,6 +36,7 @@ import EditCase from "./pages/Admin/AdminForms/EditCase/EditCase";
 import EditUser from "./pages/Admin/AdminForms/Edit User/EditUser";
 import ManageAdmins from "./pages/Admin/AdminDashboard/ManageAdmins/ManageAdmins";
 import AddAdmin from "./pages/Admin/AdminForms/AddAdmin/AddAdmin";
+import EditAdmin from "./pages/Admin/AdminForms/EditAdmin/EditAdmin";
 
 function App() {
   const route = createBrowserRouter([
@@ -60,6 +61,7 @@ function App() {
         { path: "/add-investigator", element: <AddInvestigator /> },
         { path: "/edit-investigator", element: <EditInvestigator /> },
         { path: "/add-admin", element: <AddAdmin /> },
+        { path: "/edit-admin", element: <EditAdmin /> },
         { path: "/add-case", element: <AddCase /> },
         { path: "/edit-case", element: <EditCase /> },
         { path: "/add-user", element: <AddUser /> },
