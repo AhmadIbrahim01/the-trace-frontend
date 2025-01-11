@@ -31,6 +31,7 @@ import Layout from "./components/Layout/Layout";
 import UserProfile from "./pages/User/UserProfile/UserProfile";
 import InvestigatorCases from "./pages/Investigator/InvestigatorCases/InvestigatorCases";
 import InvestigatorSelectedCase from "./pages/Investigator/InvestigatorSelectedCase/InvestigatorSelectedCase";
+import EditInvestigator from "./pages/Admin/AdminForms/EditInvestigator/EditInvestigator";
 
 function App() {
   const route = createBrowserRouter([
@@ -53,6 +54,7 @@ function App() {
         { path: "/add-suspect", element: <AddSuspect /> },
         { path: "/submit-tip", element: <SubmitTip /> },
         { path: "/add-investigator", element: <AddInvestigator /> },
+        { path: "/edit-investigator", element: <EditInvestigator /> },
         { path: "/add-case", element: <AddCase /> },
         { path: "/add-user", element: <AddUser /> },
         { path: "/ai-sketch", element: <AISketch /> },
