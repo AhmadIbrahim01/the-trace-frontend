@@ -69,8 +69,6 @@ const AddCase = () => {
     getInvestigators();
   }, []);
 
-  console.log(formData);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -157,7 +155,7 @@ const AddCase = () => {
             value={formData.status}
             onChange={handleChange}
           >
-            <option value="opened">Open</option>
+            <option value="open">Open</option>
             <option value="closed">Close</option>
           </select>
         </div>

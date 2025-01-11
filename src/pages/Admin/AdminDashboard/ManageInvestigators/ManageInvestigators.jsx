@@ -94,7 +94,7 @@ const ManageInvestigators = () => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Case Handled</th>
+                {/* <th>Case Handled</th> */}
                 <th>Actions</th>
               </tr>
             </thead>
@@ -107,7 +107,7 @@ const ManageInvestigators = () => {
                   </td>
                   <td>{row.email}</td>
                   <td>{row.phone}</td>
-                  <td>{row.caseHandled}</td>
+                  {/* <td>{row.caseHandled}</td> */}
                   <td className="table-actions">
                     <button onClick={() => editInvestigator(row._id)}>
                       Edit
