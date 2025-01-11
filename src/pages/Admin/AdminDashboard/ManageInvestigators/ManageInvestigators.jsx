@@ -53,6 +53,14 @@ const ManageInvestigators = () => {
     fetchInvestigators();
   }, [investigators]);
 
+  const deleteInvestigator = async (investigatorId) => {
+    const response = await axios.delete(
+      `http://127.0.0.1:8080/api/admin/${investigatorId}`
+    );
+    console.log(response.message);
+    setInvestigators([]);
+  };
+
   const navigate = useNavigate();
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");
