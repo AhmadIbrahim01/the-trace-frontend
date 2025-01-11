@@ -57,8 +57,8 @@ const ManageAdmins = () => {
   };
 
   const navigate = useNavigate();
-  const editAdmin = (userId) => {
-    navigate("/edit-user", { state: userId });
+  const editAdmin = (adminId) => {
+    navigate("/edit-admin", { state: adminId });
   };
   const navigateToAdmins = () => {
     navigate("/manage-admins");
@@ -75,8 +75,8 @@ const ManageAdmins = () => {
   const navigateToCases = () => {
     navigate("/manage-cases");
   };
-  const addUser = () => {
-    navigate("/add-user");
+  const addAdmin = () => {
+    navigate("/add-admin");
   };
   return (
     <div className="admin-dashboard flex">
@@ -107,8 +107,8 @@ const ManageAdmins = () => {
       </div>
       <div className="admin-dashboard-stats flex column center">
         <div className="suspect-profile-header manage-investigator-header flex center">
-          <h2>Users List</h2>
-          <button onClick={addUser}>Add New User</button>
+          <h2>Admins List</h2>
+          <button onClick={addAdmin}>Add New Admin</button>
         </div>
         <div className="table_component">
           <table>
