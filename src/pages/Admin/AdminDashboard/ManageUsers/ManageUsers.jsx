@@ -8,6 +8,7 @@ import axios from "axios";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -23,7 +24,7 @@ const ManageUsers = () => {
       }
     };
     fetchUsers();
-  }, []);
+  }, [refresh]);
 
   const toggleRole = async (id) => {
     try {
@@ -35,6 +36,7 @@ const ManageUsers = () => {
           },
         }
       );
+      setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);
     }
