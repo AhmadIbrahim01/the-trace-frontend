@@ -52,6 +52,19 @@ const ManageUsers = () => {
     }
   };
 
+  const deleteUser = async (id) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8080/api/admin/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setRefresh(!refresh);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   const navigate = useNavigate();
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");
@@ -121,7 +134,7 @@ const ManageUsers = () => {
                   <td>{row.banned ? "Banned" : "Active"}</td>
                   <td className="table-actions">
                     <button>Edit</button>
-                    <button>Delete</button>
+                    <button onClick={() => deleteUser(row._id)}>Delete</button>
                     <button onClick={() => toggleRole(row._id)}>Role</button>
                     <button onClick={() => banUser(row._id)}>Ban</button>
                   </td>
