@@ -66,6 +66,9 @@ const ManageUsers = () => {
   };
 
   const navigate = useNavigate();
+  const editUser = (userId) => {
+    navigate("/edit-user", { state: userId });
+  };
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");
   };
@@ -133,7 +136,7 @@ const ManageUsers = () => {
                   <td>{row.role}</td>
                   <td>{row.banned ? "Banned" : "Active"}</td>
                   <td className="table-actions">
-                    <button>Edit</button>
+                    <button onClick={() => editUser(row._id)}>Edit</button>
                     <button onClick={() => deleteUser(row._id)}>Delete</button>
                     <button onClick={() => toggleRole(row._id)}>Role</button>
                     <button onClick={() => banUser(row._id)}>Ban</button>
