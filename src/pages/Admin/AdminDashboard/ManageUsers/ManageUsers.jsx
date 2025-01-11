@@ -1,34 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ManageUsers.css";
 import adminImage from "../../../../assets/images/suspect.svg";
 import dashboardIconOne from "../../../../assets/icons/dashboard-icon.svg";
 import dashboardIconTwo from "../../../../assets/icons/dashboard-icon-2.svg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ManageUsers = () => {
-  const tableData = [
-    {
-      id: 1,
-      name: "Ahmad Ibrahim",
-      email: "ahmad@gmail.com",
-      role: "Investigator",
-      status: "Active",
-    },
-    {
-      id: 2,
-      name: "Ahmad Ibrahim",
-      email: "ahmad@gmail.com",
-      role: "Investigator",
-      status: "Active",
-    },
-    {
-      id: 3,
-      name: "Ahmad Ibrahim",
-      email: "ahmad@gmail.com",
-      role: "Investigator",
-      status: "Active",
-    },
-  ];
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`http://127.0.0.1:8080/api/admin`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        setUsers(response.data.users);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchUsers();
+  }, []);
+
+  const toggleRole = async (id) => {
+    try {
+      const response = await axios.put(
+        `http://127.0.0.1:8080/api/admin/investigator/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  console.log(users);
 
   const navigate = useNavigate();
   const navigateToDashboard = () => {
@@ -88,16 +100,19 @@ const ManageUsers = () => {
               </tr>
             </thead>
             <tbody>
-              {tableData.map((row, index) => (
+              {users.map((row, index) => (
                 <tr key={index}>
-                  <td>{row.id}</td>
-                  <td>{row.name}</td>
+                  <td>{row._id}</td>
+                  <td>
+                    {row.firstName} {row.lastName}
+                  </td>
                   <td>{row.email}</td>
                   <td>{row.role}</td>
-                  <td>{row.status}</td>
+                  <td>{row.banned ? "Banned" : "Active"}</td>
                   <td className="table-actions">
                     <button>Edit</button>
                     <button>Delete</button>
+                    <button onClick={() => toggleRole(row._id)}>Role</button>
                   </td>
                 </tr>
               ))}
