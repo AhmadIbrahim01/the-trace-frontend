@@ -33,6 +33,7 @@ import InvestigatorCases from "./pages/Investigator/InvestigatorCases/Investigat
 import InvestigatorSelectedCase from "./pages/Investigator/InvestigatorSelectedCase/InvestigatorSelectedCase";
 import EditInvestigator from "./pages/Admin/AdminForms/EditInvestigator/EditInvestigator";
 import EditCase from "./pages/Admin/AdminForms/EditCase/EditCase";
+import EditUser from "./pages/Admin/AdminForms/Edit User/EditUser";
 
 function App() {
   const route = createBrowserRouter([
@@ -59,6 +60,7 @@ function App() {
         { path: "/add-case", element: <AddCase /> },
         { path: "/edit-case", element: <EditCase /> },
         { path: "/add-user", element: <AddUser /> },
+        { path: "/edit-user", element: <EditUser /> },
         { path: "/ai-sketch", element: <AISketch /> },
         { path: "/ai-statement", element: <AIStatement /> },
         { path: "/investigator-cases", element: <InvestigatorCases /> },
