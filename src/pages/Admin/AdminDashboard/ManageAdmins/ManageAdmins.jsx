@@ -1,0 +1,159 @@
+import React, { useEffect, useState } from "react";
+import "./ManageAdmins.css";
+import adminImage from "../../../../assets/images/suspect.svg";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const ManageAdmins = () => {
+  const [admins, setAdmins] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    const fetchAdminsData = async () => {
+      try {
+        const response = await axios.get(
+          `http://127.0.0.1:8080/api/admin/admins`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        setAdmins(response.data.admins);
+        setRefresh(false);
+      } catch (error) {
+        console.log(error.message);
+        setRefresh(false);
+      }
+    };
+    fetchAdminsData();
+  }, [refresh]);
+  console.log(admins);
+
+  const banAdmin = async (id) => {
+    try {
+      await axios.post(`http://127.0.0.1:8080/api/admin/ban/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setRefresh(!refresh);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const deleteAdmin = async (id) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8080/api/admin/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setRefresh(!refresh);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const navigate = useNavigate();
+  const editAdmin = (userId) => {
+    navigate("/edit-user", { state: userId });
+  };
+  const navigateToAdmins = () => {
+    navigate("/manage-admins");
+  };
+  const navigateToDashboard = () => {
+    navigate("/admin-dashboard");
+  };
+  const navigateToInvestigators = () => {
+    navigate("/manage-investigators");
+  };
+  const navigateToUsers = () => {
+    navigate("/manage-users");
+  };
+  const navigateToCases = () => {
+    navigate("/manage-cases");
+  };
+  const addUser = () => {
+    navigate("/add-user");
+  };
+  return (
+    <div className="admin-dashboard flex">
+      <div className="admin-sidebar flex column center">
+        <button className="admin-profile flex column center">
+          <img src={adminImage} alt="" />
+          <h1>Admin Name</h1>
+        </button>
+        <ul className="dashboard-ul flex center column">
+          <li className="dashboard-li">
+            <button onClick={navigateToDashboard}>Dashboard</button>
+          </li>
+          <li className="dashboard-li dashboard-li-clicked">
+            <button onClick={navigateToAdmins}>Manage Admins</button>
+          </li>
+          <li className="dashboard-li">
+            <button onClick={navigateToInvestigators}>
+              Manage Investigators
+            </button>
+          </li>
+          <li className="dashboard-li">
+            <button onClick={navigateToCases}>Manage Cases</button>
+          </li>
+          <li className="dashboard-li">
+            <button onClick={navigateToUsers}>Manage Users</button>
+          </li>
+        </ul>
+      </div>
+      <div className="admin-dashboard-stats flex column center">
+        <div className="suspect-profile-header manage-investigator-header flex center">
+          <h2>Users List</h2>
+          <button onClick={addUser}>Add New User</button>
+        </div>
+        <div className="table_component">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {admins &&
+                admins.map((row, index) =>
+                  row.role !== "super_admin" ? (
+                    <tr key={index}>
+                      <td>{row._id}</td>
+                      <td>
+                        {row.firstName} {row.lastName}
+                      </td>
+                      <td>{row.email}</td>
+                      <td>{row.role}</td>
+                      <td>{row.banned ? "Banned" : "Active"}</td>
+                      <td className="table-actions">
+                        <button onClick={() => editAdmin(row._id)}>Edit</button>
+                        <button onClick={() => deleteAdmin(row._id)}>
+                          Delete
+                        </button>
+                        <button onClick={() => banAdmin(row._id)}>
+                          {row.banned ? "Activate" : "Ban"}
+                        </button>
+                      </td>
+                    </tr>
+                  ) : (
+                    <></>
+                  )
+                )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ManageAdmins;
