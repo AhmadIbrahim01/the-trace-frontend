@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import adminImage from "../../../../assets/images/suspect.svg";
 import dashboardIconOne from "../../../../assets/icons/dashboard-icon.svg";
 import dashboardIconTwo from "../../../../assets/icons/dashboard-icon-2.svg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Dashboard = () => {
-  const adminDashboardStats = {
-    active: 8,
-    investigators: 10,
-    tools: 3,
-    resolvedCases: 50,
-  };
+  const [stats, setStats] = useState({
+    activeCases: 0,
+    resolvedCases: 0,
+    totalInvestigators: 0,
+  });
 
-  const { active, investigators, tools, resolvedCases } = adminDashboardStats;
+  useEffect(() => {
+    const websiteStats = async () => {
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8080/api/admin/stats",
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        setStats(response.data);
+        console.log(stats);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    websiteStats();
+  }, []);
+
+  const { activeCases, resolvedCases, totalInvestigators } = stats;
 
   const navigate = useNavigate();
   const navigateToDashboard = () => {
@@ -57,15 +77,15 @@ const Dashboard = () => {
         <div className="dashboard-cards flex center">
           <div className="dashboard-card flex center column">
             <p>Active Cases</p>
-            <h1>{active}</h1>
+            <h1>{activeCases}</h1>
           </div>
           <div className="dashboard-card flex center column">
             <p>Total Investigators</p>
-            <h1>{investigators}</h1>
+            <h1>{totalInvestigators}</h1>
           </div>
           <div className="dashboard-card flex center column">
             <p>Tools in Use</p>
-            <h1>{tools}</h1>
+            <h1>3</h1>
           </div>
           <div className="dashboard-card flex center column">
             <p>Resolved Cases</p>
