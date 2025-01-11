@@ -125,14 +125,14 @@
 
 .table_component {
   overflow: auto;
-  width: 90%;
   border-radius: 12px;
+  width: 90%;
 }
 
 .table_component table {
   height: 100%;
   width: 100%;
-  table-layout: fixed;
+  /* table-layout: fixed; */
   border-collapse: collapse;
   border-spacing: 1px;
   text-align: left;
@@ -173,4 +173,21 @@
 }
 .table-actions > button:nth-child(2) {
   color: red;
+}
+
+@media (max-width: 768px) {
+  .table_component th,
+  .table_component td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .table_component th {
+    display: none;
+  }
+
+  .table_component tr {
+    margin-bottom: 30px;
+  }
 }
