@@ -99,7 +99,17 @@ const AddUser = () => {
             id="phone"
             name="phone"
             type="number"
-            {...register("phone", { required: "Phone is required" })}
+            {...register("phone", {
+              required: "Phone is required",
+              minLength: {
+                value: 8,
+                message: "Phone number must be 8 numbers",
+              },
+              maxLength: {
+                value: 8,
+                message: "Phone number must be 8 numbers",
+              },
+            })}
           />
           {errors.phone && (
             <p style={{ color: "red" }}>{errors.phone.message}</p>
