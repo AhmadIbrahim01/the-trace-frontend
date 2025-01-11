@@ -3,8 +3,14 @@ import "./ManageAdmins.css";
 import adminImage from "../../../../assets/images/suspect.svg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const ManageAdmins = () => {
+  const token = localStorage.getItem("authToken");
+  const decoded = jwtDecode(token);
+  const adminName = decoded.name ?? "";
+  const adminRole = decoded.role;
+
   const [admins, setAdmins] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
@@ -83,15 +89,19 @@ const ManageAdmins = () => {
       <div className="admin-sidebar flex column center">
         <button className="admin-profile flex column center">
           <img src={adminImage} alt="" />
-          <h1>Admin Name</h1>
+          <h1>Admin {adminName}</h1>
         </button>
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li">
             <button onClick={navigateToDashboard}>Dashboard</button>
           </li>
-          <li className="dashboard-li dashboard-li-clicked">
-            <button onClick={navigateToAdmins}>Manage Admins</button>
-          </li>
+          {adminRole === "super_admin" ? (
+            <li className="dashboard-li">
+              <button onClick={navigateToAdmins}>Manage Admins</button>
+            </li>
+          ) : (
+            <></>
+          )}
           <li className="dashboard-li">
             <button onClick={navigateToInvestigators}>
               Manage Investigators
@@ -117,6 +127,7 @@ const ManageAdmins = () => {
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Phone</th>
                 <th>Role</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -132,6 +143,7 @@ const ManageAdmins = () => {
                         {row.firstName} {row.lastName}
                       </td>
                       <td>{row.email}</td>
+                      <td>{row.phone}</td>
                       <td>{row.role}</td>
                       <td>{row.banned ? "Banned" : "Active"}</td>
                       <td className="table-actions">

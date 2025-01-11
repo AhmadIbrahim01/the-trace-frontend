@@ -36,8 +36,8 @@ const Dashboard = () => {
 
   const token = localStorage.getItem("authToken");
   const decoded = jwtDecode(token);
-
   const adminName = decoded.name ?? "";
+  const adminRole = decoded.role;
 
   const { activeCases, resolvedCases, totalInvestigators } = stats;
 
@@ -69,9 +69,13 @@ const Dashboard = () => {
           <li className="dashboard-li dashboard-li-clicked">
             <button onClick={navigateToDashboard}>Dashboard</button>
           </li>
-          <li className="dashboard-li">
-            <button onClick={navigateToAdmins}>Manage Admins</button>
-          </li>
+          {adminRole === "super_admin" ? (
+            <li className="dashboard-li">
+              <button onClick={navigateToAdmins}>Manage Admins</button>
+            </li>
+          ) : (
+            <></>
+          )}
           <li className="dashboard-li">
             <button onClick={navigateToInvestigators}>
               Manage Investigators

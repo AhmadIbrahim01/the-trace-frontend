@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./ManageInvestigators.css";
 import adminImage from "../../../../assets/images/suspect.svg";
-import dashboardIconOne from "../../../../assets/icons/dashboard-icon.svg";
-import dashboardIconTwo from "../../../../assets/icons/dashboard-icon-2.svg";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 import axios from "axios";
+const token = localStorage.getItem("authToken");
+const decoded = jwtDecode(token);
+const adminName = decoded.name ?? "";
+const adminRole = decoded.role;
 
 const ManageInvestigators = () => {
   const [investigators, setInvestigators] = useState([]);
@@ -65,15 +68,19 @@ const ManageInvestigators = () => {
       <div className="admin-sidebar flex column center">
         <button className="admin-profile flex column center">
           <img src={adminImage} alt="" />
-          <h1>Admin Name</h1>
+          <h1>Admin {adminName}</h1>
         </button>
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li">
             <button onClick={navigateToDashboard}>Dashboard</button>
           </li>
-          <li className="dashboard-li">
-            <button onClick={navigateToAdmins}>Manage Admins</button>
-          </li>
+          {adminRole === "super_admin" ? (
+            <li className="dashboard-li">
+              <button onClick={navigateToAdmins}>Manage Admins</button>
+            </li>
+          ) : (
+            <></>
+          )}
           <li className="dashboard-li dashboard-li-clicked">
             <button onClick={navigateToInvestigators}>
               Manage Investigators
