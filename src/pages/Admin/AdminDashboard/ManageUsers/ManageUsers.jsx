@@ -28,21 +28,29 @@ const ManageUsers = () => {
 
   const toggleRole = async (id) => {
     try {
-      const response = await axios.put(
-        `http://127.0.0.1:8080/api/admin/investigator/${id}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await axios.put(`http://127.0.0.1:8080/api/admin/investigator/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  console.log(users);
+  const banUser = async (id) => {
+    try {
+      await axios.post(`http://127.0.0.1:8080/api/admin/ban/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setRefresh(!refresh);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   const navigate = useNavigate();
   const navigateToDashboard = () => {
@@ -115,6 +123,7 @@ const ManageUsers = () => {
                     <button>Edit</button>
                     <button>Delete</button>
                     <button onClick={() => toggleRole(row._id)}>Role</button>
+                    <button onClick={() => banUser(row._id)}>Ban</button>
                   </td>
                 </tr>
               ))}
