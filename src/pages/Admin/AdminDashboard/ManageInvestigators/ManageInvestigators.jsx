@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 import axios from "axios";
-const token = localStorage.getItem("authToken");
-const decoded = jwtDecode(token);
-const adminName = decoded.name ?? "";
-const adminRole = decoded.role;
 
 const ManageInvestigators = () => {
+  const token = localStorage.getItem("authToken");
+  const decoded = jwtDecode(token);
+  const adminName = decoded.name ?? "";
+  const adminRole = decoded.role;
+  console.log(adminRole);
+
   const [investigators, setInvestigators] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
@@ -63,6 +65,11 @@ const ManageInvestigators = () => {
   const addInvestigator = () => {
     navigate("/add-investigator");
   };
+
+  const logOut = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
   return (
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
@@ -93,6 +100,9 @@ const ManageInvestigators = () => {
             <button onClick={navigateToUsers}>Manage Users</button>
           </li>
         </ul>
+        <button className="admin-logout-btn" onClick={logOut}>
+          log out
+        </button>
       </div>
       <div className="admin-dashboard-stats flex column center">
         <div className="suspect-profile-header manage-investigator-header flex center">

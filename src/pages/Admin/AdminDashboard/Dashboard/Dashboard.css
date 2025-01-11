@@ -175,6 +175,16 @@
   color: red;
 }
 
+.admin-logout-btn {
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 200px;
+  height: 50px;
+  background-color: rgba(187, 72, 72, 0.908);
+  color: white;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   .table_component th,
   .table_component td {

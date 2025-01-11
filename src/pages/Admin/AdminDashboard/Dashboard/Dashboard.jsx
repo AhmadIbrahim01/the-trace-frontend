@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import adminImage from "../../../../assets/images/suspect.svg";
-import dashboardIconOne from "../../../../assets/icons/dashboard-icon.svg";
-import dashboardIconTwo from "../../../../assets/icons/dashboard-icon-2.svg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
@@ -58,6 +56,11 @@ const Dashboard = () => {
     navigate("/manage-cases");
   };
 
+  const logOut = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
@@ -88,6 +91,9 @@ const Dashboard = () => {
             <button onClick={navigateToUsers}>Manage Users</button>
           </li>
         </ul>
+        <button className="admin-logout-btn" onClick={logOut}>
+          log out
+        </button>
       </div>
       <div className="admin-dashboard-stats flex column center">
         <div className="dashboard-cards flex center">

@@ -67,6 +67,11 @@ const ManageCases = () => {
     return date.toLocaleString();
   }
 
+  const logOut = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
@@ -99,6 +104,9 @@ const ManageCases = () => {
             <button onClick={navigateToUsers}>Manage Users</button>
           </li>
         </ul>
+        <button className="admin-logout-btn" onClick={logOut}>
+          log out
+        </button>
       </div>
       <div className="admin-dashboard-stats flex column center">
         <div className="suspect-profile-header manage-investigator-header flex center">
