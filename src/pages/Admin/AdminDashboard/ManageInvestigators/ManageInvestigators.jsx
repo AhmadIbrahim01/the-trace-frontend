@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ManageInvestigators.css";
 import adminImage from "../../../../assets/images/suspect.svg";
 import dashboardIconOne from "../../../../assets/icons/dashboard-icon.svg";
 import dashboardIconTwo from "../../../../assets/icons/dashboard-icon-2.svg";
 import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 
 const ManageInvestigators = () => {
   const tableData = [
@@ -29,6 +31,27 @@ const ManageInvestigators = () => {
       caseHandled: "50",
     },
   ];
+
+  const [investigators, setInvestigators] = useState([]);
+
+  useEffect(() => {
+    const fetchInvestigators = async () => {
+      try {
+        const response = await axios.get(
+          `http://127.0.0.1:8080/api/admin/investigators`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        setInvestigators(response.data.investigators);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchInvestigators();
+  }, [investigators]);
 
   const navigate = useNavigate();
   const navigateToDashboard = () => {
@@ -88,16 +111,20 @@ const ManageInvestigators = () => {
               </tr>
             </thead>
             <tbody>
-              {tableData.map((row, index) => (
+              {investigators.map((row, index) => (
                 <tr key={index}>
-                  <td>{row.id}</td>
-                  <td>{row.name}</td>
+                  <td>{row._id}</td>
+                  <td>
+                    {row.firstName} {row.firstName}
+                  </td>
                   <td>{row.email}</td>
                   <td>{row.phone}</td>
                   <td>{row.caseHandled}</td>
                   <td className="table-actions">
                     <button>Edit</button>
-                    <button>Delete</button>
+                    <button onClick={() => deleteInvestigator(row._id)}>
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
