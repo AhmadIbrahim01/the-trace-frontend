@@ -5,6 +5,7 @@ import dashboardIconOne from "../../../../assets/icons/dashboard-icon.svg";
 import dashboardIconTwo from "../../../../assets/icons/dashboard-icon-2.svg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
@@ -33,9 +34,17 @@ const Dashboard = () => {
     websiteStats();
   }, []);
 
+  const token = localStorage.getItem("authToken");
+  const decoded = jwtDecode(token);
+
+  const adminName = decoded.name ?? "";
+
   const { activeCases, resolvedCases, totalInvestigators } = stats;
 
   const navigate = useNavigate();
+  const navigateToAdmins = () => {
+    navigate("/admins");
+  };
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");
   };
@@ -54,11 +63,14 @@ const Dashboard = () => {
       <div className="admin-sidebar flex column center">
         <button className="admin-profile flex column center">
           <img src={adminImage} alt="" />
-          <h1>Admin Name</h1>
+          <h1>Admin {adminName}</h1>
         </button>
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li dashboard-li-clicked">
             <button onClick={navigateToDashboard}>Dashboard</button>
+          </li>
+          <li className="dashboard-li">
+            <button onClick={navigateToAdmins}>Manage Admins</button>
           </li>
           <li className="dashboard-li">
             <button onClick={navigateToInvestigators}>

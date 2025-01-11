@@ -7,30 +7,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ManageCases = () => {
-  const tableData = [
-    {
-      id: 1,
-      name: "The Victim of AI",
-      investigator: "Ahmad Ibrahim",
-      status: "Active",
-      updated: "01/03/2024",
-    },
-    {
-      id: 2,
-      name: "The Victim of AI",
-      investigator: "Ahmad Ibrahim",
-      status: "Active",
-      updated: "01/03/2024",
-    },
-    {
-      id: 3,
-      name: "The Victim of AI",
-      investigator: "Ahmad Ibrahim",
-      status: "Active",
-      updated: "01/03/2024",
-    },
-  ];
-
   const [cases, setCases] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
@@ -61,6 +37,9 @@ const ManageCases = () => {
   const navigate = useNavigate();
   const editCase = (row) => {
     navigate("/edit-case", { state: row });
+  };
+  const navigateToAdmins = () => {
+    navigate("/admins");
   };
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");
@@ -94,6 +73,9 @@ const ManageCases = () => {
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li">
             <button onClick={navigateToDashboard}>Dashboard</button>
+          </li>
+          <li className="dashboard-li">
+            <button onClick={navigateToAdmins}>Manage Admins</button>
           </li>
           <li className="dashboard-li">
             <button onClick={navigateToInvestigators}>

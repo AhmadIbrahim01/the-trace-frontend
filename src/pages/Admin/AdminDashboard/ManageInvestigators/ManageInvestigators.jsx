@@ -42,6 +42,9 @@ const ManageInvestigators = () => {
   const editInvestigator = (row) => {
     navigate("/edit-investigator", { state: row });
   };
+  const navigateToAdmins = () => {
+    navigate("/admins");
+  };
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");
   };
@@ -67,6 +70,9 @@ const ManageInvestigators = () => {
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li">
             <button onClick={navigateToDashboard}>Dashboard</button>
+          </li>
+          <li className="dashboard-li">
+            <button onClick={navigateToAdmins}>Manage Admins</button>
           </li>
           <li className="dashboard-li dashboard-li-clicked">
             <button onClick={navigateToInvestigators}>

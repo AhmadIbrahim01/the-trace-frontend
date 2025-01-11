@@ -69,6 +69,9 @@ const ManageUsers = () => {
   const editUser = (userId) => {
     navigate("/edit-user", { state: userId });
   };
+  const navigateToAdmins = () => {
+    navigate("/admins");
+  };
   const navigateToDashboard = () => {
     navigate("/admin-dashboard");
   };
@@ -94,6 +97,9 @@ const ManageUsers = () => {
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li">
             <button onClick={navigateToDashboard}>Dashboard</button>
+          </li>
+          <li className="dashboard-li">
+            <button onClick={navigateToAdmins}>Manage Admins</button>
           </li>
           <li className="dashboard-li">
             <button onClick={navigateToInvestigators}>
@@ -126,23 +132,31 @@ const ManageUsers = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((row, index) => (
-                <tr key={index}>
-                  <td>{row._id}</td>
-                  <td>
-                    {row.firstName} {row.lastName}
-                  </td>
-                  <td>{row.email}</td>
-                  <td>{row.role}</td>
-                  <td>{row.banned ? "Banned" : "Active"}</td>
-                  <td className="table-actions">
-                    <button onClick={() => editUser(row._id)}>Edit</button>
-                    <button onClick={() => deleteUser(row._id)}>Delete</button>
-                    <button onClick={() => toggleRole(row._id)}>Role</button>
-                    <button onClick={() => banUser(row._id)}>Ban</button>
-                  </td>
-                </tr>
-              ))}
+              {users.map((row, index) =>
+                row.role !== "admin" && row.role !== "super_admin" ? (
+                  <tr key={index}>
+                    <td>{row._id}</td>
+                    <td>
+                      {row.firstName} {row.lastName}
+                    </td>
+                    <td>{row.email}</td>
+                    <td>{row.role}</td>
+                    <td>{row.banned ? "Banned" : "Active"}</td>
+                    <td className="table-actions">
+                      <button onClick={() => editUser(row._id)}>Edit</button>
+                      <button onClick={() => deleteUser(row._id)}>
+                        Delete
+                      </button>
+                      <button onClick={() => toggleRole(row._id)}>Role</button>
+                      <button onClick={() => banUser(row._id)}>
+                        {row.banned ? "Activate" : "Ban"}
+                      </button>
+                    </td>
+                  </tr>
+                ) : (
+                  <></>
+                )
+              )}
             </tbody>
           </table>
         </div>
