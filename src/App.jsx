@@ -34,6 +34,7 @@ import InvestigatorSelectedCase from "./pages/Investigator/InvestigatorSelectedC
 import EditInvestigator from "./pages/Admin/AdminForms/EditInvestigator/EditInvestigator";
 import EditCase from "./pages/Admin/AdminForms/EditCase/EditCase";
 import EditUser from "./pages/Admin/AdminForms/Edit User/EditUser";
+import ManageAdmins from "./pages/Admin/AdminDashboard/ManageAdmins/ManageAdmins";
 
 function App() {
   const route = createBrowserRouter([
@@ -79,6 +80,7 @@ function App() {
     { path: "/manage-users", element: <ManageUsers /> },
     { path: "/manage-investigators", element: <ManageInvestigators /> },
     { path: "/manage-cases", element: <ManageCases /> },
+    { path: "/manage-admins", element: <ManageAdmins /> },
   ]);
   return (
     <>
