@@ -14,6 +14,8 @@ import MapComponent from "../../../components/MapComponent/MapComponent";
 import axios from "axios";
 import EvidenceModal from "../../../components/EvidenceModal/EvidenceModal";
 import WitnessModal from "../../../components/WitnessModal/WitnessModal";
+import WitnessStatementModal from "../../../components/WitnessStatementModal/WitnessStatementModal";
+
 const InvestigatorCase = () => {
   const [theCase, setCase] = useState({});
   const [evidences, setEvidences] = useState({});
@@ -34,6 +36,10 @@ const InvestigatorCase = () => {
   const [evidenceModalData, setEvidenceModalData] = useState("");
   const [isWitnessModalOpen, setWitnessModalOpen] = useState(false);
   const [witnessModalData, setWitnessModalData] = useState("");
+  const [isWitnessStatementModalOpen, setWitnessStatementModalOpen] =
+    useState(false);
+  const [witnessStatementModalData, setWitnessStatementModalData] =
+    useState("");
 
   const navigate = useNavigate();
 
@@ -110,6 +116,12 @@ const InvestigatorCase = () => {
   };
   const closeWitnessModal = () => setWitnessModalOpen(false);
 
+  const openWitnessStatementModal = (data) => {
+    setWitnessStatementModalData(data);
+    setWitnessStatementModalOpen(true);
+  };
+  const closeWitnessStatementModal = () => setWitnessStatementModalOpen(false);
+
   const toggleView = () => {
     setView((prevView) => (prevView === "suspects" ? "witnesses" : "suspects"));
   };
@@ -133,12 +145,14 @@ const InvestigatorCase = () => {
     witness.statements.map((statement) => ({
       name: witness.name,
       witnessPhoto: witness.photo,
-      statement: statement.statement,
+      statement: statement,
       id: statement._id,
       date: new Date(statement.date).toString(),
       location: statement.locationOfIncident,
     }))
   );
+
+  console.log("w stae", allWitnessesStatements);
 
   return (
     <div className="investigator-case flex column center">
@@ -238,8 +252,8 @@ const InvestigatorCase = () => {
           <div className="switch-button flex center">
             <button onClick={toggleStatementsView}>
               {statementsView === "suspects"
-                ? "Show Witnesses"
-                : "Show Suspects"}
+                ? "Show Suspects"
+                : "Show Witnesses"}
             </button>
           </div>
           <div className="case-statements-header flex center">
@@ -255,10 +269,10 @@ const InvestigatorCase = () => {
                   <button
                     key={statement.id}
                     className="flex center"
-                    onClick={() => openStatementModal(statement)}
+                    onClick={() => openWitnessStatementModal(statement)}
                   >
                     <img
-                      src={statement.suspectPhoto || suspect}
+                      src={statement.witnessPhoto || suspect}
                       alt={statement.name}
                       className="statement-image"
                     />
@@ -303,6 +317,11 @@ const InvestigatorCase = () => {
         isOpen={isStatementModalOpen}
         onClose={closeStatementModal}
         data={statementModalData}
+      />
+      <WitnessStatementModal
+        isOpen={isWitnessStatementModalOpen}
+        onClose={closeWitnessStatementModal}
+        data={witnessStatementModalData}
       />
       <ChooseStatementModal
         isOpen={isChooseOpen}
