@@ -28,6 +28,9 @@ const validationSchema = yup
   .required();
 
 const SubmitTip = () => {
+  const [imageUrl, setImageUrl] = useState("");
+  const [status, setStatus] = useState({ success: true, message: "" });
+
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -63,10 +66,12 @@ const SubmitTip = () => {
   }, [uId, setValue]);
 
   const onSubmit = async (data) => {
+    const dataWithImage = { ...data, file: imageUrl };
+
     try {
       const response = await axios.post(
         `http://127.0.0.1:8080/api/tip/${caseId}`,
-        data,
+        dataWithImage,
         {
           headers: {
             "Content-Type": "application/json",
@@ -85,8 +90,41 @@ const SubmitTip = () => {
         anonymous: false,
         confirm: false,
       });
+
+      setStatus({
+        success: true,
+        message: "Tip added successfull",
+      });
     } catch (error) {
       console.log(error.message);
+
+      const errorMessage =
+        error.response?.data?.message || "Something went wrong";
+      setStatus({ success: false, message: errorMessage });
+    }
+  };
+
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "ahmad_preset");
+    data.append("cloud_name", "dnhicntxv");
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dnhicntxv/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const uploadedImageUrl = await res.json();
+      setImageUrl(uploadedImageUrl.url);
+    } catch (error) {
+      console.error("Error uploading image or updating profile:", error);
     }
   };
 
@@ -114,15 +152,16 @@ const SubmitTip = () => {
             <p style={{ color: "red" }}>{errors.content.message}</p>
           )}
         </div>
-
-        <Input
-          id="file"
-          label="Upload Supporting Evidence"
-          name="file"
-          type="file"
-          {...register("file")}
-        />
-        {errors.file && <p style={{ color: "red" }}>{errors.file.message}</p>}
+        <div className="input flex column">
+          <label htmlFor={"file"}>Evidence Image</label>
+          <input
+            id={"file"}
+            name={"file"}
+            type={"file"}
+            accept=".jpeg, .png, .jpg"
+            onChange={handleFileUpload}
+          />
+        </div>
 
         <div className="input flex column">
           <label htmlFor="location">Location of Incident</label>
@@ -136,7 +175,6 @@ const SubmitTip = () => {
         {errors.locationOfIncident && (
           <p style={{ color: "red" }}>{errors.locationOfIncident.message}</p>
         )}
-
         <div className="input flex column">
           <label htmlFor="date">Date of Incident</label>
           <input
@@ -149,14 +187,12 @@ const SubmitTip = () => {
         {errors.dateOfIncident && (
           <p style={{ color: "red" }}>{errors.dateOfIncident.message}</p>
         )}
-
         <div className="input flex column">
           <label>
             <input type="checkbox" {...register("anonymous")} />
             Submit Anonymously
           </label>
         </div>
-
         <div className="input flex column">
           <label>
             <input type="checkbox" {...register("confirm")} />I confirm that the
@@ -166,7 +202,12 @@ const SubmitTip = () => {
             <p style={{ color: "red" }}>{errors.confirm.message}</p>
           )}
         </div>
-
+        {status.message &&
+          (status.success ? (
+            <h2 style={{ color: "green" }}>{status.message}</h2>
+          ) : (
+            <h2 style={{ color: "red" }}>{status.message}</h2>
+          ))}
         <Button
           type="submit"
           name="submit-tip"
