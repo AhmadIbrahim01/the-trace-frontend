@@ -6,6 +6,8 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 
 const AddWitness = () => {
+  const [imageUrl, setImageUrl] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -25,21 +27,15 @@ const AddWitness = () => {
     navigate("/investigator-case");
   };
 
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     photo: file,
-  //   }));
-  // };
-
   const caseId = localStorage.getItem("caseId");
 
   const onSubmit = async (data) => {
+    const dataWithImage = { ...data, photo: imageUrl };
+
     try {
       const respone = await axios.post(
         `http://127.0.0.1:8080/api/witness/${caseId}`,
-        data,
+        dataWithImage,
         {
           headers: {
             "Content-Type": "application/json",
@@ -74,6 +70,30 @@ const AddWitness = () => {
       </div>
     );
 
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "ahmad_preset");
+    data.append("cloud_name", "dnhicntxv");
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dnhicntxv/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const uploadedImageUrl = await res.json();
+      setImageUrl(uploadedImageUrl.url);
+    } catch (error) {
+      console.error("Error uploading image or updating profile:", error);
+    }
+  };
+
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Witness</h1>
@@ -105,7 +125,17 @@ const AddWitness = () => {
             name="phone"
             type="number"
             placeholder="Enter phone number"
-            {...register("phone", { required: "Witness phone is required" })}
+            {...register("phone", {
+              required: "Witness phone is required",
+              minLength: {
+                value: 8,
+                message: "Phone must be of 8 nubmers",
+              },
+              maxLength: {
+                value: 8,
+                message: "Phone must be of 8 nubmers",
+              },
+            })}
           />
           {errors.phone && (
             <p style={{ color: "red" }}>{errors.phone.message}</p>
@@ -155,19 +185,16 @@ const AddWitness = () => {
           )}
         </div>
 
-        {/* <div className="input flex column">
-          <label htmlFor="photo">Upload Photo</label>
+        <div className="input flex column">
+          <label htmlFor={"photo"}>Witness Image</label>
           <input
-            id="photo"
-            name="photo"
-            type="file"
-            accept="image/*"
-            {...register("photo")}
+            id={"photo"}
+            name={"photo"}
+            type={"file"}
+            accept=".jpeg, .png, .jpg"
+            onChange={handleFileUpload}
           />
-          {errors.photo && (
-            <p style={{ color: "red" }}>{errors.photo.message}</p>
-          )}
-        </div> */}
+        </div>
 
         <Button
           type={"submit"}
