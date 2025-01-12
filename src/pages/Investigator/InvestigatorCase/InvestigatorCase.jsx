@@ -64,10 +64,21 @@ const InvestigatorCase = () => {
     getCase();
   }, [caseId]);
 
-  // console.log(theCase);
-  // console.log(suspects);
-
-  if (loading) return <div>Loading...</div>;
+  if (!caseId)
+    return (
+      <div className="error flex column center">
+        <h1 className="t-center">
+          Please select a case
+          <br /> to view this page.
+        </h1>
+      </div>
+    );
+  if (loading)
+    return (
+      <div className="error flex column center">
+        <h1 className="t-center">LOADING</h1>
+      </div>
+    );
 
   const openModal = (data) => {
     setModalData(data);

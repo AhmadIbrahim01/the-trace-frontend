@@ -80,7 +80,7 @@ const InvestigatorStats = () => {
           </div>
           <div className="div3 flex column center">
             <p>Case Resolution Rate</p>
-            <h1>{resolution.toFixed(1)}%</h1>
+            <h1>{resolution.toFixed(0)}%</h1>
             <img src={caribbeanFingerprint} alt="" />
           </div>
           <div className="div4 flex column center">

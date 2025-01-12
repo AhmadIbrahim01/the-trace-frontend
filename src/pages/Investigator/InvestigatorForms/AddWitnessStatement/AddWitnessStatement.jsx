@@ -72,6 +72,16 @@ const AddWitnessStatement = () => {
     }
   };
 
+  if (!caseId)
+    return (
+      <div className="error flex column center">
+        <h1 className="t-center">
+          Please select a case
+          <br /> to view this page.
+        </h1>
+      </div>
+    );
+
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Witness Statement</h1>
