@@ -68,27 +68,32 @@ const userEditProfileModal = ({ isOpen, onClose, data }) => {
         className="modal-content edit-modal"
         onClick={(e) => e.stopPropagation()}
       >
-        <h1>Profile</h1>
         <form>
-          <div className="edit-input flex column">
-            <label htmlFor="firstName">First name</label>
-            <input
-              id="firstName"
-              name="firstName"
-              type="text"
-              value={formData.firstName}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="edit-input flex column">
-            <label htmlFor="lastName">Last name</label>
-            <input
-              id="lastName"
-              name="lastName"
-              type="text"
-              value={formData.lastName}
-              onChange={handleChange}
-            />
+          <button className="edit-close-btn" onClick={onClose}>
+            X
+          </button>
+
+          <div className="fullname-input flex">
+            <div className="edit-input flex column">
+              <label htmlFor="firstName">First name</label>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="edit-input flex column">
+              <label htmlFor="lastName">Last name</label>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+            </div>
           </div>
           <div className="edit-input flex column">
             <label htmlFor="email">Email</label>
@@ -110,25 +115,22 @@ const userEditProfileModal = ({ isOpen, onClose, data }) => {
               onChange={handleChange}
             />
           </div>
-          {/* <div className="edit-input flex column">
+          <div className="edit-input flex column">
             <label htmlFor="password">Password</label>
             <input id="password" name="password" type="password" />
-          </div> */}
-          <div className="edit-input flex column">
-            <label htmlFor="file">Profile Photo</label>
-            <input id="file" name="file" type="file" />
+          </div>
+          <div className="edit-user-buttons flex">
+            <Button
+              className={"edit-user-button flex center"}
+              text={"Save Changes"}
+              type={"submit"}
+              onClick={handleSubmit}
+            ></Button>
+            {!status.success && (
+              <p style={{ color: "red" }}>{status.message}</p>
+            )}
           </div>
         </form>
-        <div className="edit-user-buttons flex">
-          <Button
-            className={"edit-user-button flex center"}
-            text={"Save Changes"}
-            type={"submit"}
-            onClick={handleSubmit}
-          ></Button>
-          <button onClick={onClose}>Close</button>
-          {!status.success && <p style={{ color: "red" }}>{status.message}</p>}
-        </div>
       </div>
     </div>
   );
