@@ -44,6 +44,11 @@
   height: 150px;
   position: relative;
 }
+
+.user-profile-image > label > img {
+  cursor: pointer;
+  border-radius: 6px;
+}
 .user-profile-image > .user-profile-button {
   width: 100px;
   height: 130px;

@@ -8,24 +8,26 @@
 }
 
 .case-bio {
-  width: auto;
+  width: 80%;
   z-index: 1;
 }
 .case-bio > button {
   justify-content: flex-end;
+  align-self: flex-end;
 }
 .case-bio > h1 {
-  width: 90%;
+  width: 100%;
   text-align: center;
   font-size: 80px;
   background: var(--primary-gradient);
 }
 
 .case-bio > h2 {
-  width: 70%;
+  width: 100%;
   font-size: 30px;
   background: var(--color2);
   text-align: right;
+  margin-bottom: 1%;
 }
 
 .case-bio > h1,
@@ -94,6 +96,7 @@
   left: 170px;
   transform: rotate(-5deg);
   overflow: hidden;
+  z-index: 0;
 }
 .sticky-note > p {
   font-size: 30px;
@@ -244,6 +247,7 @@
   border-radius: 14px;
   width: 160px;
   height: 135px;
+  cursor: pointer;
 }
 
 .scene {
