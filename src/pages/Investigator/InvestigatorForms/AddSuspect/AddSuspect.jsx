@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../../../components/Button/Button";
 import "./AddSuspect.css";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,11 @@ import axios from "axios";
 
 const AddSuspect = () => {
   const [status, setStatus] = useState({ success: true, message: "" });
+  const [imagesUrl, setImagesUrl] = useState([]);
+
+  useEffect(() => {
+    console.log(imagesUrl);
+  }, [imagesUrl]);
 
   const navigate = useNavigate();
   const goBack = () => {
@@ -23,10 +28,11 @@ const AddSuspect = () => {
   const caseId = localStorage.getItem("caseId");
 
   const onSubmit = async (data) => {
+    const dataWithImages = { ...data, photos: imagesUrl };
     try {
       const response = await axios.post(
         `http://127.0.0.1:8080/api/suspect/${caseId}`,
-        data,
+        dataWithImages,
         {
           headers: {
             "Content-Type": "application/json",
@@ -46,6 +52,36 @@ const AddSuspect = () => {
       });
     }
     reset();
+  };
+
+  const handleFilesUpload = async (event) => {
+    const files = event.target.files;
+
+    if (!files || files.length === 0) return;
+    const uploadedUrls = [];
+
+    for (const file of files) {
+      const data = new FormData();
+      data.append("file", file);
+      data.append("upload_preset", "ahmad_preset");
+      data.append("cloud_name", "dnhicntxv");
+
+      try {
+        const res = await fetch(
+          "https://api.cloudinary.com/v1_1/dnhicntxv/image/upload",
+          {
+            method: "POST",
+            body: data,
+          }
+        );
+        const uploadedImageUrl = await res.json();
+        uploadedUrls.push(uploadedImageUrl.url);
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+    }
+
+    setImagesUrl(uploadedUrls);
   };
 
   if (!caseId)
@@ -84,16 +120,23 @@ const AddSuspect = () => {
           <input
             id={"phone"}
             name={"phone"}
-            type={"text"}
+            type={"number"}
             {...register("phone", {
               required: "Phone is required",
+              minLength: {
+                value: 8,
+                message: "Phone must consists of 8 numbers",
+              },
+              maxLength: {
+                value: 8,
+                message: "Phone must consists of 8 numbers",
+              },
             })}
           />
           {errors.phone && (
             <p style={{ color: "red" }}>{errors.phone.message}</p>
           )}
         </div>
-
         <div className="input flex column">
           <label htmlFor={"age"}>Age</label>
           <input
@@ -107,7 +150,6 @@ const AddSuspect = () => {
           />
           {errors.age && <p style={{ color: "red" }}>{errors.age.message}</p>}
         </div>
-
         <div className="input flex column">
           <label htmlFor="gender">Gender</label>
           <select
@@ -122,7 +164,6 @@ const AddSuspect = () => {
             <p style={{ color: "red" }}>{errors.gender.message}</p>
           )}
         </div>
-
         <div className="input flex column">
           <label htmlFor={"address"}>Address</label>
           <input
@@ -135,7 +176,6 @@ const AddSuspect = () => {
             <p style={{ color: "red" }}>{errors.address.message}</p>
           )}
         </div>
-
         <div className="input flex column">
           <label htmlFor="crimeInvolved">Crime Involved</label>
           <textarea
@@ -150,7 +190,6 @@ const AddSuspect = () => {
             <p style={{ color: "red" }}>{errors.crimeInvolved.message}</p>
           )}
         </div>
-
         <div className="input flex column">
           <label htmlFor={"occupation"}>Occupation</label>
           <input
@@ -163,7 +202,6 @@ const AddSuspect = () => {
             <p style={{ color: "red" }}>{errors.occupation.message}</p>
           )}
         </div>
-
         <div className="input flex column">
           <label htmlFor={"height"}>Height (cm)</label>
           <input
@@ -179,7 +217,6 @@ const AddSuspect = () => {
             <p style={{ color: "red" }}>{errors.height.message}</p>
           )}
         </div>
-
         <div className="input flex column">
           <label htmlFor={"weight"}>Weight (kg)</label>
           <input
@@ -243,14 +280,29 @@ const AddSuspect = () => {
             <p style={{ color: "red" }}>{errors.photos.message}</p>
           )}
         </div> */}
-
+        <div className="input flex column">
+          <label htmlFor={"photo"}>Evidence Image</label>
+          <input
+            id={"photo"}
+            name={"photo"}
+            type={"file"}
+            accept=".jpeg, .png, .jpg"
+            multiple
+            onChange={handleFilesUpload}
+          />
+        </div>
+        {status.message &&
+          (status.success ? (
+            <h2 style={{ color: "green" }}>{status.message}</h2>
+          ) : (
+            <h2 style={{ color: "red" }}>{status.message}</h2>
+          ))}{" "}
         <Button
           type={"submit"}
           name={"add-suspect"}
           text={"Add Suspect"}
           className={"ivestigator-form-button"}
         ></Button>
-        {status.message && <h2 style={{ color: "red" }}>{status.message}</h2>}
       </form>
     </div>
   );
