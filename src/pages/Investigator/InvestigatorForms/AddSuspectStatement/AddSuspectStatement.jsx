@@ -7,6 +7,8 @@ import axios from "axios";
 const AddSuspectStatement = () => {
   const location = useLocation();
   const { suspectId } = location.state || {};
+  const [status, setStatus] = useState({ success: true, message: "" });
+
   const caseId = localStorage.getItem("caseId");
 
   const navigate = useNavigate();
@@ -40,10 +42,17 @@ const AddSuspectStatement = () => {
           },
         }
       );
-
+      setStatus({
+        success: true,
+        message: "Suspect statement added successfull",
+      });
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
+
+      const errorMessage =
+        error.response?.data?.message || "Something went wrong";
+      setStatus({ success: false, message: errorMessage });
     }
   };
 
@@ -101,7 +110,7 @@ const AddSuspectStatement = () => {
           />
         </div>
 
-        <div className="input flex column">
+        {/* <div className="input flex column">
           <label htmlFor="photo">Upload Photo</label>
           <input
             id="photo"
@@ -110,7 +119,14 @@ const AddSuspectStatement = () => {
             value={formData.photo}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
+
+        {status.message &&
+          (status.success ? (
+            <h2 style={{ color: "green" }}>{status.message}</h2>
+          ) : (
+            <h2 style={{ color: "red" }}>{status.message}</h2>
+          ))}
 
         <Button
           type={"submit"}

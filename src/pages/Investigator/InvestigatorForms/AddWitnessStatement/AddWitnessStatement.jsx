@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../../../components/Button/Button";
 import "./AddWitnessStatement.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const AddWitnessStatement = () => {
+  const [imageUrl, setImageUrl] = useState("");
+
   const location = useLocation();
   const { witnessId } = location.state || {};
   const [status, setStatus] = useState({ success: true, message: "" });
@@ -21,8 +23,15 @@ const AddWitnessStatement = () => {
     approximatedAge: "",
     description: "",
     additionalFeatures: "",
-    photo: null,
+    photo: imageUrl,
   });
+
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      photo: imageUrl,
+    }));
+  }, [imageUrl]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,23 +41,17 @@ const AddWitnessStatement = () => {
     }));
   };
 
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: files[0],
-    }));
-  };
-
   const caseId = localStorage.getItem("caseId");
   console.log(formData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const dataWithImage = { ...formData, photo: imageUrl };
+
     try {
       const response = await axios.post(
         `http://127.0.0.1:8080/api/witness/statements/${caseId}/${witnessId}`,
-        formData,
+        dataWithImage,
         {
           headers: {
             "Content-Type": "application/json",
@@ -58,7 +61,7 @@ const AddWitnessStatement = () => {
 
       setStatus({
         success: true,
-        message: "Witness added successfully",
+        message: "Witness statement added successfully",
         color: "green",
       });
       console.log(response.data);
@@ -69,6 +72,30 @@ const AddWitnessStatement = () => {
         message: error.response?.data?.message || "Something went wrong",
         color: "red",
       });
+    }
+  };
+
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "ahmad_preset");
+    data.append("cloud_name", "dnhicntxv");
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dnhicntxv/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const uploadedImageUrl = await res.json();
+      setImageUrl(uploadedImageUrl.url);
+    } catch (error) {
+      console.error("Error uploading image or updating profile:", error);
     }
   };
 
@@ -93,7 +120,6 @@ const AddWitnessStatement = () => {
           type={"button"}
           onClick={goBack}
         ></Button>
-
         <div className="input flex column">
           <label htmlFor="date">Date of Statement</label>
           <input
@@ -104,7 +130,6 @@ const AddWitnessStatement = () => {
             onChange={handleChange}
           />
         </div>
-
         <div className="input flex column">
           <label htmlFor="statement">Statement</label>
           <textarea
@@ -115,7 +140,6 @@ const AddWitnessStatement = () => {
             onChange={handleChange}
           ></textarea>
         </div>
-
         <div className="input flex column">
           <label htmlFor="locationOfIncident">Location of incident</label>
           <input
@@ -126,7 +150,6 @@ const AddWitnessStatement = () => {
             onChange={handleChange}
           />
         </div>
-
         <div className="input flex column">
           <label htmlFor="approximatedAge">Suspect Approximated Age</label>
           <select
@@ -146,7 +169,6 @@ const AddWitnessStatement = () => {
             <option value="86-100">86-100</option>
           </select>
         </div>
-
         <div className="input flex column">
           <label htmlFor="description">Description</label>
           <textarea
@@ -158,7 +180,6 @@ const AddWitnessStatement = () => {
             onChange={handleChange}
           ></textarea>
         </div>
-
         <div className="input flex column">
           <label htmlFor="additionalFeatures">Additional Features</label>
           <textarea
@@ -170,8 +191,7 @@ const AddWitnessStatement = () => {
             onChange={handleChange}
           ></textarea>
         </div>
-
-        <div className="input flex column">
+        {/* <div className="input flex column">
           <label htmlFor="photo">Upload Photo</label>
           <input
             id="photo"
@@ -179,8 +199,21 @@ const AddWitnessStatement = () => {
             type="file"
             onChange={handleFileChange}
           />
+        </div> */}
+        <div className="input flex column">
+          <label htmlFor={"photo"}>Evidence Image</label>
+          <input
+            id={"photo"}
+            name={"photo"}
+            type={"file"}
+            accept=".jpeg, .png, .jpg"
+            onChange={handleFileUpload}
+          />
         </div>
-
+        ;
+        {status.message && (
+          <h2 style={{ color: status.color }}>{status.message}</h2>
+        )}
         <Button
           type={"submit"}
           name={"add-statement"}
@@ -188,9 +221,6 @@ const AddWitnessStatement = () => {
           className={"ivestigator-form-button"}
           onClick={handleSubmit}
         ></Button>
-        {status.message && (
-          <h2 style={{ color: status.color }}>{status.message}</h2>
-        )}
       </form>
     </div>
   );
