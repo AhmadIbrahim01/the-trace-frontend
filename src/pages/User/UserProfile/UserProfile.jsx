@@ -4,11 +4,9 @@ import profile from "../../../assets/images/suspect.svg";
 import document from "../../../assets/icons/document.svg";
 import video from "../../../assets/icons/video.svg";
 import gallery from "../../../assets/icons/gallery.svg";
-import edit from "../../../assets/icons/edit.svg";
 
 import "./UserProfile.css";
 import starOne from "../../../assets/icons/star-1.svg";
-import starTwo from "../../../assets/icons/star-2.svg";
 
 import UserEditProfileModal from "../../../components/UserEditProfileModal/UserEditProfileModal";
 import axios from "axios";
@@ -19,7 +17,9 @@ const UserProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [userId, setUserId] = useState(null);
-  const [postImage, setPostImage] = useState({ myFile: "" });
+
+  const [profileImageUrl, setProfileImageUrl] = useState("");
+
   const {
     firstName,
     lastName,
@@ -103,44 +103,6 @@ const UserProfile = () => {
     }
   }, [userId, token]);
 
-  // useEffect(() => {
-  //   if (postImage) {
-  //     const changeImage = async (profilePicture) => {
-  //       console.log("sd", profilePicture);
-
-  //       try {
-  //         await axios.put(
-  //           "http://127.0.0.1:8080/api/auth/profilepicture/67775144492be380c8c96adc",
-  //           profilePicture,
-  //           {
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //           }
-  //         );
-  //         // console.log(respone.data);
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     };
-  //     changeImage();
-  //   }
-  // }, [postImage]);
-  const createPost = async (profilePicture) => {
-    const url =
-      "http://127.0.0.1:8080/api/auth/profilepicture/67775144492be380c8c96adc";
-    try {
-      const response = await axios.put(url, profilePicture, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log("Response:", response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   if (loading) {
     return (
       <div
@@ -159,17 +121,52 @@ const UserProfile = () => {
     return <div>Error: {error}</div>;
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    createPost(postImage);
-    console.log("Uploaded");
-  };
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
 
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    const base64 = await convertToBase64(file);
-    console.log(base64);
-    setPostImage({ ...postImage, myFile: base64 });
+    if (!file) return;
+
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "ahmad_preset");
+    data.append("cloud_name", "dnhicntxv");
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dnhicntxv/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const uploadedImageUrl = await res.json();
+      const imageUrl = uploadedImageUrl.url;
+      console.log("Uploaded image URL:", imageUrl);
+
+      const updateRes = await fetch(
+        `http://127.0.0.1:8080/api/auth/profilepicture/${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            profilePicture: imageUrl,
+          }),
+        }
+      );
+
+      const updateResponse = await updateRes.json();
+
+      if (updateRes.ok) {
+        console.log("Profile updated successfully:", updateResponse);
+      } else {
+        console.error("Error updating profile:", updateResponse);
+      }
+
+      setProfileImageUrl(imageUrl);
+    } catch (error) {
+      console.error("Error uploading image or updating profile:", error);
+    }
   };
 
   return (
@@ -186,14 +183,14 @@ const UserProfile = () => {
           <h2>Profile</h2>
           <button onClick={() => openEditModal(user)}>Edit</button>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="user-profile-image flex column center">
-            {/* <button className="user-profile-button">
-            <img src={profilePicture || profile} alt="" />
-          </button> */}
-
             <label htmlFor="profile">
-              <img src={profilePicture || profile} alt="" />
+              {profileImageUrl ? (
+                <img src={profileImageUrl || profile} alt="" />
+              ) : (
+                <img src={profilePicture || profile} alt="" />
+              )}
             </label>
 
             <input
@@ -202,7 +199,7 @@ const UserProfile = () => {
               name="profile"
               id="profile"
               accept=".jpeg, .png, .jpg"
-              onChange={(e) => handleFileUpload(e)}
+              onChange={handleFileUpload}
             />
 
             <h2>{firstName}</h2>
@@ -264,16 +261,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-
-function convertToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-}
