@@ -61,7 +61,11 @@ const Login = () => {
         message: "Login successfull",
       });
 
-      navigate("/");
+      if (user.role === "admin" || user.role === "super_admin") {
+        navigate("/admin-dashboard");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       console.log(error.message);
 
