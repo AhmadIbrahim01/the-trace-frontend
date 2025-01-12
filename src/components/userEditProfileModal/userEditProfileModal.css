@@ -1,13 +1,14 @@
 .edit-modal {
-  width: 800px;
-  height: 80vh;
+  width: 700px;
+  height: 90vh;
   padding: 0px;
+  position: relative;
 }
 
 .edit-modal > h1 {
   font-family: var(--font-family);
   font-weight: var(--font-weight-semi);
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
 
   background: var(--primary-gradient);
@@ -60,4 +61,20 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-semi);
   color: white;
+}
+
+.fullname-input {
+  justify-content: space-between;
+}
+.fullname-input > div {
+  width: 40%;
+}
+
+.edit-close-btn {
+  font-size: 30px;
+  color: white;
+  background-color: #00000000;
+  position: absolute;
+  top: 30px;
+  right: 60px;
 }
