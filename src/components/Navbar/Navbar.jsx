@@ -15,6 +15,7 @@ const Navbar = () => {
   };
 
   const [name, setName] = useState("");
+  const [isInvestigator, setIsInvestigator] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -22,6 +23,9 @@ const Navbar = () => {
     if (token) {
       try {
         const decoded = jwtDecode(token);
+        if (decoded.role === "investigator") {
+          setIsInvestigator(true);
+        }
         setName(localStorage.getItem("name") ?? decoded.name);
       } catch (error) {
         console.log("Error decoding token", error);
@@ -30,6 +34,7 @@ const Navbar = () => {
       console.log("No token");
     }
   }, []);
+
   return (
     <nav className="navbar flex center">
       <div className="navbar-container flex center">
@@ -43,9 +48,15 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/cases" className="nav-link">
-              Cases
-            </Link>
+            {isInvestigator ? (
+              <Link to="/investigator-cases" className="nav-link">
+                My Cases
+              </Link>
+            ) : (
+              <Link to="/cases" className="nav-link">
+                Cases
+              </Link>
+            )}
           </li>
           <li>
             <Link to="/news" className="nav-link">
