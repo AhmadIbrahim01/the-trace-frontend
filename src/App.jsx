@@ -39,6 +39,7 @@ import EditAdmin from "./pages/Admin/AdminForms/EditAdmin/EditAdmin";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AdminProtectedRoute from "./components/ProtectedRoute/AdminProtectedRoute";
 import Unauthorized from "./pages/Unauthorized/Unauthorized";
+import AdminProfile from "./pages/Admin/AdminDashboard/AdminProfile/AdminProfile";
 
 function App() {
   const route = createBrowserRouter([
@@ -149,6 +150,14 @@ function App() {
     { path: "/login", element: <Login /> },
     { path: "/user-profile", element: <UserProfile /> },
 
+    {
+      path: "/admin-profile",
+      element: (
+        <AdminProtectedRoute>
+          <AdminProfile />
+        </AdminProtectedRoute>
+      ),
+    },
     {
       path: "/admin-dashboard",
       element: (
