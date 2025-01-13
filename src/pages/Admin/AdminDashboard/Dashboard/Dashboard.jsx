@@ -6,6 +6,40 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
 const Dashboard = () => {
+  const [status, setStatus] = useState({ success: true, message: "" });
+
+  const [adminData, setAdminData] = useState({});
+  const token = localStorage.getItem("authToken");
+  const decoded = jwtDecode(token);
+  const adminName = decoded.name ?? "";
+  const adminRole = decoded.role;
+  const adminId = decoded.userId;
+  console.log(adminId);
+  useEffect(() => {
+    const fetchAdminData = async () => {
+      try {
+        const response = await axios.get(
+          `http://127.0.0.1:8080/api/admin/admins/${adminId}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        setAdminData(response.data.admin);
+      } catch (error) {
+        console.log(error.message);
+        setStatus({
+          success: false,
+          message: "An Error Occured",
+        });
+      }
+    };
+
+    fetchAdminData();
+  }, []);
+  console.log(adminData);
   const [stats, setStats] = useState({
     activeCases: 0,
     resolvedCases: 0,
@@ -32,11 +66,6 @@ const Dashboard = () => {
     websiteStats();
   }, []);
 
-  const token = localStorage.getItem("authToken");
-  const decoded = jwtDecode(token);
-  const adminName = decoded.name ?? "";
-  const adminRole = decoded.role;
-
   const { activeCases, resolvedCases, totalInvestigators } = stats;
 
   const navigate = useNavigate();
@@ -55,6 +84,9 @@ const Dashboard = () => {
   const navigateToCases = () => {
     navigate("/manage-cases");
   };
+  const goToAdminProfile = () => {
+    navigate("/admin-profile");
+  };
 
   const logOut = () => {
     localStorage.clear();
@@ -64,9 +96,12 @@ const Dashboard = () => {
   return (
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
-        <button className="admin-profile flex column center">
+        <button
+          className="admin-profile flex column center"
+          onClick={goToAdminProfile}
+        >
           <img src={adminImage} alt="" />
-          <h1>Admin {adminName}</h1>
+          <h1>Admin {adminData.firstName}</h1>
         </button>
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li dashboard-li-clicked">
