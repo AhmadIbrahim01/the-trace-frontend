@@ -94,9 +94,6 @@ const HeroSection = ({ userRole, userName }) => {
           <button className="primary-btn" onClick={navigateToInvestigatorCases}>
             View your cases
           </button>
-          <button className="secondary-btn" onClick={navigateToCases}>
-            View public cases
-          </button>
         </div>
       </div>
     );

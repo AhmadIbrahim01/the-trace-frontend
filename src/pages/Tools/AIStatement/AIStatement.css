@@ -1,3 +1,7 @@
+.ai-statement-form {
+  min-height: auto !important;
+}
+
 .investigator-form-container > form > h1 {
   font-size: 30px;
   font-family: var(--font-family);
@@ -58,3 +62,52 @@
   margin-bottom: 30px;
   color: var(--text-color);
 }
+.statement-insights {
+  padding: "20px";
+}
+.statement-insights > h2 {
+  padding: "20px";
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 25px;
+}
+
+.statement-insight > h3 {
+  font-size: 22px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+.statement-insight > p {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  color: var(--text-color);
+  text-align: left;
+}
+/* 
+parent div
+style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}
+
+div
+style={{ marginBottom: "10px" }}
+
+h3
+color: "white",
+backgroundColor: "#333",
+padding: "5px",
+
+p
+style={{ color: "yellow", marginLeft: "20px" }} */
