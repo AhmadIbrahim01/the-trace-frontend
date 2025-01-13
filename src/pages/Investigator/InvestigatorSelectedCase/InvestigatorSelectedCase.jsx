@@ -130,25 +130,7 @@ const CaseDescription = ({ theCase }) => {
       <div className="description">
         <h1 className="description-h1">Description</h1>
         <h3 className="description-h3">{theCase.title}</h3>
-        <p className="description-p">
-          {/* Today, Ireland is a country reckoning with the cost and consequences
-          of abandoning its ideals for economic gain. Since freeing 26 of its 32
-          counties from British rule more than 100 years ago, Ireland has moved
-          away from its socialist roots and embraced neoliberalism. .....
-          <br />
-          <br />
-          Today, Ireland is a country reckoning with the cost and consequences
-          of abandoning its ideals for economic gain. Since freeing 26 of its 32
-          counties from British rule more than 100 years ago, Ireland has moved
-          away from its socialist roots and embraced neoliberalism. .....
-          <br />
-          <br />
-          Today, Ireland is a country reckoning with the cost and consequences
-          of abandoning its ideals for economic gain. Since freeing 26 of its 32
-          counties from British rule more than 100 years ago, Ireland has moved
-          away from its socialist roots and embraced neoliberalism. ..... */}
-          {theCase.description}
-        </p>
+        <p className="description-p">{theCase.description}</p>
         <div className="case-notice">
           <h6>Important</h6>
           <p>
@@ -158,20 +140,7 @@ const CaseDescription = ({ theCase }) => {
           </p>
         </div>
         <h1 className="description-h1">Gallery</h1>
-        {/* <div className="gallery flex">
-          <div className="gallery-container flex center column">
-            <div className="gallery-main">
-              <img className="main-picture" src={galleryOne} alt="" />
-            </div>
-            <div className="gallery-sub flex">
-              <img className="sub-picture" src={galleryTwo} alt="" />
-              <img className="sub-picture" src={galleryThree} alt="" />
-              <img className="sub-picture" src={galleryFour} alt="" />
-              <img className="sub-picture" src={galleryFive} alt="" />
-            </div>
-          </div>
-          <p>picture description</p>
-        </div> */}
+
         <div className="gallery flex">
           <div className="gallery-container flex center column">
             <div className="gallery-main">
