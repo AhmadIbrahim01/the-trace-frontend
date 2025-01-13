@@ -6,13 +6,14 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 const AISketch = () => {
-  const [sketch, setSketch] = useState(true);
+  const [sketch, setSketch] = useState(false);
   const [url, setUrl] = useState("");
   const change = () => {
     setSketch(!sketch);
   };
   const [responseData, setResponseData] = useState({});
   const [imageUrl, setImageUrl] = useState("");
+  const [cloudImageUrl, setCloudImageUrl] = useState("");
   const [status, setStatus] = useState({
     success: true,
     message: "",
@@ -32,8 +33,8 @@ const AISketch = () => {
     setLoading(true);
     {
       sketch
-        ? setUrl(`http://127.0.0.1:8080/api/sketches/${caseId}`)
-        : setUrl(`http://127.0.0.1:8080/api/sketches/image/${caseId}`);
+        ? setUrl(`http://127.0.0.1:8080/api/sketches/image/${caseId}`)
+        : setUrl(`http://127.0.0.1:8080/api/sketches/${caseId}`);
     }
     try {
       const response = await axios.post(url, data, {
@@ -47,8 +48,10 @@ const AISketch = () => {
         success: true,
         message: "Sketch added successfully",
       });
+
       setImageUrl(response.data.image);
       setLoading(false);
+      // reset();
     } catch (error) {
       console.log(error.message);
       setStatus({
@@ -57,8 +60,65 @@ const AISketch = () => {
       });
       setLoading(false);
     }
-    reset();
   };
+
+  console.log("response image", responseData);
+
+  const handleSave = async (event) => {
+    const url = imageUrl;
+
+    if (!url) return;
+
+    const data = new FormData();
+    console.log("url", url);
+
+    data.append("file", url);
+    data.append("upload_preset", "ahmad_preset");
+    data.append("cloud_name", "dnhicntxv");
+    console.log("data", data);
+
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dnhicntxv/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const uploadedImageUrl = await res.json();
+      setCloudImageUrl(uploadedImageUrl.url);
+
+      const saveSketch = await fetch(
+        `http://127.0.0.1:8080/api/sketches/save/${caseId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            // cloud image
+            image: uploadedImageUrl.url,
+            name: responseData.inputs.name,
+            age: responseData.inputs.age,
+            description: responseData.inputs.description,
+            additional: responseData.inputs.additional,
+            prompt: responseData.prompt,
+          }),
+        }
+      );
+
+      const saveSketchResponse = await saveSketch.json();
+      if (saveSketch.ok) {
+        console.log("Sketch saved successfully:", saveSketchResponse);
+      } else {
+        console.error("Error saving sketch:", saveSketchResponse);
+      }
+    } catch (error) {
+      console.error("Error uploading image or updating profile:", error);
+    }
+  };
+
+  console.log(cloudImageUrl);
 
   if (loading) {
     return <h1>Loading</h1>;
@@ -187,6 +247,7 @@ const AISketch = () => {
                 name={"save-sketch"}
                 text={"Save Sketch"}
                 className={"ai-form-button"}
+                onClick={handleSave}
               ></Button>
             </>
           )}
