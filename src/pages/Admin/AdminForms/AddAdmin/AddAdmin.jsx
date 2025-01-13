@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 const AddAdmin = () => {
+  const [imageUrl, setImageUrl] = useState("");
+
   const navigate = useNavigate();
   const backTo = () => {
     navigate("/manage-admins");
@@ -19,7 +21,7 @@ const AddAdmin = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const dataWithRole = { ...data, role: "admin" };
+    const dataWithRole = { ...data, role: "admin", profilePicture: imageUrl };
 
     try {
       const response = await axios.post(
@@ -33,7 +35,7 @@ const AddAdmin = () => {
       );
       setStatus({
         success: true,
-        message: "Login successfull",
+        message: "Admin added successfully",
       });
       console.log(response.data);
     } catch (error) {
@@ -44,6 +46,30 @@ const AddAdmin = () => {
       setStatus({ success: false, message: errorMessage });
     }
     reset();
+  };
+
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "ahmad_preset");
+    data.append("cloud_name", "dnhicntxv");
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dnhicntxv/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const uploadedImageUrl = await res.json();
+      setImageUrl(uploadedImageUrl.url);
+    } catch (error) {
+      console.error("Error uploading image or updating profile:", error);
+    }
   };
 
   return (
@@ -57,7 +83,6 @@ const AddAdmin = () => {
           type={"button"}
           onClick={backTo}
         ></Button>
-
         <div className="input flex column">
           <label htmlFor="firstName">First Name</label>
           <input
@@ -82,7 +107,6 @@ const AddAdmin = () => {
             <p style={{ color: "red" }}>{errors.lastName.message}</p>
           )}
         </div>
-
         <div className="input flex column">
           <label htmlFor="email">Email</label>
           <input
@@ -101,25 +125,31 @@ const AddAdmin = () => {
             id="phone"
             name="phone"
             type="number"
-            {...register("phone", { required: "Phone is required" })}
+            {...register("phone", {
+              required: "Phone is required",
+              minLength: {
+                value: 8,
+                message: "Phone number must be 8 digits",
+              },
+              maxLength: {
+                value: 8,
+                message: "Phone number must be 8 digits",
+              },
+            })}
           />
           {errors.phone && (
             <p style={{ color: "red" }}>{errors.phone.message}</p>
           )}
         </div>
         <div className="input flex column">
-          <label htmlFor="profilePicture">Profile Picture</label>
+          <label htmlFor={"profilePicture"}>Admin Image</label>
           <input
-            id="profilePicture"
-            name="profilePicture"
-            type="file"
-            {...register("profilePicture", {
-              required: "Profile picture is required",
-            })}
+            id={"profilePicture"}
+            name={"profilePicture"}
+            type={"file"}
+            accept=".jpeg, .png, .jpg"
+            onChange={handleFileUpload}
           />
-          {errors.profilePicture && (
-            <p style={{ color: "red" }}>{errors.profilePicture.message}</p>
-          )}
         </div>
 
         <div className="input flex column">
@@ -141,6 +171,12 @@ const AddAdmin = () => {
           )}
         </div>
 
+        {status.message &&
+          (status.success ? (
+            <h2 style={{ color: "green" }}>{status.message}</h2>
+          ) : (
+            <h2 style={{ color: "red" }}>{status.message}</h2>
+          ))}
         <Button
           type={"submit"}
           name={"add-investigator"}
