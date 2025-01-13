@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const AddCase = () => {
+  const [imagesUrl, setImagesUrl] = useState([]);
+
+  const [status, setStatus] = useState({ success: true, message: "" });
+
   const navigate = useNavigate();
 
   const [investigators, setInvestigators] = useState([]);
@@ -74,11 +78,11 @@ const AddCase = () => {
 
     setLoading(true);
     setError(null);
-
+    const data = { ...formData, caseImages: imagesUrl };
     try {
       const response = await axios.post(
         "http://127.0.0.1:8080/api/case/",
-        formData,
+        data,
         {
           headers: {
             "Content-Type": "application/json",
@@ -94,6 +98,37 @@ const AddCase = () => {
     }
   };
 
+  const handleFilesUpload = async (event) => {
+    const files = event.target.files;
+
+    if (!files || files.length === 0) return;
+
+    const uploadedUrls = [];
+
+    for (const file of files) {
+      const data = new FormData();
+      data.append("file", file);
+      data.append("upload_preset", "ahmad_preset");
+      data.append("cloud_name", "dnhicntxv");
+
+      try {
+        const res = await fetch(
+          "https://api.cloudinary.com/v1_1/dnhicntxv/image/upload",
+          {
+            method: "POST",
+            body: data,
+          }
+        );
+        const uploadedImageUrl = await res.json();
+        uploadedUrls.push(uploadedImageUrl.url);
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+    }
+
+    setImagesUrl(uploadedUrls);
+  };
+
   return (
     <div className="admin-form-container t-center flex column center">
       <h1>Add Case</h1>
@@ -105,7 +140,6 @@ const AddCase = () => {
           type={"button"}
           onClick={backTo}
         />
-
         <div className="input flex column">
           <label htmlFor="title">Case Title</label>
           <input
@@ -117,7 +151,6 @@ const AddCase = () => {
             placeholder="Enter case title"
           />
         </div>
-
         <div className="input flex column">
           <label htmlFor="description">Case Description</label>
           <textarea
@@ -129,7 +162,6 @@ const AddCase = () => {
             placeholder="Describe the information you want to share..."
           />
         </div>
-
         <div className="input flex column">
           <label htmlFor="investigatorId">Assigned Investigator</label>
           <select
@@ -146,7 +178,6 @@ const AddCase = () => {
             ))}
           </select>
         </div>
-
         <div className="input flex column">
           <label htmlFor="status">Case Status</label>
           <select
@@ -159,18 +190,18 @@ const AddCase = () => {
             <option value="closed">Close</option>
           </select>
         </div>
-
         <div className="input flex column">
-          <label htmlFor="caseImages">Case Images</label>
+          <label htmlFor={"caseImages"}>Case Images</label>
           <input
-            id="caseImages"
-            name="caseImages"
-            type="file"
-            value={formData.caseImages}
-            onChange={handleChange}
+            id={"caseImages"}
+            name={"caseImages"}
+            type={"file"}
+            accept=".jpeg, .png, .jpg"
+            multiple
+            onChange={handleFilesUpload}
           />
         </div>
-
+        ;
         <div className="flex input2-container">
           <div className="input2 flex column">
             <label htmlFor="latitude">Map Latitude</label>
@@ -193,7 +224,6 @@ const AddCase = () => {
             />
           </div>
         </div>
-
         <div className="radio-group">
           <label>
             <input
@@ -216,9 +246,7 @@ const AddCase = () => {
             Private
           </label>
         </div>
-
         {error && <p style={{ color: "red" }}>{error}</p>}
-
         <Button
           type={"submit"}
           name={"add-case"}
