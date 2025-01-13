@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 const AddUser = () => {
+  const [imageUrl, setImageUrl] = useState("");
+
   const navigate = useNavigate();
   const backTo = () => {
     navigate("/manage-users");
@@ -19,10 +21,11 @@ const AddUser = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    const dataWithImage = { ...data, profilePicture: imageUrl };
     try {
       const response = await axios.post(
         `http://127.0.0.1:8080/api/auth/register`,
-        data,
+        dataWithImage,
         {
           headers: {
             "Content-Type": "application/json",
@@ -31,7 +34,7 @@ const AddUser = () => {
       );
       setStatus({
         success: true,
-        message: "Login successfull",
+        message: "User added successfully",
       });
       console.log(response.data);
     } catch (error) {
@@ -42,6 +45,30 @@ const AddUser = () => {
       setStatus({ success: false, message: errorMessage });
     }
     reset();
+  };
+
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "ahmad_preset");
+    data.append("cloud_name", "dnhicntxv");
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dnhicntxv/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const uploadedImageUrl = await res.json();
+      setImageUrl(uploadedImageUrl.url);
+    } catch (error) {
+      console.error("Error uploading image or updating profile:", error);
+    }
   };
 
   return (
@@ -116,18 +143,14 @@ const AddUser = () => {
           )}
         </div>
         <div className="input flex column">
-          <label htmlFor="profilePicture">Profile Picture</label>
+          <label htmlFor={"profilePicture"}>Investigator Image</label>
           <input
-            id="profilePicture"
-            name="profilePicture"
-            type="file"
-            {...register("profilePicture", {
-              required: "Profile picture is required",
-            })}
+            id={"profilePicture"}
+            name={"profilePicture"}
+            type={"file"}
+            accept=".jpeg, .png, .jpg"
+            onChange={handleFileUpload}
           />
-          {errors.profilePicture && (
-            <p style={{ color: "red" }}>{errors.profilePicture.message}</p>
-          )}
         </div>
 
         <div className="input flex column">
@@ -148,7 +171,12 @@ const AddUser = () => {
             <p style={{ color: "red" }}>{errors.password.message}</p>
           )}
         </div>
-
+        {status.message &&
+          (status.success ? (
+            <h2 style={{ color: "green" }}>{status.message}</h2>
+          ) : (
+            <h2 style={{ color: "red" }}>{status.message}</h2>
+          ))}
         <Button
           type={"submit"}
           name={"add-investigator"}
