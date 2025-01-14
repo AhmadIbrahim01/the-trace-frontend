@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./InvestigatorGPT.css";
 import Navbar from "../../../components/Navbar/Navbar";
 
+import threeDots from "../../../assets/icons/three-dots.svg";
+
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 const InvestigatorGPT = () => {
@@ -12,6 +14,9 @@ const InvestigatorGPT = () => {
   const [chats, setChats] = useState([]);
   const [messages, setMessages] = useState([]);
   const [chatIndex, setChatIndex] = useState(0);
+  const [refresh, setRefresh] = useState(true);
+
+  const [menuVisible, setMenuVisible] = useState(0);
 
   const [status, setStatus] = useState({
     success: false,
@@ -48,8 +53,46 @@ const InvestigatorGPT = () => {
       }
     };
     fetchChats();
-  }, []);
+  }, [chatIndex, refresh]);
 
+  const createNewChat = async () => {
+    try {
+      const response = await axios.post(
+        `http://127.0.0.1:8080/api/gpt/${userId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log("new chat:", response.data);
+      setRefresh(!refresh);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const selectChat = (index) => {
+    setChatIndex(index);
+    setMenuVisible(index);
+  };
+
+  const editChatName = () => {
+    console.log("EDIT");
+  };
+  const deleteChat = async (chatId) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8080/api/gpt/${userId}/${chatId}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setRefresh(!refresh);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -57,14 +100,38 @@ const InvestigatorGPT = () => {
       <div className="app-container">
         <aside className="gpt-sidebar">
           <h1 className="sidebar-title">InvestigatorGPT</h1>
-          <button className="new-chat-btn">New Chat</button>
+          <button onClick={createNewChat} className="new-chat-btn">
+            New Chat
+          </button>
           <div className="chat-links">
             {chats.map((chat, index) => (
-              <div key={index} className="chat-link clicked-chat">
-                <span>✉️</span>{" "}
-                {chat.title.length > 20
-                  ? chat.title.slice(0, 20) + "..."
-                  : chat.title}
+              <div
+                key={index}
+                onClick={() => selectChat(index)}
+                className={`chat-link flex  ${
+                  chatIndex === index ? "clicked-chat" : ""
+                }`}
+              >
+                <div className="chat-title flex center">
+                  <span>✉️</span>
+                  {chat.title.length > 14
+                    ? chat.title.slice(0, 14) + "..."
+                    : chat.title}
+                </div>
+
+                {menuVisible === index && (
+                  <div className="menu-options flex column center">
+                    <button className="menu-option" onClick={editChatName}>
+                      Edit
+                    </button>
+                    <button
+                      className="menu-option"
+                      onClick={() => deleteChat(chat._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
           </div>
