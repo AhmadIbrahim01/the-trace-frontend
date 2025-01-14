@@ -13,15 +13,27 @@ const InvestigatorGPT = () => {
 
   const [chats, setChats] = useState([]);
   const [messages, setMessages] = useState([]);
-  const [chatIndex, setChatIndex] = useState(0);
+  const [chatIndex, setChatIndex] = useState(null);
   const [refresh, setRefresh] = useState(true);
 
-  const [menuVisible, setMenuVisible] = useState(0);
-
-  const [status, setStatus] = useState({
-    success: false,
-    message: "",
+  const [formData, setFormData] = useState({
+    role: "user",
+    content: "",
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const [chatId, setChatId] = useState(null);
+
+  const [menuVisible, setMenuVisible] = useState(null);
+
+  // const [aiResponse, setAiResponse] = useState({});
 
   useEffect(() => {
     const fetchChats = async () => {
@@ -35,21 +47,10 @@ const InvestigatorGPT = () => {
           }
         );
 
-        console.log("response data gpt", response.data);
-
         setChats(response.data.chats);
         setMessages(response.data.chats[chatIndex].messages);
-        setStatus({
-          message: response.data.message,
-          success: true,
-        });
       } catch (error) {
-        console.log(error.message);
-
-        setStatus({
-          message: response.data.message,
-          success: false,
-        });
+        console.log(error);
       }
     };
     fetchChats();
@@ -66,14 +67,14 @@ const InvestigatorGPT = () => {
         }
       );
 
-      console.log("new chat:", response.data);
       setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  const selectChat = (index) => {
+  const selectChat = (index, id) => {
+    setChatId(id);
     setChatIndex(index);
     setMenuVisible(index);
   };
@@ -93,6 +94,38 @@ const InvestigatorGPT = () => {
       console.log(error.message);
     }
   };
+
+  const sendMessage = async (chatId) => {
+    try {
+      const response = await axios.post(
+        `http://127.0.0.1:8080/api/gpt/message/${userId}/${chatId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      setFormData((prev) => ({
+        ...prev,
+        content: "",
+      }));
+
+      console.log("the res", response);
+
+      // setAiResponse({
+      //   role: response.aiResponse.role,
+      //   content: response.aiResponse.content,
+      // });
+
+      setRefresh(!refresh);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  // console.log("ai response ", aiResponse);
+
   return (
     <>
       <Navbar />
@@ -107,7 +140,7 @@ const InvestigatorGPT = () => {
             {chats.map((chat, index) => (
               <div
                 key={index}
-                onClick={() => selectChat(index)}
+                onClick={() => selectChat(index, chat._id)}
                 className={`chat-link flex  ${
                   chatIndex === index ? "clicked-chat" : ""
                 }`}
@@ -151,10 +184,25 @@ const InvestigatorGPT = () => {
             ))}
           </div>
 
-          <div className="chat-input">
-            <input type="text" placeholder="Message..." />
-            <button className="send-btn flex center">➔</button>
-          </div>
+          {chatIndex !== null ? (
+            <div className="chat-input">
+              <input
+                type="text"
+                placeholder="Message..."
+                name="content"
+                value={formData.content}
+                onChange={handleChange}
+              />
+              <button
+                className="send-btn flex center"
+                onClick={() => sendMessage(chatId)}
+              >
+                ➔
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
