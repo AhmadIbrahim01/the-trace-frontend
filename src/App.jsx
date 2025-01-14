@@ -128,14 +128,6 @@ function App() {
           ),
         },
         {
-          path: "/investigatorgpt",
-          element: (
-            <ProtectedRoute allowedUserType="investigator">
-              <InvestigatorGPT />
-            </ProtectedRoute>
-          ),
-        },
-        {
           path: "/investigator-cases",
           element: (
             <ProtectedRoute allowedUserType="investigator">
@@ -158,7 +150,14 @@ function App() {
     { path: "/register", element: <Register /> },
     { path: "/login", element: <Login /> },
     { path: "/user-profile", element: <UserProfile /> },
-
+    {
+      path: "/investigatorgpt",
+      element: (
+        <ProtectedRoute allowedUserType="investigator">
+          <InvestigatorGPT />
+        </ProtectedRoute>
+      ),
+    },
     {
       path: "/admin-profile",
       element: (
