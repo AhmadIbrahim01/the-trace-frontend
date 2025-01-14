@@ -40,6 +40,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AdminProtectedRoute from "./components/ProtectedRoute/AdminProtectedRoute";
 import Unauthorized from "./pages/Unauthorized/Unauthorized";
 import AdminProfile from "./pages/Admin/AdminDashboard/AdminProfile/AdminProfile";
+import InvestigatorGPT from "./pages/Tools/InvestigatorGPT/InvestigatorGPT";
 
 function App() {
   const route = createBrowserRouter([
@@ -123,6 +124,14 @@ function App() {
           element: (
             <ProtectedRoute allowedUserType="investigator">
               <AIStatement />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/investigatorgpt",
+          element: (
+            <ProtectedRoute allowedUserType="investigator">
+              <InvestigatorGPT />
             </ProtectedRoute>
           ),
         },
