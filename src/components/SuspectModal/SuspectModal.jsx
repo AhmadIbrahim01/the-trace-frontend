@@ -40,7 +40,6 @@ const Modal = ({ isOpen, onClose, data }) => {
   const suspectId = data._id;
 
   const handleSaveClick = async () => {
-    console.log("Saved data", editedData);
     try {
       const response = await axios.put(
         `http://127.0.0.1:8080/api/suspect/${caseId}/${suspectId}`,
@@ -84,8 +83,6 @@ const Modal = ({ isOpen, onClose, data }) => {
   };
 
   useEffect(() => {
-    console.log("new data");
-
     if (editedData !== data) {
       const refetchData = async () => {
         try {
