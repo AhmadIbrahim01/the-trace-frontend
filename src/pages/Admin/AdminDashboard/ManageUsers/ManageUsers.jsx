@@ -5,11 +5,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
+import { useAdminData } from "../../../../context/AdminContext";
+
 const ManageUsers = () => {
-  const token = localStorage.getItem("authToken");
-  const decoded = jwtDecode(token);
-  const adminName = decoded.name ?? "";
-  const adminRole = decoded.role;
+  const { formData, token, decoded, adminId, adminName, adminRole } =
+    useAdminData();
 
   const [users, setUsers] = useState([]);
   const [refresh, setRefresh] = useState(false);
@@ -92,16 +92,24 @@ const ManageUsers = () => {
     navigate("/add-user");
   };
 
+  const goToAdminProfile = () => {
+    navigate("/admin-profile");
+  };
+
   const logOut = () => {
     localStorage.clear();
     navigate("/login");
   };
+
   return (
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
-        <button className="admin-profile flex column center">
-          <img src={adminImage} alt="" />
-          <h1>Admin {adminName}</h1>
+        <button
+          className="admin-profile flex column center"
+          onClick={goToAdminProfile}
+        >
+          <img src={formData.profilePicture || adminImage} alt="" />
+          <h1>Admin {formData.firstName}</h1>
         </button>
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li">
@@ -151,7 +159,7 @@ const ManageUsers = () => {
             <tbody>
               {users.map((row, index) =>
                 row.role !== "admin" && row.role !== "super_admin" ? (
-                  <tr key={index}>
+                  <tr key={row._id}>
                     <td>{row._id}</td>
                     <td>
                       {row.firstName} {row.lastName}
@@ -172,7 +180,7 @@ const ManageUsers = () => {
                     </td>
                   </tr>
                 ) : (
-                  <></>
+                  <tr key={row._id}></tr>
                 )
               )}
             </tbody>
