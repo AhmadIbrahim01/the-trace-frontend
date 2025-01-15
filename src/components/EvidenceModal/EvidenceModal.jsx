@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./EvidenceModal.css";
 import axios from "axios";
 
@@ -6,7 +6,9 @@ const EvidenceModal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
 
   const [isEditing, setIsEditing] = useState(false);
-  const [editedData, setEditedData] = useState(data[0]);
+  const [editedData, setEditedData] = useState(data);
+  const [refresh, setRefresh] = useState(true);
+
   const { _id, type, collectedAt, description, location, photo } = editedData;
 
   const date = new Date(collectedAt);
@@ -24,7 +26,7 @@ const EvidenceModal = ({ isOpen, onClose, data }) => {
   };
 
   const caseId = localStorage.getItem("caseId");
-  const evidenceId = data[0]._id;
+  const evidenceId = data._id;
 
   const handleSaveClick = async () => {
     try {
@@ -39,18 +41,55 @@ const EvidenceModal = ({ isOpen, onClose, data }) => {
       );
       console.log("Saved data", response.data);
       setEditedData(response.data);
+      setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);
     }
     setIsEditing(false);
   };
 
-  const handleDeleteClick = () => {};
+  const handleDeleteClick = async () => {
+    try {
+      await axios.delete(
+        `http://127.0.0.1:8080/api/evidence/${caseId}/${evidenceId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
+      onClose();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   const handleDismissClick = () => {
     setIsEditing(false);
-    setEditedData(data[0]);
+    setEditedData(data);
   };
+
+  useEffect(() => {
+    if (editedData !== data) {
+      const refetchData = async () => {
+        try {
+          const response = await axios.get(
+            `
+            http://127.0.0.1:8080/api/evidence/${caseId}/${evidenceId}`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          setEditedData(response.data.evidence);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+      refetchData();
+    }
+  }, [refresh]);
 
   return (
     <div className="statement-modal-overlay" onClick={onClose}>

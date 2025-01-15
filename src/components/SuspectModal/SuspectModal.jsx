@@ -69,7 +69,6 @@ const Modal = ({ isOpen, onClose, data }) => {
           },
         }
       );
-      console.log("Deleted successfully");
 
       onClose();
     } catch (error) {
@@ -95,9 +94,7 @@ const Modal = ({ isOpen, onClose, data }) => {
               },
             }
           );
-          console.log("new dataaaa");
           setEditedData(response.data.suspect);
-          console.log("newest data: ", editedData);
         } catch (error) {
           console.log(error.message);
         }
