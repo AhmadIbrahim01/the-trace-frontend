@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./InvestigatorGPT.css";
 import Navbar from "../../../components/Navbar/Navbar";
-
 import threeDots from "../../../assets/icons/three-dots.svg";
+import robot from "../../../assets/icons/robot.png";
 
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
@@ -11,6 +11,7 @@ const InvestigatorGPT = () => {
   const decoded = jwtDecode(token);
   const userId = decoded.userId;
 
+  const [actions, setActions] = useState(false);
   const [chats, setChats] = useState([]);
   const [messages, setMessages] = useState([]);
   const [chatIndex, setChatIndex] = useState(null);
@@ -20,6 +21,10 @@ const InvestigatorGPT = () => {
     role: "user",
     content: "",
   });
+
+  const toggleActions = () => {
+    setActions(!actions);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,8 +37,6 @@ const InvestigatorGPT = () => {
   const [chatId, setChatId] = useState(null);
 
   const [menuVisible, setMenuVisible] = useState(null);
-
-  // const [aiResponse, setAiResponse] = useState({});
 
   useEffect(() => {
     const fetchChats = async () => {
@@ -114,17 +117,11 @@ const InvestigatorGPT = () => {
 
       console.log("the res", response);
 
-      // setAiResponse({
-      //   role: response.aiResponse.role,
-      //   content: response.aiResponse.content,
-      // });
-
       setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);
     }
   };
-  // console.log("ai response ", aiResponse);
 
   return (
     <>
@@ -153,17 +150,29 @@ const InvestigatorGPT = () => {
                 </div>
 
                 {menuVisible === index && (
-                  <div className="menu-options flex column center">
-                    <button className="menu-option" onClick={editChatName}>
-                      Edit
-                    </button>
+                  <>
                     <button
-                      className="menu-option"
-                      onClick={() => deleteChat(chat._id)}
+                      className="flex center column"
+                      onClick={toggleActions}
                     >
-                      Delete
+                      <img src={threeDots} alt="" />
                     </button>
-                  </div>
+                    {actions ? (
+                      <div className="menu-options flex column center">
+                        <button className="menu-option" onClick={editChatName}>
+                          Edit
+                        </button>
+                        <button
+                          className="menu-option"
+                          onClick={() => deleteChat(chat._id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+                  </>
                 )}
               </div>
             ))}
@@ -172,13 +181,35 @@ const InvestigatorGPT = () => {
 
         <div className="chat-section">
           <div className="chat-messages flex column">
+            {chatIndex !== null ? (
+              <></>
+            ) : (
+              <div className="no-chat-div flex center column">
+                <img src={robot} alt="" />
+                <h1 className="t-center">
+                  Select or Create a new chat to continue
+                </h1>
+              </div>
+            )}
+
+            {chatIndex !== null && messages.length === 0 ? (
+              <div className="no-chat-div flex center column">
+                <img src={robot} alt="" />
+                <h1 className="t-center">I will help you with your cases.</h1>
+              </div>
+            ) : (
+              <></>
+            )}
+
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`message ${
+                className={`message flex ${
                   message.role === "user" ? "user-message" : "ai-message"
                 }`}
               >
+                {message.role === "user" ? <></> : <img src={robot} alt="" />}
+
                 {message.content}
               </div>
             ))}

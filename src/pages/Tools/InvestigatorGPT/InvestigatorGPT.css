@@ -35,7 +35,7 @@
 }
 
 .new-chat-btn {
-  background-color: #00d8b6;
+  background-color: #015949;
   color: #111;
   border: none;
   padding: 10px;
@@ -66,12 +66,28 @@
   font-size: 16px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-semi);
+  position: relative;
+}
+
+.chat-link > button {
+  position: absolute;
+  background-color: #00000000;
+  top: 0;
+  right: 10px;
+  height: 100%;
+}
+.chat-link > button > img {
+  width: 30px;
+  height: 30px;
 }
 
 .chat-title {
   width: 100%;
   height: 100%;
   justify-content: flex-start;
+}
+.chat-title > span {
+  margin-right: 10px;
 }
 .chat-action > img {
   width: 40px;
@@ -108,7 +124,12 @@
   min-width: 20%;
   font-size: 16px;
   font-family: var(--font-family);
-  font-weight: var(--font-weight-semi);
+}
+
+.message > img {
+  width: 60px;
+  margin-right: 1%;
+  align-self: flex-start;
 }
 
 .user-message {
@@ -120,10 +141,31 @@
 }
 
 .ai-message {
-  background: #0bc1a0;
+  background: #015949;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   color: white;
+}
+
+.no-chat-div {
+  height: 100vh;
+  /* color: #015949; */
+}
+
+.no-chat-div > h1 {
+  font-size: 70px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-top: 0px;
+}
+
+.no-chat-div > img {
+  width: 300px;
+  margin-bottom: 0px;
 }
 
 /* Chat Input */
@@ -135,7 +177,6 @@
   background: #35353f;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-
   height: 100px;
 }
 
@@ -149,10 +190,11 @@
   height: 100%;
   background: #35353f;
   color: white;
+  padding-left: 5%;
 }
 
 .send-btn {
-  background-color: #00d8b6;
+  background-color: #015949;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -164,7 +206,15 @@
 }
 
 .menu-options {
-  gap: 5px;
+  background-color: #015949;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 45px;
+  right: -10px;
+  gap: 10px;
+  border-radius: 12px;
+  z-index: 1000;
 }
 .menu-option {
   background-color: #00000000;
@@ -175,8 +225,8 @@
   width: 30px;
 }
 .menu-option:first-child {
-  color: rgb(0, 100, 0);
+  color: green;
 }
 .menu-option {
-  color: rgb(100, 0, 0);
+  color: red;
 }
