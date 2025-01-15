@@ -14,6 +14,10 @@ const WitnessStatementModal = ({ isOpen, onClose, data }) => {
   const { additionalFeatures, approximatedAge, description, photo } =
     statement.suspectDetails;
 
+  const caseId = localStorage.getItem("caseId");
+  const statementId = localStorage.getItem("statementId");
+  const witnessId = localStorage.getItem("witnessId");
+
   const handleEditClick = () => {
     setIsEditing(true);
   };
@@ -47,6 +51,22 @@ const WitnessStatementModal = ({ isOpen, onClose, data }) => {
     setIsEditing(false);
   };
 
+  const handleDeleteClick = async () => {
+    try {
+      await axios.delete(
+        `http://127.0.0.1:8080/api/witness/statements/${caseId}/${witnessId}/${statementId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      onClose();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   const handleDismissClick = () => {
     setIsEditing(false);
     setEditedData(data);
@@ -201,6 +221,9 @@ const WitnessStatementModal = ({ isOpen, onClose, data }) => {
           <div className="edit-buttons flex">
             <button onClick={handleSaveClick} className="save-btn">
               Save
+            </button>
+            <button onClick={handleDeleteClick} className="delete-btn">
+              Delete
             </button>
             <button onClick={handleDismissClick} className="dismiss-btn">
               Dismiss
