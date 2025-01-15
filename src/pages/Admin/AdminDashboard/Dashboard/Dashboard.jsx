@@ -4,16 +4,16 @@ import adminImage from "../../../../assets/images/suspect.svg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import { useAdminData } from "../../../../context/AdminContext";
 
 const Dashboard = () => {
+  const { formData, token, decoded, adminId, adminRole, adminName } =
+    useAdminData();
+
   const [status, setStatus] = useState({ success: true, message: "" });
 
   const [adminData, setAdminData] = useState({});
-  const token = localStorage.getItem("authToken");
-  const decoded = jwtDecode(token);
-  const adminName = decoded.name ?? "";
-  const adminRole = decoded.role;
-  const adminId = decoded.userId;
+
   console.log(adminId);
   useEffect(() => {
     const fetchAdminData = async () => {
@@ -100,8 +100,8 @@ const Dashboard = () => {
           className="admin-profile flex column center"
           onClick={goToAdminProfile}
         >
-          <img src={adminImage} alt="" />
-          <h1>Admin {adminData.firstName}</h1>
+          <img src={formData.profilePicture || adminImage} alt="" />
+          <h1>Admin {formData.firstName}</h1>
         </button>
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li dashboard-li-clicked">
