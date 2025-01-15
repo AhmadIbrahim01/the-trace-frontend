@@ -190,3 +190,28 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
 }
+
+.investigator-tools {
+  width: 100%;
+  justify-content: space-around;
+  gap: 3%;
+}
+.investigator-tool {
+  background-color: #1b1c28;
+  width: 31%;
+  height: 86px;
+  border: 1px solid #015949;
+  border-radius: 16px;
+  justify-content: space-around;
+  padding: 1%;
+}
+.investigator-tool > img {
+  width: 60px;
+  height: 60px;
+}
+.investigator-tool > h2 {
+  font-size: 24px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  color: var(--color2);
+}

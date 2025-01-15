@@ -16,6 +16,10 @@ import EvidenceModal from "../../../components/EvidenceModal/EvidenceModal";
 import WitnessModal from "../../../components/WitnessModal/WitnessModal";
 import WitnessStatementModal from "../../../components/WitnessStatementModal/WitnessStatementModal";
 
+import AIStaementIcon from "../../../assets/icons/ai-statement-icon.svg";
+import AISketchIcon from "../../../assets/icons/ai-sketch-icon.svg";
+import InvestigatorGPTIcon from "../../../assets/icons/investigation-gpt-icon.svg";
+
 const InvestigatorCase = () => {
   const [theCase, setCase] = useState({});
   const [evidences, setEvidences] = useState({});
@@ -152,10 +156,32 @@ const InvestigatorCase = () => {
     }))
   );
 
-  console.log("w stae", allWitnessesStatements);
-
   return (
     <div className="investigator-case flex column center">
+      <div className="investigator-tools flex center wrap">
+        <button
+          onClick={() => navigate("/ai-statement")}
+          className="investigator-tool flex center"
+        >
+          <img src={AIStaementIcon} alt="" />
+          <h2>AI Statement Analysis</h2>
+        </button>
+        <button
+          onClick={() => navigate("/ai-sketch")}
+          className="investigator-tool flex center"
+        >
+          <img src={AISketchIcon} alt="" />
+          <h2>AI Suspect Drawing</h2>
+        </button>
+        <button
+          onClick={() => navigate("/investigatorgpt")}
+          className="investigator-tool flex center"
+        >
+          <img src={InvestigatorGPTIcon} alt="" />
+          <h2>Investigation GPT</h2>
+        </button>
+      </div>
+
       <div className="investigator-case-header flex center wrap">
         {/* Evidence Section */}
         <div className="case-evidence-container flex column scrollable-div">
