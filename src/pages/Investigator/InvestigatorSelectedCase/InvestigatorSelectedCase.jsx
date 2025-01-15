@@ -50,7 +50,6 @@ const HeroSection = ({ theCase }) => {
     <div className="case-hero flex center column">
       <div className="case-bio flex center column">
         <h1>{theCase.title}</h1>
-        <h2>{caseStatus}</h2>
         {role && role === "investigator" ? (
           <button className="tip-button" onClick={goToManageCase}>
             Manage case

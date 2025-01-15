@@ -225,8 +225,8 @@
   width: 30px;
 }
 .menu-option:first-child {
-  color: green;
+  color: white;
 }
 .menu-option {
-  color: red;
+  color: rgb(133, 0, 0);
 }

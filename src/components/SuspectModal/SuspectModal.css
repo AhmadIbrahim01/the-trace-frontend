@@ -36,6 +36,7 @@
   font-size: 14px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
+  padding: 1%;
 }
 
 .suspect-profile-body > img {
