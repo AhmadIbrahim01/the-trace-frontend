@@ -42,6 +42,10 @@ import Unauthorized from "./pages/Unauthorized/Unauthorized";
 import AdminProfile from "./pages/Admin/AdminDashboard/AdminProfile/AdminProfile";
 import InvestigatorGPT from "./pages/Tools/InvestigatorGPT/InvestigatorGPT";
 
+import ProtectedRegistirationRoutes from "./components/ProtectedRoute/ProtectedRegistirationRoutes";
+
+import { AdminProvider } from "./context/AdminContext";
+
 function App() {
   const route = createBrowserRouter([
     {
@@ -49,11 +53,33 @@ function App() {
       element: <Layout />,
       children: [
         { path: "/", element: <Home /> },
-        { path: "/cases", element: <Cases /> },
-        { path: "/case", element: <Case /> },
         { path: "/news", element: <News /> },
         { path: "/allnews", element: <AllNews /> },
-        { path: "/submit-tip", element: <SubmitTip /> },
+
+        {
+          path: "/cases",
+          element: (
+            <ProtectedRoute allowedUserType="public_user">
+              <Cases />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/case",
+          element: (
+            <ProtectedRoute allowedUserType="public_user">
+              <Case />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/submit-tip",
+          element: (
+            <ProtectedRoute allowedUserType="public_user">
+              <SubmitTip />
+            </ProtectedRoute>
+          ),
+        },
 
         {
           path: "/investigator-stats",
@@ -147,9 +173,23 @@ function App() {
     },
     { path: "*", element: <Error /> },
     { path: "/unauthorized", element: <Unauthorized /> },
-    { path: "/register", element: <Register /> },
-    { path: "/login", element: <Login /> },
     { path: "/user-profile", element: <UserProfile /> },
+    {
+      path: "/register",
+      element: (
+        <ProtectedRegistirationRoutes>
+          <Register />
+        </ProtectedRegistirationRoutes>
+      ),
+    },
+    {
+      path: "/login",
+      element: (
+        <ProtectedRegistirationRoutes>
+          <Login />
+        </ProtectedRegistirationRoutes>
+      ),
+    },
     {
       path: "/investigatorgpt",
       element: (
@@ -161,49 +201,61 @@ function App() {
     {
       path: "/admin-profile",
       element: (
-        <AdminProtectedRoute>
-          <AdminProfile />
-        </AdminProtectedRoute>
+        <AdminProvider>
+          <AdminProtectedRoute>
+            <AdminProfile />
+          </AdminProtectedRoute>
+        </AdminProvider>
       ),
     },
     {
       path: "/admin-dashboard",
       element: (
-        <AdminProtectedRoute>
-          <AdminDashboard />
-        </AdminProtectedRoute>
+        <AdminProvider>
+          <AdminProtectedRoute>
+            <AdminDashboard />
+          </AdminProtectedRoute>
+        </AdminProvider>
       ),
     },
     {
       path: "/manage-users",
       element: (
-        <AdminProtectedRoute>
-          <ManageUsers />
-        </AdminProtectedRoute>
+        <AdminProvider>
+          <AdminProtectedRoute>
+            <ManageUsers />
+          </AdminProtectedRoute>
+        </AdminProvider>
       ),
     },
     {
       path: "/manage-investigators",
       element: (
-        <AdminProtectedRoute>
-          <ManageInvestigators />
-        </AdminProtectedRoute>
+        <AdminProvider>
+          <AdminProtectedRoute>
+            <ManageInvestigators />
+          </AdminProtectedRoute>
+        </AdminProvider>
       ),
     },
     {
       path: "/manage-cases",
       element: (
-        <AdminProtectedRoute>
-          <ManageCases />
-        </AdminProtectedRoute>
+        <AdminProvider>
+          <AdminProtectedRoute>
+            <ManageCases />
+          </AdminProtectedRoute>
+        </AdminProvider>
       ),
     },
     {
       path: "/manage-admins",
       element: (
-        <AdminProtectedRoute>
-          <ManageAdmins />
-        </AdminProtectedRoute>
+        <AdminProvider>
+          <AdminProtectedRoute>
+            <ManageAdmins />
+          </AdminProtectedRoute>
+        </AdminProvider>
       ),
     },
     {
