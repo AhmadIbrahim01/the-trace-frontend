@@ -11,6 +11,7 @@
 
 .admin-profile {
   background-color: #00000000;
+  gap: 20px;
 }
 
 .admin-profile > img {

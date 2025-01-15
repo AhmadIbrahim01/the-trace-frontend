@@ -18,6 +18,7 @@
   min-width: 746px;
   height: 600px;
   border-radius: 16px;
+  overflow: auto;
 }
 
 .suspect-profile-header {
@@ -40,9 +41,11 @@
 }
 
 .suspect-profile-body > img {
-  width: 163px;
-  height: 190px;
+  width: 200px;
+  height: 200px;
   border-radius: 6px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .suspect-data-container {
@@ -63,6 +66,37 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-medium);
   color: white;
+}
+.suspect-data > input {
+  width: 200px;
+  height: 20px;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  background-color: #141521;
+  color: white;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.edit-buttons {
+  margin-top: 20px;
+  gap: 5px;
+}
+.edit-buttons > button {
+  color: white;
+  padding: 1%;
+}
+.save-btn {
+  background-color: green;
+}
+
+.delete-btn {
+  background-color: lightcoral;
+}
+
+.dismiss-btn {
+  background-color: #141521;
 }
 
 .suspect-data-button {
@@ -87,7 +121,7 @@
   gap: 5px;
 }
 .suspect-profile-body > .suspect-data {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .suspect-map > button {
