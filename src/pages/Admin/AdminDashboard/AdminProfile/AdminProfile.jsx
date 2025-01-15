@@ -6,23 +6,23 @@ import { useForm } from "react-hook-form";
 import profile from "../../../../assets/images/suspect.svg";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import { useAdminData } from "../../../../context/AdminContext";
 
 const AdminProfile = () => {
+  const {
+    formData,
+    setFormData,
+    token,
+    decoded,
+    adminId,
+    adminRole,
+    adminName,
+  } = useAdminData();
+
   const navigate = useNavigate();
   const [status, setStatus] = useState({ success: true, message: "" });
-  //   const [profileImageUrl, setProfileImageUrl] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [refresh, setRefresh] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-  });
-
-  const token = localStorage.getItem("authToken");
-  const decoded = jwtDecode(token);
-  const adminId = decoded.userId;
 
   useEffect(() => {
     const fetchAdminData = async () => {
@@ -66,7 +66,7 @@ const AdminProfile = () => {
   };
 
   const goBack = () => {
-    navigate("/admin-dashboard");
+    navigate(-1);
   };
 
   const handleChange = (e) => {
@@ -156,7 +156,6 @@ const AdminProfile = () => {
             type="file"
             name="profile"
             id="profile"
-            accept=".jpeg, .png, .jpg"
             onChange={handleFileUpload}
           />
         </div>
