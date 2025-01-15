@@ -48,6 +48,22 @@ const StatementModal = ({ isOpen, onClose, data }) => {
     setIsEditing(false);
   };
 
+  const handleDeleteClick = async () => {
+    try {
+      await axios.delete(
+        `http://127.0.0.1:8080/api/suspect/statements/${caseId}/${suspectId}/${statementId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      onClose();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   const handleDismissClick = () => {
     setIsEditing(false);
     setEditedData(data);
@@ -119,6 +135,9 @@ const StatementModal = ({ isOpen, onClose, data }) => {
           <div className="edit-buttons flex">
             <button onClick={handleSaveClick} className="save-btn">
               Save
+            </button>
+            <button onClick={handleDeleteClick} className="delete-btn">
+              delete
             </button>
             <button onClick={handleDismissClick} className="dismiss-btn">
               Dismiss
