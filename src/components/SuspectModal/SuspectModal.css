@@ -67,7 +67,8 @@
   font-weight: var(--font-weight-medium);
   color: white;
 }
-.suspect-data > input {
+.suspect-data > input,
+.edit-age {
   width: 200px;
   height: 20px;
   font-size: 14px;
@@ -78,7 +79,8 @@
   border-radius: 5px;
   padding-left: 10px;
 }
-.suspect-data > textarea {
+.suspect-data > textarea,
+.statement-textarea {
   font-size: 14px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-medium);
