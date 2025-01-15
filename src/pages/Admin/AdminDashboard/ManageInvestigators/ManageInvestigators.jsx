@@ -5,13 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 import axios from "axios";
+import { useAdminData } from "../../../../context/AdminContext";
 
 const ManageInvestigators = () => {
-  const token = localStorage.getItem("authToken");
-  const decoded = jwtDecode(token);
-  const adminName = decoded.name ?? "";
-  const adminRole = decoded.role;
-  console.log(adminRole);
+  const { formData, token, decoded, adminId, adminName, adminRole } =
+    useAdminData();
 
   const [investigators, setInvestigators] = useState([]);
   const [refresh, setRefresh] = useState(false);
@@ -74,8 +72,8 @@ const ManageInvestigators = () => {
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
         <button className="admin-profile flex column center">
-          <img src={adminImage} alt="" />
-          <h1>Admin {adminName}</h1>
+          <img src={formData.profilePicture || adminImage} alt="" />
+          <h1>Admin {formData.firstName || adminName}</h1>
         </button>
         <ul className="dashboard-ul flex center column">
           <li className="dashboard-li">
