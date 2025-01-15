@@ -78,6 +78,15 @@
   border-radius: 5px;
   padding-left: 10px;
 }
+.suspect-data > textarea {
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  background-color: #141521;
+  color: white;
+  border-radius: 5px;
+  padding-left: 10px;
+}
 
 .edit-buttons {
   margin-top: 20px;

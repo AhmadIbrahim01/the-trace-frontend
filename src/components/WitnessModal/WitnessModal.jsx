@@ -92,7 +92,6 @@ const WitnessModal = ({ isOpen, onClose, data }) => {
           );
           console.log("new dataaaa");
           setEditedData(response.data.witness);
-          console.log("newest data: ", editedData);
         } catch (error) {
           console.log(error.message);
         }
@@ -104,7 +103,7 @@ const WitnessModal = ({ isOpen, onClose, data }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
-        className="witness-modal-content"
+        className="witness-modal-content scrollable-div"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="suspect-profile-header flex center">
