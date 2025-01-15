@@ -156,6 +156,7 @@ const EditCase = () => {
           >
             <option value="open">Open</option>
             <option value="closed">Close</option>
+            <option value="solved">Solved</option>
           </select>
         </div>
 

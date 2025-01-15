@@ -60,7 +60,23 @@ const Modal = ({ isOpen, onClose, data }) => {
     setIsEditing(false);
   };
 
-  const handleDeleteClick = () => {};
+  const handleDeleteClick = async () => {
+    try {
+      await axios.delete(
+        `http://127.0.0.1:8080/api/suspect/${caseId}/${suspectId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("Deleted successfully");
+
+      onClose();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   const handleDismissClick = () => {
     setIsEditing(false);

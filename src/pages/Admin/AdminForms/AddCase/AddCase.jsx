@@ -188,6 +188,7 @@ const AddCase = () => {
           >
             <option value="open">Open</option>
             <option value="closed">Close</option>
+            <option value="solved">solved</option>
           </select>
         </div>
         <div className="input flex column">
