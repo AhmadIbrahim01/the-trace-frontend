@@ -63,6 +63,15 @@ const Navbar = () => {
               News
             </Link>
           </li>
+          {isInvestigator ? (
+            <li>
+              <Link to="/investigator-stats" className="nav-link">
+                Stats
+              </Link>
+            </li>
+          ) : (
+            <></>
+          )}
         </ul>
         {name ? (
           <button
