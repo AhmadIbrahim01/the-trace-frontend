@@ -1,0 +1,15 @@
+.sketch-data > h1 {
+  color: #015949;
+  margin-bottom: 10px;
+}
+.sketch-data > p {
+  color: white;
+}
+
+.sketch-image {
+  display: block;
+  margin: auto;
+  width: 200px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+}
