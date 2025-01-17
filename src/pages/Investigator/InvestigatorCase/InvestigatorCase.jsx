@@ -15,19 +15,29 @@ import axios from "axios";
 import EvidenceModal from "../../../components/EvidenceModal/EvidenceModal";
 import WitnessModal from "../../../components/WitnessModal/WitnessModal";
 import WitnessStatementModal from "../../../components/WitnessStatementModal/WitnessStatementModal";
+import SketchesModal from "../../../components/SketchesModal/SketchesModal";
 
 import AIStaementIcon from "../../../assets/icons/ai-statement-icon.svg";
 import AISketchIcon from "../../../assets/icons/ai-sketch-icon.svg";
 import InvestigatorGPTIcon from "../../../assets/icons/investigation-gpt-icon.svg";
+
+import Key from "../../../assets/icons/key.svg";
+import UserEdit from "../../../assets/icons/user-edit.svg";
+import EyeIcon from "../../../assets/icons/eye-icon.svg";
+import SuspectIcon from "../../../assets/icons/suspect-icon.svg";
 
 const InvestigatorCase = () => {
   const [theCase, setCase] = useState({});
   const [evidences, setEvidences] = useState({});
   const [suspects, setSuspects] = useState({});
   const [witnesses, setWitnesses] = useState({});
+  const [sketches, setSketches] = useState({});
+
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState("suspects");
   const [statementsView, setStatementsView] = useState("suspects");
+  const [sketchView, setSketchView] = useState("evidences");
+
   const caseId = localStorage.getItem("caseId");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,6 +54,9 @@ const InvestigatorCase = () => {
     useState(false);
   const [witnessStatementModalData, setWitnessStatementModalData] =
     useState("");
+
+  const [isSketchesModalOpen, setSketchesModalOpen] = useState(false);
+  const [sketchesModalData, setSketchesModalData] = useState("");
 
   const navigate = useNavigate();
 
@@ -64,6 +77,7 @@ const InvestigatorCase = () => {
         setEvidences(response.data.evidence);
         setSuspects(response.data.suspects);
         setWitnesses(response.data.witnesses);
+        setSketches(response.data.suspectSketches);
 
         setLoading(false);
       } catch (error) {
@@ -100,7 +114,11 @@ const InvestigatorCase = () => {
     setStatementModalData(data);
     setIsStatementModalOpen(true);
   };
-  const closeStatementModal = () => setIsStatementModalOpen(false);
+  const closeStatementModal = () => {
+    localStorage.removeItem("statementId");
+    localStorage.removeItem("suspectId");
+    setIsStatementModalOpen(false);
+  };
 
   const openChoose = (data) => {
     setChooseModalData(data);
@@ -114,6 +132,12 @@ const InvestigatorCase = () => {
   };
   const closeEvidenceModal = () => setEvidenceModalOpen(false);
 
+  const openSketches = (data) => {
+    setSketchesModalData(data);
+    setSketchesModalOpen(true);
+  };
+  const closeSketches = () => setSketchesModalOpen(false);
+
   const openWitnessModal = (data) => {
     setWitnessModalData(data);
     setWitnessModalOpen(true);
@@ -124,7 +148,11 @@ const InvestigatorCase = () => {
     setWitnessStatementModalData(data);
     setWitnessStatementModalOpen(true);
   };
-  const closeWitnessStatementModal = () => setWitnessStatementModalOpen(false);
+  const closeWitnessStatementModal = () => {
+    localStorage.removeItem("statementId");
+    localStorage.removeItem("witnessId");
+    setWitnessStatementModalOpen(false);
+  };
 
   const toggleView = () => {
     setView((prevView) => (prevView === "suspects" ? "witnesses" : "suspects"));
@@ -134,12 +162,18 @@ const InvestigatorCase = () => {
       prevView === "suspects" ? "witnesses" : "suspects"
     );
   };
+  const toggleSketchView = () => {
+    setSketchView((prevView) =>
+      prevView === "evidences" ? "sketches" : "evidences"
+    );
+  };
 
   const allSuspectsStatements = suspects.flatMap((suspect) =>
     suspect.statements.map((statement) => ({
       name: suspect.name,
       suspectPhoto: suspect.photos[0],
       statement: statement.statement,
+      suspectId: suspect._id,
       id: statement._id,
       date: new Date(statement.date).toString(),
       location: statement.locationOfIncident,
@@ -149,12 +183,25 @@ const InvestigatorCase = () => {
     witness.statements.map((statement) => ({
       name: witness.name,
       witnessPhoto: witness.photo,
+      witnessId: witness._id,
       statement: statement,
       id: statement._id,
       date: new Date(statement.date).toString(),
       location: statement.locationOfIncident,
     }))
   );
+
+  const goToStatementModel = (statement) => {
+    localStorage.setItem("statementId", statement.id);
+    localStorage.setItem("suspectId", statement.suspectId);
+    openStatementModal(statement);
+  };
+
+  const goToWitnessModel = (statement) => {
+    localStorage.setItem("statementId", statement.id);
+    localStorage.setItem("witnessId", statement.witnessId);
+    openWitnessStatementModal(statement);
+  };
 
   return (
     <div className="investigator-case flex column center">
@@ -185,47 +232,107 @@ const InvestigatorCase = () => {
       <div className="investigator-case-header flex center wrap">
         {/* Evidence Section */}
         <div className="case-evidence-container flex column scrollable-div">
-          <h3>Evidences</h3>
-          <div className="case-evidences flex wrap">
-            {evidences.map((evidence) => (
+          <div className="switch-button flex center">
+            <h3>{sketchView === "evidences" ? "Evidences" : "Sketches"}</h3>
+
+            <div className="switch-sketches flex center">
               <button
-                key={evidence._id}
-                className="case-evidence flex center column"
-                onClick={() => openEvidence([evidence])}
+                onClick={toggleSketchView}
+                className={`flex center ${
+                  sketchView === "evidences"
+                    ? "selected-btn"
+                    : "not-selected-btn"
+                }`}
               >
-                <img
-                  className="case-evidence-img"
-                  src={evidence.photo || evidenceOne}
-                  alt={`Evidence ${evidence.id}`}
-                />
+                <img src={Key} alt="" />
+                Evidences
               </button>
-            ))}
-            <button
-              className="case-evidence flex center column"
-              onClick={() => navigate("/add-evidence")}
-            >
-              <img
-                className="add-evidence"
-                src={addEvidence}
-                alt="Add Evidence"
-              />
-            </button>
+              <button
+                onClick={toggleSketchView}
+                className={`flex center ${
+                  sketchView === "sketches"
+                    ? "selected-btn"
+                    : "not-selected-btn"
+                }`}
+              >
+                <img src={UserEdit} alt="" />
+                Sketches
+              </button>
+            </div>
+          </div>
+          <div className="case-evidences flex wrap">
+            {sketchView === "evidences" ? (
+              <>
+                {evidences.map((evidence) => (
+                  <button
+                    key={evidence._id}
+                    className="case-evidence flex center column"
+                    onClick={() => openEvidence(evidence)}
+                  >
+                    <img
+                      className="case-evidence-img"
+                      src={evidence.photo || evidenceOne}
+                      alt={`Evidence ${evidence.id}`}
+                    />
+                  </button>
+                ))}
+                <button
+                  className="case-evidence flex center column"
+                  onClick={() => navigate("/add-evidence")}
+                >
+                  <img
+                    className="add-evidence"
+                    src={addEvidence}
+                    alt="Add Evidence"
+                  />
+                </button>
+              </>
+            ) : (
+              <>
+                {sketches.map((sketch) => (
+                  <button
+                    key={sketch._id}
+                    className="case-evidence flex center column"
+                    onClick={() => openSketches(sketch)}
+                  >
+                    <img
+                      className="case-evidence-img"
+                      src={sketch.image || evidenceOne}
+                    />
+                  </button>
+                ))}
+              </>
+            )}
           </div>
         </div>
-        {/* Suspects Section */}
 
         <div className="case-suspects flex center column">
-          <div className="switch-button flex center">
-            <button onClick={toggleView}>
-              {view === "suspects" ? "Show Witnesses" : "Show Suspects"}
-            </button>
-          </div>
           {view === "suspects" ? (
             <>
               <div className="case-suspects-header flex">
                 <h3>Suspects</h3>
-                <button onClick={() => navigate("/add-suspect")}>+</button>
+                <div className="switch-sketches flex center">
+                  <button
+                    onClick={toggleView}
+                    className={`flex center ${
+                      view === "suspects" ? "selected-btn" : "not-selected-btn"
+                    }`}
+                  >
+                    <img src={SuspectIcon} alt="" />
+                    Suspects
+                  </button>
+                  <button
+                    onClick={toggleView}
+                    className={`flex center ${
+                      view === "witnesses" ? "selected-btn" : "not-selected-btn"
+                    }`}
+                  >
+                    <img src={EyeIcon} alt="" />
+                    Witnesses
+                  </button>
+                </div>
               </div>
+              {/* <button onClick={() => navigate("/add-suspect")}>+</button> */}
               <div className="case-suspects-body flex center wrap scrollable-div">
                 {suspects.map((suspect) => (
                   <button
@@ -240,13 +347,42 @@ const InvestigatorCase = () => {
                     />
                   </button>
                 ))}
+                <button
+                  className="case-evidence flex center column"
+                  onClick={() => navigate("/add-suspect")}
+                >
+                  <img
+                    className="add-evidence"
+                    src={addEvidence}
+                    alt="Add Evidence"
+                  />
+                </button>
               </div>
             </>
           ) : (
             <>
               <div className="case-suspects-header flex">
                 <h3>Witnesses</h3>
-                <button onClick={() => navigate("/add-witness")}>+</button>
+                <div className="switch-sketches flex center">
+                  <button
+                    onClick={toggleView}
+                    className={`flex center ${
+                      view === "suspects" ? "selected-btn" : "not-selected-btn"
+                    }`}
+                  >
+                    <img src={Key} alt="" />
+                    Suspects
+                  </button>
+                  <button
+                    onClick={toggleView}
+                    className={`flex center ${
+                      view === "witnesses" ? "selected-btn" : "not-selected-btn"
+                    }`}
+                  >
+                    <img src={UserEdit} alt="" />
+                    Witnesses
+                  </button>
+                </div>{" "}
               </div>
               <div className="case-suspects-body flex center wrap scrollable-div">
                 {witnesses.map((witness) => (
@@ -262,6 +398,16 @@ const InvestigatorCase = () => {
                     />
                   </button>
                 ))}
+                <button
+                  className="case-evidence flex center column"
+                  onClick={() => navigate("/add-witness")}
+                >
+                  <img
+                    className="add-evidence"
+                    src={addEvidence}
+                    alt="Add Evidence"
+                  />
+                </button>
               </div>
             </>
           )}
@@ -275,18 +421,43 @@ const InvestigatorCase = () => {
           />
         </div>
         <div className="case-statements flex center column">
-          <div className="switch-button flex center">
+          {/* <div className="switch-button flex center">
             <button onClick={toggleStatementsView}>
               {statementsView === "suspects"
                 ? "Show Suspects"
                 : "Show Witnesses"}
             </button>
-          </div>
+          </div> */}
+
           <div className="case-statements-header flex center">
             <h3>Statements</h3>
             {/* <button className="flex center" onClick={openChoose}>
               +
             </button> */}
+            <div className="case-suspects-header flex">
+              <div className="switch-statements flex center">
+                <button
+                  onClick={toggleStatementsView}
+                  className={`flex center ${
+                    statementsView === "suspects"
+                      ? "selected-btn"
+                      : "not-selected-btn"
+                  }`}
+                >
+                  <img src={SuspectIcon} alt="" />
+                </button>
+                <button
+                  onClick={toggleStatementsView}
+                  className={`flex center ${
+                    statementsView === "witnesses"
+                      ? "selected-btn"
+                      : "not-selected-btn"
+                  }`}
+                >
+                  <img src={EyeIcon} alt="" />
+                </button>
+              </div>
+            </div>
           </div>
 
           <div className="case-statements-body scrollable-div">
@@ -295,7 +466,7 @@ const InvestigatorCase = () => {
                   <button
                     key={statement.id}
                     className="flex center"
-                    onClick={() => openWitnessStatementModal(statement)}
+                    onClick={() => goToWitnessModel(statement)}
                   >
                     <img
                       src={statement.witnessPhoto || suspect}
@@ -312,7 +483,7 @@ const InvestigatorCase = () => {
                   <button
                     key={statement.id}
                     className="flex center"
-                    onClick={() => openStatementModal(statement)}
+                    onClick={() => goToStatementModel(statement)}
                   >
                     <img
                       src={statement.suspectPhoto || suspect}
@@ -353,6 +524,11 @@ const InvestigatorCase = () => {
         isOpen={isChooseOpen}
         onClose={closeChoose}
         data={chooseModalData}
+      />
+      <SketchesModal
+        isOpen={isSketchesModalOpen}
+        onClose={closeSketches}
+        data={sketchesModalData}
       />
     </div>
   );

@@ -29,14 +29,13 @@
 .case-evidences {
   overflow: auto;
   gap: 15px;
+  margin-top: 15px;
 }
 .case-evidence {
   width: 100px;
   height: 100px;
   background-color: var(--color3);
-  border-radius: 3px;
-  border-left: 1px solid var(--color1);
-  border-right: 1px solid var(--color1);
+  border-radius: 6px;
 }
 
 .case-evidence-img {
@@ -44,6 +43,7 @@
   padding: 10%;
 }
 .add-evidence {
+  border-radius: 6px;
   width: 100%;
 }
 
@@ -180,7 +180,13 @@
 
 .switch-button {
   width: 100%;
-  justify-content: flex-end;
+  justify-content: space-between;
+}
+.switch-button > h3 {
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  color: var(--color2);
 }
 .switch-button > button {
   text-align: right;
@@ -192,6 +198,7 @@
 }
 
 .investigator-tools {
+  margin-top: 5%;
   width: 100%;
   justify-content: space-around;
   gap: 3%;
@@ -202,16 +209,70 @@
   height: 86px;
   border: 1px solid #015949;
   border-radius: 16px;
-  justify-content: space-around;
   padding: 1%;
+  justify-content: flex-start;
+  gap: 20px;
 }
 .investigator-tool > img {
   width: 60px;
   height: 60px;
 }
 .investigator-tool > h2 {
+  text-align: left;
   font-size: 24px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-semi);
   color: var(--color2);
+}
+
+.switch-sketches {
+  background-color: #141521;
+  justify-content: space-between;
+  padding: 2%;
+  border-radius: 20px;
+  gap: 8px;
+  border: 0.5px solid rgba(0, 0, 0, 0.481);
+  height: 32px;
+  width: 179px;
+}
+.switch-statements {
+  margin-left: 10px;
+  background-color: #141521;
+  justify-content: space-between;
+  padding: 2%;
+  border-radius: 20px;
+  gap: 8px;
+  border: 0.5px solid rgba(0, 0, 0, 0.481);
+  height: 32px;
+  width: 67px;
+}
+.switch-statements > button {
+  border-radius: 20px;
+  color: white;
+  font-size: 12px;
+  width: 85px;
+  height: 24px;
+
+  gap: 2px;
+}
+
+.switch-sketches > button {
+  border-radius: 20px;
+  color: white;
+  font-size: 12px;
+  width: 85px;
+  height: 24px;
+
+  gap: 2px;
+}
+.switch-sketches > button > img,
+.switch-statements > button > img {
+  height: 12px;
+  width: 12px;
+}
+.selected-btn {
+  background-color: #0bc1a0;
+}
+.not-selected-btn {
+  background-color: rgba(0, 0, 0, 0);
 }
