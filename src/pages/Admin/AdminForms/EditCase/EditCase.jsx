@@ -53,8 +53,6 @@ const EditCase = () => {
     setRefresh(true);
   }, []);
 
-  console.log(caseData);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -81,8 +79,6 @@ const EditCase = () => {
       });
     }
   };
-
-  console.log(formData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -112,10 +108,10 @@ const EditCase = () => {
   return (
     <div className="admin-form-container t-center flex column center">
       <h1>Edit Case</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="flex center column" onSubmit={handleSubmit}>
         <Button
           name={"back"}
-          text={"Back to manage cases"}
+          text={"← Back"}
           className={"form-back-button"}
           type={"button"}
           onClick={backTo}

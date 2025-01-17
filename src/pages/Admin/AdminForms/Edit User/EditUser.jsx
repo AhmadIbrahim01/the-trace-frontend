@@ -67,15 +67,14 @@ const EditUser = () => {
     }
     reset();
   };
-  console.log(userData);
 
   return (
     <div className="admin-form-container t-center flex column center">
       <h1>Edit User</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex column center" onSubmit={handleSubmit(onSubmit)}>
         <Button
           name={"back"}
-          text={"Back to manage users"}
+          text={"← Back"}
           className={"form-back-button"}
           type={"button"}
           onClick={backTo}

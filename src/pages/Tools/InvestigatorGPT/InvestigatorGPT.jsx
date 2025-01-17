@@ -139,7 +139,7 @@ const InvestigatorGPT = () => {
             className="back-button-gpt flex center"
             onClick={goToCase}
           >
-            ← back
+            ← Back
           </button>
           <h1 className="sidebar-title">InvestigatorGPT</h1>
           <button onClick={createNewChat} className="new-chat-btn">

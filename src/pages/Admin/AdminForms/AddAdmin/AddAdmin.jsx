@@ -37,7 +37,6 @@ const AddAdmin = () => {
         success: true,
         message: "Admin added successfully",
       });
-      console.log(response.data);
     } catch (error) {
       console.log(error.message);
 
@@ -75,10 +74,10 @@ const AddAdmin = () => {
   return (
     <div className="admin-form-container t-center flex column center">
       <h1>Add Admins</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex column" onSubmit={handleSubmit(onSubmit)}>
         <Button
           name={"back"}
-          text={"Back to manage admins"}
+          text={"← Back"}
           className={"form-back-button"}
           type={"button"}
           onClick={backTo}

@@ -1,6 +1,7 @@
 .radio-group {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .radio-group label {
@@ -38,4 +39,5 @@
 }
 .input2-container {
   justify-content: space-between;
+  width: 100%;
 }

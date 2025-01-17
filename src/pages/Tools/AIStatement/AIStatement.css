@@ -98,17 +98,3 @@
   color: var(--text-color);
   text-align: left;
 }
-/* 
-parent div
-style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}
-
-div
-style={{ marginBottom: "10px" }}
-
-h3
-color: "white",
-backgroundColor: "#333",
-padding: "5px",
-
-p
-style={{ color: "yellow", marginLeft: "20px" }} */

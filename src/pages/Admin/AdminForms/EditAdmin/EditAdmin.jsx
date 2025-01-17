@@ -67,10 +67,10 @@ const EditAdmin = () => {
   return (
     <div className="admin-form-container t-center flex column center">
       <h1>Edit Admin</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex column center" onSubmit={handleSubmit(onSubmit)}>
         <Button
           name={"back"}
-          text={"Back to manage admins"}
+          text={"← Back"}
           className={"form-back-button"}
           type={"button"}
           onClick={backTo}

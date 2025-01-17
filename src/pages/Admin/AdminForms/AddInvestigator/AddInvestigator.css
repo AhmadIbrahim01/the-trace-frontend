@@ -16,11 +16,11 @@
 .form-back-button {
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
-  background-color: #00000000;
-  width: 300px;
+  background-color: #0bc1a0;
+  width: 90px;
+  height: 40px;
   color: white;
-  display: block;
-  margin: auto;
+  margin-bottom: 30px;
 }
 
 .admin-form-button {

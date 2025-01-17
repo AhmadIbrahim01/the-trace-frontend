@@ -132,10 +132,10 @@ const AddCase = () => {
   return (
     <div className="admin-form-container t-center flex column center">
       <h1>Add Case</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="flex column" onSubmit={handleSubmit}>
         <Button
           name={"back"}
-          text={"Back to manage cases"}
+          text={"← Back"}
           className={"form-back-button"}
           type={"button"}
           onClick={backTo}
