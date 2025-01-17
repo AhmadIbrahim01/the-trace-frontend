@@ -59,17 +59,17 @@ function App() {
         {
           path: "/cases",
           element: (
-            <ProtectedRoute allowedUserType="public_user">
-              <Cases />
-            </ProtectedRoute>
+            <Cases />
+            // <ProtectedRoute allowedUserType="public_user">
+            // </ProtectedRoute>
           ),
         },
         {
           path: "/case",
           element: (
-            <ProtectedRoute allowedUserType="public_user">
-              <Case />
-            </ProtectedRoute>
+            <Case />
+            // <ProtectedRoute allowedUserType="public_user">
+            // </ProtectedRoute>
           ),
         },
         {

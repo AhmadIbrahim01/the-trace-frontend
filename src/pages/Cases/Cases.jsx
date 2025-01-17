@@ -15,10 +15,9 @@ const HeroSection = () => (
   <div className="cases-hero flex center column">
     <h1>Public Cases</h1>
     <p className="t-center">
-      “I've been using this web hosting service for a few months now and overall
-      it's been fine. The uptime has been good and I haven't had any major
-      issues. The pricing is also reasonable. Nothing particularly stands out
-      as.
+      Stay informed with the latest open investigations. Our public case files
+      are made available for transparency, offering detailed insights into
+      ongoing criminal cases.
     </p>
     <div className="search-div flex center">
       <input type="text" placeholder="Search" />
@@ -90,39 +89,6 @@ const CaseCard = ({ caseData, index }) => {
 };
 
 const CasesSection = () => {
-  // const cases = [
-  //   {
-  //     id: 1,
-  //     title: "The Victim of AI",
-  //     description:
-  //       "The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI ",
-  //     date: "January 5, 2023",
-  //     tags: ["Tag One", "Tag Two", "Tag Three"],
-  //     status: "Case closed",
-  //     image: caseOne,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "The Victim of AI",
-  //     description:
-  //       "The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI ",
-  //     date: "January 5, 2023",
-  //     tags: ["Tag One", "Tag Two", "Tag Three"],
-  //     status: "Case closed",
-  //     image: caseTwo,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Hitman in the night",
-  //     description:
-  //       "The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI The Victim of AI ",
-  //     date: "January 5, 2023",
-  //     tags: ["Tag One", "Tag Two", "Tag Three"],
-  //     status: "Case closed",
-  //     image: caseThree,
-  //   },
-  // ];
-
   const [cases, setCases] = useState([]);
 
   useEffect(() => {
@@ -147,9 +113,7 @@ const CasesSection = () => {
   return (
     <div className="cases-list flex center column">
       <h1>Cases List</h1>
-      <p className="t-center">
-        Joining us is very simple, just a few steps and you’ll be set up to go!
-      </p>
+      <p className="t-center">Browse through each case and stay informed!</p>
       {cases.length !== 0 ? (
         cases.map((caseData, index) => (
           <CaseCard key={index} index={index} caseData={caseData} />

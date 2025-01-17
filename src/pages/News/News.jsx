@@ -12,9 +12,10 @@ import { useNavigate } from "react-router-dom";
 const HeroSection = () => (
   <div className="news-hero flex center column">
     <div className="news-header flex column center">
-      <h6>Our country news</h6>
-      <p>
-        Crime Investigator news Crime Investigator news Crime Investigator news
+      <h6 className="t-center">Stay Informed, Stay Engaged</h6>
+      <p className="t-center">
+        Get the latest updates on national news, breaking stories, and in-depth
+        investigations shaping our country’s future.
       </p>
     </div>
     <div className="news-pictures flex center">

@@ -281,7 +281,7 @@ const AddSuspect = () => {
           )}
         </div> */}
         <div className="input flex column">
-          <label htmlFor={"photo"}>Evidence Image</label>
+          <label htmlFor={"photo"}>Suspect Image</label>
           <input
             id={"photo"}
             name={"photo"}

@@ -34,7 +34,6 @@ const EditCase = () => {
           title: caseData.title,
           description: caseData.description,
           status: caseData.status,
-          status: caseData.status,
           visibility: caseData.visibility,
           map: {
             longitude: caseData.map.longitude,
