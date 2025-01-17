@@ -198,7 +198,6 @@ const UserProfile = () => {
               type="file"
               name="profile"
               id="profile"
-              accept=".jpeg, .png, .jpg"
               onChange={handleFileUpload}
             />
 

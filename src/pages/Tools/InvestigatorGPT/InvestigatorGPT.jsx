@@ -3,6 +3,7 @@ import "./InvestigatorGPT.css";
 import Navbar from "../../../components/Navbar/Navbar";
 import threeDots from "../../../assets/icons/three-dots.svg";
 import robot from "../../../assets/icons/robot.png";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
@@ -122,6 +123,10 @@ const InvestigatorGPT = () => {
       console.log(error.message);
     }
   };
+  const navigate = useNavigate();
+  const goToCase = () => {
+    navigate("/investigator-case");
+  };
 
   return (
     <>
@@ -129,6 +134,13 @@ const InvestigatorGPT = () => {
 
       <div className="app-container">
         <aside className="gpt-sidebar">
+          <button
+            type="button"
+            className="back-button-gpt flex center"
+            onClick={goToCase}
+          >
+            ← back
+          </button>
           <h1 className="sidebar-title">InvestigatorGPT</h1>
           <button onClick={createNewChat} className="new-chat-btn">
             New Chat
