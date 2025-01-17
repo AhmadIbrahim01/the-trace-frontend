@@ -3,6 +3,7 @@ import Input from "../../../components/Input/Input";
 import Button from "../../../components/Button/Button";
 import "./AIStatement.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const AIStatement = () => {
   const [formData, setFormData] = useState({
     statement: "",
@@ -45,7 +46,7 @@ const AIStatement = () => {
       );
 
       // const sections = parseContent(response.data.result);
-      console.log(response.data);
+      // console.log(response.data);
 
       setAnalysis(parseContent(response.data.result));
       setLoading(false);
@@ -54,9 +55,6 @@ const AIStatement = () => {
       setLoading(false);
     }
   };
-
-  const content = `
-Sentiment Analysis:\nThe emotional tone of the statement seems to be neutral. The speaker, Mr. Carter, appears to calmly acknowledge the reason for being present and the topic of discussion.\n\nKey Entities:\n1. Mr. Carter: The main individual being addressed in the statement.\n2. Lily: Mentioned as the owner of the apartment where an incident occurred.\n3. Apartment: The location where the mentioned event took place.\n4. Friday night: The timeframe of when the incident in Lily's apartment occurred.\n\nInconsistencies:\nThere are no clear inconsistencies or contradictions in the statement. Mr. Carter acknowledges his understanding of the situation and the specific topic of discussion related to an event that occurred at Lily's apartment on the mentioned Friday night.  `;
 
   const parseContent = (text) => {
     const sections = {
@@ -81,13 +79,25 @@ Sentiment Analysis:\nThe emotional tone of the statement seems to be neutral. Th
     return sections;
   };
 
+  const navigate = useNavigate();
+  const goToCase = () => {
+    navigate("/investigator-case");
+  };
+
   return (
-    <div className="investigator-form-container t-center flex column center">
+    <div className="investigator-form-container  t-center flex column center">
       <h1>AI Statement Analysis</h1>
       <p>
         Easily analyze suspect or witness statements for insights and patterns.
       </p>
       <form className="ai-statement-form" onSubmit={handleSubmit}>
+        <button
+          type="button"
+          className="back-button flex center"
+          onClick={goToCase}
+        >
+          ← Back
+        </button>
         <h1>Upload Statement</h1>
         {/* <Input
           id={"name"}

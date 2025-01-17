@@ -164,8 +164,8 @@ const CaseDescription = ({ theCase }) => {
           <p>{theCase.description}</p>
         </div>
 
-        <h1 className="description-h1">Scene</h1>
-        <div className="scene"></div>
+        {/* <h1 className="description-h1">Scene</h1>
+        <div className="scene"></div> */}
         <h1 className="description-h1">Map</h1>
         <div className="map">
           <MapComponent
