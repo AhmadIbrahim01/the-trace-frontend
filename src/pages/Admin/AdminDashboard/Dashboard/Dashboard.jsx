@@ -14,7 +14,6 @@ const Dashboard = () => {
 
   const [adminData, setAdminData] = useState({});
 
-  console.log(adminId);
   useEffect(() => {
     const fetchAdminData = async () => {
       try {
@@ -39,7 +38,6 @@ const Dashboard = () => {
 
     fetchAdminData();
   }, []);
-  console.log(adminData);
   const [stats, setStats] = useState({
     activeCases: 0,
     resolvedCases: 0,
@@ -58,7 +56,6 @@ const Dashboard = () => {
           }
         );
         setStats(response.data);
-        console.log(stats);
       } catch (error) {
         console.log(error.message);
       }

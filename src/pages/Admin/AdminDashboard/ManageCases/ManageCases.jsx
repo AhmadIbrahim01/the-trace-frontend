@@ -31,7 +31,6 @@ const ManageCases = () => {
     };
     fetchCases();
   }, [refresh]);
-  console.log(cases);
 
   const deleteCase = async (caseId) => {
     await axios.delete(`http://127.0.0.1:8080/api/case/${caseId}`);
@@ -122,9 +121,8 @@ const ManageCases = () => {
           <table>
             <thead>
               <tr>
-                <th>Case ID</th>
                 <th>Title</th>
-                <th>Investigator ID</th>
+                <th>Investigator</th>
                 <th>Status</th>
                 <th>Last Updated</th>
                 <th>Actions</th>
@@ -133,9 +131,8 @@ const ManageCases = () => {
             <tbody>
               {cases.map((row, index) => (
                 <tr key={index}>
-                  <td>{row._id}</td>
                   <td>{row.title}</td>
-                  <td>{row.investigatorId}</td>
+                  <td>{row.investigatorId.firstName}</td>
                   <td>{row.status}</td>
                   <td>{formatDateTime(row.updatedAt)}</td>
                   <td className="table-actions">

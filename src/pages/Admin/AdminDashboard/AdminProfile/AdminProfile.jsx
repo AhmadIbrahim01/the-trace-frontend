@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../../../components/Button/Button";
 import "./AdminProfile.css";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import profile from "../../../../assets/images/suspect.svg";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 import { useAdminData } from "../../../../context/AdminContext";
 
 const AdminProfile = () => {
@@ -44,8 +42,6 @@ const AdminProfile = () => {
           password: response.data.admin.password,
           profilePicture: response.data.admin.profilePicture,
         });
-
-        console.log(response);
       } catch (error) {
         console.log(error.message);
         setStatus({
@@ -57,13 +53,6 @@ const AdminProfile = () => {
 
     fetchAdminData();
   }, [refresh]);
-
-  console.log(formData);
-
-  const logOut = () => {
-    localStorage.clear();
-    navigate("/login");
-  };
 
   const goBack = () => {
     navigate(-1);
@@ -80,7 +69,6 @@ const AdminProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const dataWithImage = { ...formData, profilePicture: imageUrl };
-    console.log("daata with img", dataWithImage);
 
     try {
       const response = await axios.put(
@@ -139,9 +127,6 @@ const AdminProfile = () => {
   };
   return (
     <div className="edit-admin-form t-center flex column center">
-      <button type="button" className="logout-btn" onClick={logOut}>
-        Log Out
-      </button>
       <button type="button" className="back" onClick={goBack}>
         Back
       </button>

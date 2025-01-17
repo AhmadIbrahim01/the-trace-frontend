@@ -147,7 +147,6 @@ const ManageUsers = () => {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -160,7 +159,6 @@ const ManageUsers = () => {
               {users.map((row, index) =>
                 row.role !== "admin" && row.role !== "super_admin" ? (
                   <tr key={row._id}>
-                    <td>{row._id}</td>
                     <td>
                       {row.firstName} {row.lastName}
                     </td>

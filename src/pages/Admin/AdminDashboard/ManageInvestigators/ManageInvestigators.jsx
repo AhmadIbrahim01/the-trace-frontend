@@ -118,24 +118,22 @@ const ManageInvestigators = () => {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                {/* <th>Case Handled</th> */}
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {investigators.map((row, index) => (
                 <tr key={index}>
-                  <td>{row._id}</td>
                   <td>
                     {row.firstName} {row.lastName}
                   </td>
                   <td>{row.email}</td>
                   <td>{row.phone}</td>
-                  {/* <td>{row.caseHandled}</td> */}
+                  <td>{row.banned === true ? "Banned" : "Active"}</td>
                   <td className="table-actions">
                     <button onClick={() => editInvestigator(row._id)}>
                       Edit

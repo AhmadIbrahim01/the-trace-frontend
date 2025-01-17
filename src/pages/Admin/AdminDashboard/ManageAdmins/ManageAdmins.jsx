@@ -33,7 +33,6 @@ const ManageAdmins = () => {
     };
     fetchAdminsData();
   }, [refresh]);
-  console.log(admins);
 
   const banAdmin = async (id) => {
     try {
@@ -137,11 +136,9 @@ const ManageAdmins = () => {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Role</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
@@ -151,13 +148,11 @@ const ManageAdmins = () => {
                 admins.map((row, index) =>
                   row.role !== "super_admin" ? (
                     <tr key={index}>
-                      <td>{row._id}</td>
                       <td>
                         {row.firstName} {row.lastName}
                       </td>
                       <td>{row.email}</td>
                       <td>{row.phone}</td>
-                      <td>{row.role}</td>
                       <td>{row.banned ? "Banned" : "Active"}</td>
                       <td className="table-actions">
                         <button onClick={() => editAdmin(row._id)}>Edit</button>
