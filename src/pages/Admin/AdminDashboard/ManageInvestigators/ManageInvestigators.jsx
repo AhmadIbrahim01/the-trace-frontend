@@ -64,6 +64,10 @@ const ManageInvestigators = () => {
     navigate("/add-investigator");
   };
 
+  const goToAdminProfile = () => {
+    navigate("/admin-profile");
+  };
+
   const logOut = () => {
     localStorage.clear();
     navigate("/login");
@@ -71,7 +75,10 @@ const ManageInvestigators = () => {
   return (
     <div className="admin-dashboard flex">
       <div className="admin-sidebar flex column center">
-        <button className="admin-profile flex column center">
+        <button
+          className="admin-profile flex column center"
+          onClick={goToAdminProfile}
+        >
           <img src={formData.profilePicture || adminImage} alt="" />
           <h1>Admin {formData.firstName || adminName}</h1>
         </button>
