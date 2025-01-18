@@ -1,5 +1,5 @@
 .sketch {
-  padding: 5% 10%;
+  padding: 8% 10%;
   justify-content: space-around;
   background-image: url("../../../assets/images/grid-bg.svg");
   background-position: center;
@@ -16,7 +16,8 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   justify-content: flex-start;
-  padding-top: 5%;
+  padding-top: 10%;
+  position: relative;
 }
 .sketch-container {
   justify-content: flex-start;
@@ -26,7 +27,7 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   gap: 30px;
-  padding-top: 5%;
+  padding-top: 10%;
   padding-bottom: 2%;
 }
 
@@ -119,4 +120,22 @@
   color: #015949;
   cursor: pointer;
   margin-bottom: 10px;
+}
+
+.back-button,
+.sketch-back-button {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  width: 90px;
+  height: 40px;
+  top: 50px;
+  left: 50px;
+  position: absolute;
+  background-color: #0bc1a0;
+  color: white;
+  padding: 1%;
+}
+.sketch-back-button {
+  top: 32px;
+  left: 32px;
 }

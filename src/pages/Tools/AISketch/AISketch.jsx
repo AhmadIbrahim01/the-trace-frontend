@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Input from "../../../components/Input/Input";
+import React, { useState } from "react";
 import Button from "../../../components/Button/Button";
 import "./AISketch.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AISketch = () => {
-  const [sketch, setSketch] = useState(false);
-  const [url, setUrl] = useState("");
+  const [img, setImg] = useState("");
+
+  const [saving, setSaving] = useState("");
+
+  const [sketch, setSketch] = useState(true);
   const change = () => {
     setSketch(!sketch);
   };
@@ -29,29 +32,39 @@ const AISketch = () => {
 
   const caseId = localStorage.getItem("caseId");
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    console.log("Selected file:", file);
+    if (file) {
+      setImg(file);
+    }
+  };
+
   const onSubmit = async (data) => {
     setLoading(true);
-    {
-      sketch
-        ? setUrl(`http://127.0.0.1:8080/api/sketches/image/${caseId}`)
-        : setUrl(`http://127.0.0.1:8080/api/sketches/${caseId}`);
-    }
+
     try {
-      const response = await axios.post(url, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        `http://127.0.0.1:8080/api/sketches/${caseId}`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       setResponseData(response.data);
+      console.log(response.data);
+
       setStatus({
         success: true,
         message: "Sketch added successfully",
       });
 
       setImageUrl(response.data.image);
+      console.log(response.data.image);
       setLoading(false);
-      // reset();
     } catch (error) {
       console.log(error.message);
       setStatus({
@@ -61,8 +74,6 @@ const AISketch = () => {
       setLoading(false);
     }
   };
-
-  console.log("response image", responseData);
 
   const handleSave = async (event) => {
     const url = imageUrl;
@@ -96,49 +107,108 @@ const AISketch = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            // cloud image
             image: uploadedImageUrl.url,
-            name: responseData.inputs.name,
-            age: responseData.inputs.age,
-            description: responseData.inputs.description,
-            additional: responseData.inputs.additional,
-            prompt: responseData.prompt,
+            gender: responseData.inputs.gender || "",
+            age: responseData.inputs.age || "",
+            description: responseData.inputs.description || "",
+            additional: responseData.inputs.additional || "",
+            prompt: responseData.prompt || "",
           }),
         }
       );
 
+      setSaving("saving");
       const saveSketchResponse = await saveSketch.json();
       if (saveSketch.ok) {
         console.log("Sketch saved successfully:", saveSketchResponse);
+        setSaving("saved");
       } else {
         console.error("Error saving sketch:", saveSketchResponse);
+        setSaving("");
       }
     } catch (error) {
       console.error("Error uploading image or updating profile:", error);
+      setSaving("");
     }
   };
 
   console.log(cloudImageUrl);
 
+  const navigate = useNavigate();
+  const goToCase = () => {
+    navigate("/investigator-case");
+  };
+
+  const handleImageSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", img);
+
+    fetch(`http://127.0.0.1:8080/api/sketches/image/${caseId}`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setResponseData(data);
+
+        setStatus({
+          success: true,
+          message: "Sketch added successfully",
+        });
+
+        setImageUrl(data.editedImageUrl);
+        console.log(data.editedImageUrl);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        setStatus({
+          success: false,
+          message: "Sketch adding failed",
+        });
+        setLoading(false);
+      });
+  };
+
   if (loading) {
-    return <h1>Loading</h1>;
+    return (
+      <div className="error flex column center">
+        <h1 className="t-center">Loading</h1>
+      </div>
+    );
   }
 
   return (
     <>
       <div className="sketch flex center">
         {sketch ? (
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="sketch-form flex center column"
-          >
-            <h1>Suspect Drawn Picture</h1>
+          <form className="sketch-form flex center column">
+            <button
+              type="button"
+              className="sketch-back-button flex center"
+              onClick={goToCase}
+            >
+              ← Back
+            </button>
+            <h1>Suspect Sketch</h1>
             <h3 className="switch-btn1" onClick={change}>
               Switch to text input
             </h3>
             <div className="sketch-input sketch-input-file flex column">
               <label htmlFor="photo">Upload Photo</label>
-              <input id="photo" type="file" {...register("photo")} />
+              <input
+                id="photo"
+                name="photo"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
             </div>
 
             <Button
@@ -146,6 +216,8 @@ const AISketch = () => {
               name={"generate-sketch"}
               text={"Generate Sketch"}
               className={"ai-form-button"}
+              onClick={handleImageSubmit}
+              disabled={loading}
             ></Button>
             {status.message && status.success === true ? (
               <h3 style={{ color: "green", marginBottom: "30px" }}>
@@ -162,20 +234,31 @@ const AISketch = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="sketch-form flex center column"
           >
+            <button
+              type="button"
+              className="sketch-back-button flex center"
+              onClick={goToCase}
+            >
+              ← Back
+            </button>
+
             <h1>Suspect Details</h1>
             <h3 className="switch-btn2" onClick={change}>
               Switch to image input
             </h3>
+
             <div className="sketch-input flex column">
-              <label htmlFor="name">Name</label>
-              <input
-                id="name"
-                type="text"
-                placeholder="Enter suspect name"
-                {...register("name", { required: "Name is required" })}
-              />
-              {errors.name && (
-                <p style={{ color: "red" }}>{errors.name.message}</p>
+              <label htmlFor="gender">Gender</label>
+              <select
+                id="gender"
+                {...register("gender", { required: "Gender is required" })}
+              >
+                <option value="">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              {errors.gender && (
+                <p style={{ color: "red" }}>{errors.gender.message}</p>
               )}
             </div>
 
@@ -242,19 +325,31 @@ const AISketch = () => {
               <div className="ai-sketch">
                 <img src={imageUrl} alt="" />
               </div>
-              <Button
-                type={"submit"}
-                name={"save-sketch"}
-                text={"Save Sketch"}
-                className={"ai-form-button"}
-                onClick={handleSave}
-              ></Button>
+              {saving === "" ? (
+                <Button
+                  type={"submit"}
+                  name={"save-sketch"}
+                  text={"Save Sketch"}
+                  className={"ai-form-button"}
+                  onClick={handleSave}
+                ></Button>
+              ) : (
+                <></>
+              )}
             </>
           )}
           {!imageUrl && (
             <div className="ai-sketch flex center column">
               <p> There is no picture</p>
             </div>
+          )}
+
+          {saving === "saving" ? (
+            <h1>Saving</h1>
+          ) : saving === "saved" ? (
+            <h1>Saved Successfully</h1>
+          ) : (
+            <></>
           )}
         </div>
       </div>
