@@ -141,7 +141,7 @@ const ManageUsers = () => {
       <div className="admin-dashboard-stats flex column center">
         <div className="suspect-profile-header manage-investigator-header flex center">
           <h2>Users List</h2>
-          <button onClick={addUser}>Add New User</button>
+          <button onClick={addUser}>Add User</button>
         </div>
         <div className="table_component">
           <table>

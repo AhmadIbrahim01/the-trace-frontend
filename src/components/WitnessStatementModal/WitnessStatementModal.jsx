@@ -80,7 +80,11 @@ const WitnessStatementModal = ({ isOpen, onClose, data }) => {
       >
         <div className="suspect-profile-header flex center">
           <h2>{name}'s Statement</h2>
-          <button onClick={handleEditClick}>Edit Information</button>
+          {isEditing ? (
+            <button onClick={handleDismissClick}>Dismiss</button>
+          ) : (
+            <button onClick={handleEditClick}>Edit Information</button>
+          )}
         </div>
 
         <button className="statement-modal-profile flex">
@@ -225,11 +229,11 @@ const WitnessStatementModal = ({ isOpen, onClose, data }) => {
             <button onClick={handleDeleteClick} className="delete-btn">
               Delete
             </button>
-            <button onClick={handleDismissClick} className="dismiss-btn">
-              Dismiss
-            </button>
           </div>
         )}
+        <button onClick={onClose} className="dismiss-btn">
+          X
+        </button>
       </div>
     </div>
   );

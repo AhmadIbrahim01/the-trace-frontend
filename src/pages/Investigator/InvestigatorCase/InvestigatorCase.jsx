@@ -382,7 +382,7 @@ const InvestigatorCase = () => {
                     <img src={UserEdit} alt="" />
                     Witnesses
                   </button>
-                </div>{" "}
+                </div>
               </div>
               <div className="case-suspects-body flex center wrap scrollable-div">
                 {witnesses.map((witness) => (
@@ -461,7 +461,7 @@ const InvestigatorCase = () => {
           </div>
 
           <div className="case-statements-body scrollable-div">
-            {statementsView === "suspects"
+            {statementsView === "witnesses"
               ? allWitnessesStatements.map((statement) => (
                   <button
                     key={statement.id}

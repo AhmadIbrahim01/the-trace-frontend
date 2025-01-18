@@ -116,8 +116,6 @@ const InvestigatorGPT = () => {
         content: "",
       }));
 
-      console.log("the res", response);
-
       setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);

@@ -112,7 +112,9 @@ const ManageInvestigators = () => {
       <div className="admin-dashboard-stats flex column center">
         <div className="suspect-profile-header manage-investigator-header flex center">
           <h2>Investigator List</h2>
-          <button onClick={addInvestigator}>Add New Investigator</button>
+          <button className="add-investigator" onClick={addInvestigator}>
+            Add Investigator
+          </button>
         </div>
         <div className="table_component">
           <table>

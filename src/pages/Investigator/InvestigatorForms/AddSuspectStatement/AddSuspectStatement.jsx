@@ -46,7 +46,6 @@ const AddSuspectStatement = () => {
         success: true,
         message: "Suspect statement added successfull",
       });
-      console.log(response.data);
     } catch (error) {
       console.log(error.message);
 
@@ -69,10 +68,10 @@ const AddSuspectStatement = () => {
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Suspect Statement</h1>
-      <form>
+      <form className="flex column">
         <Button
           name={"back"}
-          text={"Back to manage case"}
+          text={"← Back"}
           className={"form-back-button"}
           type={"button"}
           onClick={goBack}

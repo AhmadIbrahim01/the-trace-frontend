@@ -115,7 +115,7 @@ const ManageCases = () => {
       <div className="admin-dashboard-stats flex column center">
         <div className="suspect-profile-header manage-investigator-header flex center">
           <h2>Cases List</h2>
-          <button onClick={addCase}>Add New Case</button>
+          <button onClick={addCase}>Add Case</button>
         </div>
         <div className="table_component">
           <table>

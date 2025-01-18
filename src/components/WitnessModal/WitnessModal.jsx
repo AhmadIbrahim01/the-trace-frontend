@@ -108,7 +108,11 @@ const WitnessModal = ({ isOpen, onClose, data }) => {
       >
         <div className="suspect-profile-header flex center">
           <h2>Profile</h2>
-          <button onClick={handleEditClick}>Edit Information</button>
+          {isEditing ? (
+            <button onClick={handleDismissClick}>Dismiss</button>
+          ) : (
+            <button onClick={handleEditClick}>Edit Information</button>
+          )}
         </div>
 
         <div className="suspect-profile-body flex">
@@ -191,11 +195,11 @@ const WitnessModal = ({ isOpen, onClose, data }) => {
             <button onClick={handleDeleteClick} className="delete-btn">
               Delete
             </button>
-            <button onClick={handleDismissClick} className="dismiss-btn">
-              Dismiss
-            </button>
           </div>
         )}
+        <button onClick={onClose} className="dismiss-btn">
+          X
+        </button>
 
         <button
           onClick={() => handleNavigate(editedData._id)}

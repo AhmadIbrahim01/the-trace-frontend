@@ -42,7 +42,6 @@ const AddWitnessStatement = () => {
   };
 
   const caseId = localStorage.getItem("caseId");
-  console.log(formData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,7 +63,6 @@ const AddWitnessStatement = () => {
         message: "Witness statement added successfully",
         color: "green",
       });
-      console.log(response.data);
     } catch (error) {
       console.log(error.message);
       setStatus({
@@ -112,10 +110,10 @@ const AddWitnessStatement = () => {
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Witness Statement</h1>
-      <form>
+      <form className="flex column">
         <Button
           name={"back"}
-          text={"Back to manage case"}
+          text={"← Back"}
           className={"form-back-button"}
           type={"button"}
           onClick={goBack}

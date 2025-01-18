@@ -39,7 +39,6 @@ const EvidenceModal = ({ isOpen, onClose, data }) => {
           },
         }
       );
-      console.log("Saved data", response.data);
       setEditedData(response.data);
       setRefresh(!refresh);
     } catch (error) {
@@ -99,7 +98,12 @@ const EvidenceModal = ({ isOpen, onClose, data }) => {
       >
         <div className="suspect-profile-header flex center">
           <h2>Evidence</h2>
-          <button onClick={handleEditClick}>Edit Information</button>
+
+          {!isEditing ? (
+            <button onClick={handleEditClick}>Edit Information</button>
+          ) : (
+            <button onClick={handleDismissClick}>Dismiss</button>
+          )}
         </div>
 
         <img src={photo} className="flex center column evidence-image" />
@@ -171,11 +175,11 @@ const EvidenceModal = ({ isOpen, onClose, data }) => {
             <button onClick={handleDeleteClick} className="delete-btn">
               Delete
             </button>
-            <button onClick={handleDismissClick} className="dismiss-btn">
-              Dismiss
-            </button>
           </div>
         )}
+        <button onClick={onClose} className="dismiss-btn">
+          X
+        </button>
       </div>
     </div>
   );

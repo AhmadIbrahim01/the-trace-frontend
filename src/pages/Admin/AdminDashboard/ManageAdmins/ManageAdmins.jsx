@@ -130,7 +130,7 @@ const ManageAdmins = () => {
       <div className="admin-dashboard-stats flex column center">
         <div className="suspect-profile-header manage-investigator-header flex center">
           <h2>Admins List</h2>
-          <button onClick={addAdmin}>Add New Admin</button>
+          <button onClick={addAdmin}>Add Admin</button>
         </div>
         <div className="table_component">
           <table>

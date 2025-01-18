@@ -97,10 +97,10 @@ const AddWitness = () => {
   return (
     <div className="investigator-form-container t-center flex column center">
       <h1>Add Witness</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex column" onSubmit={handleSubmit(onSubmit)}>
         <Button
           name={"back"}
-          text={"Back to manage case"}
+          text={"← Back"}
           className={"form-back-button"}
           type={"button"}
           onClick={goBack}
