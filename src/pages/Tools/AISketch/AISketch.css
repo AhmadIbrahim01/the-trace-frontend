@@ -12,7 +12,7 @@
 .sketch-form {
   width: 40%;
   height: fit-content;
-  background-color: #141521;
+  background-color: var(--color3);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   justify-content: flex-start;
@@ -23,7 +23,7 @@
   justify-content: flex-start;
   width: 60%;
   height: fit-content;
-  background-color: #141521;
+  background-color: var(--color3);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   gap: 30px;
@@ -53,7 +53,7 @@
 .sketch-input > select {
   margin-top: 15px;
   margin-bottom: 25px;
-  background-color: #1b1c28;
+  background-color: var(--form-input2);
   border-radius: 6px;
   width: 413px;
   height: 80px;
@@ -70,7 +70,7 @@
 .sketch-input > textarea {
   margin-top: 15px;
   margin-bottom: 25px;
-  background-color: #1b1c28;
+  background-color: var(--form-input2);
   border-radius: 6px;
   width: 413px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));

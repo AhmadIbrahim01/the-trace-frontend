@@ -36,6 +36,10 @@
   --font-weight-medium: 500;
 }
 
+[data-theme="light"] {
+  --hero-bg: url("./assets/images/hero-bg-light.png");
+}
+
 * {
   margin: 0;
   padding: 0;

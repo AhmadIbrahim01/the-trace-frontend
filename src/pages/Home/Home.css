@@ -32,7 +32,7 @@
 /* Why get involved section */
 .get-involved {
   height: 110vh;
-  background-color: white;
+  background-color: var(--color2);
   position: relative;
 }
 
@@ -81,6 +81,7 @@
   margin-top: 24px;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
+  color: var(--color3);
 }
 
 .container-two img:nth-child(1) {
@@ -144,7 +145,7 @@
   width: 333px;
   height: 127px;
   border-radius: 12px;
-  background-color: #e9f0f6;
+  background-color: var(--cards);
   padding: 3%;
 }
 .card > h3 {
@@ -202,7 +203,7 @@
 .arrow-btn {
   width: 70px;
   height: 70px;
-  background-color: #ffffff0d;
+  background-color: var(--cards2);
 }
 .arrow-btn > img {
   width: 14px;
@@ -213,15 +214,15 @@
 }
 
 .testimonial-cards {
-  width: 90%;
-  margin-top: 100px;
+  width: 100%;
+  overflow: hidden;
 }
 .testimonial-card {
   padding: 40px 30px;
   margin-right: 60px;
   width: 400px;
   height: auto;
-  background-color: #ffffff0d;
+  background-color: var(--cards2);
   border-radius: 6px;
 }
 .testimonial-card > p {
@@ -280,7 +281,7 @@
   position: absolute;
   top: -30px;
   right: 0;
-  color: white;
+  color: var(--color2);
   z-index: -1;
 }
 .powered > p {
@@ -296,7 +297,7 @@
 .big-card {
   width: 609px;
   height: 416px;
-  background-color: #ffffff0d;
+  background-color: var(--cards2);
   border-radius: 12px;
   position: relative;
 }
@@ -304,14 +305,14 @@
   font-size: 30px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  background: var(--secondary-gradient);
+  background: var(--primary-gradient);
   -webkit-background-clip: text;
   color: transparent;
   padding-left: 30px;
   padding-top: 30px;
 }
 .small-card {
-  background-color: #ffffff0d;
+  background-color: var(--cards2);
   border-radius: 12px;
   margin-bottom: 22px;
   margin-left: 20px;
@@ -401,8 +402,10 @@
   width: 218px;
   height: 50px;
 
-  background: #ffffff;
+  background: var(--color2);
   border-radius: 6px;
+
+  color: var(--color3);
 }
 
 .about-2 > img {
@@ -440,7 +443,7 @@
   width: 780px;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #1b1c28;
+  background-color: var(--faq);
   border-radius: 8px;
   position: relative;
   justify-content: space-between;
@@ -466,4 +469,8 @@
   padding-left: 25px;
   padding-right: 25px;
   color: var(--text-color);
+}
+
+.theme-btn {
+  background-color: #00000000;
 }

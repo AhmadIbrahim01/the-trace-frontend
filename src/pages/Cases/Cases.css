@@ -200,8 +200,9 @@
   padding: 10px;
   width: 218px;
   height: 50px;
-  background: #ffffff;
+  background: var(--color2);
   border-radius: 6px;
+  color: var(--color3);
 }
 .case-info > button > img {
   margin-left: 10px;

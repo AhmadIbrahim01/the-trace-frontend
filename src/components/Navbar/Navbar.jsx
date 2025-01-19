@@ -35,6 +35,23 @@ const Navbar = () => {
     }
   }, []);
 
+  const [theme, setTheme] = useState("dark");
+
+  const currentTheme = localStorage.getItem("theme");
+  document.querySelector("body").setAttribute("data-theme", currentTheme);
+
+  const changeTheme = () => {
+    if (theme === "dark") {
+      setTheme("light");
+      localStorage.setItem("theme", "light");
+      document.querySelector("body").setAttribute("data-theme", currentTheme);
+    } else {
+      setTheme("dark");
+      localStorage.setItem("theme", "dark");
+      document.querySelector("body").setAttribute("data-theme", currentTheme);
+    }
+  };
+
   return (
     <nav className="navbar flex center">
       <div className="navbar-container flex center">
@@ -63,6 +80,7 @@ const Navbar = () => {
               News
             </Link>
           </li>
+
           {isInvestigator ? (
             <li>
               <Link to="/investigator-stats" className="nav-link">
@@ -72,6 +90,15 @@ const Navbar = () => {
           ) : (
             <></>
           )}
+          <li>
+            <button
+              type="button"
+              className="nav-link theme-btn"
+              onClick={changeTheme}
+            >
+              Theme
+            </button>
+          </li>
         </ul>
         {name ? (
           <button

@@ -14,7 +14,7 @@
 .statement-modal-content {
   width: 746px;
   max-height: 550px;
-  background-color: #1b1c28;
+  background-color: var(--form-input2);
   padding: 50px 55px;
   border-radius: 16px;
   overflow: auto;

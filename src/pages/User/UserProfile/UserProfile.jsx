@@ -170,7 +170,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="flex center column">
+    <div className="user-profile-modal flex center column">
       <button type="button" className="logout-btn" onClick={logOut}>
         Log Out
       </button>

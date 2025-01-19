@@ -15,6 +15,7 @@ import drawing from "../../assets/images/drawing.svg";
 import house from "../../assets/images/house.svg";
 import whiteFingerprint from "../../assets/images/white-fingerprint.svg";
 import triangle from "../../assets/images/triangle.svg";
+import darkTriangle from "../../assets/images/dark-triangle.svg";
 import AboutUsPicture from "../../assets/images/about-us.svg";
 import downArrow from "../../assets/icons/down-arrow.svg";
 import rightArrow from "../../assets/icons/right-arrow.svg";
@@ -23,6 +24,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { gsap } from "gsap";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import Slider from "react-slick";
 
 const ActionItem = ({ icon, text }) => (
   <div className="action">
@@ -214,14 +216,13 @@ const TestimonialsSection = () => {
         );
 
         setTest(response.data.testimonials);
-
-        console.log(response.data.testimonials);
       } catch (error) {
         console.log(error.message);
       }
     };
     getTestimonials();
   }, []);
+
   return (
     <div className="testimonials flex column center">
       <div className="testimonials-header flex">
@@ -244,7 +245,7 @@ const TestimonialsSection = () => {
       <div className="testimonial-cards flex center">
         {test.map((testimonial, index) => (
           <TestimonialCard
-            key={index}
+            key={testimonial._id}
             text={testimonial.testimonial}
             name={testimonial.firstName}
             image={testimonial.profilePhoto || userIcon}
@@ -290,7 +291,7 @@ const PoweredByAiSection = () => (
     </div>
   </div>
 );
-const AboutUs = ({ userRole }) => {
+const AboutUs = ({ userRole, theme }) => {
   const navigate = useNavigate();
   const navigateToRegister = () => {
     navigate("/register");
@@ -315,7 +316,11 @@ const AboutUs = ({ userRole }) => {
         <img src={AboutUsPicture} alt="" />
       </div>
 
-      <img src={triangle} alt="" />
+      {theme === "dark" ? (
+        <img src={triangle} alt="" />
+      ) : (
+        <img src={darkTriangle} alt="" />
+      )}
     </div>
   );
 };
@@ -432,13 +437,19 @@ const Home = () => {
     }
   }, []);
 
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
+
   return (
     <>
       <Navbar />
-      <HeroSection userRole={userRole} userName={userName} />
-      <AboutUs userRole={userRole} userName={userName} />
-      <GetInvolvedSection userRole={userRole} userName={userName} />
-      <HowToJoinSection userRole={userRole} userName={userName} />
+      <HeroSection userRole={userRole} userName={userName} theme={theme} />
+      <AboutUs userRole={userRole} userName={userName} theme={theme} />
+      <GetInvolvedSection
+        userRole={userRole}
+        userName={userName}
+        theme={theme}
+      />
+      <HowToJoinSection userRole={userRole} userName={userName} theme={theme} />
       <TestimonialsSection />
       <PoweredByAiSection />
       <FAQ />

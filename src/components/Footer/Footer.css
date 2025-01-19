@@ -2,7 +2,7 @@
   padding-top: 60px;
   padding-left: 60px;
   height: 318px;
-  background-color: white;
+  background-color: var(--color2);
   gap: 100px;
 }
 
@@ -31,6 +31,7 @@
   height: 50px;
   border: 1px solid var(--text-color);
   border-radius: 12px;
+  background-color: var(--color2);
 }
 .email-container > input {
   border-radius: 12px;
@@ -38,14 +39,15 @@
   height: 100%;
   padding-left: 10px;
   outline: none;
+  background-color: var(--color2);
 }
 .email-container > button {
-  background-color: #00000000;
+  background-color: var(--color2);
 }
 .email-container > button > img {
   width: 15px;
   height: 9px;
-  background-color: #00000000;
+  background-color: var(--color2);
 }
 
 .social {

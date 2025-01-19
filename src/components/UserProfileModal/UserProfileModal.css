@@ -12,7 +12,7 @@
 }
 
 .user-modal-content {
-  background-color: #1b1c28;
+  background-color: var(--faq);
   padding: 40px 45px;
   border-radius: 5px;
   width: 600px;
@@ -27,7 +27,7 @@
 }
 .user-modal-header > h2 {
   font-size: 24px;
-  color: white;
+  color: var(--color2);
   font-family: var(--font-family);
   font-weight: var(--font-weight-semi);
 }
@@ -58,7 +58,7 @@
   margin-bottom: 10px;
 }
 .user-profile-image > h2 {
-  color: white;
+  color: var(--color2);
   font-size: 24px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
@@ -94,13 +94,14 @@
 
 .user-progress {
   height: 100px;
-  background-color: #141521;
+  color: var(--color3);
+  background-color: var(--color3);
   padding: 20px;
   margin-bottom: 20px;
 }
 .user-progress > p {
   font-size: 12px;
-  color: white;
+  color: var(--color2);
 }
 
 .submitted-tips {
@@ -113,7 +114,7 @@
 .submitted-tip {
   width: 160px;
   height: 50px;
-  background-color: #141521;
+  background-color: var(--color3);
   gap: 10px;
 }
 .submitted-tip > img {
@@ -122,12 +123,12 @@
 }
 .submitted-tip > h3 {
   font-size: 14px;
-  color: white;
+  color: var(--color2);
   font-weight: var(--font-weight-medium);
 }
 
 .accepted-tips {
-  color: white;
+  color: var(--color2);
 }
 
 .badges {
@@ -137,7 +138,7 @@
 .badge {
   width: 200px;
   height: 30px;
-  background-color: #141521;
+  background-color: var(--color3);
   border: 1px solid black;
   border-radius: 100px;
   gap: 10px;

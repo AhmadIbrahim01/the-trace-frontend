@@ -6,8 +6,7 @@
   padding-left: 60px;
   padding-right: 60px;
   z-index: 10000;
-  /* background-color: #14152183; */
-  background: linear-gradient(180deg, #141521 0%, rgba(20, 21, 33, 0) 100%);
+  background: var(--navbar-color);
 }
 
 .navbar-container {
@@ -28,7 +27,7 @@
   font-size: 18px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-medium);
-  color: white;
+  color: var(--color2);
   text-decoration: none;
 }
 
@@ -37,8 +36,8 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-medium);
   padding: 10px 22px;
-  color: white;
-  border: 2px solid #ffffff;
+  color: var(--color2);
+  border: 2px solid var(--color2);
   border-radius: 6px;
   background-color: #00000000;
 }
