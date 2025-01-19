@@ -9,6 +9,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 const InvestigatorGPT = () => {
   const token = localStorage.getItem("authToken");
+  const caseId = localStorage.getItem("caseId");
   const decoded = jwtDecode(token);
   const userId = decoded.userId;
 
@@ -63,7 +64,7 @@ const InvestigatorGPT = () => {
   const createNewChat = async () => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8080/api/gpt/${userId}`,
+        `http://127.0.0.1:8080/api/gpt/${userId}/${caseId}`,
         {
           headers: {
             "Content-Type": "application/json",
