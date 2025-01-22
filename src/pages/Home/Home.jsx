@@ -17,7 +17,7 @@ import whiteFingerprint from "../../assets/images/white-fingerprint.svg";
 import triangle from "../../assets/images/triangle.svg";
 import darkTriangle from "../../assets/images/dark-triangle.svg";
 import AboutUsPicture from "../../assets/images/about-us.svg";
-import downArrow from "../../assets/icons/down-arrow.svg";
+import shareIcon from "../../assets/icons/share-icon.svg";
 import rightArrow from "../../assets/icons/right-arrow.svg";
 import { Navigate, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
@@ -420,7 +420,9 @@ const TestimonialsSection = () => {
     const getTestimonials = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8080/api/testimonial/",
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/testimonial/`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -627,9 +629,21 @@ const PoweredByAiSection = () => {
             ref={(el) => (smallCardRefs.current[1] = el)}
           >
             <h2>
-              3D crime <br /> scene <br /> recreation
+              Investigator <br /> GPT <br />
             </h2>
-            <img src={house} alt="house" />
+
+            <div className="data-driven">
+              <p>Data-driven</p>
+            </div>
+            <div className="instant-response">
+              <p>Instant response</p>
+            </div>
+            <div className="ai-powered">
+              <p>AI-powered</p>
+            </div>
+            <div className="share-icon flex center column">
+              <img src={shareIcon} alt="" />
+            </div>
           </div>
         </div>
       </div>

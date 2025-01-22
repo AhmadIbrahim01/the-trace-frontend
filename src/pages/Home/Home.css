@@ -319,6 +319,50 @@
   width: 425px;
   position: relative;
 }
+
+.small-card > div{
+  border: 1px solid #181818;
+  border-radius: 100px;
+  background-color: #20212F;
+  position: absolute;
+  padding: 2%;
+}
+
+.small-card > div > p{
+  font-size: 18px;
+  color: white;
+}
+
+.data-driven{
+  right: 150px;
+  bottom: 30px;
+}
+.instant-response{
+  rotate: 20deg;
+  right: 50px;
+  bottom: 70px;
+}
+.instant-response > p{
+color: #0bc1a0 !important;
+}
+
+.ai-powered{
+  rotate: -20deg;
+  right:  0px;
+  top: 50px;
+}
+.share-icon{
+  width:44px !important;
+  height:44px !important;
+  right: 10px;
+  bottom: 10px;
+}
+.share-icon > img{
+  width:40px !important;
+  height:40px !important;
+
+}
+
 .small-cards .small-card:nth-child(1) {
   height: 180px;
 }
