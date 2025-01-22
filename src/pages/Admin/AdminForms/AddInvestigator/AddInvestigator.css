@@ -1,0 +1,43 @@
+.admin-form-container {
+  padding: 5% 10%;
+}
+
+.admin-form-container > h1 {
+  font-size: 60px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 30px;
+}
+
+.form-back-button {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  background-color: #0bc1a0;
+  width: 90px;
+  height: 40px;
+  color: white;
+  margin-bottom: 30px;
+  align-self: flex-start;
+}
+
+.admin-form-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  height: 80px;
+  background: #0bc1a0;
+  border-radius: 6px;
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  color: white;
+  margin: 50px 0px;
+  width: 100%;
+}

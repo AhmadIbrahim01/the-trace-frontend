@@ -1,0 +1,22 @@
+.add-witness-statement {
+  float: right;
+  margin-top: 30px;
+  width: 160px;
+  height: 40px;
+  color: white;
+  background-color: #0bc1a0;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+}
+
+.witness-modal-content {
+  position: relative;
+  background-color: #1b1c28;
+  padding: 50px 55px;
+  border-radius: 5px;
+  min-width: 746px;
+  height: 450px;
+  border-radius: 16px;
+  overflow: auto;
+}

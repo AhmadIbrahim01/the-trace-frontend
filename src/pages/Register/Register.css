@@ -1,0 +1,146 @@
+.register {
+  padding: 2%;
+  background-image: url("../../assets/images/register-bg.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: var(--faq);
+}
+
+.register-form {
+  width: 673px;
+
+  background: var(--form);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+
+  justify-content: flex-start;
+  padding-top: 65px;
+}
+.register-form > h1 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  font-size: 36px;
+  color: var(--color2);
+}
+.register-form > h3 {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 24px;
+
+  color: var(--text-color);
+  margin-bottom: 50px;
+}
+
+.register-input {
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.register-input > input {
+  justify-content: center;
+  background-color: var(--form-input);
+  width: 460px;
+  height: 52px;
+  border-radius: 6px;
+  /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+  font-size: 18px;
+  color: var(--color1);
+  padding: 30px;
+  outline: none;
+  appearance: none;
+}
+.register-input > label {
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  color: var(--color2);
+  text-align: left;
+}
+
+.register-form-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 463px;
+  height: 60px;
+  padding: 14px 32px;
+
+  gap: 10px;
+
+  background: #0bc1a0;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: white;
+
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+.already {
+  gap: 6px;
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+.already > p,
+.already > button {
+  font-size: 16px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+}
+.already > p {
+  color: var(--text-color);
+}
+
+.already > button {
+  color: var(--color1);
+  background-color: #00000000;
+}
+
+.register-hr {
+  width: 463px;
+  border: 2px solid var(--form-input);
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+.register-form > p {
+  font-size: 16px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: var(--color2);
+  margin-bottom: 10px;
+}
+
+.google-button {
+  width: 465px;
+  background: var(--form-input);
+  border-radius: 6px;
+  justify-content: flex-start;
+  margin-bottom: 52px;
+}
+.google-button > img {
+  width: 18px;
+  height: 22px;
+  margin: 16px 10px 16px 22px;
+}
+.google-button > p {
+  color: var(--color2);
+  font-size: 16px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+}
+
+.register-logo > img {
+  position: fixed;
+  top: 20px;
+  left: 60px;
+  width: 80px;
+  height: 58px;
+}

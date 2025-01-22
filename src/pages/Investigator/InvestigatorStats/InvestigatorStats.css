@@ -1,0 +1,107 @@
+.investigator-stats {
+  padding: 10% 11%;
+}
+
+.investigator-stats > h1 {
+  font-size: 60px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin-bottom: 23px;
+}
+
+.investigator-stats > p {
+  font-size: 25px;
+  color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.investigator-stats > h3 {
+  font-size: 30px;
+  color: var(--color2);
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
+
+.investigator-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 27px;
+  grid-row-gap: 27px;
+  position: relative;
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+  width: 367px;
+  height: 181px;
+}
+.div2 {
+  grid-area: 1 / 2 / 2 / 4;
+  width: 805px;
+  height: 181px;
+  position: absolute;
+  left: -27px;
+}
+.div3 {
+  grid-area: 2 / 1 / 4 / 3;
+  width: 805px;
+  height: 390px;
+}
+.div4 {
+  grid-area: 2 / 3 / 3 / 4;
+  width: 367px;
+  height: 181px;
+}
+.div5 {
+  grid-area: 3 / 3 / 4 / 4;
+  width: 367px;
+  height: 181px;
+}
+
+.div1,
+.div2,
+.div3,
+.div4,
+.div5 {
+  background-color: var(--form);
+  border-radius: 16px;
+  border: 1px solid #015949;
+  padding-top: 20px;
+}
+
+.investigator-grid p {
+  font-size: 30px;
+  color: var(--color2);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.investigator-grid h1 {
+  font-size: 110px;
+  color: var(--color1);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.magnifier-two {
+  position: absolute;
+  top: 550px;
+  width: 218px;
+  height: 214px;
+}
+.div3 {
+  position: relative;
+}
+
+.div3 > img {
+  position: absolute;
+  top: 50px;
+  right: 250px;
+  width: 73px;
+  height: 111px;
+}

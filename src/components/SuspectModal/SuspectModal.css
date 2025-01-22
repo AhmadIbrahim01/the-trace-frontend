@@ -1,0 +1,190 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #141521ee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background-color: var(--form-input2);
+  padding: 50px 55px;
+  border-radius: 5px;
+  min-width: 746px;
+  height: 600px;
+  border-radius: 16px;
+  overflow: auto;
+  position: relative;
+}
+
+.suspect-profile-header {
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.suspect-profile-header > h2 {
+  font-size: 30px;
+  color: var(--color2);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+}
+.suspect-profile-header > button {
+  width: 160px;
+  height: 40px;
+  color: white;
+  background-color: #0bc1a0;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  padding: 1%;
+}
+
+.suspect-profile-body > img {
+  width: 200px;
+  height: 200px;
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.suspect-data-container {
+  gap: 10px;
+  flex: 1;
+}
+.suspect-data {
+  gap: 5px;
+  padding-left: 30px;
+  padding-right: 100px;
+}
+.suspect-data > img {
+  width: 16px;
+  height: 16px;
+}
+.suspect-data > p {
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: var(--color2);
+}
+.suspect-data > input,
+.edit-age {
+  width: 200px;
+  height: 20px;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color3);
+  color: var(--color2);
+  border-radius: 5px;
+  padding-left: 10px;
+}
+.suspect-data > textarea,
+.statement-textarea {
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color3);
+  color: var(--color2);
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.edit-buttons {
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 5px;
+}
+.edit-buttons > button {
+  color: white;
+  padding: 1%;
+  width: 77.5px;
+}
+.save-btn {
+  background-color: #0bc1a0;
+}
+
+.delete-btn {
+  background-color: red;
+}
+
+.dismiss-btn {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--form-input2);
+  color: var(--color2);
+}
+
+.suspect-data-button {
+  width: 100px;
+  height: 100px;
+  background-color: #141521;
+  border-top: 1px solid #0bc1a0;
+  border-bottom: 1px solid #0bc1a0;
+}
+.suspect-data-button > img {
+  width: 50px;
+  height: 85px;
+}
+
+.suspect-map {
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.suspect-map > .suspect-data,
+.suspect-profile-body > .suspect-data {
+  padding: 0px;
+  gap: 5px;
+}
+.suspect-profile-body > .suspect-data {
+  padding-top: 10px;
+}
+
+.suspect-map > button {
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: #0bc1a0;
+  background-color: #00000000;
+}
+
+.suspect-images > h3 {
+  margin-top: 40px;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  color: var(--color2);
+  margin-bottom: 15px;
+}
+.suspect-images-container {
+  justify-content: flex-start;
+  gap: 15px;
+}
+.suspect-images {
+  justify-content: space-between;
+  margin-top: 30px;
+}
+/* .suspect-images-container > img {
+  width: 198px;
+  height: 170px;
+} */
+
+.add-statement-btn {
+  width: 160px;
+  height: 40px;
+  color: white;
+  background-color: #0bc1a0;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+}
+
+.suspect-details > img {
+  width: 500px;
+}

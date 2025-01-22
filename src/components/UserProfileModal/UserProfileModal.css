@@ -1,0 +1,156 @@
+.user-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.user-modal-content {
+  background-color: var(--faq);
+  padding: 40px 45px;
+  border-radius: 5px;
+  width: 600px;
+  height: 700px;
+  border-radius: 16px;
+  margin-top: 10px;
+}
+
+.user-modal-header {
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.user-modal-header > h2 {
+  font-size: 24px;
+  color: var(--color2);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+}
+.user-modal-header > button {
+  color: var(--color1);
+  background-color: #00000000;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+}
+
+.user-profile-image {
+  width: 100%;
+  height: 150px;
+  position: relative;
+}
+
+.user-profile-image > label > img {
+  cursor: pointer;
+  border-radius: 6px;
+}
+.user-profile-image > .user-profile-button {
+  width: 100px;
+  height: 130px;
+  background-color: #00000000;
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.user-profile-image > h2 {
+  color: var(--color2);
+  font-size: 24px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+}
+.user-profile-image > button > img {
+  width: 100%;
+}
+
+.user-profile-edit {
+  position: absolute;
+  top: -20px;
+  background-color: #00000000;
+  width: 40px;
+  height: 40px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 7px;
+  background-color: black;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.progress {
+  width: 50%;
+  height: 100%;
+  background-color: var(--color1);
+  transition: width 0.5s ease-in-out;
+}
+
+.user-progress {
+  height: 100px;
+  color: var(--color3);
+  background-color: var(--color3);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.user-progress > p {
+  font-size: 12px;
+  color: var(--color2);
+}
+
+.submitted-tips {
+  justify-content: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.submitted-tip {
+  width: 160px;
+  height: 50px;
+  background-color: var(--color3);
+  gap: 10px;
+}
+.submitted-tip > img {
+  width: 18px;
+  height: 18px;
+}
+.submitted-tip > h3 {
+  font-size: 14px;
+  color: var(--color2);
+  font-weight: var(--font-weight-medium);
+}
+
+.accepted-tips {
+  color: var(--color2);
+}
+
+.badges {
+  justify-content: flex-start;
+  gap: 10px;
+}
+.badge {
+  width: 200px;
+  height: 30px;
+  background-color: var(--color3);
+  border: 1px solid black;
+  border-radius: 100px;
+  gap: 10px;
+  margin-top: 20px;
+}
+.badge > img {
+  width: 18px;
+  height: 18px;
+}
+.badge:nth-child(odd) > h3 {
+  color: #ff9b0f;
+}
+.badge:nth-child(even) > h3 {
+  color: #fffb0f;
+}

@@ -1,0 +1,32 @@
+.logout-btn {
+  position: absolute;
+  top: 100px;
+  right: 30px;
+  width: 100px;
+  height: 50px;
+  background-color: rgba(187, 72, 72, 0.908);
+  color: white;
+  font-weight: bold;
+}
+
+.back {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 100px;
+  height: 50px;
+  background-color: #0bc1a0;
+  color: white;
+  font-weight: bold;
+}
+
+.profile-input {
+  display: none;
+}
+.user-profile-modal {
+  height: 100vh;
+}
+.user-profile-modal > div {
+  min-height: 650px;
+  margin-top: 0px;
+}

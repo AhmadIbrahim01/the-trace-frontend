@@ -1,0 +1,141 @@
+.sketch {
+  padding: 8% 10%;
+  justify-content: space-around;
+  background-image: url("../../../assets/images/grid-bg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.sketch-form {
+  width: 40%;
+  height: fit-content;
+  background-color: var(--color3);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  justify-content: flex-start;
+  padding-top: 10%;
+  position: relative;
+}
+.sketch-container {
+  justify-content: flex-start;
+  width: 60%;
+  height: fit-content;
+  background-color: var(--color3);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  gap: 30px;
+  padding-top: 10%;
+  padding-bottom: 2%;
+}
+
+.sketch-form > h1,
+.sketch-container > h1 {
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 25px;
+}
+
+.sketch-input > label {
+  font-size: 18px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  color: white;
+}
+.sketch-input > input,
+.sketch-input > select {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  background-color: var(--form-input2);
+  border-radius: 6px;
+  width: 413px;
+  height: 80px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding-left: 30px;
+  outline: none;
+  color: #0bc1a0;
+}
+
+.sketch-input-file > input {
+  padding-top: 30px;
+}
+
+.sketch-input > textarea {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  background-color: var(--form-input2);
+  border-radius: 6px;
+  width: 413px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding-left: 30px;
+  padding-top: 30px;
+  outline: none;
+  color: #0bc1a0;
+}
+
+.ai-form-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  height: 80px;
+  background: #0bc1a0;
+  border-radius: 6px;
+  font-size: 30px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semi);
+  color: white;
+  margin: 50px 0px;
+  width: 413px;
+}
+
+.ai-sketch {
+  width: 500px;
+  height: 500px;
+  background: #e8f1fc;
+  border-radius: 6px;
+}
+.ai-sketch > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+}
+.ai-sketch > p {
+  color: var(--text-color);
+}
+
+.switch-btn1,
+.switch-btn2 {
+  color: #015949;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.back-button,
+.sketch-back-button {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  width: 90px;
+  height: 40px;
+  top: 50px;
+  left: 50px;
+  position: absolute;
+  background-color: #0bc1a0;
+  color: white;
+  padding: 1%;
+}
+.sketch-back-button {
+  top: 32px;
+  left: 32px;
+}

@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: 500; /* Medium weight */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+:root {
+  --hero-bg: url("./assets/images/hero-bg.png");
+  --cases-bg: url("./assets/images/cases-hero-bg.svg");
+  --case-bg: url("./assets/images/case-bg.png");
+  --error-bg: url("./assets/images/error-bg.png");
+
+  --font-family: "Montserrat", sans-serif;
+  --font-weight-normal: normal;
+  --font-weight-bold: bold;
+  --font-weight-semi: 600;
+  --font-weight-medium: 500;
+}
+
+[data-theme="light"] {
+  --hero-bg: url("./assets/images/hero-bg-light.png");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+}
+
+button {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+img {
+  width: 100px;
+}
