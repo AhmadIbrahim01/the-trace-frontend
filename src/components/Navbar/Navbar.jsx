@@ -4,6 +4,8 @@ import "./Navbar.css";
 import logo from "../../assets/images/logo.svg";
 import { jwtDecode } from "jwt-decode";
 
+import darkModeButton from "../../assets/icons/dark-mode-icon.svg";
+
 const Navbar = () => {
   const navigate = useNavigate();
   const goToRegister = () => {
@@ -90,30 +92,40 @@ const Navbar = () => {
           ) : (
             <></>
           )}
-          <li>
+        </ul>
+
+        {name ? (
+          <div className="profile-action flex center">
             <button
               type="button"
-              className="nav-link theme-btn"
+              className="nav-link theme-btn flex column center"
               onClick={changeTheme}
             >
-              Theme
+              <img src={darkModeButton} alt="" />
             </button>
-          </li>
-        </ul>
-        {name ? (
-          <button
-            className="nav-button flex center column"
-            onClick={goToUserProfile}
-          >
-            {name}
-          </button>
+            <button
+              className="nav-button flex center column"
+              onClick={goToUserProfile}
+            >
+              {name}
+            </button>
+          </div>
         ) : (
-          <button
-            className="nav-button flex center column"
-            onClick={goToRegister}
-          >
-            Signup
-          </button>
+          <div className="profile-action flex center">
+            <button
+              type="button"
+              className="nav-link theme-btn flex column center"
+              onClick={changeTheme}
+            >
+              <img src={darkModeButton} alt="" />
+            </button>
+            <button
+              className="nav-button flex center column"
+              onClick={goToRegister}
+            >
+              Signup
+            </button>
+          </div>
         )}
       </div>
     </nav>

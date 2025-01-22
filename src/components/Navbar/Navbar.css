@@ -23,12 +23,23 @@
   gap: 100px;
 }
 
+.profile-action {
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-link {
   font-size: 18px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-medium);
   color: var(--color2);
   text-decoration: none;
+}
+
+.nav-link > img {
+  width: 40px;
+  height: 40px;
 }
 
 .nav-button {
@@ -42,7 +53,10 @@
   background-color: #00000000;
 }
 
-.navbar-logo,
+.navbar-logo {
+  width: 200px;
+}
+
 .nav-button {
   width: 120px;
 }
