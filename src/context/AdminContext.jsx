@@ -22,7 +22,9 @@ export const AdminProvider = ({ children }) => {
     const fetchAdminData = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8080/api/admin/admins/${adminId}`,
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/admin/admins/${adminId}`,
           {
             headers: {
               "Content-Type": "application/json",

@@ -45,7 +45,9 @@ const AISketch = () => {
 
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8080/api/sketches/${caseId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/sketches/${caseId}`,
         data,
         {
           headers: {
@@ -100,7 +102,9 @@ const AISketch = () => {
       setCloudImageUrl(uploadedImageUrl.url);
 
       const saveSketch = await fetch(
-        `http://127.0.0.1:8080/api/sketches/save/${caseId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/sketches/save/${caseId}`,
         {
           method: "POST",
           headers: {
@@ -144,10 +148,15 @@ const AISketch = () => {
     const formData = new FormData();
     formData.append("image", img);
 
-    fetch(`http://127.0.0.1:8080/api/sketches/image/${caseId}`, {
-      method: "POST",
-      body: formData,
-    })
+    fetch(
+      `http://127.0.0.1:${
+        import.meta.env.VITE_SERVER_PORT
+      }/api/sketches/image/${caseId}`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");

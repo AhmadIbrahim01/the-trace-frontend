@@ -17,7 +17,9 @@ const ManageAdmins = () => {
     const fetchAdminsData = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8080/api/admin/admins`,
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/admin/admins`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -36,11 +38,16 @@ const ManageAdmins = () => {
 
   const banAdmin = async (id) => {
     try {
-      await axios.post(`http://127.0.0.1:8080/api/admin/ban/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await axios.post(
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/admin/ban/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);
@@ -49,11 +56,14 @@ const ManageAdmins = () => {
 
   const deleteAdmin = async (id) => {
     try {
-      await axios.delete(`http://127.0.0.1:8080/api/admin/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await axios.delete(
+        `http://127.0.0.1:${import.meta.env.VITE_SERVER_PORT}/api/admin/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);

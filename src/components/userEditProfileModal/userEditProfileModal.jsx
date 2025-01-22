@@ -31,7 +31,9 @@ const userEditProfileModal = ({ isOpen, onClose, data }) => {
 
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8080/api/auth/${userId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/auth/${userId}`,
         formData,
         {
           headers: {

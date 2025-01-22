@@ -84,7 +84,9 @@ const UserProfile = () => {
         setLoading(true);
         try {
           const response = await axios.get(
-            `http://127.0.0.1:8080/api/auth/${userId}`,
+            `http://127.0.0.1:${
+              import.meta.env.VITE_SERVER_PORT
+            }/api/auth/${userId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -143,7 +145,9 @@ const UserProfile = () => {
       console.log("Uploaded image URL:", imageUrl);
 
       const updateRes = await fetch(
-        `http://127.0.0.1:8080/api/auth/profilepicture/${userId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/auth/profilepicture/${userId}`,
         {
           method: "PUT",
           headers: {

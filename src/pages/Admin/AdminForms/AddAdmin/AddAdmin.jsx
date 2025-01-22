@@ -25,7 +25,9 @@ const AddAdmin = () => {
 
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8080/api/auth/register`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/auth/register`,
         dataWithRole,
         {
           headers: {

@@ -230,7 +230,9 @@ const CommentsSection = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8080/api/comment/${caseId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/comment/${caseId}`,
         formData,
         {
           headers: {
@@ -284,7 +286,9 @@ const Comments = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `http://127.0.0.1:8080/api/comment/${caseId}`,
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/comment/${caseId}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -377,7 +381,9 @@ const InvestigatorSelectedCase = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8080/api/case/${caseId}`,
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/case/${caseId}`,
           {
             headers: {
               "Content-Type": "applicatio/json",

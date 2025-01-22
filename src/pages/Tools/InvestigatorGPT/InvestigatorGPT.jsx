@@ -44,7 +44,9 @@ const InvestigatorGPT = () => {
     const fetchChats = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8080/api/gpt/${userId}`,
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/gpt/${userId}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -64,7 +66,9 @@ const InvestigatorGPT = () => {
   const createNewChat = async () => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8080/api/gpt/${userId}/${caseId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/gpt/${userId}/${caseId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -89,11 +93,16 @@ const InvestigatorGPT = () => {
   };
   const deleteChat = async (chatId) => {
     try {
-      await axios.delete(`http://127.0.0.1:8080/api/gpt/${userId}/${chatId}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await axios.delete(
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/gpt/${userId}/${chatId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);
@@ -103,7 +112,9 @@ const InvestigatorGPT = () => {
   const sendMessage = async (chatId) => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8080/api/gpt/message/${userId}/${chatId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/gpt/message/${userId}/${chatId}`,
         formData,
         {
           headers: {

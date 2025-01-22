@@ -36,7 +36,9 @@ const WitnessStatementModal = ({ isOpen, onClose, data }) => {
   const handleSaveClick = async () => {
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8080/api/witnessStatement/${id}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/witnessStatement/${id}`,
         { statement: editedData.statement },
         {
           headers: {
@@ -54,7 +56,9 @@ const WitnessStatementModal = ({ isOpen, onClose, data }) => {
   const handleDeleteClick = async () => {
     try {
       await axios.delete(
-        `http://127.0.0.1:8080/api/witness/statements/${caseId}/${witnessId}/${statementId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/witness/statements/${caseId}/${witnessId}/${statementId}`,
         {
           headers: {
             "Content-Type": "application/json",

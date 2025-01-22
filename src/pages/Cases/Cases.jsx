@@ -94,11 +94,14 @@ const CasesSection = () => {
   useEffect(() => {
     const getCases = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8080/api/case/", {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await axios.get(
+          `http://127.0.0.1:${import.meta.env.VITE_SERVER_PORT}/api/case/`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         setCases(response.data.cases);
       } catch (error) {

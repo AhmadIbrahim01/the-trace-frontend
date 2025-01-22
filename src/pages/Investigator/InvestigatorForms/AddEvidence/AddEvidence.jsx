@@ -28,7 +28,9 @@ const AddEvidence = () => {
 
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8080/api/evidence/${caseId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/evidence/${caseId}`,
         dataWithImage,
         {
           headers: {

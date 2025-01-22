@@ -17,11 +17,14 @@ const ManageUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8080/api/admin`, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await axios.get(
+          `http://127.0.0.1:${import.meta.env.VITE_SERVER_PORT}/api/admin`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         setUsers(response.data.users);
       } catch (error) {
         console.log(error.message);
@@ -32,11 +35,16 @@ const ManageUsers = () => {
 
   const toggleRole = async (id) => {
     try {
-      await axios.put(`http://127.0.0.1:8080/api/admin/investigator/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await axios.put(
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/admin/investigator/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);
@@ -45,11 +53,16 @@ const ManageUsers = () => {
 
   const banUser = async (id) => {
     try {
-      await axios.post(`http://127.0.0.1:8080/api/admin/ban/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await axios.post(
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/admin/ban/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);
@@ -58,11 +71,14 @@ const ManageUsers = () => {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`http://127.0.0.1:8080/api/admin/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await axios.delete(
+        `http://127.0.0.1:${import.meta.env.VITE_SERVER_PORT}/api/admin/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setRefresh(!refresh);
     } catch (error) {
       console.log(error.message);

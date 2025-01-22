@@ -32,7 +32,9 @@ const StatementModal = ({ isOpen, onClose, data }) => {
   const handleSaveClick = async () => {
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8080/api/suspect/statements/${caseId}/${suspectId}/${statementId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/suspect/statements/${caseId}/${suspectId}/${statementId}`,
         editedData,
         {
           headers: {
@@ -51,7 +53,9 @@ const StatementModal = ({ isOpen, onClose, data }) => {
   const handleDeleteClick = async () => {
     try {
       await axios.delete(
-        `http://127.0.0.1:8080/api/suspect/statements/${caseId}/${suspectId}/${statementId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/suspect/statements/${caseId}/${suspectId}/${statementId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -74,7 +78,9 @@ const StatementModal = ({ isOpen, onClose, data }) => {
       const refetchData = async () => {
         try {
           const response = await axios.get(
-            `http://127.0.0.1:8080/api/suspect/statements/${caseId}/${suspectId}/${statementId}`,
+            `http://127.0.0.1:${
+              import.meta.env.VITE_SERVER_PORT
+            }/api/suspect/statements/${caseId}/${suspectId}/${statementId}`,
             {
               headers: {
                 "Content-Type": "application/json",

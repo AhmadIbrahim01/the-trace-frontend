@@ -18,7 +18,9 @@ const ManageInvestigators = () => {
     const fetchInvestigators = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8080/api/admin/investigators`,
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/admin/investigators`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -36,7 +38,11 @@ const ManageInvestigators = () => {
   }, [refresh]);
 
   const deleteInvestigator = async (investigatorId) => {
-    await axios.delete(`http://127.0.0.1:8080/api/admin/${investigatorId}`);
+    await axios.delete(
+      `http://127.0.0.1:${
+        import.meta.env.VITE_SERVER_PORT
+      }/api/admin/${investigatorId}`
+    );
     setInvestigators([]);
     setRefresh(true);
   };

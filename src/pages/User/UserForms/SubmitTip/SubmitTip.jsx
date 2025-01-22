@@ -70,7 +70,9 @@ const SubmitTip = () => {
 
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8080/api/tip/${caseId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/tip/${caseId}`,
         dataWithImage,
         {
           headers: {

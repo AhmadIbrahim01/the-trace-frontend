@@ -57,7 +57,9 @@ const AddCase = () => {
     const getInvestigators = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8080/api/admin/investigators",
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/admin/investigators`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -81,7 +83,7 @@ const AddCase = () => {
     const data = { ...formData, caseImages: imagesUrl };
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8080/api/case/",
+        `http://127.0.0.1:${import.meta.env.VITE_SERVER_PORT}/api/case/`,
         data,
         {
           headers: {

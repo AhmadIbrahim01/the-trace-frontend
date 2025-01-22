@@ -22,7 +22,9 @@ const EditInvestigator = () => {
     const fetchInvestigatorData = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8080/api/auth/${investigatorId}`
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/auth/${investigatorId}`
         );
         setInvestigatorData(response.data.user);
         reset(response.data.user);
@@ -41,7 +43,9 @@ const EditInvestigator = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8080/api/auth/${investigatorId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/auth/${investigatorId}`,
         data,
 
         {

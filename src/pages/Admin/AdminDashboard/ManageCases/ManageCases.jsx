@@ -16,11 +16,14 @@ const ManageCases = () => {
   useEffect(() => {
     const fetchCases = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8080/api/case/`, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await axios.get(
+          `http://127.0.0.1:${import.meta.env.VITE_SERVER_PORT}/api/case/`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         setCases(response.data.cases);
         setRefresh(false);
@@ -33,7 +36,9 @@ const ManageCases = () => {
   }, [refresh]);
 
   const deleteCase = async (caseId) => {
-    await axios.delete(`http://127.0.0.1:8080/api/case/${caseId}`);
+    await axios.delete(
+      `http://127.0.0.1:${import.meta.env.VITE_SERVER_PORT}/api/case/${caseId}`
+    );
     setRefresh(true);
   };
   const navigate = useNavigate();

@@ -34,7 +34,9 @@ const AddWitness = () => {
 
     try {
       const respone = await axios.post(
-        `http://127.0.0.1:8080/api/witness/${caseId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/witness/${caseId}`,
         dataWithImage,
         {
           headers: {

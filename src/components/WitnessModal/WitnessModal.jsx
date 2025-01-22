@@ -39,7 +39,9 @@ const WitnessModal = ({ isOpen, onClose, data }) => {
   const handleSaveClick = async () => {
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8080/api/witness/${caseId}/witnesses/${witnessId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/witness/${caseId}/witnesses/${witnessId}`,
         editedData,
         {
           headers: {
@@ -58,7 +60,9 @@ const WitnessModal = ({ isOpen, onClose, data }) => {
   const handleDeleteClick = async () => {
     try {
       await axios.delete(
-        `http://127.0.0.1:8080/api/witness/${caseId}/${witnessId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/witness/${caseId}/${witnessId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -83,7 +87,9 @@ const WitnessModal = ({ isOpen, onClose, data }) => {
         try {
           const response = await axios.get(
             `
-            http://127.0.0.1:8080/api/witness/${caseId}/${witnessId}`,
+            http://127.0.0.1:${
+              import.meta.env.VITE_SERVER_PORT
+            }/api/witness/${caseId}/${witnessId}`,
             {
               headers: {
                 "Content-Type": "application/json",

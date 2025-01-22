@@ -65,7 +65,9 @@ const InvestigatorCase = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8080/api/case/${caseId}`,
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/case/${caseId}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -218,7 +220,7 @@ const InvestigatorCase = () => {
           className="investigator-tool flex center"
         >
           <img src={AISketchIcon} alt="" />
-          <h2>AI Suspect Drawing</h2>
+          <h2>AI Suspect Sketch</h2>
         </button>
         <button
           onClick={() => navigate("/investigatorgpt")}

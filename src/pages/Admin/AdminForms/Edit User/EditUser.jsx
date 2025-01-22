@@ -26,7 +26,9 @@ const EditUser = () => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8080/api/auth/${userId}`,
+          `http://127.0.0.1:${
+            import.meta.env.VITE_SERVER_PORT
+          }/api/auth/${userId}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -45,7 +47,9 @@ const EditUser = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8080/api/auth/${userId}`,
+        `http://127.0.0.1:${
+          import.meta.env.VITE_SERVER_PORT
+        }/api/auth/${userId}`,
         data,
         {
           headers: {

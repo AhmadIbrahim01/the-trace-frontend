@@ -44,7 +44,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8080/api/auth/login",
+        `http://127.0.0.1:${import.meta.env.VITE_SERVER_PORT}/api/auth/login`,
         data,
         {
           headers: {
